@@ -242,3 +242,4 @@ TSWLatexianTemp*
 *.spl
 
 # My own restritions
+*.dia
