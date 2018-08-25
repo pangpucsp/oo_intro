@@ -1,0 +1,638 @@
+\documentclass[
+	% -- opções da classe memoir --
+	article,			% indica que é um artigo acadêmico
+	12pt,				% tamanho da fonte
+	openright,
+	twoside,			% para impressão apenas no recto. Oposto a twoside
+	a4paper,			% tamanho do papel. 
+	english,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% Tabelas longas -> + de uma página
+\usepackage{longtable}
+
+\usepackage[brazilian,hyperpageref]{backref}	% Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}					% Citações padrão ABNT
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+\titulo{Conceitos básicos de Orientação Objeto}
+\autor{Paulino Ng\thanks{paulino.ng@gmail.com}
+}
+\local{Brasil}
+\data{2018, v-0.0.0}
+% ---
+
+% ---
+% Configurações de aparência do PDF final
+
+% alterando o aspecto da cor azul
+%\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+%\hypersetup{
+%     	%pagebackref=true,
+%		pdftitle={\@title}, 
+%		pdfauthor={\@author},
+%    		pdfsubject={Conceitos básicos de OO},
+%	    	pdfcreator={PDFLaTeX with abnTeX2},
+%		pdfkeywords={OO}{Scott Ambler}{UML}, 
+%		colorlinks=true,       		% false: boxed links; true: colored links
+%    		linkcolor=blue,         % color of internal links
+%    		citecolor=blue,        	% color of links to bibliography
+%    		filecolor=magenta,      % color of file links
+%		urlcolor=blue,
+%		bookmarksdepth=4
+%}
+\makeatother
+% --- 
+
+\makeindex
+% ---
+
+% ---
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{2cm}{2cm}{*}
+\setulmarginsandblock{2cm}{2cm}{*}
+\checkandfixthelayout
+% ---
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+\begin{document}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+\maketitle
+
+% resumo em português
+\begin{resumoumacoluna}
+Este texto objetiva introduzir alguns dos principais conceitos da tecnologia Orientada a Objetos, OO.
+O texto é fortemente baseado no capítulo 2 do livro \cite{Ambler:TOP:3ed}, com acréscimos baseados em \cite{uml:j2ee}.
+\vspace{\onelineskip}
+\noindent
+ \textbf{Palavras-chave}: OO. UML.
+\end{resumoumacoluna}
+
+\textual
+
+\section{Introdução}
+\addcontentsline{toc}{section}{Introdução}
+
+Você precisa entender os conceitos de orientação a objetos, OO, antes de aplicá-los com sucesso no desenvolvimento de sistemas. Porque as técnicas OO emergiram, em parte, de áreas da engenharia de software, inteligência artificial e modelagem da informação, muitas dessas técnicas podem parecer já familiares. Não permita que isto o torne complacente -- você ainda terá de compreender vários conceitos novos.
+
+Neste trabalho veremos:
+
+\begin{itemize}
+\item Uma rápida introdução aos conceitos de OO;
+\item Conceitos OO do ponto de vista estruturado;
+\item Os diagramas da linguagem unificada de modelagem (UML 2);
+\item Objetos e classes;
+\item Atributos e operações;
+\item Abstração, encapsulamento e ocultação de informação (information hiding);
+\item Herança;
+\item Persistência;
+\item Relacionamentos;
+\item Colaboração;
+\item Polimorfismo;
+\item Interfaces;
+\item Componentes; e
+\item Padrões.
+\end{itemize}
+
+\subsection{Uma rápida introdução aos conceitos de OO}
+Veremos nesta seção os conceitos fundamentais das técnicas de desenvolvimento OO. Programadores experientes com tecnologias estruturadas já conhecem alguns destes conceitos, outros são novos. Por exemplo, conceitos que estão no núcleo de OO como encapsulamento, acoplamento e coesão vêm da engenharia de software. Estes conceitos são importantes porque eles revelam boas práticas de projeto independentemente da tecnologia que está sendo usada. Não se engane, entretanto, não é porque você já viu alguns dos conceitos e os pratica que você já está fazendo OO, você apenas está realizando bons projetos. Enquanto fazer bons projetos é uma grande parte de orientação a objetos, ainda há muito mais.
+
+Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas todos nós, programadores experientes, sabemos que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar bom no desenvolvimento estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Para lhe dar um gostinho do conteúdo deste artigo, os conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
+
+\begin{longtable}[l]{p{4.6cm}p{11.1cm}}
+\caption[Conceitos OO]{Um resumo dos conceitos e termos da Orientação a Objetos}
+\label{tab:concOO}\\
+
+\multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endfirsthead
+
+\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- continuação da página anterior}} \\
+\multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endhead
+
+\multicolumn{2}{r}{{Continua na próxima página}} \\% \hline
+\endfoot
+
+\hline %\hline
+\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+\endlastfoot
+
+Abstração & As características essenciais de um item (pode ser uma classe ou uma operação) \\
+Acoplamento & O grau de dependência entre dois itens\\
+Agregação & Relacionamento entre duas classes ou componentes definidas por \emph{é parte de}\\
+Hierárquia de agregação & Um conjunto de classes relacionadas através da agregação\\
+Associação & Um relacionamento entre duas classes ou objetos\\
+Atributo & Algo que uma classe conhece (dados/informação)\\
+Cardinalidade & O conceito de \emph{quantos?}\\
+Classe & Uma abstração em software de objetos similares, um padrão a partir do qual objetos são criados\\
+Classe abstrata & Uma classe que não pode ter objetos instanciados dela \\
+Classe concreta & Uma classe que pode ter objetos instanciados dela\\
+Classificador & Um termo de UML para uma coleção de instâncias que têm algo em comum. Isto inclui classes, componentes, tipos de dados e casos de uso\\
+Coesão & O grau de relacionamento de uma unidade encapsulada (tal como um componente ou uma classe)\\
+Colaboração & Classes que trabalham juntas (colaboram) para cumprir as suas responsabilidades\\
+Componente & Uma unidade coesa de funcionalidade que pode ser desenvolvida, entregue e composta por outros componentes para construir uma unidade maior\\
+Composição & Uma forma forte de agregação na qual o \emph{todo} é completamente responsável pelas suas partes e cada objeto \emph{parte} está associado apenas a um objeto \emph{completo}\\
+Encapsulamento & O agrupamento de conceitos relacionados num único item, tal como uma classe ou um componente\\
+Estereótipo & Um uso comum de  um elemento de modelagem\\
+Herança & Relacionamento definido por \emph{é um} ou \emph{é como}\\
+Herança múltipla & A herança direta de mais de uma classe\\
+Herança simples & A herança direta de apenas uma classe\\
+Hierárquia de herança & Um conjunto de classes relacionadas por herança\\
+Instância & Um objeto que é um exemplo de uma classe específica\\
+Instanciar & Criar objetos a partir da definição de classes\\
+Interface & Uma coleção de uma ou mais assinaturas de operações que define um conjunto coeso de comportamentos\\
+Mensagem & Um pedido por informação ou para realizar uma ação\\
+Mensageria (ou caixa postal) & Um processo de colaboração entre objetos pelo envio de mensagens uns para os outros\\
+Método & Um processo implementado por uma classe que realiza uma ação de valor (similar a uma função na programação estruturada)\\
+Objeto & Uma pessoa, lugar, coisa, evento, conceito, tela ou relatório baseado numa definição de classe\\
+Objeto persistente & Um objeto salvo numa memória permanente\\
+Objeto transitório & Um objeto não salvo numa memória permanente\\
+Ocultação de informação & A restrição a acesso externo de atributos\\
+Opcionalidade & O conceito de \emph{Você precisa ter isto?}\\
+Padrão & Uma solução reusável para um problema comum levando em conta forças relevantes\\
+Persistência & O armazenamento de objetos em memória permanente, por exemplo, em arquivos, bancos de dados, etc.\\
+Polimorfismo & A capacidade de diferentes objetos responderem a uma mesma mensagem de maneiras diferentes, permite que um objeto interaja com um outro sem conhecer o seu tipo exato\\
+Propriedade & Em UML 2, um valor nomeado (com nome), por exemplo, atributos e associações, inclusive composição, denotando uma característica de um elemento (tal como, uma classe, ou um componente). Em C\#, a combinação de um atributo com seus getter e setter \\
+Refatoração & Modificar a implementação e/ou a definição de componentes sem afetar outros componentes \\
+Sobreescrita & Redefinir atributos e/ou métodos em subclasses tais que eles sejam diferentes da definição na superclasse\\
+Subclassse & Uma classe que herda de uma outra\\
+Superclase & Uma classe da qual uma outra herda.\\
+\end{longtable}
+
+\section{Conceitos de OO do ponto de vista estrutural}
+
+Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, suponho que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , quero descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
+
+\begin{description}
+\item[Classe] Uma classe é uma abstração de software de um objeto, efetivamente, um padrão a partir do qual os objetos são criados. Se você tiver experiência com bancos de dados, você pode pensar numa classe como uma tabela, embora tenha mais em classes do que isto conforme você verá mais tarde. A definição de uma classe descreve o layout, incluindo tanto os dados, quanto as funcionalidades, dos objetos a serem criados a partir deles. Observe que eu disse, tanto os dados, quanto as funcionalidades. Diferente de uma tabela, que define apenas dados, uma classe define ambos, dados (atributos) e código (operações/métodos). Por enquanto, uma boa maneira de pensar a respeito de uma classe é que ela é a combinação de uma definição de tabela e a definição do código fonte que acessa os dados. Infelizmente, esta é uma visão muito orientada a dados de objetos que ignora a principal força dos objetos que é a capacidade de responder a pedidos de ações. Entretanto, este é uma introdução suficientemente boa, por ora.
+\item[Objeto] Um objeto é uma construção de software que espelha um conceito do mundo real, por exemplo, uma pessoa, lugar, coisa, evento, conceito, tela ou relatório. Objetos são tipicamente (mas nem sempre) nomes (substantivos). Se uma classe pode ser pensada como uma tabela, um objeto pode ser pensada como a ocorrência de um registro. De novo, esta é uma visão muito orientada a dados. Por exemplo, um objeto estudante pode fazer muitas das coisas que um estudante \emph{real} pode, por exemplo, fornecer seu nome, calcular quantos anos tem e requerer a inscrição num seminário. Numa aplicação estruturada, cada estudante seria representado como um registro na tabela de dados Estudante. Numa apllicação orientada a objetos, cada estudante seria representado por um objeto na memória. A principal diferença é que onde registros de estudantes só têm dados, os objetos estudantes têm ambos, dados (atributos) e funcionalidades (métodos).
+\item[Atributo] Um atributo é equivalente a um elemento de dados num registro. Do ponto de vista de programação, também faz sentido pensar num atributo como uma variável local aplicável a apenas um objeto.
+\item[Método] Um método pode ser pensado tanto como uma função ou um procedimento. Métodos acessam e modificam os atributos de um objeto. Melhor ainda, métodos podem fazer toda uma série de coisas que nada têm a ver com os atributos. Alguns métodos retornam um valor (como as funções), enquanto outros provocam outros efeitos colaterais, como impressão ou armazenamento em memória permanente. Um método útil deve ou retornar um valor, ou ter um efeito colateral significativo.
+\end{description}
+
+\section{Os diagramas de UML 2}
+
+Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e resumidos na Tabela \ref{tab:diaUML} é importante para a compreensão do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feito usando \citeonline{dia:tool}.}:
+
+\begin{description}
+\item[\emph{Diagramas de Comportamento}:] Este é o tipo de diagrama que representa características comportamentais de um sistema ou processo de negócio. Isto inclui diagramas de atividade, máquina de estado e caso de uso, assim como os 4 diagramas de interação.
+\item[\emph{Diagrams de Interação}:] Este é um subconjunto de diagramas comportamentais que enfatizam a interação entre objetos. Isto inclui os diagramas de comunicação, visão simplificada de interação, sequência e temporização.
+\item[\emph{Diagramas Estruturais}:] Este tipo de diagrama representa os elementos estáticos de uma especificação que não mudam com o tempo. Isto inclui os diagramas de classe, estrutura composta, componente, distribuição (\textit{deployment}), objetos, pacotes e perfil.
+\end{description}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{UML_diagrams_overview.png} 
+\caption{Hierárquia dos diagramas UML} \label{fig:uml14dia}
+\end{center}
+\legend{Fonte: \citeonline{wiki:uml}}
+\end{figure}
+
+\begin{longtable}[l]{p{4.7cm}p{11cm}}
+\caption[Diagramas UML]{Os Diagramas de UML 2} \label{tab:diaUML}\\
+
+\multicolumn{1}{c}{\textbf{Diagrama}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endfirsthead
+
+\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- continuação da página anterior}} \\
+\multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endhead
+
+\multicolumn{2}{r}{{Continua na próxima página}} \\% \hline
+\endfoot
+
+\hline %\hline
+\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+\endlastfoot
+
+Diagrama de Atividade & Representação de alto nível de processos de negócios, incluindo fluxos de dados ou modelagem da lógica complexa dentro de um sistema \\
+Diagrama de Caso de  Uso & Mostra casos de uso, atores e seus relacionamentos \\
+Diagrama de Classe & Mostra uma coleção de elementos de modelagem estáticos tais como classes e tipos, seus conteúdos e seus relacionamentos \\
+Diagrama de Comunicação & Mostra instâncias de classes, seus interrelacionamentos e o fluxo de mensagens entre elas e tipicamente foca na organização estrutural de objetos que enviam e recebem mensagens; eram chamados de diagramas de colaboração no UML 1.x \\
+Diagrama de Componente & Representa os componentes, inclusive seus interrelacionamentos e interfaces públicas, que compõem uma aplicação, sistema ou empresa \\
+Diagrama de Distribuição & Mostra a arquitetura de execução dos sistemas, inclusive os nós, tanto os ambientes de execução de HW, quanto de SW, e o \textit{middleware} que os conecta \\
+Diagrama de Estrutura Composta & Representa a estrutura interna de um classificador (tal como uma classe, componente ou caso de uso), inclusive os pontos de interação do classificador com outras partes do sistema \\
+Diagrama de Máquina de Estado & Descreve os estados em que um objeto ou uma interação podem estar, assim como as transições entre os estados. Anteriormente, era chamado de diagrama de estados, diagrama do mapa de estados ou diagrama de transição de estados  \\
+Diagrama de Objetos & Representa objetos e seus relacionamentos num instante determinado, tipicamente, um caso especial de um diagrama de classes ou de comunicação \\
+Diagrama de Pacotes & Mostra como elementos de modelagem são organizados em pacotes, assim como as dependências entre os pacotes \\
+Diagrama de Perfil & Opera no nível do metamodelo para mostrar estereótipos como classes com o estereótipo «stereotype» e perfis como pacotes com o estereótipo «profile». A relação de extensão (linha sólida com ponta de seta fechada e preenchida) indica qual elemento metamodelo um determinado estereótipo está estendendo. Este diagrama não existia na UML 1.* \\
+Diagrama de Sequência & Modela a lógica sequencial, na verdade, a ordenação temporal das mensagens entre classificadores \\
+Diagrama Simplificado de Interação & Uma variação do diagrama de atividade, que resume o fluxo de controle dentro de um sistema ou de um processo de negócios, onde cada nó/atividade no diagrama pode representar um outro diagrama de interação \\
+Diagrama de Temporização & Representa a mudança de estado ou condição de uma instância, de um classificador ou de um papel (\textit{role}) ao longo do tempo. Tipicamente, usado para mostrar a mudança de estado de um objeto no tempo ao responder a um evento externo. \\
+
+\end{longtable}
+
+\section{Objetos e Classes}
+
+O paradigma OO é baseado em construir sistemas a partir de itens chamados de \emph{objetos}. Um objeto é uma pessoa, lugar, coisa, conceito, tela ou relatório. Uma classe generaliza/representa uma coleção de objetos similares e é efetivamente um padrão a partir do qual cria-se objetos. Num sistema universitário, Sara é um objeto estudante, ela está inscrita em diversos objetos disciplinas e ela trabalha para obter um objeto diploma. Num sistema bancário, Sara é um objeto cliente. Ela tem um objeto conta para o qual ela pode preencher objetos cheques. Num sistema de controle de inventário, cada item do inventário é um objeto, cada entrega é um objeto e cada cliente é um objeto.
+
+No mundo real, você tem objetos, logo, você precisa deles como um conceito para refletir precisamente o espaço do seu problema. Entretanto, no mundo real, objetos são frequentemente similares a outros objetos. Estudantes compartilham qualidades similares (eles fazem as mesmas coisas, eles são descritos da mesma forma), disciplinas compartilham qualidades semelhantes, itens de  inventórios, contas bancárias, ... compartilham qualidades semelhantes entre eles. Enquanto você pode modelar (e programar) todos os objetos, isto exigem um trabalho enorme. Prefiro definir o que é ser um estudante uma vez, definir disciplina uma vez, definir item de inventório uma vez, ... É por isso que você precisa do conceito de classe.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=1]{objClassStdt.png} 
+\caption[Objetos e Classe \emph{Estudante}]{Objetos \emph{Estudante} e duas maneiras de modelar a classe \emph{Estudante}} \label{fig:objStdt}
+\end{center}
+\end{figure}
+
+A figura \ref{fig:objStdt} ilustra como temos objetos estudantes e como podemos modelar a classe \emph{Estudante}. Ela também mostra a notação padrão para modelar uma classe usando UML. Classes são tipicamente modeladas por uma das duas maneiras: um retângulo com uma lista dos atributos e métodos da classe ou apenas um retângulo. Existem razões para modelar classes de uma maneira ou da outra. Por um lado, listar os atributos e métodos pode ser bastante útil, permite aos leitores do modelo entender o projeto numa única visualização. Por outro lado, listar os atributos e métodos pode poluir seus diagramas e dificultar a leitura. Neste texto, serão usadas ambas as técnicas, os métodos e atributos só serão listados onde forem apropriados.
+
+Nomes de classes são tipicamente substântivos no singular. O nome de uma classe deve ter uma ou duas palavras e deve descrever precisamente a classe usando terminologia comum ao domínio do negócio onde o problema está inserido. Se você tem dificuldades para dar nome a uma classe, ou você precisa entendê-la melhor, ou podem ser várias classes que você combinou erroneamente. Você deve modelar classes com nomes tais como \emph{Estudante}, \emph{Professor} e \emph{Disciplina} e não como \textit{Estudantes}, \textit{Pessoas que ensinam disciplinas} ou \textit{CLS32A}. Pense da seguinte forma, no mundo real, você diria ``Sou um estudante'' e não ``Sou um estudantes''.
+
+Classes também podem representar conceitos para os quais não existe um substantivo, como o processo de retirada de um livro de uma biblioteca.
+
+Quando software OO está rodando, objetos são instanciados (criados/definidos) a partir de classes. Dizemos que um objeto é uma instância de uma classe e instaciamos estes objetos das classes.
+
+\section{Atributos e Operações/Métodos}
+
+Classes têm responsabilidades, as coisas que elas sabem e fazem. Atributos são as coisas que as classes sabem, métodos são as coisas que elas fazem. O paradigma da orientação a objetos é baseado nos conceitos de que sistemas devem ser construidos a partir de objetos e estes objetos têm tanto dados, quanto funcionalidade. Atributos definem os dados, enquanto os métodos definem a funcionalidade.
+
+Quando você define uma classe, você deve definir os atributos que ela tem, assim como, os seus métodos. Em UML 2, um atributo é um tipo de propriedade, como são relacionamentos tais como associação e composição. A definição de um atributo é direta. Você define seu nome, talvez seu tipo (se ele é um número, um string, uma data cronológica, etc.).  Linguagens fracamente tipadas como Smalltalk (ou Python) permitem que você use atributos da maneira que você quiser e, portanto, não exigem que você defina o tipo deles. Linguagens fortemente tipadas como Java e C++, entretanto, insistem que você defina o tipo de um atributo antes de você poder usá-lo. Você pode ainda escolher se você quer indicar alguma regra de negócio ou restrição aplicável ao atributo, tais como valores válidos que o atributo pode ter, vide figura \ref{fig:umlClsLmt}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{umlClsLmt.png} 
+\caption{Exemplo de classe com atributo limitado} \label{fig:umlClsLmt}
+\end{center}
+\end{figure}
+
+A definição de um método é mais simples: você define a lógica para ele, do mesmo modo que você codifica uma função ou um procedimento. Estou usando o termo \emph{método} diferentemente do que a UML usa -- o que estou mostrando, na verdade, são as operações da classe e os métodos são as implementações dessas operações. Esta visão de método é consequência de ter programado bastante em Smalltalk e Smalltalk usa o termo método dessa maneira. Não se preocupe com isto, a terminologia de objetos é notoriamente inexata. Mais para a frente detalharei melhor a especificação de métodos. Ao vermos o conceito de colaboração, você verá que colaboração é feita exclusivamente através de métodos. Por ora, retenha que métodos fazem estas duas coisas: eles retornam um valor e/ou eles fazem alguma coisa, isto é, eles provocam um efeito de borda.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=1]{obj2.png} 
+\caption[Objetos no mundo real]{Objetos no mundo real} \label{fig:obj2}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{class1.png} 
+\caption{Classes Estudante e Disciplina} \label{fig:class1}
+\end{center}
+\end{figure}
+
+Na figura \ref{fig:obj2}, você vê dois tipos diferentes de objetos: um \textit{estudante} e uma \textit{disciplina}. Ambos objetos, sabem e fazem algumas coisas e você deseja registrar isto nos seus modelos, como você pode observar na figura \ref{fig:class1}. Estou usando a notação de classe com 3 seções neste caso: a seção do topo para o nome, a seção do meio para a lista dos atributos e a seção de baixo lista os métodos.
+
+A figura \ref{fig:class1} expõe 2 tipos diferentes de atributos: atributos de instância que são aplicáveis a um único objeto e atributos estáticos que são apicáveis a todas as instâncias de uma classe. Atributos estáticos têm o nome sublinhado, atributos de instância não são sublinhados. Por exemplo, \emph{nome} é um atributo de instância na classe Estudante. Cada estudante individual tem um nome, por exemplo, um estudante tem como nome ``José da Silva'', enquanto uma outra estudante pode ter o nome ``Maria de Oliveira''. Pode até acontecer de dois estudantes diferentes terem o mesmo nome, embora sejam duas pessoas diferentes.
+
+Por outro lado, \emph{proximoNumeroEstudante} é um atributo estático (também chamado de atributo da classe) que é aplicável à classe Estudante, não especificamente a uma instância determinada. Este atributo é usado para guardar qual é o valor que será usado como número de estudante pelo próximo estudante a ser cadastrado. Quando um novo estudante ingressa na escola, seu número de estudante é dado pelo valor atual de \emph{proximoNumeroEstudante}, que será incrementado para garantir que o número de todos os estudantes é único.
+
+De modo similar, existe o conceito de método de instância e método estático (ou de classe): Métodos de instância operam sobre uma única instância, enquanto métodos estáticos operam potencialmente sobre \textit{todas} as instâncias de uma classe. \footnote{Um método estático não precisa de uma instância para operar, então ele pode ser executado mesmo se nenhuma instância ainda foi criada. Outro cuidado que novatos devem ter, é que na implementação de um método de classe não é possível acessar um atributo de instância, pois ele pode não existir, ou podem haver múltiplos deles, um para cada instância.} Na figura \ref{fig:class1}, veja que na classe \emph{Estudante} os métodos \emph{inscreveDisciplina} e \emph{desisteDisciplina} são métodos de instância, coisas que um estudante individual faria. Ela também tem um método estático \emph{buscaPorNome}, que fornece o comportamento de procurar os estudantes cujo nome atendem um critério de busca, é um método que opera sobre todas as instâncias da classe.
+
+\section{Abstração, Encapsulamento e Ocultação de Informação}
+
+Em vez de dizer que determinamos o que uma classe \textit{sabe} e \textit{faz}, dizemos que \emph{abstraímos} a classe. Em vez de dizermos que projetamos como a classe realizará essas coisas, dizemos que \emph{encapsulamos} elas. Em vez de dizer que projetamos a classe bem restringindo o acesso aos seus atributos, dizemos que \emph{escondemos}, ocultamos, a informação.
+
+\subsection{Abstração}
+
+O mundo é um lugar complicado. Para lidar com esta complexidade, formamos abstrações das coisas dele. Por exemplo, considere a abstração de uma pessoa. Do ponto de vista da universidade, ela precisa saber o nome, endereço, número de telefone/celular, RG, CPF e formação acadêmica da pessoa. Do ponto de vista da polícia, eles precisam saber o nome, endereço, número de telefone, peso, altura, cor do cabelo, cor dos olhos, etc. Ainda é a mesma pessoa, apenas são abstrações diferentes, dependendo da aplicação de interesse.
+
+Abstração é um problema da análise que lida com o que a classe sabe e faz. Sua abstração deve incluir as responsabilidades, os atributos e os métodos de interesse da aplicação em vista -- ignore o resto. Esta é a razão para a abstração de um estudante incluir o nome e o endereço da pessoa, mas provavelmente não o seu peso e altura. Sistemas OO abstraem apenas o que precisam para resolver o problema em vista. As pessoas costumam dizer que abstração é o ato de pintar uma caixa em torno de algo: você está identificando o que ele faz e não faz. Algumas pessoas também dizem que abstração é o ato de definir a interface de algo. De qualquer modo, você está definindo o que a classe sabe e faz.
+
+\subsection{Encapsulamento}
+
+Embora o ato de abstrair nos diga que precisamos armazenar o nome e endereço de um estudante, assim como ser capaz de matricular estudantes nas disciplinas, ele não nos diz como vamos fazer isto. Encapsulamento lida com o problema de como você pretende modularizar as caraterísticas de um sistema. No mundo orientado a objetos, você modulariza sistemas em classes, que, por sua vez, modularizam em métodos e atributos. Dizemos que encapsulamos comportamento numa classe ou encapsulamos funcionalidade num método. Encapsulamento é uma questão de projeto que lida com a funcionalidade está compartimentalizada dentro de um sistema. Você não deve precisar saber como algo está implementado para poder usá-lo. A consequência do encapsulamento é que você pode construir qualquer coisa da maneira que você quiser e mais tarde você pode mudar a implementação e não afetar outros componentes dentro do sistema (desde que a interface para aquele componente não mude).
+
+As pessoas dizem que o encapsulamento é pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, seja um banco. Como ele registra as informações de uma conta, num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos.
+
+\subsection{Ocultação de Informação}
+
+Para simplificar a manutenção de suas aplicações, você quer restringir o acesso aos seus atributos de dados e alguns métodos. A ideia básica é esta: se uma classe deseja informações de uma outra, ela deve pedí-la e não simplesmente pegá-la. Quando você reflete a respeito, isto é exatamente o que acontece no mundo real. Se você quer saber o nome de alguém, o que você faria? Você perguntaria para a pessoa ou roubaria sua carteira e olharia no RG dela? Ao restringir o acesso aos atributos, você previne que outros programadores escrevam código fortemente acoplado. Quando o código é fortemente acoplado, uma mudança numa parte do código força a modificação de outra, e outra, e assim por diante.
+
+%\subsection{Um exemplo}
+
+\section{Herança}
+
+Similaridades sempre existem entre classes diferentes. Duas ou mais classes frequentemente compartilham os mesmos atributos e/ou mesmos métodos. Porque você não quer ter de reescrever o mesmo código repetidas vezes, você deseja um mecanismo que tire vantagem destas semelhanças. Herança é este mecanismo. Herança modela os relacionamentos" é um" e "parece com", o que permite que você reuse dados e códigos existentes facilmente.
+
+Por exemplo, estudantes têmn nomes, endereços e números de telefone e eles dirigem veículos. Ao mesmo tempo, professores também têm nomes, endereços e números de telefones e dirigem veículos. Sem dúvida, você pode desenvolver as classes para estudantes e professores e fazê-las executarem. De fato, você poderia até desenvolver a classe \emph{Estudante} primeiro e, quando ela estiver rodando, fazer uma cópia dela, chamá-la de \emph{Professor} e fazer as modificações necessárias. Enquanto, esta é uma maneira muito direta de resolver o problema, ela não é perfeita. E se houver um erro no código original do estudante? Agora, você tem de corrigir o erro em dois lugares, o dobro do trabalho. O que acontece se você precisar mudar a maneira de lidar com o nome, digamos que no lugar de ter no máximo 30 caracteres, precisa de 40 caracteres? Agora, você tem de fazer a mesma modificação em dois lugares, o que é chato, besta e custoso (emtermos de tempo). Não seria bom se só tivesse uma cópia do código para desenvolver e fazer manutenção?
+
+Isto é exatamente o que a herança se propõe a fazer. Com herança, você define uma nova classe que encapsula as similaridades entre os alunos e professores. Esta nova classe teria os atributos \emph{nome}, \emph{endereço} e \emph{numeroTelefone} e o método \emph{dirigeVeiculo}. Como você precisa dar nome a todas as suas classes, você precisa se perguntar o que esta coleção de dados e funcionalidade descrevem. Neste caso, acredito que o nome \emph{Pessoa} cabe bem.
+
+Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Estudante} e \emph{Professor} herdem dela. Você pode dizer que \emph{Pessoa} é a superclasse de \emph{Estudante} e \emph{Professor} e que \emph{Estudante} e \emph{Professor} são subclasses de \emph{Pessoa}. Tudo que uma superclasse sabe ou faz, a subclasse sabe ou faz sem que seja necessário escrever mais código. Na verdade, para este exemplo, você teria de escrever duas linhas de código, uma dizendo que \emph{Estudante} é subclasse de \emph{Pessoa} e outra dizendo que \emph{Professor} é uma subclasse de \emph{Pessoa}. Porque \emph{Pessoa} tem um nome, endereço e número de telefone, ambos, \emph{Estudante} e \emph{Professor} também têm estes atributos. Porque \emph{Pessoa} ter a capacidade de dirigir um veículo, as classes \emph{Estudante} e \emph{Professor} também têm.
+
+\subsection{Modelagem de Herança}
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[scale=0.8]{uml1.png} 
+\caption{A notação de modelagem UML para a herança} \label{fig:uml1}
+\end{center}
+\end{figure}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.8]{uml2.png} 
+\caption{Modelagem do conceito de que \emph{Professor} e \emph{Estudante} herdam de \emph{Pessoa}} \label{fig:uml2}
+\end{center}
+\end{figure}
+
+A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma flecha com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
+
+A figura \ref{fig:uml2} mostra como você modelaria a hierárquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierárquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
+
+\subsection{Dicas e Técnicas para Herança}
+
+As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de maneira mais efetiva:
+
+\begin{description}
+\item[Procure semelhanças:] Sempre que houver semelhança em duas ou mais classes, seja semelhança nos atributos, seja nos métodos, então, você provavelmente tem uma oportunidade para aplicar a herança.
+
+\item[Procure por classes existentes:] Quando você identifica uma nova classe pode ser que você já tenhauma classe semelhante a ela. Algumas vezes, você pode herdar diretamente de uma classe existente e apenas acrescentar código para as diferenças entre as duas. Por exemplo, suponha que seu sistema de informação universitária também precisa suportar administradores da universidade. A classe \emph{Pessoa} já tem muitas características de uma classe \emph{Adminitrador} precisa, logo você deve considerar se \emph{Administrador} deve herdar de \emph{Pessoa}.
+
+\item[Siga a regra da sentença:] Uma das frases a seguir deve ter sentido: ``Uma subclasse é um tipo da superclasse'' ou ``Uma subclasse é como uma superclasse''. Por exemplo, faz sentido dizer que um estudante é um tipo de pessoa e um dragão é como um pássaro. Não faz sentido dizer que um estudante é um tipo de veículo, ou é como um veículo, então, a classe \emph{Estudante} provavelmente não deve herdar de \emph{Veiculo}. Se nenhuma das sentenças faz sentido, então você deve ter encontrado um relacionamento de composição ou de associação.
+
+\item[Evite herança de implementação:] Desenvolvedores novatos na orientação a objetos têm uma tendência a errar na aplicação da herança, em geral num esforço para reusar tanto quanto possível (uma boa motivação). Herança é, geralmente, o conceito mais excitante do repertório de objetos deles, então eles o usam tanto quanto podem. O problema é com o que chama se de herança de implementação ou de conveniência: A aplicação da herança quando a regra da sentença não se aplica e a única justificativa é a de que a subclasse precisa de uma ou mais características da superclasse, a aplicação da herança é mais conveniente do que \textit{refatorar} suas classes. Uma boa regra é reconsiderar a aplicação de herança com ``é como'', porque esta é uma justificativa mais fraca.
+
+\item \textbf{Herda tudo.} A subclasse deve herdar tudo da superclasse, este conceito é chamado de \emph{herança pura}. Se não, o código torna-se mais difícil de entender e de fazer a manutenção. Por exemplo, digamos que a classe \emph{B} herda de \emph{A}. Para entender \emph{B}, você precisa entender o que é \emph{A} e as características que são acrescentadas em \emph{B}. Se você começar a remover funcionalidade, você precisa entender também o que \emph{B} \textbf{não é}. Isto é muito trabalho e logo se torna um pesadelo para fazer a manutenção.
+
+\end{description}
+
+\subsection{Herança Simples e Múltipla}
+
+Quando uma classe herda de apenas uma outra classe, chamamos isto de \emph{herança simples}. Quando uma classe herda de duas ou mais classes, chamamos de \emph{herança múltipla}. Lembre-se: A subclasse herda todos os atributos e métodos de suas superclasses.
+
+Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{uml3.png} 
+\caption{Criação da hierárquia de classes de veículo} \label{fig:uml3}
+\end{center}
+\end{figure}
+
+Na figura \ref{fig:uml3}, vemos várias semelhanças entre aviões e carros. Ambos têm um número de passageiros, um nível máximo de combustível e ambos podem aumentar ou diminuir a velocidade. Para se aproveitar dessas semelhanças, você pode criar uma nova classe chamada de \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdar dela. Dizemos que as classes \emph{Veiculo}, \emph{Aviao} e \emph{Carro} formam uma hirárquia de heranças, também chamada de hierárquia de classes. A classe no topo de uma hierárquia de classes (neste caso \emph{Veiculo}) é chamada de raíz ou \emph{classe raíz}. Em Smalltalk e Java, a classe \emph{Object} é a classe raíz de todas as outras classes, direta ou indiretamente.
+
+Observe que existe o método \emph{vira()} em \emph{Carro} e o método \emph{inclina()} em \emph{Aviao}. Virar e inclinar fazem a mesma coisa. Você poderia definir um método \emph{vira()} em \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdá-lo. Isto implicaria que você teria de requerer que usuários de aviões, isto é, os pilotos, teriam de mudar a terminoogia que eles costumam usar. Realisticamente, isto não funcionaria. A melhor solução é manter \emph{vira()} em \emph{Carro} e \emph{inclina()} em \emph{Aviao}.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{herMultCls.png} 
+\caption{Um exemplo de herança múltipla} \label{fig:uml4}
+\end{center}
+\end{figure}
+
+No Antes: da figura \ref{fig:uml4}, você quer criar uma nova classe \emph{Dragao}. Você já tem as classes \emph{Passaro} e \emph{Lagarto}. Um dragão \textit{é como} um pássaro, pois ambos voam. Um dragão também \textit{é como} um lagarto, ambos têm garras e escamas. Porque dragões têm características de pássaros e lagartos, no Depois: da figura \ref{fig:uml4} tenho a classe \emph{Dragao} herdando tanto de \emph{Passaro}, quanto de \emph{Lagarto}. Este é um exemplo de um relacionamento "é como" (ou "parece com"): um dragão é como um pássaro e, também, é como um lagarto.
+
+É importante perceber que a regra da sentença não é perfeita. Por exemplo, faz sentido dizer que uma sequóia é como um arranha-céu já que ambos são altos, têm raízes no chão e balançam ao vento. Entretanto, eles não devem compartilhar uma relação de herança. Também faz sentido dizer que um faixa preta é um artista de artes marciais, mas não faz sentido fazer uma classe \emph{Roupa} herda da classe \emph{Pessoa}.
+
+Observe que listei o método \emph{come()} em \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira diferente. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras relunzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário redefinir (sobreescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobreescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é realmente necessária -- programação de jogos é um dos poucos domínios em que herança múltipla é necessária.}.
+
+\subsection{Classes Abstratas e Concretas}
+
+Na figura \ref{fig:uml3}, a classe \emph{Veiculo} está marcada como abstrata (o nome está em itálico, em versões mais antigas de UML, você poderia usar a restrição {abstract}), enquanto \emph{Aviao} e \emph{Carro} não são. Dizemos que 
+\emph{Veiculo} é uma classe abstrata, enquanto \emph{Aviao} e \emph{Carro} são classes concretas. A diferença principal entre classes abstratas e concretas é que objetos podem ser instanciados (criados) de classes concretas, mas não de classes abstratas. Por exemplo, no domínio do seu problema, você tem aviões e carros, mas não tem nada que é apenas um veículo (se algo não é um avião ou um carro, você não se interessa por ele). Isto significa que seu software instanciará objetos aviões e carros, mas não objetos veículos. Classes abstratas são modeladas quando você precisa criar uma classe que implementa características comuns a duas ou mais classes.
+
+Não estou tão preocupado se uma classe é abstrata quando estou modelando, assumo que farei a coisa certa quando vier a hora de implementar a classe, que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como Fowler (2004) disse, quando você está modelando num quadro negro ou num papel (lembre-se que na prática de modelagem ágil: \textit{use as ferramentas mais simples}), você precisa usar a notação antiga, {abstract}. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
+
+\section{Persistência}
+
+Persistência foca na questão de como fazer com que os objetos estejam disponíveis para uso futuro pelo software. Em outras palavras, como salvar objetos na memória permanente. Para fazer um objeto ser permanente, você deve salvar os valores de seus atributos na memória permanente (tais como num banco de dados ou num arquivo) e também qualquer informação necessária para manter seus relacionamentos (agregação, herança e associação) nos quais está envolvido. Em outroas palavras, você precisa salvar as propriedades apropriadas na memória permanente. Além de salvar objetos, persistência também se preocupa em recuperá-los e apagá-los.
+
+Do ponto de vista de desenvolvimento, existem dois tipos de objetos: objetos persistentes que continuam por aí e objetos transitórios que se vão. Por exemplo, um \emph{Cliente} é uma classe persistente. Você quer salvar objetos clientes em algum tipo de memória permanente de modo que você possa trabalhar com eles de novo no futuro. Uma tela de edição de um cliente, entretanto, é um objeto transitório. Sua aplicação cria uma tela de edição de cliente, mostra-a e se livra dela depois que o usuário terminou de editar os dados do cliente.
+
+As seguintes dicas e técnicas devem ajudar a entender e aplicar o conceito de persistência melhor:
+
+\begin{enumerate}
+\item \textbf{Classes do negócio/ do domínio são geralmente persistentes.} Você  naturalmente precisa manter um registro permanente (ou persistente) de instâncias de classes do mundo real como \emph{Estudante}, \emph{Professor} e \emph{Disciplina}.
+\item \textbf{Classes da interface usuário são geralmente transitórias.} Classes da interface usuário (telas e relatórios) são em geral transitórios. Telas são criadas e exibidas quando necessário e, então, quando não estão mais emuso, elas são destruidas (removidas da memória). Objetos relatórios são criados, eles adquirem os dados de que precisam, manipulam os dados e imprimem os dados. Depois disto, o objeto relatório também é destruido. Note que às vezes você pode precisar manter um registro (log) da impressão do relatório e de quem mandou fazer a impressão, o registro (log) neste caso deve ser permanente.
+\item \textbf{Você precisa armazenar tanto os atributos quanto as associações.}
+Quando um objeto é escrito no disco, você obviamente precisa armazenar os valores dos seus atributos. Entretanto, você também deve armazenar informações sobre seus relacionamentos/associações com os quais o objeto está envolvido. Por exemplo, Bia está cursando Bio-medicina e Enfermagem, então você precisa se assegurar que quando você for armazenar o objeto Bia no disco, o software vai registrar que ela está matriculada nestas duas disciplinas.
+\end{enumerate}
+
+\section{Relacionamentos}
+
+No mundo real, os objetos têm relacionamentos uns com os outros. Os relacionamentos entre os objetos são importantes porque nos ajudam a definir como os objetos interagem uns com os outros. Por exemplo, estudantes \textit{se matriculam} em disciplinas, professores \textit{ensinam} disciplinas, criminosos \textit{roubam} bancos, políticos \textit{beijam} bebes e capitães \textit{comandam} espaçonaves. Se matriculam, ensinam, roubam, beijam e comandam são todos verbos que definem associações entre objetos. Você quer identificar e potencialmente documentar estes relacionamentos; assim, você pode ganhar um melhor entendimento de como os objetos interagem uns com os outros.
+
+Você não precisa apenas identificar os relacionamentos entre as classes, você deve também descrever o relacionamento. Por exemplo, não é suficiente saber que os estudantes se matriculam em disciplinas. Quantas disciplinas os estudantes podem cursar? Nenhuma, uma ou várias? Além disso, relacionamentos são ruas com circulação nos dois sentidos: Não apenas os estudantes se matriculam em disciplinas, mas também disciplinas têm estudantes. Isto leva a questões como quantos estudantes podem ser matriculados numa dada disciplina e é possível que ter uma disciplina sem nenhum estudante? Isto implica em que você deve também identificar a cardinalidade e a opcionalidade de um relacionamento. Cardinalidade representa o conceito ``quantos'', opcionalidade representa o conceito ``se você deve ter algo''. É importante observar que a UML escolheu combinar os conceitos de opcionalidade e cardinalidade num único conceito de multiplicidade.
+
+\subsubsection{Dica: Considere Opcionalidade e Cardinalidade Separadamente}
+
+Minha experiência mostra que é melhor considerar separadamente estes dois conceitos: Para cada direção de uma associação é importante se a associação deve existir (opcionalidade) e quantos podem possivelmente existir (cardinalidade)? Por exemplo, considere a associação ``ensina'' entre professores e disciplinas, devo perguntar:
+\begin{itemize}
+\item Um professor deve ensinar uma disciplina, ou pode haver professores que não ensinam?
+\item Quantas disciplinas um professor pode ensinar?
+\item Uma disciplina deve ser ensinada por um professor, ou é possível que alguém que não é professor a ensine?
+\item Mais de um professor pode ensinar numa disciplina? Quantos?
+\item Existem disciplinas que exigem que mais de um professor as ensinem?
+\end{itemize}
+
+\subsection{Associações}
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{assocCls.png} 
+\caption{Notação simplificada da modelagem de associações em diagramas de classes em UML} \label{fig:uml5}
+\end{center}
+\end{figure}
+
+Uma associação é um relacionamento persistente entre duas ou mais classes ou objetos. Quando você modela associações em diagramas de classes de UML, você as mostra como umalinha fina conectando duas classes, como você pode ver na figura \ref{fig:uml5}. Associações podem facilmente ficar bastante complexas; Consequentemente, você pode exibir várias coisas a respeito deles nos seus diagramas. A figura \ref{fig:uml6} mostra os itens comuns a modelar numa associação:
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{assocCls2.png} 
+\caption{Diversos exemplos de associação} \label{fig:uml6}
+\end{center}
+\end{figure}
+
+\begin{description}
+\item[Direcionalidade:] Setas com ponta vazada indicam a direcionalidade da associação. Quando existe uma seta, a associação é unidirecional: Ela só pode ser percorrida numa direção (na direção da seta). Quando não tem seta ou tem dupla seta, a associação é bidirecional: Ela pode ser percorrida em ambos sentidos. Embora você deva indicar com as duas setas, é prática comum deixar de colocar as setas nas associações bi-direcionais. Exemplos das duas notações para associações bidirecionais estão na figura \ref{fig:uml6}. Neste texto, adotaremos a prática da modelagem ágil -- exiba os modelos de maneira simples -- nas associações bidirecionais usaremos linhas sem setas. Minha recomendação é a de escolher uma convenção e mantê-la.
+
+\item[Rótulo:] O rótulo que é opcional, é tipicamente composto por uma ou duas palavras descrevendo a associação. A leitura do nome de uma classe, do rótulo e do nome da outra classe deve produzir uma frase que descreva o relacionamento, por exemplo, \emph{Professor ensina Disciplina}. Evite rótulos genéricos como \textit{tem} ou \textit{comunica com}, tanto quanto possível.
+
+\item[Multiplicidade:] A multiplicidade da associação é rotulada em ambas pontas da linha, uma multiplicidade para cada direção. A tabela \ref{tab:uml:mult} mostra os indicadores de multiplicidade que podem ser usados.
+
+\item[Papel:] O papel (\textit{role}) -- o contexto que cada objeto assume na associação -- pode ser indicado na ponta da associação.
+
+\item[Qualificador:] Um qualificador é um valor que seleciona um objeto do conjunto de objetos relacionados através de uma associação. Por exemplo, na figura \ref{fig:uml6}, a associação \emph{compoe} de \emph{Disciplina} para \emph{Curso} é qualificada pela combinação dos atributos \emph{grade} e \emph{semestre} (potencialmente implementada pela \emph{Disciplina}). Qualificadores são opcionais e na prática raramente modelados\footnote{Tanto que a ferramenta Dia usada para criar os nossos diagramas não possui a opção de incluí-los, a notação usada no diagrama foi a de uma \textit{restrição}.}.
+
+\end{description}
+
+\begin{table}
+\caption{Indicadores de Multiplicidade do UML}
+\label{tab:uml:mult}
+\begin{center}
+\begin{tabular}{l l}
+
+\textbf{Indicador} & \textbf{Significado} \\
+\hline
+
+0..1 & Zero ou um \\
+1 & Apenas um \\
+0..* & Zero ou mais \\
+1..* & Um ou mais \\
+n & Apenas n (onde $n>1$) \\
+0..n & Zero a n (onde $n>1$) \\
+1..n & Um a n (onde $n>1$)\\
+\hline
+
+\end{tabular}
+\end{center}
+\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+\end{table}
+
+Observe o diagrama de classes da figura \ref{fig:uml6}, que mostra diversas classes e as associações entre elas. Eis como você leria as associações:
+\begin{itemize}
+\item Um estudante se matricula em uma ou mais disciplinas;
+\item Uma disciplina tem 0 ou mais estudantes matriculados;
+\item Um estudante, como monitor, pode auxiliar em zero ou mais disciplinas;
+\item Uma disciplina pode ter 0 ou um estudante que age como monitor;
+\item Uma disciplina compõe um curso;
+\item Um curso é composto por zero ou mais disciplinas;
+\item Um empregado possui um cargo;
+\item Um cargo pode ser preenchido por um empregado (alguns cargos podem não está preenchidos);
+\item Um empregado pode ser gerenciado por um um outro empregado, o gerente (o presidente da companhia é o único sem um gerente); e
+\item Um empregado gerencia zero ou mais empregados (um empregado pode não ter estafe).
+\end{itemize}
+
+Diversas lições importantes estão mostradas na figura \ref{fig:uml6}. Primeiro, observe que é possível ter mais de uma associação entre duas classes: As classes \emph{Estudante} e \emph{Disciplina} têm as associações \emph{se\_matricula} e \emph{auxilia} entre elas. Você se interessa nestes dois relacionamentos entre estas classes para o seu sistema de informação da universidade, logo, você precisa modelar ambas as associações.
+
+Segundo, é válido que a mesma classe se envolva nas duas pontas de uma associação; Isto é chamado de associação recursiva ou auto-associação (\citeonline{uml:destilado}). Um exemplo perfeito disto é a associação \emph{gerencia} que a classe \emph{Empregado} tem consigo mesma. A maneira de ler isto é a de que um empregado qualquer pode gerenciar outros e ele, ou ela, pode ser gerenciado(a) por outro empregado.
+
+%Terceiro, algumas vezes, o sentido de uma associação é único, como pode ser visto na figura \ref{fig:uml6} pela associação \emph{preenche} entre \emph{Empregado} e \emph{Cargo}. A implicação é que o objeto empregado sabe o cargo que preenche, mas o objetos cargo não precisa saber qual empregado o está preenchendo. Esta é uma associação dita unidirecional, uma associação que só é percorrida numa única direção. Se você não tiver um requisito para que se percorra uma associação nos dois sentidos, por exemplo, cargos não precisam colaborar com objetos empregados, então use uma associação unidirecional. Veremos que associações unidirecionais requerem menos trabalho para serem implementadas.
+
+\subsection{Modelagem do Desconhecido}
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[scale=0.6]{assocCls3.png} 
+\caption{Indicação de desconhecido} \label{fig:uml7}
+\end{center}
+\end{figure}
+
+Não importa o quanto é bom o trabalho que você realiza, pode-se com quase certeza absoluta garantir que você perdeu algum detalhe dos relacionamentos dos seus objetos. Então, o que pode ser feito é: Faça e torça que dê certo. Óbvio que não. Você vai voltar aos seus usuários e perguntar para eles como estão as coisas, não? O problema é lembrar de voltar aos seus usuários. A solução: Marcar como ``desconhecido agora'' colocando um ponto de interrogação na parte do relacionamento em que você tem uma dúvida. Por exemplo, na figura \ref{fig:uml7}, você acredita que zero ou mais empregados podem preencher um cargo. Você sabe que um cargo pode não está preenchido, mas não tem certeza se um cargo pode ser preenchido por uma ou mais pessoas. Existe compartilhamento de emprego na organização? Existem cargos genéricos como Faxineiro, que é preenchido por várias pessoas? Ou é realmente, uma pessoa por cargo, como estamos mostrando atualmente? Porque você não sabe com certeza ainda, você marca o relacionamento com um ponto de interrogação, indicando que você deve retorna para ele mais tarde e checar seu ``chute educado''. Observe que UML não inclui pontos de interrogação como parte da notação, é apenas uma técnica que Ambler descobriu ser muito útil na prática -- idealmente, você não deve advinhar ou supor coisas sem falar antes com quem está adquirindo o sistema, mas se você precisar, então marque sua suposição no seu trabalho e procure resolver a dúvida o quanto antes.
+
+\subsection{Como Associações São Implementadas}
+
+Associações são mantidas pela combinação de atributos e métodos. Os atributos armazenam as informações necessárias para manter o relacionamento e os métodos atualizam os atributos.
+
+\subsection{Propriedades}
+
+\subsection{Agregação e Composição}
+
+\subsection{Dependências}
+
+\section{Colaboração}
+
+\section{Acoplamento}
+
+\section{Coesão}
+
+\section{Polimorfismo}
+
+%\subsection{Um exemplo: O jogo de Poker}
+
+\subsection{Polimorfismo na Universidade}
+
+\section{Interfaces}
+
+\section{Componentes}
+
+\section{Padrões}
+
+\section{O que foi aprendido}
+
+\section{Questões de Revisão}
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+%\section*{Considerações finais}
+%\addcontentsline{toc}{section}{Considerações finais}
+%
+%Texto qualquer.
+%
+%\begin{citacao}
+%Mais texto genérico.
+%\end{citacao}
+%
+%Texto.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+
+% titulo em inglês
+%\titulo{Canonical academic article model with \abnTeX}
+%\emptythanks
+%\maketitle
+%
+%% resumo em português
+%\renewcommand{\resumoname}{Abstract}
+%\begin{resumoumacoluna}
+% \begin{otherlanguage*}{english}
+%   According to ABNT NBR 6022:2003, an abstract in foreign language is a back
+%   matter mandatory element.
+%
+%   \vspace{\onelineskip}
+% 
+%   \noindent
+%   \textbf{Keywords}: latex. abntex.
+% \end{otherlanguage*}  
+%\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{oo_refs}
+\
+
+\end{document}
