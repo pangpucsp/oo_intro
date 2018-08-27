@@ -541,13 +541,68 @@ Não importa o quanto é bom o trabalho que você realiza, pode-se com quase cer
 
 \subsection{Como Associações São Implementadas}
 
-Associações são mantidas pela combinação de atributos e métodos. Os atributos armazenam as informações necessárias para manter o relacionamento e os métodos atualizam os atributos.
+Associações são mantidas pela combinação de atributos e métodos. Os atributos armazenam as informações necessárias para manter o relacionamento e os métodos atualizam os atributos. Por exemplo, a classe \emph{Estudante} da figura \ref{fig:uml6} potencialmente tem um atributo \emph{matriculado\_em}, talvez, um \textit{array}, que é usado para guardar em quais objetos \emph{Disciplina} o estudante está matriculado. A classe \emph{Estudante} pode também ter métodos como \emph{adicionaDisciplina()} e \emph{removeDisciplina()} para adicionar ou remover objetos disciplinas do \textit{array}. A classe Disciplina teria um atributo similar \emph{estudantes} e métodos \emph{adicionaEstudante()} e \emph{removeEstudante()} para manter a associação no sentido oposto. Tudo isto tem uma implicação importante: assim como atributos e métodos são herdados, associações também são.
+
+Na figura \ref{fig:uml6}, a associação unidirecional preenche entre \emph{Empregado} e \emph{Cargo} é mais fácil de implementar porque você só precisa percorrer num único sentido: Do \emph{Empregado} para o \emph{Cargo}. Logo, \emph{Empregado} tem um atributo \emph{cargo} e métodos \emph{setCargo()} e \emph{getCargo()} para implementar a associação. Nadaprecisa ser acrescentado à classe \emph{Cargo}, porque não existe a necessidade de objetos cargos colaborarem com objetos empregados. Logo, não há a necessidade de acrescentar código para implementar a associação no outro sentido.
+
+\subsubsection{Não mostre atributos e métodos para implementar associações}
+
+É um estilo comum supor que existem atributos e métodos para implementar associações , você não precisa mostrá-los nos seus diagramas. Considere estabelecer convenções para os nomes destes atributos e métodos. Tipicamente, o nome do papel, ou o nome da classe, para o nome do atributo e nomes de métodos como \emph{adicionaNomeAtributo()} e \emph{removeNomeAtributo()} para associações múltiplas e \emph{setNomeAtributo()} e \emph{getNomeAtributo()} para associações simples.
 
 \subsection{Propriedades}
 
+Em UML 2, uma propriedade é um valor nomeado que denota uma característica de umm elemento (tal como uma classe ou um componente). Atributos e associações, inclusive composição, são propriedades. Por exemplo, o nome de um estudante é uma propriedade umportante da classe \emph{Estudante}. O fato de estudantes se matricularem em disciplinas também é uma propriedade importante da classe \emph{Estudante}. Logo, faz sentido atributos e relacionamentos serem propriedades de classes. Lembre-se, também, que a implementação de associações se faz, em parte, através de atributos.
+
 \subsection{Agregação e Composição}
 
+Algumas vezes, um objeto é feito de outros. Por exemplo, um avião é feito de fuselagem, asas, motores, trem de pouso, \textit{flaps}, ... Uma entrega contém um ou mais pacotes. Uma equipe de projeto constitui-se de dois ou mais empregados. Estes são exemplos de agregação, que é representada pelo relacionamento ``é parte de''. Um motor é parte de um avião, um pacote é parte de uma entrega e um empregado é parte de uma equipe.
+
+Composição é um tipo forte de agregação no qual o ``todo'' é completamente responsável pelas partes e cada objeto ``parte'' só é associado a um objeto ``todo''. Por exemplo, em qualquer instante, um motor só está associado a um único avião. Além disso, nenhum outro objeto iria colaborar com o objeto motor, além do seu objeto avião. Por exemplo, objetos passageiros do avião não podem pedir para aumentar diretamente a velocidade de um motor.
+
+Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em diamante oca e composição com um diamante cheio. O diamante está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Não indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para   entregas, nem para aviões, nestes casos, supõe-se que a multiplicidade seja 1.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{agreg.png} 
+\caption{Exemplos de agregação} \label{fig:uml8}
+\end{center}\end{figure}
+
+Assim como associações são vias de duplo sentido, também as agregações são. Além disso, as associações de agregação/composição mostradas na figura \ref{fig:uml8} são lidas de maneira similar:
+\begin{itemize}
+\item Um item é parte de uma e apenas uma entrega;
+\item Uma entrega é composta por um ou mais itens;
+\item Um motor é parte de um e apenas um avião;
+\item Um avião tem um ou mais motores;
+\item Um empregado pode ser parte de uma ou mais equipes;
+\item Uma equipe é constituida de um ou mais empregados;
+\item Qualquer equipe pode fazer parte de uma equipe maior; e
+\item Uma equipe pode ser constituida de subequipes menores.
+\end{itemize}
+
+É importante conhecer a antiga notação para agregação. Mesmo que não a usemos mais.
+
+As dicas a seguir ajudam a modelar adequadamente a composição:
+\begin{enumerate}
+\item \textbf{Aplique a regra da sentença:} O primeiro teste é que a frase ``a parte \emph{é parte do} todo'' deve fazer sentido. Por exemplo, faz sentido dizer: Um motor \emph{é parte de} um avião. Entretanto, não faz sentido dizer que um empregado \emph{é parte de} um cargo, ou um cargo \emph{é parte de} um empregado, por isso que é mais apropriado usar uma associação como na figura \ref{fig:uml6}. Se a frase não faz sentido, a composição não é apropriada. Herança ou associação devem ser usadas nesse caso.
+
+\item \textbf{O todo deve gerenciar as partes:} O segundo teste, supondo que o primeiro tenha sido aprovado, é se o todo gerencia as partes. Por exemplo, um avião deve gerenciar os motores; você não deseja que um passageiro no avião seja capaz de manipular os motores.
+
+\item \textbf{Você deve se interessar pela parte:} Um objeto pode fazer parte no mundo físico, mas você pode não estar interessado nele, logo, não o modele. Por exemplo, um sistema de manutenção de aeronaves pode ser interessante para os registros de cada motor, guardando as informações de manutenção dos motores. Por outro lado, o sistema de controle de tráfego aéreo não tem informações interessantes para os motores. Logo, um motor não vai aparecer no diagrama de classes do sistema de controle de tráfego aéreo.
+
+\item \textbf{Mostre a multiplicidade e os papéis:} Assim como você mostra a multiplicidade e os papéis numa associação, você deve mostrá-los numa composição.
+
+\item \textbf{Composição é herdada:} Associações de composição, assim como, associações comuns, são implementadas por atributos e métodos, portanto, podem ser herdadas.
+\end{enumerate}
+
 \subsection{Dependências}
+
+Existem dois tipos de relacionamentos: persistente e transitório. A diferença principal é a de que associações persistentes devem ser salvas, enquanto relacionamentos transitórios têm natureza temporária e não devem ser salvos.
+
+Relacionamentos persistentes são permanentes, ou, pelo menos, semi-permanentes, por natureza. Um relacionamento de objetos é persistente se a informação para mantê-lo é salva em memória permanente. Por exemplo, o relacionamento \emph{se\_matricula} entre estudantes e disciplinas é persistente. Isto é uma informação de negócio importante que deve ser armazenada no disco. O relacionamento \emph{ensina} entre professores e disciplinas é persistente pelo mesmo motivo. Todos os relacionamentos que vimos até agora são persistentes.
+
+Associações transitórias são temporárias por natureza. Elas não são salvas no armazenamento permanente. Relacionmentos transitórios envolvem, geralmente, mas não sempre, pelo menos um objeto transitório, tal como uma tela, ou um relatório. A razão para isto é simples: Se você não precisa persistir um objeto, então, você não precisa persistir seus relacionamentos.
+
+Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. 
 
 \section{Colaboração}
 
