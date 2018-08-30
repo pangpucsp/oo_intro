@@ -242,4 +242,7 @@ TSWLatexianTemp*
 *.spl
 
 # My own restritions
+# Dia diagram files
 *.dia
+# compilation files
+*.class
