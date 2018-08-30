@@ -419,7 +419,7 @@ Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Es
 \end{center}
 \end{figure}
 
-A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma flecha com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
+A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma seta com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
 
 A figura \ref{fig:uml2} mostra como você modelaria a hierárquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierárquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
 
@@ -599,15 +599,15 @@ Não importa o quanto é bom o trabalho que você realiza, pode-se com quase cer
 
 Associações são mantidas pela combinação de atributos e métodos. Os atributos armazenam as informações necessárias para manter o relacionamento e os métodos atualizam os atributos. Por exemplo, a classe \emph{Estudante} da figura \ref{fig:uml6} potencialmente tem um atributo \emph{matriculado\_em}, talvez, um \textit{array}, que é usado para guardar em quais objetos \emph{Disciplina} o estudante está matriculado. A classe \emph{Estudante} pode também ter métodos como \emph{adicionaDisciplina()} e \emph{removeDisciplina()} para adicionar ou remover objetos disciplinas do \textit{array}. A classe Disciplina teria um atributo similar \emph{estudantes} e métodos \emph{adicionaEstudante()} e \emph{removeEstudante()} para manter a associação no sentido oposto. Tudo isto tem uma implicação importante: assim como atributos e métodos são herdados, associações também são.
 
-Na figura \ref{fig:uml6}, a associação unidirecional preenche entre \emph{Empregado} e \emph{Cargo} é mais fácil de implementar porque você só precisa percorrer num único sentido: Do \emph{Empregado} para o \emph{Cargo}. Logo, \emph{Empregado} tem um atributo \emph{cargo} e métodos \emph{setCargo()} e \emph{getCargo()} para implementar a associação. Nadaprecisa ser acrescentado à classe \emph{Cargo}, porque não existe a necessidade de objetos cargos colaborarem com objetos empregados. Logo, não há a necessidade de acrescentar código para implementar a associação no outro sentido.
+Na figura \ref{fig:uml6}, a associação unidirecional \emph{preenche} entre \emph{Empregado} e \emph{Cargo} é mais fácil de implementar porque você só precisa percorrer num único sentido: Do \emph{Empregado} para o \emph{Cargo}. Logo, \emph{Empregado} tem um atributo \emph{cargo} e métodos \emph{setCargo()} e \emph{getCargo()} para implementar a associação. Nada precisa ser acrescentado à classe \emph{Cargo}, porque não existe a necessidade de objetos cargos colaborarem com objetos empregados. Logo, não há a necessidade de acrescentar código para implementar a associação no outro sentido.
 
 \subsubsection{Não mostre atributos e métodos para implementar associações}
 
-É um estilo comum supor que existem atributos e métodos para implementar associações , você não precisa mostrá-los nos seus diagramas. Considere estabelecer convenções para os nomes destes atributos e métodos. Tipicamente, o nome do papel, ou o nome da classe, para o nome do atributo e nomes de métodos como \emph{adicionaNomeAtributo()} e \emph{removeNomeAtributo()} para associações múltiplas e \emph{setNomeAtributo()} e \emph{getNomeAtributo()} para associações simples.
+É um estilo comum supor que existem atributos e métodos para implementar associações, você não precisa mostrá-los nos seus diagramas. Considere estabelecer convenções para os nomes destes atributos e métodos. Tipicamente, o nome do papel, ou o nome da classe, para o nome do atributo e nomes de métodos como \emph{adicionaNomeAtributo()} e \emph{removeNomeAtributo()} para associações múltiplas e \emph{setNomeAtributo()} e \emph{getNomeAtributo()} para associações simples.
 
 \subsection{Propriedades}
 
-Em UML 2, uma propriedade é um valor nomeado que denota uma característica de umm elemento (tal como uma classe ou um componente). Atributos e associações, inclusive composição, são propriedades. Por exemplo, o nome de um estudante é uma propriedade umportante da classe \emph{Estudante}. O fato de estudantes se matricularem em disciplinas também é uma propriedade importante da classe \emph{Estudante}. Logo, faz sentido atributos e relacionamentos serem propriedades de classes. Lembre-se, também, que a implementação de associações se faz, em parte, através de atributos.
+Em UML 2, uma propriedade é um valor nomeado que denota uma característica de um elemento (tal como uma classe ou um componente). Atributos e associações, inclusive composição, são propriedades. Por exemplo, o nome de um estudante é uma propriedade umportante da classe \emph{Estudante}. O fato de estudantes se matricularem em disciplinas também é uma propriedade importante da classe \emph{Estudante}. Logo, faz sentido atributos e relacionamentos serem propriedades de classes. Lembre-se, também, que a implementação de associações se faz, em parte, através de atributos.
 
 \subsection{Agregação e Composição}
 
@@ -615,7 +615,7 @@ Algumas vezes, um objeto é feito de outros. Por exemplo, um avião é feito de 
 
 Composição é um tipo forte de agregação no qual o ``todo'' é completamente responsável pelas partes e cada objeto ``parte'' só é associado a um objeto ``todo''. Por exemplo, em qualquer instante, um motor só está associado a um único avião. Além disso, nenhum outro objeto iria colaborar com o objeto motor, além do seu objeto avião. Por exemplo, objetos passageiros do avião não podem pedir para aumentar diretamente a velocidade de um motor.
 
-Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em diamante oca e composição com um diamante cheio. O diamante está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Não indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para   entregas, nem para aviões, nestes casos, supõe-se que a multiplicidade seja 1.
+Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
 
 \begin{figure}[h]
 \begin{center}
@@ -658,7 +658,25 @@ Relacionamentos persistentes são permanentes, ou, pelo menos, semi-permanentes,
 
 Associações transitórias são temporárias por natureza. Elas não são salvas no armazenamento permanente. Relacionmentos transitórios envolvem, geralmente, mas não sempre, pelo menos um objeto transitório, tal como uma tela, ou um relatório. A razão para isto é simples: Se você não precisa persistir um objeto, então, você não precisa persistir seus relacionamentos.
 
-Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. 	
+Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. Para um objeto colaborar com outro objeto, ele precisa conhecê-lo. Isto significa que deve existir, ou um relacionamento entre os objetos, ou um relacionamento do tipo ``parte-de'' entre os dois objetos. Quando não há uma associação persistente  entre dois objetos, mas eles colaboram um com o outro, você modela uma relação de dependência entre as duas classes.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.7]{classDep.png}
+\end{center}
+\caption{Dependência entre duas classes.} \label{fig:clsDep}
+\end{figure}
+
+A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada pela linha tracejada com uma seta não cheia -- entre as classes \emph{Estudante} e \emph{TelaEdicaoEstudante}, representando o relacionamento transitório entre um objeto tela de edição de estudante usado para atualizar o objeto estudante. A tela de edição obtem a informação atual do objeto estudante, mostra no modo de edição e atualiza a informação nova quando termina a edição. O relacionamento transitório entre o objeto tela de edição e o objeto estudante existe enquanto a informação do estudante é exibida na tela. Quando a tela é fechada, o elacionamento deixa de existir (a tela também não existe mais) e os objetos transitórios provavelmente já foram destruidos.
+
+Associações transitórias podem também ocorrer entre objetos persistentes. Por exemplo, na figura \ref{fig:seq}, uma associação transitória implícita\footnote{Esta associação não foi ilustrada na figura \ref{fig:uml6} porque o conceito não foi introduzido naquele momento. Pela consistência, as associações transitórias também  precisam ser modeladas.} existe entre o objeto estudante e o objeto curso (o estudante é passado como um parâmetro para o curso, para saber se ele atende as condições de pré-requisitos).
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{clsSeq.png}
+\end{center}
+\caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:seq}
+\end{figure}
 
 \section{Colaboração}
 
@@ -704,29 +722,32 @@ O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra 
 \end{figure}
 
 \begin{verbatim}
-class TimeStamp {
-    int hrs;
-    int mins;
-    int secs;
+public class TimeStamp {
+    private int hrs;
+    private int mins;
+    private int secs;
     
-    void fillTimes() {
+    public void fillTimes() {
         java.util.Calendar now;
         now = java.util.Calendar.getInstance();
         hrs = now.get(java.util.Calendar.HOUR_OF_DAY);
         mins = now.get(java.util.Calendar.MINUTE);
         secs = now.get(java.util.Calendar.SECOND);
     }
+    public getHrs() { return hrs; }
+    public getMins() { return mins; }
+    public getSecs() { return secs; }
 }
 \end{verbatim}
 
-A classe TimeStamp tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe java.util.Calendar do sistema. A TimeStamp modela a ``lógica de negócio'' de um relógio. A classe Calendar do pacote java.util é uma classe que vem na biblioteca padrão distribuida com o JDK, kit de desenvolvimento do Java. Os controles de acesso dos atributos estão em ``default'' que em Java quer dizer que os atributos estão visíveis para todos dentro do mesmo pacote (diretório de compilação). Se esta não fosse uma aplicação ``didática'', os atributos teriam visibilidade privada e teriamos métodos apenas para leitura destes atributos para todos de fora da classe já que não faz sentido alguém de fora da classe alterar os valores de horas, minutos e segundos.
+A classe \emph{TimeStamp} tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe \emph{java.util.Calendar} do sistema. A \emph{TimeStamp} modela a ``lógica de negócio'' de um relógio. A classe \emph{Calendar} do pacote \emph{java.util} é uma classe que vem na biblioteca padrão distribuida com o JDK, kit de desenvolvimento do Java. Observe que os atributos estão ocultos dos usuários da classe \emph{TimeStamp}, os valores deles podem ser obtidos através dos métodos \textit{getters} dos atributos. Se mais tarde, for decidido que se deseja mais alterar estes atributos, pode se reprogramar os métodos \textit{getters} de acordo com as mudanças e os usuários da classe não precisam saber que os atributos foram modificados. Dizemos que isolamos os usuários da classe \emph{TimeStamp} das modificações nos atributos ocultos. Precisamos, entretanto, manter o contrato de que os métodos \emph{getHrs()}, \emph{getMins()} e \emph{getSecs()} continuam a fornecer as horas, os minutos e os segundos.
 
 \begin{verbatim}
 class ClockView extends javax.swing.JFrame {
     private javax.swing.JLabel tLabel = new javax.swing.JLabel();
     
     ClockView() {
-        setDefaultCloseOperation(javax.swing.WindowsConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(95,45);
         getContentPane().add(tLabel);
         refreshTimeDisplay();
@@ -741,9 +762,9 @@ class ClockView extends javax.swing.JFrame {
     public void refreshTimeDisplay() {
         TimeStamp t = new TimeStamp();
         t.fillTimes();
-        String display = getDigitAsString(t.hrs) + ":"
-                     + getDigitAsString(t.mins) + ":"
-                     + getDigitAsString(t.secs);
+        String display = getDigitAsString(t.getHrs()) + ":"
+                     + getDigitAsString(t.getMins()) + ":"
+                     + getDigitAsString(t.getSecs());
         tLabel.setText("  " + display);
         tLabel.repaint();
     }
@@ -760,7 +781,7 @@ public class Clock {
                 cv.refreshTimeDisplay();
                 Thread.sleep(500);
             }
-        } catch (Except e) {
+        } catch (Exception e) {
             System.out.println("Erro: " + e);
         }
     }
