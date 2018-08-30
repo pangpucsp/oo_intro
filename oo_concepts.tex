@@ -6,6 +6,7 @@
 	twoside,			% para impressão apenas no recto. Oposto a twoside
 	a4paper,			% tamanho do papel. 
 	english,			% idioma adicional para hifenização
+	french,
 	brazil,				% o último idioma é o principal do documento
 	sumario=tradicional
 	]{abntex2}
@@ -40,7 +41,7 @@
 \autor{Paulino Ng\thanks{paulino.ng@gmail.com}
 }
 \local{Brasil}
-\data{2018, v-0.0.0}
+\data{2018, v-0.1.1}
 
 % informações do PDF
 \makeatletter
@@ -148,45 +149,85 @@ Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se bas
 \endlastfoot
 
 Abstração & As características essenciais de um item (pode ser uma classe ou uma operação) \\
+
 Acoplamento & O grau de dependência entre dois itens\\
+
 Agregação & Relacionamento entre duas classes ou componentes definidas por \emph{é parte de}\\
+
 Hierárquia de agregação & Um conjunto de classes relacionadas através da agregação\\
+
 Associação & Um relacionamento entre duas classes ou objetos\\
+
 Atributo & Algo que uma classe conhece (dados/informação)\\
+
 Cardinalidade & O conceito de \emph{quantos?}\\
+
 Classe & Uma abstração em software de objetos similares, um padrão a partir do qual objetos são criados\\
+
 Classe abstrata & Uma classe que não pode ter objetos instanciados dela \\
+
 Classe concreta & Uma classe que pode ter objetos instanciados dela\\
+
 Classificador & Um termo de UML para uma coleção de instâncias que têm algo em comum. Isto inclui classes, componentes, tipos de dados e casos de uso\\
+
 Coesão & O grau de relacionamento de uma unidade encapsulada (tal como um componente ou uma classe)\\
+
 Colaboração & Classes que trabalham juntas (colaboram) para cumprir as suas responsabilidades\\
+
 Componente & Uma unidade coesa de funcionalidade que pode ser desenvolvida, entregue e composta por outros componentes para construir uma unidade maior\\
+
 Composição & Uma forma forte de agregação na qual o \emph{todo} é completamente responsável pelas suas partes e cada objeto \emph{parte} está associado apenas a um objeto \emph{completo}\\
+
 Encapsulamento & O agrupamento de conceitos relacionados num único item, tal como uma classe ou um componente\\
+
 Estereótipo & Um uso comum de um elemento de modelagem\\
+
 Herança & Relacionamento definido por \emph{é um} ou \emph{é como} (ou \emph{parece com}\\
+
 Herança múltipla & A herança direta de mais de uma classe\\
+
 Herança simples & A herança direta de apenas uma classe\\
+
 Hierárquia de heranças & Um conjunto de classes relacionadas por heranças\\
+
 Instância & Um objeto que é um exemplo de uma classe específica\\
+
 Instanciar & Criar objetos a partir da definição de classes\\
+
 Interface & Uma coleção de uma ou mais assinaturas de operações que define um conjunto coeso de comportamentos\\
+
 Mensagem & Um pedido por informação ou para realizar uma ação\\
+
 Mensageria (ou caixa postal) & Um processo de colaboração entre objetos pelo envio de mensagens uns para os outros\\
+
 Método & Um processo implementado por uma classe que realiza uma ação de valor (similar a uma função na programação estruturada)\\
+
 Objeto & Uma pessoa, lugar, coisa, evento, conceito, tela ou relatório baseado numa definição de classe\\
+
 Objeto persistente & Um objeto salvo numa memória permanente\\
+
 Objeto transitório & Um objeto não salvo numa memória permanente\\
+
 Ocultação de informação & A restrição ao acesso externo de atributos\\
+
 Opcionalidade & O conceito de \emph{Você precisa ter isto?}\\
+
 Padrão & Uma solução reusável para um problema comum levando em conta forças relevantes\\
+
 Persistência & O armazenamento de objetos em memória permanente, por exemplo, em arquivos, bancos de dados, etc.\\
+
 Polimorfismo & A capacidade de diferentes objetos responderem a uma mesma mensagem de maneiras diferentes, permite que um objeto interaja com um outro sem conhecer o seu tipo exato\\
+
 Propriedade & Em UML 2, um valor nomeado (com nome), por exemplo, atributos e associações, inclusive composição, denotando uma característica de um elemento (tal como, uma classe, ou um componente). Em C\#, a combinação de um atributo com seus getter e setter \\
+
 Refatoração & Modificar a implementação e/ou a definição de componentes sem afetar outros componentes de um sistema já em funcionamento\\
+
 Sobreescrita & Redefinir atributos e/ou métodos em subclasses tais que eles sejam diferentes da definição na superclasse\\
+
 Subclassse & Uma classe que herda de uma outra\\
+
 Superclase & Uma classe da qual uma outra herda.\\
+
 \end{longtable}
 
 \section{Conceitos de OO do ponto de vista estrutural}
@@ -195,14 +236,17 @@ Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:con
 
 \begin{description}
 \item[Classe] Uma classe é uma abstração de software de um objeto, efetivamente, um padrão a partir do qual os objetos são criados. Se você tiver experiência com bancos de dados, você pode pensar numa classe como uma tabela, embora tenha mais em classes do que isto conforme você verá mais tarde. A definição de uma classe descreve o layout, incluindo tanto os dados, quanto as funcionalidades, dos objetos a serem criados a partir deles. Observe que eu disse, tanto os dados, quanto as funcionalidades. Diferente de uma tabela, que define apenas dados, uma classe define ambos, dados (atributos) e código (operações/métodos). Por enquanto, uma boa maneira de pensar a respeito de uma classe é que ela é a combinação de uma definição de tabela e a definição do código fonte que acessa os dados. Infelizmente, esta é uma visão muito orientada a dados de objetos que ignora a principal força dos objetos que é a capacidade de responder a pedidos de ações. Entretanto, este é uma introdução suficientemente boa, por ora.
+
 \item[Objeto] Um objeto é uma construção de software que espelha um conceito do mundo real, por exemplo, uma pessoa, lugar, coisa, evento, conceito, tela ou relatório. Objetos são tipicamente (mas nem sempre) nomes (substantivos). Se uma classe pode ser pensada como uma tabela, um objeto pode ser pensada como a ocorrência de um registro. De novo, esta é uma visão muito orientada a dados. Por exemplo, um objeto estudante pode fazer muitas das coisas que um estudante \emph{real} pode, por exemplo, fornecer seu nome, calcular quantos anos tem e requerer a inscrição num seminário. Numa aplicação estruturada, cada estudante seria representado como um registro na tabela de dados Estudante. Numa apllicação orientada a objetos, cada estudante seria representado por um objeto na memória. A principal diferença é que onde registros de estudantes só têm dados, os objetos estudantes têm ambos, dados (atributos) e funcionalidades (métodos).
+
 \item[Atributo] Um atributo é equivalente a um elemento de dados num registro. Do ponto de vista de programação, também faz sentido pensar num atributo como uma variável local aplicável a apenas um objeto.
+
 \item[Método] Um método pode ser pensado tanto como uma função ou um procedimento. Métodos acessam e modificam os atributos de um objeto. Melhor ainda, métodos podem fazer toda uma série de coisas que nada têm a ver com os atributos. Alguns métodos retornam um valor (como as funções), enquanto outros provocam outros efeitos colaterais, como impressão ou armazenamento em memória permanente. Um método útil deve ou retornar um valor, ou ter um efeito colateral significativo.
 \end{description}
 
 \section{Os diagramas de UML 2}
 
-Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e resumidos na Tabela \ref{tab:diaUML} é importante para a compreensão do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feito usando \citeonline{dia:tool}.}:
+Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e resumidos na Tabela \ref{tab:diaUML} é importante para a compreensão da análise e do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feito usando a ferramenta Dia, \citeonline{dia:tool}.}:
 
 \begin{description}
 \item[\emph{Diagramas de Comportamento}:] Este é o tipo de diagrama que representa características comportamentais de um sistema ou processo de negócio. Isto inclui diagramas de atividade, máquina de estado e caso de uso, assim como os 4 diagramas de interação.
@@ -240,18 +284,31 @@ Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e re
 \endlastfoot
 
 Diagrama de Atividade & Representação de alto nível de processos de negócios, incluindo fluxos de dados ou modelagem da lógica complexa dentro de um sistema \\
+
 Diagrama de Caso de  Uso & Mostra casos de uso, atores e seus relacionamentos \\
+
 Diagrama de Classe & Mostra uma coleção de elementos de modelagem estáticos tais como classes e tipos, seus conteúdos e seus relacionamentos \\
+
 Diagrama de Comunicação & Mostra instâncias de classes, seus interrelacionamentos e o fluxo de mensagens entre elas e tipicamente foca na organização estrutural de objetos que enviam e recebem mensagens; eram chamados de diagramas de colaboração no UML 1.x \\
+
 Diagrama de Componente & Representa os componentes, inclusive seus interrelacionamentos e interfaces públicas, que compõem uma aplicação, sistema ou empresa \\
+
 Diagrama de Distribuição & Mostra a arquitetura de execução dos sistemas, inclusive os nós, tanto os ambientes de execução de HW, quanto de SW, e o \textit{middleware} que os conecta \\
+
 Diagrama de Estrutura Composta & Representa a estrutura interna de um classificador (tal como uma classe, componente ou caso de uso), inclusive os pontos de interação do classificador com outras partes do sistema \\
+
 Diagrama de Máquina de Estado & Descreve os estados em que um objeto ou uma interação podem estar, assim como as transições entre os estados. Anteriormente, era chamado de diagrama de estados, diagrama do mapa de estados ou diagrama de transição de estados  \\
+
 Diagrama de Objetos & Representa objetos e seus relacionamentos num instante determinado, tipicamente, um caso especial de um diagrama de classes ou de comunicação \\
+
 Diagrama de Pacotes & Mostra como elementos de modelagem são organizados em pacotes, assim como as dependências entre os pacotes \\
+
 Diagrama de Perfil & Opera no nível do metamodelo para mostrar estereótipos como classes com o estereótipo «stereotype» e perfis como pacotes com o estereótipo «profile». A relação de extensão (linha sólida com ponta de seta fechada e preenchida) indica qual elemento metamodelo um determinado estereótipo está estendendo. Este diagrama não existia na UML 1.* \\
+
 Diagrama de Sequência & Modela a lógica sequencial, na verdade, a ordenação temporal das mensagens entre classificadores \\
+
 Diagrama Simplificado de Interação & Uma variação do diagrama de atividade, que resume o fluxo de controle dentro de um sistema ou de um processo de negócios, onde cada nó/atividade no diagrama pode representar um outro diagrama de interação \\
+
 Diagrama de Temporização & Representa a mudança de estado ou condição de uma instância, de um classificador ou de um papel (\textit{role}) ao longo do tempo. Tipicamente, usado para mostrar a mudança de estado de um objeto no tempo ao responder a um evento externo. \\
 
 \end{longtable}
@@ -328,7 +385,7 @@ Abstração é um problema da análise que lida com o que a classe sabe e faz. S
 
 Embora o ato de abstrair nos diga que precisamos armazenar o nome e endereço de um estudante, assim como ser capaz de matricular estudantes nas disciplinas, ele não nos diz como vamos fazer isto. Encapsulamento lida com o problema de como você pretende modularizar as caraterísticas de um sistema. No mundo orientado a objetos, você modulariza sistemas em classes, que, por sua vez, modularizam em métodos e atributos. Dizemos que encapsulamos comportamento numa classe ou encapsulamos funcionalidade num método. Encapsulamento é uma questão de projeto que lida com a funcionalidade está compartimentalizada dentro de um sistema. Você não deve precisar saber como algo está implementado para poder usá-lo. A consequência do encapsulamento é que você pode construir qualquer coisa da maneira que você quiser e mais tarde você pode mudar a implementação e não afetar outros componentes dentro do sistema (desde que a interface para aquele componente não mude).
 
-As pessoas dizem que o encapsulamento é pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, seja um banco. Como ele registra as informações de uma conta, num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos.
+As pessoas dizem que o encapsulamento é como pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, pense num banco. Como ele registra as informações de uma conta? Num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos.
 
 \subsection{Ocultação de Informação}
 
@@ -418,7 +475,7 @@ Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora 
 Na figura \ref{fig:uml3}, a classe \emph{Veiculo} está marcada como abstrata (o nome está em itálico, em versões mais antigas de UML, você poderia usar a restrição {abstract}), enquanto \emph{Aviao} e \emph{Carro} não são. Dizemos que 
 \emph{Veiculo} é uma classe abstrata, enquanto \emph{Aviao} e \emph{Carro} são classes concretas. A diferença principal entre classes abstratas e concretas é que objetos podem ser instanciados (criados) de classes concretas, mas não de classes abstratas. Por exemplo, no domínio do seu problema, você tem aviões e carros, mas não tem nada que é apenas um veículo (se algo não é um avião ou um carro, você não se interessa por ele). Isto significa que seu software instanciará objetos aviões e carros, mas não objetos veículos. Classes abstratas são modeladas quando você precisa criar uma classe que implementa características comuns a duas ou mais classes.
 
-Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \citeonline{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que na prática de modelagem ágil: \textit{use as ferramentas mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
+Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \citeonline{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que a prática de modelagem ágil diz: \textit{use a ferramenta mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
 
 \section{Persistência}
 
@@ -486,8 +543,7 @@ Uma associação é um relacionamento persistente entre duas ou mais classes ou 
 \end{description}
 
 \begin{table}
-\caption{Indicadores de Multiplicidade do UML}
-\label{tab:uml:mult}
+\caption{Indicadores de Multiplicidade do UML} \label{tab:uml:mult}
 \begin{center}
 \begin{tabular}{l l}
 
@@ -505,7 +561,7 @@ n & Apenas n (onde $n>1$) \\
 
 \end{tabular}
 \end{center}
-\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+%\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
 \end{table}
 
 Observe o diagrama de classes da figura \ref{fig:uml6}, que mostra diversas classes e as associações entre elas. Eis como você leria as associações:
@@ -602,7 +658,7 @@ Relacionamentos persistentes são permanentes, ou, pelo menos, semi-permanentes,
 
 Associações transitórias são temporárias por natureza. Elas não são salvas no armazenamento permanente. Relacionmentos transitórios envolvem, geralmente, mas não sempre, pelo menos um objeto transitório, tal como uma tela, ou um relatório. A razão para isto é simples: Se você não precisa persistir um objeto, então, você não precisa persistir seus relacionamentos.
 
-Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. 
+Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. 	
 
 \section{Colaboração}
 
@@ -625,6 +681,91 @@ Relacionamentos transitórios existem entre objetos por uma razão apenas: Os ob
 \section{O que foi aprendido}
 
 \section{Questões de Revisão}
+
+\section{Exemplo de MVC - Model-View-Controller}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{MVC.png} 
+\caption{Arquitetura Model-View-Controller} \label{fig:mvc}
+\end{center}
+\legend{Fonte: \citeonline{uml:j2ee}}
+\end{figure}
+
+O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os príncipios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
+
+O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{clock.png} 
+\caption{Diagrama de classes do relógio digital} \label{fig:clock}
+\end{center}
+\end{figure}
+
+\begin{verbatim}
+class TimeStamp {
+    int hrs;
+    int mins;
+    int secs;
+    
+    void fillTimes() {
+        java.util.Calendar now;
+        now = java.util.Calendar.getInstance();
+        hrs = now.get(java.util.Calendar.HOUR_OF_DAY);
+        mins = now.get(java.util.Calendar.MINUTE);
+        secs = now.get(java.util.Calendar.SECOND);
+    }
+}
+\end{verbatim}
+
+A classe TimeStamp tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe java.util.Calendar do sistema. A TimeStamp modela a ``lógica de negócio'' de um relógio. A classe Calendar do pacote java.util é uma classe que vem na biblioteca padrão distribuida com o JDK, kit de desenvolvimento do Java. Os controles de acesso dos atributos estão em ``default'' que em Java quer dizer que os atributos estão visíveis para todos dentro do mesmo pacote (diretório de compilação). Se esta não fosse uma aplicação ``didática'', os atributos teriam visibilidade privada e teriamos métodos apenas para leitura destes atributos para todos de fora da classe já que não faz sentido alguém de fora da classe alterar os valores de horas, minutos e segundos.
+
+\begin{verbatim}
+class ClockView extends javax.swing.JFrame {
+    private javax.swing.JLabel tLabel = new javax.swing.JLabel();
+    
+    ClockView() {
+        setDefaultCloseOperation(javax.swing.WindowsConstants.EXIT_ON_CLOSE);
+        setSize(95,45);
+        getContentPane().add(tLabel);
+        refreshTimeDisplay();
+    }
+    
+    protected String getDigitAsString(int i) {
+        String str = Integer.toString(i);
+        if (i<10) str = "0" + str;
+        return str;
+    }
+    
+    public void refreshTimeDisplay() {
+        TimeStamp t = new TimeStamp();
+        t.fillTimes();
+        String display = getDigitAsString(t.hrs) + ":"
+                     + getDigitAsString(t.mins) + ":"
+                     + getDigitAsString(t.secs);
+        tLabel.setText("  " + display);
+        tLabel.repaint();
+    }
+}
+\end{verbatim}
+
+\begin{verbatim}
+public class Clock {
+    public static void main(String[] argv) {
+        ClockView cv = new ClockView();
+        cv.setVisible(true);
+        try {
+            for (;;) {
+                cv.refreshTimeDisplay();
+                Thread.sleep(500);
+            }
+        } catch (Except e) {
+            System.out.println("Erro: " + e);
+        }
+    }
+}
+\end{verbatim}
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
