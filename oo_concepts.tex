@@ -258,7 +258,7 @@ Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e re
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.5]{UML_diagrams_overview.png} 
+\includegraphics[scale=0.55]{UML_diagrams_overview.png} 
 \caption{Hierárquia dos diagramas UML} \label{fig:uml14dia}
 \end{center}
 \legend{Fonte: \citeonline{wiki:uml}}
@@ -358,7 +358,7 @@ A definição de um método é mais simples: você define a lógica para ele, do
 
 \begin{figure}
 \begin{center}
-\includegraphics[scale=0.8]{class1.png} 
+\includegraphics[scale=0.85]{class1.png} 
 \caption{Classes Estudante e Disciplina} \label{fig:class1}
 \end{center}
 \end{figure}
@@ -673,12 +673,55 @@ Associações transitórias podem também ocorrer entre objetos persistentes. Po
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{clsSeq.png}
+\includegraphics[scale=0.65]{clsSeq.png}
 \end{center}
 \caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:seq}
 \end{figure}
 
 \section{Colaboração}
+
+Classes precisam, em geral, trabalhar juntas para cumprirem suas responsabilidades. Na verdade, são os objetos, as instâncias das classes que trabalham juntas. Colaboração entre objetos ocorre quando um objeto pede ao outro informações ou para o outro realizar algo. Por exemplo, um avião colabora com seus motores para poder voar. Para o avião ir mais rápido, ele pede para os motores girarem mais rápido. Quando um avião precisa desacelerar, os motores precisam desacelerar. Se o avião não colaborasse com seus motores, ele não voaria.
+
+Objetos colaboram uns com os outros pelo envio de mensagens. Uma mensagem é tanto um pedido para fazer alguma coisa, quanto um um pedido por informações. Mensagens são modeladas por diagramas de sequência e diagramas de comunicação (diagramas de colaboração em UML 1.x) em UML. A figura \ref{fig:seq} mostra um diagrama de sequência simples. Nele, você vê como um estudante requer a matrícula numa disciplina; O objeto disciplina de sua parte manda uma mensagem para o objeto curso com o qual está associado para saber se o estudante pode se matricular na disciplina (checar pré-requisitos, por exemplo). A figura \ref{fig:comm} mostra o mesmo exemplo, mas na forma de diagrama de comunicação.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{clsComm.png}
+\end{center}
+\caption{Diagrama de comunicação exibindo as mensagens.} \label{fig:comm}
+\end{figure}
+
+Vejamos alguns detalhes sobre o diagrama de sequência, as caixas no topo do diagrama representam classificadores, no caso, mais precisamente, objetos. As linhas tracejadas penduradas nas caixas são chamadas de \textit{linha de vida} dos objetos e representam o intervalo de tempo de vida do objeto no cenário modelado. Objetos são rotulados no formato \emph{nome: classe} onde o \emph{nome} é opcional (objetos que não receberam nomes no diagrama são chamados de \textit{objetos anônimos}). A instância de \emph{Estudante} recebeu um nome porque ela é usada como parâmetro numa mensagem, já as instâncias de \emph{Disciplina} e \emph{Curso} não precisam ser referenciadas em nenhuma parte do diagrama e, portanto, podem ser anônimas. As  mensagens são indicadas por setas rotuladas, o rótulo é a assinatura do método. Valores de retorno são indicados opcionalmente por seta com linha tracejada e um rótulo indicando o valor de retorno. Valores de retorno estão representados na figura \ref{fig:seq}, mas não na \ref{fig:seq2}. Em metodologias ágeis, devemos manter os diagramas simples e assumir que o valor de retorno volta. O sequenciamento das mensagens é dado pela ordem das próprias mensagens, começando no topo a esquerda do diagrama.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.65]{seq2.png}
+\end{center}
+\caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:seq2}
+\end{figure}
+
+Diagramas de comunicação têm uma notação similar aos diagramas de sequência. Objetos são indicados da mesma maneira, embora eles sejam conectados por linhas de associação sem rótulos. As mensagens são indicadas com setas de novo, embora não conectem os objetos (não há linhas de vida nos diagramas de comunicação/colaboração). A sequência de mensagens é opcionalmente indicada colocando um número na frente do nome da mensagem. Na figura \ref{fig:comm}, vemos a mesma sequência de mensagens que a da figura \ref{fig:seq}.
+
+As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colaborações:
+
+\begin{enumerate}
+\item \textbf{Deve ter algum tipo de relacionamento.}
+
+\item \textbf{Deve ter um método correspondente no objeto algo.}
+
+\item \textbf{Pode haver um valor de retorno.}
+
+\item \textbf{Pode ter ou não parâmetros.}
+
+\item \textbf{Mensagens mostram a colaboração, não o fluxo de dados.}
+
+\item \textbf{Algumas vezes o alvo precisa colaborar.}
+
+\item \textbf{Cada método deve fazer alguma coisa.}
+
+\item \textbf{Um objeto pode colaborar consigo mesmo.}
+
+\end{enumerate}
 
 \section{Acoplamento}
 
