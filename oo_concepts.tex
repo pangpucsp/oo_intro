@@ -705,21 +705,21 @@ Diagramas de comunicação têm uma notação similar aos diagramas de sequênci
 As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colaborações:
 
 \begin{enumerate}
-\item \textbf{Deve ter algum tipo de relacionamento.}
+\item \textbf{Deve ter algum tipo de relacionamento.} A única maneira de um objeto poder mandar um mensagem para um outro é se o conhece antes. No mundo real, você não pode pedir ajuda a alguém se você não sabe como contactá-lo. O mesmo princípio se aplica a objetos. Deve existir um associação, talvez uma agregação, entre as duas classes para que as instâncias (objetos) sejam capazes de colaborar.
 
-\item \textbf{Deve ter um método correspondente no objeto algo.}
+\item \textbf{Deve ter um método correspondente no objeto algo.} Colaborações são implementadas através de chamadas de métodos, isto implica que o método deve existir no objeto alvo para ele ser chamado. Para um objeto poder receber um pedido de informação, ele deve ter um método que retorna esta informação. Por exemplo, na figura \ref{fig:seq}, a mensagem \emph{ehEstudanteElegivel()} é enviada para o objeto curso, logo na classe \emph{Curso} deve haver uma implementação do método \emph{ehEstudanteElegivel()}. Se desejamos que um objeto faça algo, ele deve ter um método que o faça. De modo similar, na figura \ref{fig:seq}, observe que a mensagem \emph{matriculaEstudante()} é enviada a objetos disciplinas, logo a classe \emph{Disciplina} deve ter um método \emph{matriculaEstudante()}.
 
-\item \textbf{Pode haver um valor de retorno.}
+\item \textbf{Pode haver um valor de retorno.} Se a colaboração é um pedido de informação, então deve haver o retorno de um valor (a informação pedida). Este fato deve ser incluida na documentação do método e, opcionalmente, será indicada no diagrama de sequência como uma linha tracejada. Valores de retorno não são modelados em diagramas de colaboração porque eles tendem a poluir os diagramas.
 
-\item \textbf{Pode ter ou não parâmetros.}
+\item \textbf{Pode ter ou não parâmetros.} Algumas mensagens têm parâmetros, outras não. Lembre-se de que mensagens são efetivamente uma chamada de método (função). Assim como funções têm parâmetros, métodos também têm. Por exemplo, na figura \ref{fig:seq}, um objeto estudante passa a si mesmo como um parâmetro quando chama a mensagem \emph{matriculaEstudante()} do objeto \emph{Disciplina}. Na figura \ref{fig:seq2}, o objeto entrega não precisa passar qualquer parâmetro quando pede ao objeto item o seu preço.
 
-\item \textbf{Mensagens mostram a colaboração, não o fluxo de dados.}
+\item \textbf{Mensagens mostram a colaboração, não o fluxo de dados.} Mensagens são pedidos. Elas não são fluxos de dados. Diagramas de processo (diagramas de fluxo de dados) do mundo estruturado mostram fluxos de dados, que são movimentos de dados de uma parte do sistema para outra.
 
-\item \textbf{Algumas vezes o alvo precisa colaborar.}
+\item \textbf{Algumas vezes o alvo precisa colaborar.} O receptor de uma mensagem pode não ser capaz de atender a um pedido completamente  e pode precisar colaborar com outros objetos para cumprir sua responsabilidade. Por exemplo, na figura \ref{fig:seq}, o objeto disciplina precisou interagir com o objeto curso do qual ela faz parte para matricular um estudante. Isto é perfeitamente válido.
 
-\item \textbf{Cada método deve fazer alguma coisa.}
+\item \textbf{Cada método deve fazer alguma coisa.} É importante que cada objeto colaborador deve sempre fazer algo, não apenas encaminhar a mensagem para outro objeto, algo chamado de uma passarela (\textit{passthrough}). Passarelas resultam em \textit{código espaguete} que pode ser difícil para dar manutenção. Algumas vezes, \textit{delegação}, um padrão de projeto, faz sentido, mas, enquanto você for um principiante, é melhor evitar.
 
-\item \textbf{Um objeto pode colaborar consigo mesmo.}
+\item \textbf{Um objeto pode colaborar consigo mesmo.} Objetos frequentemente se enviam mensagens para obter informações e/ou para fazer alguma coisa. Isto é como uma função chamando uma outra em uma linguagem procedural como o C. Na figura \ref{fig:seq2}, o objeto \emph{ItemEntrega} se manda uma mensagem para calcular o preço (provavelmente, o preço do item vezes o número de itens a ser entregue).
 
 \end{enumerate}
 
@@ -786,10 +786,10 @@ public class TimeStamp {
 A classe \emph{TimeStamp} tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe \emph{java.util.Calendar} do sistema. A \emph{TimeStamp} modela a ``lógica de negócio'' de um relógio. A classe \emph{Calendar} do pacote \emph{java.util} é uma classe que vem na biblioteca padrão distribuida com o JDK, kit de desenvolvimento do Java. Observe que os atributos estão ocultos dos usuários da classe \emph{TimeStamp}, os valores deles podem ser obtidos através dos métodos \textit{getters} dos atributos. Se mais tarde, for decidido que se deseja mais alterar estes atributos, pode se reprogramar os métodos \textit{getters} de acordo com as mudanças e os usuários da classe não precisam saber que os atributos foram modificados. Dizemos que isolamos os usuários da classe \emph{TimeStamp} das modificações nos atributos ocultos. Precisamos, entretanto, manter o contrato de que os métodos \emph{getHrs()}, \emph{getMins()} e \emph{getSecs()} continuam a fornecer as horas, os minutos e os segundos.
 
 \begin{verbatim}
-class ClockView extends javax.swing.JFrame {
+public class ClockView extends javax.swing.JFrame {
     private javax.swing.JLabel tLabel = new javax.swing.JLabel();
     
-    ClockView() {
+    public ClockView() {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setSize(95,45);
         getContentPane().add(tLabel);
@@ -814,6 +814,9 @@ class ClockView extends javax.swing.JFrame {
 }
 \end{verbatim}
 
+% os códigos podem ir para minipáginas flutuantes/ou presas
+A classe \emph{ClockView} é a nossa classe de visualização. Ela herda da classe \emph{javax.swing.JFrame}. O pacote \emph{javax.swing} é parte da nova biblioteca do Java para a criação de interfaces gráficas para usuários para aplicações de \textit{desktop}. Ao herdar de \emph{JFrame}, um objeto \emph{ClockView} serve de base para a janela onde estará o relógio. O único elemento gráfico que é adicionado ao painel da janela é um \emph{JLabel}. Um objeto \emph{JLabel} permite a exibição de um texto. Para transformar a informação do objeto TimeStamp em texto a ser exibido (variável \emph{display}), a classe ClockView tem o método auxiliar \emph{getDigitAsString(int)} que converte um inteiro em texto. Observe que não foram tomados cuidados para garantir que o inteiro só tem 2 dígitos. Como sabemos que os dados vem da TimeStamp corretamente, não é necessário fazer este tipo de checagem.
+
 \begin{verbatim}
 public class Clock {
     public static void main(String[] argv) {
@@ -830,6 +833,8 @@ public class Clock {
     }
 }
 \end{verbatim}
+
+A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital é muito simples, tudo que ela tem é o método \emph{main()} que repete para sempre (\emph{loop} infinito) a atualização da tela do relógio e espera por meio segundo (dormindo). A espera é importante para liberar o processador do computador para outras aplicações. A razão de esperar por meio segundo e não por um segundo é que o erro de exibição no caso da espera de um segundo pode ser de até um segundo. No pior caso o programa leu as horas com o objeto TimeStamp justo quando ia mudar o segundo e mostra este valor e só após o tempo de espera é que a tela vai ser atualizada. Com meio segundo de espera, o erro máximo é de 0,5s.
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
