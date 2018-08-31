@@ -246,3 +246,5 @@ TSWLatexianTemp*
 *.dia
 # compilation files
 *.class
+# Makefile
+Makefile
