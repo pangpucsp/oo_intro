@@ -725,6 +725,12 @@ As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colabo
 
 \section{Acoplamento}
 
+Acoplamento é uma medida do quanto dois itens, tais como classes ou métodos, estão relacionados entre eles. Quando uma classe depende de uma outra, dizemos que elas estão acopladas. Quando uma classe interage com uma outra, mas não conhece nada sobre os detalhes de implementação da outra, dizemos que elas são fracamente acopladas. Quando uma classe se baseia na implementação (isto é, tem acesso direto aos atributos da outra), dizemos que elas estão fortemente acopladas.
+
+Na discussão de como \emph{Estudante} pode implementar o método \emph{se\_matricula()}: ele pode acessar diretamente o atributo \emph{listaDeEstudantes} de \emph{Disciplina}, ou pode enviar uma mensagem para objetos \emph{Disciplina} pedindo para matricular o estudante na disciplina. Acessando diretamente e mudando o atributo \emph{listaDeEstudantes} pode economizar alguns ciclos de CPU e rodar mais rapidamente, mas assim que a implementação daquele atributo mudar (passando de um vetor para uma lista encadeada, por exemplo), seu código da classe \emph{Estudante} também vai ter de mudar. Isto não é muito bom. O problema básico é que quando duas classes são fortemente acopladas, uma mudança numa, requer uma mudança na outra. Isto, por sua vez, pode requerer uma mudança em outra classe, e outra, ... Acoplamento forte é uma das causas para a manutenção de código ser complexa. O que deveria ser uma troca simples de manutenção pode levar meses para estabilizar, se é que vai ficar estável. É incrível a quantidade de código que existe que ninguém quer tocar com medo de quebrá-lo. Por exemplo, lembre-se do ano 2000 (bug do milênio, que não era no milênio).
+
+Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e decidem escrever código fortemente acoplado. Isto só se justifica quando você está desesperado em reduzir todos códigos redundantes do seu programa. Por exemplo, \textit{drivers} de bancos de dados são fortemente acoplados aos sistemas de arquivos do sistema operacional onde o banco de dados está instalado. Se você puder salvar uns microsegundos no acesso aos dados, isto pode ser significativo ao acessar centenas de milhares de objetos.
+
 \section{Coesão}
 
 \section{Polimorfismo}
