@@ -733,15 +733,69 @@ Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e de
 
 \section{Coesão}
 
+Coesão é uma medida do quanto um item, tal como uma classe ou um método, faz sentido. Uma boa medida da coesão de algo é quanto tempo leva para descrevê-lo numa frase: quanto mais tempo levar, menos coeso ele é. Você deseja projetar classes e métodos com alto grau de coesão. Em outras palavras, você deseja classes e métodos cuja descrição seja bem clara.
+
+Um método é bastante coeso se ele faz uma coisa e apenas esta coisa. Por exemplo, na classe \emph{Estudante}, você teria métodos para matricular estudantes em disciplinas e remover estudantes de disciplinas. Cada um desses métodos faze uma coisa e apenas esta coisa. Você poderia escrever um método que faz as duas coisas e chamá-lo, por exemplo, de \emph{mudaStatusDisciplina()}. O problema com esta solução é que o código ia ficar mais complexo do que com os dois métodos separados. Isto significa que seu código ia ficar mais difícil de ser entendido e, portanto, de fazer a manutenção ia ficar mais complicada. Lembre-se de que você deve simplificar a manutenção, não torná-la mais complexa.
+
+\subsection{Dica: Nomes de métodos indicam o grau de coesão}
+O nome de um método, em geral, indica o quanto ele é coeso. Sempre que você encontrar uma combinação forte verbo/complemento para ser usada como nome de método, há grandes chances do método ser fortemente coeso. Por exemplo, leve em consideração métodos como \emph{getNome()}, \emph{printNome()}, \emph{matriculaDisciplina()} e \emph{desisteDisciplina()}. Verbos tais como get, print, matricular e desistir são todos muito fortes. Leve em consideração \emph{mudaStatusDisciplina()}, agora. Mudar é tão forte ou tão explícito quanto as palavras matricular e desistir? Provavelmente, não, mudar é mais geral.
+
+Uma classe altamente coesa representa um type de objeto e só um tipo de objeto. Por exemplo, para o sistema de informação da universidade, modelamos professores e não empregados. Apesar de um professor ser na realidade um empregado, eles são diferentes de outros tipos de empregados. Por exemplo, professores fazem coisas diferentes de faxineiros, que fazem coisas diferentes de secretárias, que fazem coisas diferentes do pessoal administrativos, etc. Podemos escrever facilmente uma classe \emph{Empregado} genérica, capaz de lidar com todas as funcionalidades realizadas por todos os empregados da universidade. Entretanto, esta classe pode se tornar rapidamente pesada e difícil de manter. Uma solução melhor seria definir uma hierárquia de classes com \emph{Professor}, \emph{Faxineiro}, \emph{Secretaria}, \emph{Administrativo}, etc. Por causa das similaridades existentes entre estas classes, você criaria uma nova classe abstrata chamada \emph{Empregado}, que herdaria de \emph{Pessoa}. As outras classes, inclusive \emph{Professor}, herdam de \emph{Empregado}. A vantagem disto é que cada classe representa um tipo de objeto. Se aparecerem mudanças para serem feitas sobre os faxineiros, você faz diretamente na classe \emph{Faxineiro}. Você não precisa se preocupar com o efeito destas mudanças no código dos professores. 
+
 \section{Polimorfismo}
 
+Um objeto pode ser de um ou vários tipos. Por exemplo, um objeto José da Silva pode ser um estudante, um administrativo e até um professor. Há problemas para os outros objetos o tipo de pessoa que o José é? Reduz significativamente o esforço de desenvolvimento se outros objetos no sistema pudessem tratar os objetos pessoas da mesma maneira independente do tipo específico de cada pessoa. O conceito de polimorfismo diz que você pode tratar instâncias de várias classes do mesmo jeito dentro do seu sistema. A consequência disto é que você pode mandar uma mensagem para um objeto sem saber de antemão o tipo dele e o objeto ainda vai ``fazer a coisa'' certa, pelo menos do ponto de vista dele.
+
 %\subsection{Um exemplo: O jogo de Poker}
+% Esta seção é intraduzível, pois ele é basedo no verbo draw que tem significados diferentes dependendo do contexto.
 
 \subsection{Polimorfismo na Universidade}
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.65]{uniRH.png}
+\end{center}
+\caption{Implementação parcial do sistema de recursos humanos da universidade.} \label{fig:uniRH}
+\end{figure}
+
+Consideremos um exemplo um pouco mais realístico de polimorfismo explorando o projeto de como a universidade lida com a contratação de pessoal modelada na figura \ref{fig:uniRH}. Há uma maneira padrão paraa universidade contratar pessoal: uma vez contratada uma pessoa, ela é incluida no plano de saúde da universidade e ganha um crachá. Quando um professor é contratado, o mesmo processo é seguido, mas, além disso, uma vaga de estacionamento é atribuida para o novo professor se houver vaga disponível, senão ele entra na fila de espera por vagas.
+
+Se o método \emph{contrata()} for implementado na classe \emph{Empregado}, ele implementa o comportamento necessário para adicionar uma pessoa ao plano de saúde da universiade e a geração do crachá. O método \emph{contrata()} na classe \emph{Professor} terá de ser sobreescrito. Ele chama o método da classe \emph{Empregado}, pois professores também são inclusos no plano de saúde da universidade e recebem crachás, mas, além disso, tem código para reservar uma vaga de estacionamento para o professor.
+
+Por ser capaz de enviar a mensagem \emph{contrata()} para qualquer tipo de empregado, não há a necessidade de usar complicadas instruções condicionais no método \emph{contrataEmpregadoNovo()} do objeto tela. Este método não precisa mandar uma mensagem \emph{contrataProfessor()} para objetos professores, \emph{contrataFaxineiro()} para objetos faxineiros, etc. Ele só precisa enviar \emph{contrata()} para qualquer tipo de empregado e o objeto fará a coisa certa. Como resultado, você pode acrescentar novos tipos de empregados (como o \emph{Administrativo}) e não precisa mudar o objeto tela. Em outras palavras, a classe \emph{TelaContratacao} é fracamente acoplada à hierárquia de classes, o que permite a extensão do sistema facilmente.
+
+É importante mencionar que o projeto da figura \ref{fig:uniRH} não é um muito bom. Uma maneira melhor de fazer é refatorar a hierárchia usando o padrão de projeto \emph{Papeis interpretados} ilustrado na figura \ref{fig:uniRH2}. Este padrão separa o conceito de alguém ser uma pessoa e o papel que ela interpreta no trabalho. Esta separação permite que uma pessoa interprete mais de um papel no trabalho.
+
+\begin{figure}[b]
+\begin{center}
+\includegraphics[scale=0.65]{uniRH2.png}
+\end{center}
+\caption{Sistema de recursos humanos da universidade refatorado.} \label{fig:uniRH2}
+\end{figure}
 
 \section{Interfaces}
 
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.7]{ifcUml.png}
+\end{center}
+\caption{As duas notações para interfaces em UML.} \label{fig:ifcUml}
+\end{figure}
+
+Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A idéia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{criterio}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
+
+Interfaces servem para garantir acoplamentos fracos. Eles permitem a uma classe participar de um conjunto comum de funcionalidades sem que nenhuma outra classe tenha que saber algo mais além dela implementar a interface. Um objeto GUI, por exemplo, pode exibir uma lista de estudantes que atendem um critério de busca sem conhecer nada da classe \emph{Estudante}, exceto que ela implementa a interface \emph{Buscavel} e a interface \emph{Descricao} que tem um método que apresenta o estudante. A mesma GUI pode ser usada para realizar a mesma ação com os professores, se a classe \emph{Professor} também implementar estas duas interfaces. De modo análogo, se a classe \emph{Disciplina} também implementar estas interfaces, a GUI também pode ser usada para exibir uma lista de disciplinas que atendam ao critério de busca. A GUI não precisa saber nada sobre a classe, só que ela implementa as interfaces. Isto mostra um fraco acoplamento entre a GUI e os objetos das classes que ela exibe.
+
+Em linguagens como Java e C\#, interfaces fazem parte do mecanismo de tipage. Isto é, a classe \emph{Estudante} da figura \ref{fig:ifcUml} tem pelo menos três tipos: \emph{Estudante}, \emph{Serializavel} e \emph{Buscavel}. Ela também tem o tipo de todas as suas superclasses. Por exemplo, se \emph{Estudante} herda de \emph{Pessoa} e ela implementa a interface \emph{Printable}, então os objetos estudantes também são do tipo \emph{Pessoa} e \emph{Printable}. O mecanismo de tipo da sua linguagem de implementação afetará a extensão do polimorfismo suportado.
+
+A figura \ref{fig:ifcUml} mostra ainda que existem duas notações em UML para indicar que algo implementa uma interface: A notação da circunferência com linha da interface \emph{Serializavel} e a notação em caixa usada para a interface \emph{Buscavel}. A primeira tem a vantagem de ser mais compacta, enquanto a segunda fornece mais detalhes. A caixa da interface \emph{Buscavel} é a mesma da classe com o estereótipo \emph{interface}. Estereótipo é um mecanismo para definir extensões comuns e consistentes na notação UML. A seta tracejada de \emph{Estudante} para \emph{Buscavel} é uma relação \emph{realiza} em UML. Isto significa que \emph{Estudante} implementa (realiza) a interface \emph{Buscavel}.
+
 \section{Componentes}
+
+Um componente é uma unidade modular, extensível de distribuição independente que tem interface(s) contratualmente especificadas e dependências explicitamente definidas, se houver. Idealmente, componentes devem ser modulares, extensíveis e abertas. Modularidade implica em que um componente contém tudo que ele precisa para cumprir suas responsabilidades. Extensibilidade implica em que um componente pode ser melhorado para cumprir outras responsabilidades além daquelas para as quais foi originalmente projetada. E aberta implica que ele possa funcionar em várias plataformas e interagir com outros componentes através de uma única interface de programação.
+
+Componentes, como classes, implementam interfaces. As interfaces de um componente definem os seus pontos de acesso. Componentes são tipicamente implementadas como coleções de classes, idealmente, classes que formam um subconjunto coeso dos seus sistemas completos. Componentes são tipicamente pesados e podem até ser pensados como classes grandes ou mesmo subsistemas. Por exemplo, um banco de dados pode ser um componente, ou uma coleção de classes de negócio/domínio que implementam os comportamentos requeridos pelas pessoas dentro da sua aplicação pode ser um componente.
+
+Diagramas de Componentes mostram os componentes de software que compõem um pedaço maior de software, suas interfaces e suas interrelações. Vamos considerar um componente como sendo um item grande usado nas operações diárias do seu negócio -- por exemplo, um subsistema comum, um sistema comercial padrão (COTS - commercial off-the-self system), uma aplicação OO ou uma aplicação antiga empacotada. De muitas maneiras, um diagrama de componentes é simplemente um diagrama de classes numa escala maior, apenas menos detalhada.
 
 \section{Padrões}
 
@@ -749,6 +803,7 @@ Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e de
 
 \section{Questões de Revisão}
 
+\pagebreak
 \section{Exemplo de MVC - Model-View-Controller}
 
 \begin{figure}[h]
@@ -763,10 +818,10 @@ O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo sim
 
 O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação.
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{clock.png} 
-\caption{Diagrama de classes do relógio digital} \label{fig:clock}
+\caption{Diagrama de classes do relógio digital.} \label{fig:clock}
 \end{center}
 \end{figure}
 
