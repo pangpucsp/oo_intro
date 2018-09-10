@@ -1,7 +1,7 @@
 \documentclass[
 	% -- opções da classe memoir --
 	article,			% indica que é um artigo acadêmico
-	12pt,				% tamanho da fonte
+	11pt,				% tamanho da fonte
 	openright,
 	twoside,			% para impressão apenas no recto. Oposto a twoside
 	a4paper,			% tamanho do papel. 
@@ -349,17 +349,10 @@ Quando você define uma classe, você deve definir os atributos que ela tem, ass
 
 A definição de um método é mais simples: você define a lógica para ele, do mesmo modo que você codifica uma função ou um procedimento. O termo \emph{método} é usado diferentemente de como a UML usa -- o que está sendo mostrado, na verdade, são as operações da classe e os métodos são as implementações dessas operações. Esta visão de método é consequência da influência do Smalltalk, que usa o termo método dessa maneira. Não se preocupe com isto, a terminologia de objetos é notoriamente inexata. Mais para a frente detalharemos melhor a especificação de métodos. Ao vermos o conceito de colaboração, você verá que colaboração é feita exclusivamente através de métodos. Por ora, retenha que métodos fazem estas duas coisas: eles retornam um valor e/ou eles fazem alguma coisa, isto é, eles provocam um efeito de borda. Em computação, efeito de borda (\emph{side effect}) significa que uma modificação é realizada por este método na memória e esta modificação é visível por outros métodos, isto é, fora deste método.
 
-\begin{figure}[h]
+\begin{figure}
 \begin{center}
 \includegraphics[scale=1]{obj2.png} 
 \caption[Objetos no mundo real]{Objetos no mundo real} \label{fig:obj2}
-\end{center}
-\end{figure}
-
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.85]{class1.png} 
-\caption{Classes Estudante e Disciplina} \label{fig:class1}
 \end{center}
 \end{figure}
 
@@ -367,9 +360,16 @@ Na figura \ref{fig:obj2}, você vê dois tipos diferentes de objetos: um \textit
 
 A figura \ref{fig:class1} expõe 2 tipos diferentes de atributos: atributos de instância que são aplicáveis a um único objeto e atributos estáticos que são aplicáveis a todas as instâncias de uma classe. Atributos estáticos têm o nome sublinhado, atributos de instância não são sublinhados. Por exemplo, \emph{nome} é um atributo de instância na classe Estudante. Cada estudante individual tem um nome, por exemplo, um estudante tem como nome ``José da Silva'', enquanto uma outra estudante pode ter o nome ``Maria de Oliveira''. Pode até acontecer de dois estudantes diferentes terem o mesmo nome, embora sejam duas pessoas diferentes.
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.85]{class1.png} 
+\caption{Classes Estudante e Disciplina} \label{fig:class1}
+\end{center}
+\end{figure}
+
 Por outro lado, \emph{proximoNumeroEstudante} é um atributo estático (também chamado de atributo da classe) que é aplicável à classe Estudante, não especificamente a uma instância determinada. Este atributo é usado para guardar qual é o valor que será usado como número de estudante pelo próximo estudante a ser cadastrado. Quando um novo estudante ingressa na escola, seu número de estudante é dado pelo valor atual de \emph{proximoNumeroEstudante}, que será incrementado para garantir que o número de todos os estudantes é único.
 
-De modo similar, existe o conceito de método de instância e método estático (ou de classe): Métodos de instância operam sobre uma única instância, enquanto métodos estáticos operam potencialmente sobre \textit{todas} as instâncias de uma classe. \footnote{Um método estático não precisa de uma instância para operar, então ele pode ser executado mesmo se nenhuma instância ainda foi criada. Outro cuidado que novatos devem ter, é que na implementação de um método de classe não é possível acessar um atributo de instância, pois ele pode não existir, ou podem haver múltiplos deles, um para cada instância.} Na figura \ref{fig:class1}, veja que na classe \emph{Estudante} os métodos \emph{matriculaDisciplina} e \emph{desisteDisciplina} são métodos de instância, coisas que um estudante individual faria. Ela também tem um método estático \emph{buscaPorNome}, que fornece o comportamento de procurar os estudantes cujo nome atendem um critério de busca, é um método que opera sobre todas as instâncias da classe.
+De modo similar, existe o conceito de método de instância e método estático (ou de classe): Métodos de instância operam sobre uma única instância, enquanto métodos estáticos operam potencialmente sobre \textit{todas} as instâncias de uma classe. \footnote{Um método estático não precisa de uma instância para operar, então ele pode ser executado mesmo se nenhuma instância ainda foi criada. Outro cuidado que novatos devem ter, é que na implementação de um método de classe não é possível acessar um atributo de instância, pois ele pode não existir, ou podem haver múltiplos deles, um para cada instância.} Na figura \ref{fig:class1}, veja que na classe \emph{Estudante} os métodos \emph{matriculaDisciplina()} e \emph{desisteDisciplina()} são métodos de instância, coisas que um estudante individual faria. Ela também tem um método estático \emph{buscaPorNome()}, que fornece o comportamento de procurar os estudantes cujo nome atendem um critério de busca, é um método que opera sobre todas as instâncias da classe.
 
 \section{Abstração, Encapsulamento e Ocultação de Informação}
 
@@ -412,16 +412,16 @@ Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Es
 \end{center}
 \end{figure}
 
-\begin{figure}
+A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma seta com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
+
+A figura \ref{fig:uml2} mostra como você modelaria a hierárquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierárquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
+
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.8]{uml2.png} 
 \caption{Modelagem do conceito de que \emph{Professor} e \emph{Estudante} herdam de \emph{Pessoa}} \label{fig:uml2}
 \end{center}
 \end{figure}
-
-A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma seta com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
-
-A figura \ref{fig:uml2} mostra como você modelaria a hierárquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierárquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
 
 \subsection{Dicas e Técnicas para Herança}
 
@@ -442,9 +442,9 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 
 \subsection{Herança Simples e Múltipla}
 
-Quando uma classe herda de apenas uma outra classe, chamamos isto de \emph{herança simples}. Quando uma classe herda de duas ou mais classes, chamamos de \emph{herança múltipla}. Lembre-se: A subclasse herda todos os atributos e métodos de suas superclasses.
+Quando uma classe herda de apenas uma outra classe, dizemos que temos uma \emph{herança simples}. Quando uma classe herda de duas ou mais classes, temos \emph{herança múltipla}. Lembre-se: A subclasse herda todos os atributos e métodos de suas superclasses.
 
-Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem.
+Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem. Herança simples resulta em hierárquia de herança que é sempre uma árvore. Herança múltipla resulta em grafos e algumas situações com nomes iguais vindo de superclasses diferentes são muitos complexas. O livro (\citeonline{cpp:ref}) comenta sobre algumas das dificuldades enfrentadas para a implementação da herança múltipla no C++.
 
 \begin{figure}[h]
 \begin{center}
@@ -502,7 +502,7 @@ Você não precisa apenas identificar os relacionamentos entre as classes, você
 
 \subsubsection{Dica: Considere Opcionalidade e Cardinalidade Separadamente}
 
-Minha experiência mostra que é melhor considerar separadamente estes dois conceitos: Para cada direção de uma associação é importante se a associação deve existir (opcionalidade) e quantos podem possivelmente existir (cardinalidade)? Por exemplo, considere a associação ``ensina'' entre professores e disciplinas, devemos perguntar:
+A experiência mostra que é melhor considerar separadamente estes dois conceitos: Para cada direção de uma associação é importante se a associação deve existir (opcionalidade) e quantos podem possivelmente existir (cardinalidade)? Por exemplo, considere a associação ``ensina'' entre professores e disciplinas, devemos perguntar:
 \begin{itemize}
 \item Um professor deve ensinar uma disciplina, ou pode haver professores que não ensinam?
 \item Quantas disciplinas um professor pode ensinar?
@@ -520,7 +520,7 @@ Minha experiência mostra que é melhor considerar separadamente estes dois conc
 \end{center}
 \end{figure}
 
-Uma associação é um relacionamento persistente entre duas ou mais classes ou objetos. Quando você modela associações em diagramas de classes de UML, você as mostra como umalinha fina conectando duas classes, como você pode ver na figura \ref{fig:uml5}. Associações podem facilmente ficar bastante complexas; Consequentemente, você pode exibir várias coisas a respeito deles nos seus diagramas. A figura \ref{fig:uml6} mostra os itens comuns a modelar numa associação:
+Uma associação é um relacionamento persistente entre duas ou mais classes ou objetos. Quando você modela associações em diagramas de classes de UML, você as mostra como uma linha fina conectando duas classes, como você pode ver na figura \ref{fig:uml5}. Associações podem facilmente ficar bastante complexas; Consequentemente, você pode exibir várias coisas a respeito deles nos seus diagramas. A figura \ref{fig:uml6} mostra os itens comuns a modelar numa associação:
 
 \begin{figure}
 \begin{center}
@@ -575,7 +575,7 @@ Observe o diagrama de classes da figura \ref{fig:uml6}, que mostra diversas clas
 \item Um empregado possui um cargo;
 \item Um cargo pode ser preenchido por um empregado (alguns cargos podem não está preenchidos);
 \item Um empregado pode ser gerenciado por um um outro empregado, o gerente (o presidente da companhia é o único sem um gerente); e
-\item Um empregado gerencia zero ou mais empregados (um empregado pode não ter estafe).
+\item Um empregado gerencia zero ou mais empregados.
 \end{itemize}
 
 Diversos pontos importantes estão mostradas na figura \ref{fig:uml6}. Primeiro, observe que é possível ter mais de uma associação entre duas classes: As classes \emph{Estudante} e \emph{Disciplina} têm as associações \emph{se\_matricula} e \emph{auxilia} entre elas. Você se interessa nestes dois relacionamentos entre estas classes para o seu sistema de informação da universidade, logo, você precisa modelar ambas as associações.
@@ -615,13 +615,13 @@ Algumas vezes, um objeto é feito de outros. Por exemplo, um avião é feito de 
 
 Composição é um tipo forte de agregação no qual o ``todo'' é completamente responsável pelas partes e cada objeto ``parte'' só é associado a um objeto ``todo''. Por exemplo, em qualquer instante, um motor só está associado a um único avião. Além disso, nenhum outro objeto iria colaborar com o objeto motor, além do seu objeto avião. Por exemplo, objetos passageiros do avião não podem pedir para aumentar diretamente a velocidade de um motor.
 
-Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
-
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{agreg.png} 
 \caption{Exemplos de agregação} \label{fig:uml8}
 \end{center}\end{figure}
+
+Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
 
 Assim como associações são vias de duplo sentido, também as agregações são. Além disso, as associações de agregação/composição mostradas na figura \ref{fig:uml8} são lidas de maneira similar:
 \begin{itemize}
@@ -660,14 +660,14 @@ Associações transitórias são temporárias por natureza. Elas não são salva
 
 Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. Para um objeto colaborar com outro objeto, ele precisa conhecê-lo. Isto significa que deve existir, ou um relacionamento entre os objetos, ou um relacionamento do tipo ``parte-de'' entre os dois objetos. Quando não há uma associação persistente  entre dois objetos, mas eles colaboram um com o outro, você modela uma relação de dependência entre as duas classes.
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.7]{classDep.png}
 \end{center}
 \caption{Dependência entre duas classes.} \label{fig:clsDep}
 \end{figure}
 
-A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada pela linha tracejada com uma seta não cheia -- entre as classes \emph{Estudante} e \emph{TelaEdicaoEstudante}, representando o relacionamento transitório entre um objeto tela de edição de estudante usado para atualizar o objeto estudante. A tela de edição obtem a informação atual do objeto estudante, mostra no modo de edição e atualiza a informação nova quando termina a edição. O relacionamento transitório entre o objeto tela de edição e o objeto estudante existe enquanto a informação do estudante é exibida na tela. Quando a tela é fechada, o elacionamento deixa de existir (a tela também não existe mais) e os objetos transitórios provavelmente já foram destruidos.
+A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada pela linha tracejada com uma seta aberta -- entre as classes \emph{Estudante} e \emph{TelaEdicaoEstudante}, representando o relacionamento transitório entre um objeto tela de edição de estudante usado para atualizar o objeto estudante. A tela de edição obtem a informação atual do objeto estudante, mostra no modo de edição e atualiza a informação nova quando termina a edição. O relacionamento transitório entre o objeto tela de edição e o objeto estudante existe enquanto a informação do estudante é exibida na tela. Quando a tela é fechada, o relacionamento deixa de existir (a tela também não existe mais) e os objetos transitórios provavelmente já foram destruidos.
 
 Associações transitórias podem também ocorrer entre objetos persistentes. Por exemplo, na figura \ref{fig:seq}, uma associação transitória implícita\footnote{Esta associação não foi ilustrada na figura \ref{fig:uml6} porque o conceito não foi introduzido naquele momento. Pela consistência, as associações transitórias também  precisam ser modeladas.} existe entre o objeto estudante e o objeto curso (o estudante é passado como um parâmetro para o curso, para saber se ele atende as condições de pré-requisitos).
 
@@ -682,7 +682,7 @@ Associações transitórias podem também ocorrer entre objetos persistentes. Po
 
 Classes precisam, em geral, trabalhar juntas para cumprirem suas responsabilidades. Na verdade, são os objetos, as instâncias das classes que trabalham juntas. Colaboração entre objetos ocorre quando um objeto pede ao outro informações ou para o outro realizar algo. Por exemplo, um avião colabora com seus motores para poder voar. Para o avião ir mais rápido, ele pede para os motores girarem mais rápido. Quando um avião precisa desacelerar, os motores precisam desacelerar. Se o avião não colaborasse com seus motores, ele não voaria.
 
-Objetos colaboram uns com os outros pelo envio de mensagens. Uma mensagem é tanto um pedido para fazer alguma coisa, quanto um um pedido por informações. Mensagens são modeladas por diagramas de sequência e diagramas de comunicação (diagramas de colaboração em UML 1.x) em UML. A figura \ref{fig:seq} mostra um diagrama de sequência simples. Nele, você vê como um estudante requer a matrícula numa disciplina; O objeto disciplina de sua parte manda uma mensagem para o objeto curso com o qual está associado para saber se o estudante pode se matricular na disciplina (checar pré-requisitos, por exemplo). A figura \ref{fig:comm} mostra o mesmo exemplo, mas na forma de diagrama de comunicação.
+Objetos colaboram uns com os outros pelo envio de mensagens. Uma mensagem é tanto um pedido para fazer alguma coisa, quanto um um pedido por informações. Mensagens são modeladas por diagramas de sequência e diagramas de comunicação (diagramas de colaboração em UML 1.x) em UML. A figura \ref{fig:seq} mostra um diagrama de sequência simples. Nele, você vê como um estudante requer a matrícula numa disciplina: O objeto disciplina de sua parte manda uma mensagem para o objeto curso com o qual está associado para saber se o estudante pode se matricular na disciplina (checar pré-requisitos, por exemplo). A figura \ref{fig:comm} mostra o mesmo exemplo, mas na forma de diagrama de comunicação.
 
 \begin{figure}[h]
 \begin{center}
@@ -693,16 +693,9 @@ Objetos colaboram uns com os outros pelo envio de mensagens. Uma mensagem é tan
 
 Vejamos alguns detalhes sobre o diagrama de sequência, as caixas no topo do diagrama representam classificadores, no caso, mais precisamente, objetos. As linhas tracejadas penduradas nas caixas são chamadas de \textit{linha de vida} dos objetos e representam o intervalo de tempo de vida do objeto no cenário modelado. Objetos são rotulados no formato \emph{nome: classe} onde o \emph{nome} é opcional (objetos que não receberam nomes no diagrama são chamados de \textit{objetos anônimos}). A instância de \emph{Estudante} recebeu um nome porque ela é usada como parâmetro numa mensagem, já as instâncias de \emph{Disciplina} e \emph{Curso} não precisam ser referenciadas em nenhuma parte do diagrama e, portanto, podem ser anônimas. As  mensagens são indicadas por setas rotuladas, o rótulo é a assinatura do método. Valores de retorno são indicados opcionalmente por seta com linha tracejada e um rótulo indicando o valor de retorno. Valores de retorno estão representados na figura \ref{fig:seq}, mas não na \ref{fig:seq2}. Em metodologias ágeis, devemos manter os diagramas simples e assumir que o valor de retorno volta. O sequenciamento das mensagens é dado pela ordem das próprias mensagens, começando no topo a esquerda do diagrama.
 
-\begin{figure}
-\begin{center}
-\includegraphics[scale=0.65]{seq2.png}
-\end{center}
-\caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:seq2}
-\end{figure}
-
 Diagramas de comunicação têm uma notação similar aos diagramas de sequência. Objetos são indicados da mesma maneira, embora eles sejam conectados por linhas de associação sem rótulos. As mensagens são indicadas com setas de novo, embora não conectem os objetos (não há linhas de vida nos diagramas de comunicação/colaboração). A sequência de mensagens é opcionalmente indicada colocando um número na frente do nome da mensagem. Na figura \ref{fig:comm}, vemos a mesma sequência de mensagens que a da figura \ref{fig:seq}.
 
-As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colaborações:
+As dicas e técnicas a seguir devem ajudar a modelar de maneira efetiva as colaborações:
 
 \begin{enumerate}
 \item \textbf{Deve ter algum tipo de relacionamento.} A única maneira de um objeto poder mandar um mensagem para um outro é se o conhece antes. No mundo real, você não pode pedir ajuda a alguém se você não sabe como contactá-lo. O mesmo princípio se aplica a objetos. Deve existir um associação, talvez uma agregação, entre as duas classes para que as instâncias (objetos) sejam capazes de colaborar.
@@ -712,6 +705,13 @@ As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colabo
 \item \textbf{Pode haver um valor de retorno.} Se a colaboração é um pedido de informação, então deve haver o retorno de um valor (a informação pedida). Este fato deve ser incluida na documentação do método e, opcionalmente, será indicada no diagrama de sequência como uma linha tracejada. Valores de retorno não são modelados em diagramas de colaboração porque eles tendem a poluir os diagramas.
 
 \item \textbf{Pode ter ou não parâmetros.} Algumas mensagens têm parâmetros, outras não. Lembre-se de que mensagens são efetivamente uma chamada de método (função). Assim como funções têm parâmetros, métodos também têm. Por exemplo, na figura \ref{fig:seq}, um objeto estudante passa a si mesmo como um parâmetro quando chama a mensagem \emph{matriculaEstudante()} do objeto \emph{Disciplina}. Na figura \ref{fig:seq2}, o objeto entrega não precisa passar qualquer parâmetro quando pede ao objeto item o seu preço.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.65]{seq2.png}
+\end{center}
+\caption{Diagrama de sequência.} \label{fig:seq2}
+\end{figure}
 
 \item \textbf{Mensagens mostram a colaboração, não o fluxo de dados.} Mensagens são pedidos. Elas não são fluxos de dados. Diagramas de processo (diagramas de fluxo de dados) do mundo estruturado mostram fluxos de dados, que são movimentos de dados de uma parte do sistema para outra.
 
@@ -727,7 +727,7 @@ As dicas e técncas a seguir devem ajudar a modelar de maneira efetiva as colabo
 
 Acoplamento é uma medida do quanto dois itens, tais como classes ou métodos, estão relacionados entre eles. Quando uma classe depende de uma outra, dizemos que elas estão acopladas. Quando uma classe interage com uma outra, mas não conhece nada sobre os detalhes de implementação da outra, dizemos que elas são fracamente acopladas. Quando uma classe se baseia na implementação (isto é, tem acesso direto aos atributos da outra), dizemos que elas estão fortemente acopladas.
 
-Na discussão de como \emph{Estudante} pode implementar o método \emph{se\_matricula()}: ele pode acessar diretamente o atributo \emph{listaDeEstudantes} de \emph{Disciplina}, ou pode enviar uma mensagem para objetos \emph{Disciplina} pedindo para matricular o estudante na disciplina. Acessando diretamente e mudando o atributo \emph{listaDeEstudantes} pode economizar alguns ciclos de CPU e rodar mais rapidamente, mas assim que a implementação daquele atributo mudar (passando de um vetor para uma lista encadeada, por exemplo), seu código da classe \emph{Estudante} também vai ter de mudar. Isto não é muito bom. O problema básico é que quando duas classes são fortemente acopladas, uma mudança numa, requer uma mudança na outra. Isto, por sua vez, pode requerer uma mudança em outra classe, e outra, ... Acoplamento forte é uma das causas para a manutenção de código ser complexa. O que deveria ser uma troca simples de manutenção pode levar meses para estabilizar, se é que vai ficar estável. É incrível a quantidade de código que existe que ninguém quer tocar com medo de quebrá-lo. Por exemplo, lembre-se do ano 2000 (bug do milênio, que não era no milênio).
+Na discussão de como \emph{Estudante} pode implementar o método \emph{se\_matricula()}: Ele pode acessar diretamente o atributo \emph{listaDeEstudantes} de \emph{Disciplina}, ou pode enviar uma mensagem para objetos \emph{Disciplina} pedindo para matricular o estudante na disciplina. Acessando diretamente e mudando o atributo \emph{listaDeEstudantes} pode economizar alguns ciclos de CPU e rodar mais rápido, mas assim que a implementação daquele atributo mudar (passando de um \textit{array} para uma \textit{lista encadeada}, por exemplo), seu código da classe \emph{Estudante} também vai ter de mudar. Isto não é muito bom. O problema básico é que quando duas classes são fortemente acopladas, uma mudança numa, requer uma mudança na outra. Isto, por sua vez, pode requerer uma mudança em outra classe, e em outra, ... Acoplamento forte é uma das causas para a manutenção de código ser complexa. O que deveria ser uma troca simples de manutenção pode levar meses para estabilizar, se é que vai ficar estável. É incrível a quantidade de código que existe que ninguém quer tocar com medo de quebrá-lo. Por exemplo, lembre-se do ano 2000 (bug do milênio, que não era no milênio).
 
 Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e decidem escrever código fortemente acoplado. Isto só se justifica quando você está desesperado em reduzir todos códigos redundantes do seu programa. Por exemplo, \textit{drivers} de bancos de dados são fortemente acoplados aos sistemas de arquivos do sistema operacional onde o banco de dados está instalado. Se você puder salvar uns microsegundos no acesso aos dados, isto pode ser significativo ao acessar centenas de milhares de objetos.
 
@@ -774,14 +774,14 @@ Por ser capaz de enviar a mensagem \emph{contrata()} para qualquer tipo de empre
 
 \section{Interfaces}
 
+Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A idéia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{criterio}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
+
 \begin{figure}
 \begin{center}
 \includegraphics[scale=0.7]{ifcUml.png}
 \end{center}
 \caption{As duas notações para interfaces em UML.} \label{fig:ifcUml}
 \end{figure}
-
-Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A idéia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{criterio}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
 
 Interfaces servem para garantir acoplamentos fracos. Eles permitem a uma classe participar de um conjunto comum de funcionalidades sem que nenhuma outra classe tenha que saber algo mais além dela implementar a interface. Um objeto GUI, por exemplo, pode exibir uma lista de estudantes que atendem um critério de busca sem conhecer nada da classe \emph{Estudante}, exceto que ela implementa a interface \emph{Buscavel} e a interface \emph{Descricao} que tem um método que apresenta o estudante. A mesma GUI pode ser usada para realizar a mesma ação com os professores, se a classe \emph{Professor} também implementar estas duas interfaces. De modo análogo, se a classe \emph{Disciplina} também implementar estas interfaces, a GUI também pode ser usada para exibir uma lista de disciplinas que atendam ao critério de busca. A GUI não precisa saber nada sobre a classe, só que ela implementa as interfaces. Isto mostra um fraco acoplamento entre a GUI e os objetos das classes que ela exibe.
 
@@ -797,11 +797,61 @@ Componentes, como classes, implementam interfaces. As interfaces de um component
 
 Diagramas de Componentes mostram os componentes de software que compõem um pedaço maior de software, suas interfaces e suas interrelações. Vamos considerar um componente como sendo um item grande usado nas operações diárias do seu negócio -- por exemplo, um subsistema comum, um sistema comercial padrão (COTS - commercial off-the-self system), uma aplicação OO ou uma aplicação antiga empacotada. De muitas maneiras, um diagrama de componentes é simplemente um diagrama de classes numa escala maior, apenas menos detalhada.
 
+A figura \ref{fig:compo} mostra um exemplo de um diagrama de componente usado para modelar uma arquitetura de negócio para a universidade. As caixas representam componentes -- neste caso, as interfaces de usuário que o pessoal usa para interagir com os sistemas da universidade, os componentes de negócio tais como \emph{Instalacoes} ou componentes técnicos como o componente de \emph{Seguranca} ou banco de dados.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.5]{componente.png}
+\end{center}
+\caption{Diagrama de componentes da UML 2.} \label{fig:compo}
+\end{figure}
+
+Na figura, você vê que os componentes UI têm dependências nas interfaces dos componentes de negócio. Ao fazer os componentes UI dependentes das interfaces e não dos próprios componentes, você torna possível substituir os componentes com diferentes implementações desde que eles implementem as interfaces dadas. Isto reduz acoplamento. De modo similar, é possível que os componentes de negócio dependam uns dos outros. Por exemplo, o componente \emph{Disciplina} é acoplado ao componente \emph{Horario}. 
+
+Uma notação interessante da notação UML 2 é o uso de soquetes. Um soquete é o semicírculo em torno do símbolo pirulito, como pode ser visto com as interfaces \emph{ControleAcesso} e \emph{Persistencia} com as componentes de \emph{Seguranca} e \emph{Persistencia}, respectivamente. Este símbolo é usado para indicar que alguma coisa requer a existência de uma interface. Por exemplo, as quatro componentes de negócios (\emph{Instalacoes}, \emph{Estudante}, \emph{Disciplina} e \emph{Horario}) todas requerem a existência de alguma coisa que implemente a interface \emph{ControleAcesso}.
+
+Observe a consistência da notação entre diagramas de classes e diagramas de componentes. Ambos usam exatamente a mesma notação para relacionamentos de dependência, vide figura \ref{fig:clsDep}. Esta é uma característica boa da UML: A notação é consistente. Existem uns poucos detalhes da UML que não são consistentes, mas, na maioria dos casos, cada conceito é modelado da mesma maneira através dos diferentes diagramas.
+
 \section{Padrões}
+
+Com a experiência, você vai sentir que você repetidamente está resolvendo os mesmos problemas. Se você não resolveu pessoalmente um certo problema, é muito provável que alguém ou resolveu este problema ou um muito similar. O problema em que você está trabalhando pode ser simples ou complexo, mas, geralmente, já foi trabalhado antes. Não seria bom ser capaz de encontrar uma solução facilmente, ou pelo menos uma solução parcial, para o problema? Pense em quanto tempo e esforço poderia ser poupado se você tivesse acesso a uma biblioteca de soluções para problemas de desenvolvimento de sistemas comuns. É disto que tratam os padrões.
+
+Um padrão é uma solução para um problema comum levando em conta as forças relevantes, apoiando efetivamente o reuso de técnicas e procedimentos comprovados de outros desenvolvedores. Existem diferentes tipos de \emph{padrões}, incluindo \emph{padrões de análise}, \emph{padrões de projeto} e \emph{padrões de processos}. Padrões de análise descrevem uma solução para problemas comuns encontrados na análise da lógica de negócios/domínio de uma aplicação, padrões de projeto descrevem uma solução para problemas comuns encontrados no projeto de sistemas e padrões de processos se aplicam a questões de processos de software. O livro (\citeonline{design:patterns}) é a referência de base clássica que popularizou o uso de padrões em software.
+
+Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas uma instância. Por exemplo, deve haver apenas uma janela de edição para um dado tipo de alteração, ou alguma informação de configuração só pode ser armazenada num único local, ou você precisa manter valores constantes num único lugar. Nestes casos todos, você precisa de uma única instância da classe em questão -- uma única instância de uma caixa de diálogo, uma única instância da informação de configuração e uma única instância das constantes. Este problema é resolvido pelo padrão \emph{Singleton} (\citeonline{design:patterns}), um padrão de projeto que mostra como apenas uma instância de uma classe pode existir. A figura \ref{fig:singleton} mostra o diagrama de classe de um \emph{Singleton}. Um atributo estático existe para acessar a instância única, se ela existe. O método \emph{create()}, talvez melhor chamado de \emph{getSingleton()}, permite acessá-lo e criá-lo se necessário. Embora \emph{Singleton} seja um padrão simples, ele é muito usado.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.7]{singleton.png}
+\end{center}
+\caption{Padrão de projeto \emph{Singleton}} \label{fig:singleton}
+\end{figure}
+
+Existem padrões muito complexos; a maioria dos padrões são baseados em três ou mais classes. O principal desafio com os padrões é que quando você aprende sobre eles, tudo parece ser um padrão e, às vezes, isto é verdade. O perigo é que você pode exagerar na contrução do seu software, aumentando a dificuldade de manutenção, apesar de reduzir o tempo para implementar os requisitos. Para evitar, atenuar, este problema, o modelamento ágil (AM) inclui a prática de \emph{aplicar gentilmente os padrões}, onde você introduz os padrões pela \emph{refatoração} do seu projeto lentamente no lugar de aplicá-los quando você acha que precisa deles.
 
 \section{O que foi aprendido}
 
+Neste capítulo, você foi apresentado aos principais conceitos do paradigma da orientação objeto e à notação básica da UML 2 para modelar alguns destes conceitos. Os conceitos de OO são numerosos e, às vezes, complexos. Não se preocupe, é normal se sentir sobrecarregado no início, mas com a prática você passa a dominá-los. 
+
 \section{Questões de Revisão}
+
+\begin{enumerate}
+\item Discorra sobre a diferença entre herança e composição. Quais são as vantagens e desvantagens de cada um deles. Você pode implementar um com o outro?
+
+\item Como uma classe se assemelha com uma tabela de banco de dados? Como elas se diferem? Como estas diferenças e similaridades justificam modelos de classes e modelos de dados?
+
+\item Discorra sobre a diferença entre associação e composição. Quais são as vantagens e desvantagens de cada um?
+
+\item Quando você deve aplicar herança? Quando não? Forneça exemplos de quando herança é apropriada e quando não é.
+
+\item Compare e oponha os conceitos de acoplamento e coesão. Como eles se relacionam, se é que se relacionam?
+
+\item Descreva o relacionamento entre o polimorfismo e a tipagem.
+
+\item Através da Internet, pesquise sobre tecnologias de bancos dedados, incluindo bancos de dados relacionais, bancos de dados de objetos, bancos de dados relacionais-objetos, bancos de dados XML, bancos de dados hierárquicos e bancos de dados em redes. Forneça pelo menos um exemplo de cada. Compare as tecnologias, listando as vantagens, desvantagens e uma indicação de quando você deve usar cada um.
+
+\item Como interfaces reduzem o acoplamento de sistemas OO? Como elas podem aumentar? Por que?
+\end{enumerate}
 
 \pagebreak
 \section{Exemplo de MVC - Model-View-Controller}
@@ -881,6 +931,9 @@ A classe \emph{ClockView} é a nossa classe de visualização. Ela herda da clas
 \begin{verbatim}
 public class Clock {
     public static void main(String[] argv) {
+        new Clock().go();
+    }
+    public void go() {
         ClockView cv = new ClockView();
         cv.setVisible(true);
         try {
@@ -895,7 +948,7 @@ public class Clock {
 }
 \end{verbatim}
 
-A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital é muito simples, tudo que ela tem é o método \emph{main()} que repete para sempre (\emph{loop} infinito) a atualização da tela do relógio e espera por meio segundo (dormindo). A espera é importante para liberar o processador do computador para outras aplicações. A razão de esperar por meio segundo e não por um segundo é que o erro de exibição no caso da espera de um segundo pode ser de até um segundo. No pior caso o programa leu as horas com o objeto TimeStamp justo quando ia mudar o segundo e mostra este valor e só após o tempo de espera é que a tela vai ser atualizada. Com meio segundo de espera, o erro máximo é de 0,5s.
+A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital é muito simples, tudo que ela tem é o método \emph{main()} que repete para sempre (\emph{loop} infinito) a atualização da tela do relógio e espera por meio segundo (dormindo). A espera é importante para liberar o processador do computador para outras aplicações. A razão de esperar por meio segundo e não por um segundo é que o erro de exibição no caso da espera de um segundo pode ser de até um segundo. No pior caso o programa leu as horas com o objeto TimeStamp justo quando ia mudar o segundo e mostra o valor anterior, só após o tempo de espera de 1s é que a tela vai ser atualizada. Com meio segundo de espera, o erro máximo é de 0,5s.
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
