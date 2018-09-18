@@ -1,6 +1,6 @@
 \documentclass[
 	% -- opções da classe memoir --
-	article,			% indica que é um artigo acadêmico
+%	article,			% indica que é um artigo acadêmico
 	11pt,				% tamanho da fonte
 	openright,
 	twoside,			% para impressão apenas no recto. Oposto a twoside
@@ -99,12 +99,13 @@ O texto é fortemente baseado no capítulo 2 do livro \cite{Ambler:TOP:3ed}, com
 
 \textual
 
-\section{Introdução}
-\addcontentsline{toc}{section}{Introdução}
+%\section{Introdução}
+%\addcontentsline{toc}{section}{Introdução}
+\chapter{Conceitos Básicos de Orientação a Objetos}
 
 Você precisa entender os conceitos de orientação a objetos, OO, antes de aplicá-los com sucesso no desenvolvimento de sistemas. Como as técnicas OO emergiram, em parte, de áreas da engenharia de software, inteligência artificial e modelagem da informação, muitas dessas técnicas podem parecer já familiares. Não permita que isto o torne complacente -- você ainda terá de compreender vários conceitos novos.
 
-Neste trabalho veremos:
+Neste capítulo veremos:
 
 \begin{itemize}
 \item Uma rápida introdução aos conceitos de OO;
@@ -126,7 +127,7 @@ Neste trabalho veremos:
 \subsection{Uma rápida introdução aos conceitos de OO}
 Veremos nesta seção os conceitos fundamentais das técnicas de desenvolvimento OO. Programadores experientes com tecnologias estruturadas já conhecem alguns destes conceitos, outros são novos. Por exemplo, conceitos que estão no núcleo de OO como encapsulamento, acoplamento e coesão vêm da engenharia de software. Estes conceitos são importantes porque eles revelam boas práticas de projeto independentemente da tecnologia que está sendo usada. Não se engane, entretanto, não é porque você já viu alguns dos conceitos e os pratica que você já está fazendo OO, entretanto, você já está realizando bons projetos. Enquanto fazer bons projetos é uma grande parte da orientação a objetos, ainda há muito mais.
 
-Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas todos nós, programadores experientes, sabemos que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar bom no desenvolvimento estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Para lhe dar um gostinho do conteúdo deste artigo, os conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
+Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas todos nós, programadores experientes, sabemos que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar bom no desenvolvimento estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Para lhe dar um gostinho do conteúdo deste texto, os conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
 
 \begin{longtable}[l]{p{4.6cm}p{11.1cm}}
 \caption[Conceitos OO]{Conceitos e termos da Orientação a Objetos}
@@ -216,6 +217,8 @@ Padrão & Uma solução reusável para um problema comum levando em conta força
 
 Persistência & O armazenamento de objetos em memória permanente, por exemplo, em arquivos, bancos de dados, etc.\\
 
+Perspectivas & Os objetos podem ser vistos sob três perspectivas: Do conceito, da especificação e da implementação \\
+
 Polimorfismo & A capacidade de diferentes objetos responderem a uma mesma mensagem de maneiras diferentes, permite que um objeto interaja com um outro sem conhecer o seu tipo exato\\
 
 Propriedade & Em UML 2, um valor nomeado (com nome), por exemplo, atributos e associações, inclusive composição, denotando uma característica de um elemento (tal como, uma classe, ou um componente). Em C\#, a combinação de um atributo com seus getter e setter \\
@@ -232,7 +235,7 @@ Superclase & Uma classe da qual uma outra herda.\\
 
 \section{Conceitos de OO do ponto de vista estrutural}
 
-Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, suponho que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , quero descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
+Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, suponho que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , vamos descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
 
 \begin{description}
 \item[Classe] Uma classe é uma abstração de software de um objeto, efetivamente, um padrão a partir do qual os objetos são criados. Se você tiver experiência com bancos de dados, você pode pensar numa classe como uma tabela, embora tenha mais em classes do que isto conforme você verá mais tarde. A definição de uma classe descreve o layout, incluindo tanto os dados, quanto as funcionalidades, dos objetos a serem criados a partir deles. Observe que eu disse, tanto os dados, quanto as funcionalidades. Diferente de uma tabela, que define apenas dados, uma classe define ambos, dados (atributos) e código (operações/métodos). Por enquanto, uma boa maneira de pensar a respeito de uma classe é que ela é a combinação de uma definição de tabela e a definição do código fonte que acessa os dados. Infelizmente, esta é uma visão muito orientada a dados de objetos que ignora a principal força dos objetos que é a capacidade de responder a pedidos de ações. Entretanto, este é uma introdução suficientemente boa, por ora.
@@ -242,11 +245,59 @@ Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:con
 \item[Atributo] Um atributo é equivalente a um elemento de dados num registro. Do ponto de vista de programação, também faz sentido pensar num atributo como uma variável local aplicável a apenas um objeto.
 
 \item[Método] Um método pode ser pensado tanto como uma função ou um procedimento. Métodos acessam e modificam os atributos de um objeto. Melhor ainda, métodos podem fazer toda uma série de coisas que nada têm a ver com os atributos. Alguns métodos retornam um valor (como as funções), enquanto outros provocam outros efeitos colaterais, como impressão ou armazenamento em memória permanente. Um método útil deve ou retornar um valor, ou ter um efeito colateral significativo.
+
 \end{description}
+
+(\citeonline{uml:destilado}) descreve três perspectivas diferentes no processo de desenvolvimento OO que ajudam a determinar as classes:
+
+\begin{description}
+\item[Perspectiva Conceitual] Esta perspectiva ``representa os conceitos do domínio estudado ... um modelo conceitual deve ser obtido sem, ou com pouca, ligação com o software que vai implementá-lo ...'' Ela responde à pergunta: ``Pelo que sou responsável?''
+
+\item[Perspectiva da Especificação] ``Agora olhamos para o software, não para a implementação, mas para as interfaces.'' Ela responde à pergunta: ``Como sou usado?''
+
+\item[Perspectiva da Implementação] Estamos na visão do próprio código. ``Esta é provavelmente a perspectiva mais usada, mas de muitas maneiras, a perspectiva da especificação é melhor.'' Ela responde à pergunta: ``Como cumpro minhas responsabilidades?''
+\end{description}
+
+\citeonline{DP:explained} afirma que a melhor maneira de projetar as classes é pela determinação das suas responsabilidades.
 
 \section{Os diagramas de UML 2}
 
-Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e resumidos na Tabela \ref{tab:diaUML} é importante para a compreensão da análise e do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feito usando a ferramenta Dia, \citeonline{dia:tool}.}:
+A \textit{Unified Modeling Language}, UML, é uma linguagem visual (isto é, uma notação gráfica de diagramas com semântica) usada para criar modelos de programas. Neste contexto, o termo \textit{modelos de programas} significa representações em diagramas dos programas que mostram os relacionamentos entre os objetos no código. A tabela \ref{tab:useUML} ilustra o uso dos diagramas UML em diferentes momentos do desenvolvimento OO.
+
+\begin{longtable}[l]{p{4.7cm}p{11cm}}
+\caption{Os Diagramas de UML 2 e seus propósitos} \label{tab:useUML}\\
+
+\multicolumn{1}{c}{\textbf{Quando você está}} & \multicolumn{1}{c}{\textbf{Diagramas UML a usar}} \\
+\midrule
+\endfirsthead
+
+\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- continuação da página anterior}} \\
+\multicolumn{1}{c}{\textbf{Quando você está}} & \multicolumn{1}{c}{\textbf{Diagramas UML a usar}} \\
+\midrule
+\endhead
+
+\multicolumn{2}{r}{{Continua na próxima página}} \\% \hline
+\endfoot
+
+\hline %\hline
+%\legend{Fonte: \citeonline{DP:explained}}
+\endlastfoot
+
+Na fase de análise & Diagramas de Caso de Uso, que envolvem entidades interagindo com o sistema (usuários e outros sistemas) e os pontos de função que você precisa implementar.\\
+
+ & Diagramas de Atividade, cujo foco é o fluxo de trabalho do domínio do problema (o verdadeiro espaço onde as pessoas e outros agentes estão trabalhando, a área de trabalho do programa) e não o fluxo da lógica do programa.\\
+ 
+Observando as interações dos objetos & Diagramas de Interação, que mostram como os objetos interagem entre eles. Por lidar com casos específicos e não com situações gerais, eles demonstram serem úteis tanto para verificar os requerimentos, quanto para verificar os projetos. O diagrama de interação mais popular é o Diagrama de Sequência. \\
+
+Na fase de projeto & Diagramas de Classe, que detalham os relacionamentos entre as classes.\\
+
+Observando mudanças de \textit{comportamento} em função do estado atual do objeto & Diagramas de Máquina de Estado, que detalha os diferentes estados em que o objeto pode estar e suas transições.\\
+
+Na fase de distribuição & Diagramas de Distribuição, que mostram como módulos diferentes serão distribuidos.
+
+\end{longtable}
+
+Entender os 14 diagramas de UML 2.x ilustrados na figura \ref{fig:uml14dia} e resumidos na tabela \ref{tab:diaUML} é importante para a compreensão da análise e do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feitos usando a ferramenta Dia, \citeonline{dia:tool}.}:
 
 \begin{description}
 \item[\emph{Diagramas de Comportamento}:] Este é o tipo de diagrama que representa características comportamentais de um sistema ou processo de negócio. Isto inclui diagramas de atividade, máquina de estado e caso de uso, assim como os 4 diagramas de interação.
@@ -256,7 +307,7 @@ Entender os 14 diagramas de UML 2.5 ilustrados na figura \ref{fig:uml14dia} e re
 \item[\emph{Diagramas Estruturais}:] Este tipo de diagrama representa os elementos estáticos de uma especificação que não mudam com o tempo. Isto inclui os diagramas de classe, estrutura composta, componente, distribuição (\textit{deployment}), objetos, pacotes e perfil.
 \end{description}
 
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.55]{UML_diagrams_overview.png} 
 \caption{Hierárquia dos diagramas UML} \label{fig:uml14dia}
@@ -430,7 +481,7 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 \begin{description}
 \item[Procure semelhanças:] Sempre que houver semelhança em duas ou mais classes, seja semelhança nos atributos, seja nos métodos, então, você provavelmente tem uma oportunidade para aplicar a herança.
 
-\item[Procure por classes existentes:] Quando você identifica uma nova classe pode ser que você já tenhauma classe semelhante a ela. Algumas vezes, você pode herdar diretamente de uma classe existente e apenas acrescentar código para as diferenças entre as duas. Por exemplo, suponha que seu sistema de informação universitária também precisa suportar administradores da universidade. A classe \emph{Pessoa} já tem muitas características de uma classe \emph{Adminitrador} precisa, logo você deve considerar se \emph{Administrador} deve herdar de \emph{Pessoa}.
+\item[Procure por classes existentes:] Quando você identifica uma nova classe pode ser que você já tenhauma classe semelhante a ela. Algumas vezes, você pode herdar diretamente de uma classe existente e apenas acrescentar código para as diferenças entre as duas. Por exemplo, suponha que seu sistema de informação universitária também precisa suportar administradores da universidade. A classe \emph{Pessoa} já tem muitas características de uma classe \emph{Administrador} precisa, logo você deve considerar se \emph{Administrador} deve herdar de \emph{Pessoa}.
 
 \item[Siga a regra da sentença:] Uma das frases a seguir deve ter sentido: ``Uma subclasse é um tipo da superclasse'' ou ``Uma subclasse é como uma superclasse''. Por exemplo, faz sentido dizer que um estudante é um tipo de pessoa e um dragão é como um pássaro. Não faz sentido dizer que um estudante é um tipo de veículo, ou é como um veículo, então, a classe \emph{Estudante} provavelmente não deve herdar de \emph{Veiculo}. Se nenhuma das sentenças faz sentido, então você deve ter encontrado um relacionamento de composição ou de associação.
 
@@ -671,11 +722,20 @@ A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada p
 
 Associações transitórias podem também ocorrer entre objetos persistentes. Por exemplo, na figura \ref{fig:seq}, uma associação transitória implícita\footnote{Esta associação não foi ilustrada na figura \ref{fig:uml6} porque o conceito não foi introduzido naquele momento. Pela consistência, as associações transitórias também  precisam ser modeladas.} existe entre o objeto estudante e o objeto curso (o estudante é passado como um parâmetro para o curso, para saber se ele atende as condições de pré-requisitos).
 
-\begin{figure}[h]
+\begin{figure}
 \begin{center}
 \includegraphics[scale=0.65]{clsSeq.png}
 \end{center}
 \caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:seq}
+\end{figure}
+
+A figura \ref{fig:relac} resume as notações para relacionamentos.
+
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.65]{clsRelac.png}
+\end{center}
+\caption{Diagrama de sequência mostrando mensagens entre objetos.} \label{fig:relac}
 \end{figure}
 
 \section{Colaboração}
@@ -765,7 +825,7 @@ Por ser capaz de enviar a mensagem \emph{contrata()} para qualquer tipo de empre
 
 É importante mencionar que o projeto da figura \ref{fig:uniRH} não é um muito bom. Uma maneira melhor de fazer é refatorar a hierárchia usando o padrão de projeto \emph{Papeis interpretados} ilustrado na figura \ref{fig:uniRH2}. Este padrão separa o conceito de alguém ser uma pessoa e o papel que ela interpreta no trabalho. Esta separação permite que uma pessoa interprete mais de um papel no trabalho.
 
-\begin{figure}[b]
+\begin{figure}
 \begin{center}
 \includegraphics[scale=0.65]{uniRH2.png}
 \end{center}
@@ -827,7 +887,9 @@ Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas 
 \caption{Padrão de projeto \emph{Singleton}} \label{fig:singleton}
 \end{figure}
 
-Existem padrões muito complexos; a maioria dos padrões são baseados em três ou mais classes. O principal desafio com os padrões é que quando você aprende sobre eles, tudo parece ser um padrão e, às vezes, isto é verdade. O perigo é que você pode exagerar na contrução do seu software, aumentando a dificuldade de manutenção, apesar de reduzir o tempo para implementar os requisitos. Para evitar, atenuar, este problema, o modelamento ágil (AM) inclui a prática de \emph{aplicar gentilmente os padrões}, onde você introduz os padrões pela \emph{refatoração} do seu projeto lentamente no lugar de aplicá-los quando você acha que precisa deles.
+Existem padrões muito complexos; A maioria dos padrões são baseados em três ou mais classes. O principal desafio com os padrões é que quando você aprende sobre eles, tudo parece ser um padrão e, às vezes, isto é verdade. O perigo é que você pode exagerar na contrução do seu software, aumentando a dificuldade de manutenção, apesar de reduzir o tempo para implementar os requisitos. Para evitar, atenuar, este problema, o modelamento ágil (AM) inclui a prática de \emph{aplicar gentilmente os padrões}, onde você introduz os padrões pela \emph{refatoração} do seu projeto lentamente no lugar de aplicá-los quando você acha que precisa deles.
+
+No próximo capítulo, veremos os padrões com um pouco mais de profundidade. \citeonline{DP:explained} considera que um bom momento para aprender padrões de projeto é quando se está aprendendo projetos com orientação a objetos.
 
 \section{O que foi aprendido}
 
@@ -853,7 +915,111 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 \item Como interfaces reduzem o acoplamento de sistemas OO? Como elas podem aumentar? Por que?
 \end{enumerate}
 
-\pagebreak
+\chapter{Padrões de Projeto}
+
+Neste capítulo veremos um resumo das idéias apresentadas em \citeonline{DP:explained}. Os autores deste livro acreditam que os alunos podem aprender o desenvolvimento OO simultaneamente com os padrões de projeto. Não veremos os padrões com a minúcia de \citeonline{DP:explained}, mas apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler o texto original.
+
+\subsection{O Padrão Fachada}
+\subsection{O Padrão Adaptador}
+\subsection{O Padrão Estratégia}
+\subsection{O Padrão Ponte}
+\subsection{O Padrão Fabrica Abstrata}
+\subsection{O Padrão Decorador}
+\subsection{O Padrão Observador}
+\subsection{O Padrão Método Gabarito}
+\subsection{O Padrão Construtor}
+\subsection{O Padrão Método Fabrica}
+\subsection{O Padrão Protótipo}
+\subsection{O Padrão Singleton}
+\subsection{O Padrão Trava Duplamente Verificada}
+\subsection{O Padrão Piscina de Objetos}
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+\subsection{O Padrão }
+
+\chapter{Rápida Introdução ao Scrum}
+
+\section{O Que É Scrum?}
+Scrum é um framework projetado para ajudar pequenas equipes unidas a desenvolver produtos complexos. Resultado do trabalho de um punhado de engenheiros de software trabalhando juntos no final do século XX, scrum ganhou força no setor tecnológico, mas não é necessariamente técnico e pode ser facilmente adaptado para outras indústrias. Os autores \citeonline{scrum:brief} dizem que você pode adaptá-lo para construir uma ratoeira melhor, ou para administrar a divisão de \textit{marketing} de uma companhia de cachorrinhos de estimação, ou até para escrever um livro, como eles fizeram.
+
+Uma equipe scrum consiste, tipicamente, de sete, mais ou menos duas, pessoas que trabalham juntas em curtos intervalos de intensa atividade chamadas de arrancadas (\emph{sprints}), com bastante tempo embutido para revisão e reflexão. Um dos mantras de scrum é ``inspecionar e adaptar'' e equipes scrum são caracterizadas por um foco intenso  na melhoria contínua do processo deles e do produto. Neste capítulo, veremos uma introdução muito rápida da terminologia do scrum: os vários papéis, artefatos e eventos que ocorrem num ciclo de arrancada (\emph{sprint cycle}).
+
+\section{Pápeis}
+O Scrum conhece três papéis distintos para os membros da equipe:
+\begin{description}
+\item[Proprietário do Produto] O proprietário do produto (\emph{product owner}) é responsável pela maximização do retorno que o negócio traz ao investimento (ROI - Return-Of-Investment). Ele é o único que controla a ordem, a prioridade, da lista de pendências (\textit{backlog items}) da equipe. Ele garante que a equipe entende totalmente os requisitos. Ele registra os requisitos na forma de estórias de usuário (\emph{user stories}), por exemplo: ``Como um <papel - tipo de usuário>, quero <uma característica>, de modo que possa <fazer algo>'' e coloca-as na lista de pendências. Cada uma destas estórias de usuário, quando completada, aumentará o valor do produto.
+
+\item[Mestre Scrum] O Mestre Scrum age como um \textit{coach} (treinador), guiando a equipe para níveis mais altos de coesão, auto-organização e desempenho. Enquanto a equipe entrega o produto, o Mestre Scrum entrega uma equipe de alto desempenho e auto-organizada. O Mestre Scrum ajuda a equipe a aprender e aplicar scrum e outras práticas ágeis relacionadas. O mestre scrum está sempre disponível para ajudar a equipe na remoção de obstáculos que estejam bloqueando a execução do trabalho. O mestre scrum não é o chefe, ele é um membro da equipe que se destaca pelo seu conhecimento e suas responsabilidades.
+
+\item[Membro de Equipe] Equipes scrum de alto desempenho são altamente colaborativas, elas também são auto-organizadas. Os membros da equipe têm total autoridade sobre como o trabalho é realizado. A equipe decide por si quais são as ferramentas a serem usadas e quais membros irão trabalhar em quais tarefas. Se o negócio precisa de estimativas de cronograma, são os membros da equipe que criam as estimativas. Uma equipe scrum deve possuir todas as capacitações necessárias para criar um produto entregável. Ocasionalmente, pode ser que um membro tenha de trabalhar fora da sua especialidade para que um item da lista de pendências (uma estória de usuário) saia do estado ``progredindo'' para ``feito''. Esta é uma mudança de mentalidade do ``faço meu serviço'' para ``faço o serviço''. 
+
+\end{description}
+
+O papel do Product Owner resumido:
+\begin{itemize}
+\item detém a visão do produto;
+\item representa os interesses do negócio;
+\item representa os clientes;
+\item é dono da lista de pendências;
+\item ordena, prioriza, os itens da lista de pendências;
+\item cria critérios de aceitação para os itens da lista de pendências; e
+\item está disponível para responder às dúvidas dos membros da equipe.
+\end{itemize}
+
+O papel do Mestre Scrum resumido:
+\begin{itemize}
+\item especialista e orientador scrum;
+\item treinador;
+\item quebrador de barreiras; e
+\item facilitador.
+\end{itemize}
+
+O papel de Membro da Equipe resumido:
+\begin{itemize}
+\item responsável por completar as estórias do usuário para incrementar o valor do produto;
+\item se auto-organizar para conseguir que todo o trabalho necessário seja feito;
+\item criar suas próprias estimativas de cronogramas;
+\item decidir ``como fazer o trabalho''; e
+\item evitar o pensamento ``não é meu serviço''.
+\end{itemize}
+
+\section{Artefatos do Scrum}
+\subsection{A Lista de Pendências do Produto}
+A lista de pendências do produto é uma lista acumulativa de itens entregáveis desejados para o produto. Isto inclui características, consertos de erros (\emph{bug fixes}), alterações na documentação e qualquer outra coisa que seja significativa e valiosa para produzir. Embora pendência seja um termo correto para um item da lista, as equipes de scrum preferem usar o termo estória de usuário para reforçar a noção de que construimos produtos para satisfazer as necessidades dos usuários.
+
+Cada item da lista deve incluir as seguintes informações:
+\begin{itemize}
+\item Quais usuários vão se beneficiar da estória;
+\item Uma rápida descrição da funcionalidade desejada (o que precisa ser contruido);
+\item A razão para a estória ser preciosa (por que precisamos realizá-la);
+\item Uma estimativa de quanto trabalho será necessário para realizar a estória; e
+\item Critérios de aceitação que ajudarão a saber se a implementação é correta.
+\end{itemize}
+
+\subsection{A Lista de Pendências da Arrancada (\emph{Sprint Backlog})}
+A lista de pendências da arrancada é a lista de coisas a fazer da arrancada. Diferente da lista de pendências do produto, ela tem tempo de vida finito: a duração da arrancada. Ela inclui todas as estórias e tarefas associadas com que a equipe se compromete nesta arrancada. Estórias são entregas e podem ser pensadas como unidades de valor. Tarefas são coisas que precisam ser feitas, para entregar as estórias, logo, tarefas podem ser vistas como unidades de trabalho. Uma estória é algo que uma equipe entrega; Uma tarefa é um pedaço de trabalho que alguém faz. Cada estória normalmente requer muitas tarefas.
+
+\subsection{Gráficos de Queimada}
+Um gráfico de queimada (\emph{burn chart}) nos mostra a relação entre o tempo e o escopo. O tempo está no eixo horizontal X e o escopo está no eixo vertical Y. Um gráfico de queimada nos mostra quanto de escopo uma equipe conseguiu realizar num período de tempo. Cada vez que algo é completado, a linha no gráfico se move para cima. Um gráfico de queimada nos mostra o que falta fazer. Em geral, esperamos que o trabalho restante diminua com o tempo à medida que a equipe termina tarefas. Às vezes, o trabalho restante muda de repente, quando escopo é adicionado ou retirado. Estes eventos aparecem como linhas verticais no gráfico de queimada.
+
+\subsection{Quadro de Tarefas}
+
+
+\chapter{Codificação em Java}
+
+Veremos neste capítulo alguns exemplos de código Java para os conceitos vistos até o presente e mais alguns novos bastante usados.
+
 \section{Exemplo de MVC - Model-View-Controller}
 
 \begin{figure}[h]
@@ -866,7 +1032,7 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 
 O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os príncipios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
 
-O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação.
+O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação. Compare com o diagrama de dependência da figura \ref{fig:clsDep}.
 
 \begin{figure}[h]
 \begin{center}
