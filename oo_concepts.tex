@@ -817,11 +817,11 @@ Um objeto pode ser de um ou vários tipos. Por exemplo, um objeto José da Silva
 \caption{Implementação parcial do sistema de recursos humanos da universidade.} \label{fig:uniRH}
 \end{figure}
 
-Consideremos um exemplo um pouco mais realístico de polimorfismo explorando o projeto de como a universidade lida com a contratação de pessoal modelada na figura \ref{fig:uniRH}. Há uma maneira padrão paraa universidade contratar pessoal: uma vez contratada uma pessoa, ela é incluida no plano de saúde da universidade e ganha um crachá. Quando um professor é contratado, o mesmo processo é seguido, mas, além disso, uma vaga de estacionamento é atribuida para o novo professor se houver vaga disponível, senão ele entra na fila de espera por vagas.
+Consideremos um exemplo um pouco mais realístico de polimorfismo explorando o projeto de como a universidade lida com a contratação de pessoal modelada na figura \ref{fig:uniRH}. Há uma maneira padrão para a universidade contratar pessoal: uma vez contratada uma pessoa, ela é incluida no plano de saúde da universidade e ganha um crachá. Quando um professor é contratado, o mesmo processo é seguido, mas, além disso, uma vaga de estacionamento é atribuida para o novo professor se houver vaga disponível, senão ele entra na fila de espera por vagas.
 
-Se o método \emph{contrata()} for implementado na classe \emph{Empregado}, ele implementa o comportamento necessário para adicionar uma pessoa ao plano de saúde da universiade e a geração do crachá. O método \emph{contrata()} na classe \emph{Professor} terá de ser sobreescrito. Ele chama o método da classe \emph{Empregado}, pois professores também são inclusos no plano de saúde da universidade e recebem crachás, mas, além disso, tem código para reservar uma vaga de estacionamento para o professor.
+Se o método \emph{comecaEmprego()} for implementado na classe \emph{Empregado}, ele implementa o comportamento necessário para adicionar uma pessoa ao plano de saúde da universiade e a geração do crachá. O método \emph{comecaEmprego()} na classe \emph{Professor} terá de ser sobreescrito. Ele chama o método da classe \emph{Empregado}, pois professores também são inclusos no plano de saúde da universidade e recebem crachás, mas, além disso,  reserva uma vaga de estacionamento.
 
-Por ser capaz de enviar a mensagem \emph{contrata()} para qualquer tipo de empregado, não há a necessidade de usar complicadas instruções condicionais no método \emph{contrataEmpregadoNovo()} do objeto tela. Este método não precisa mandar uma mensagem \emph{contrataProfessor()} para objetos professores, \emph{contrataFaxineiro()} para objetos faxineiros, etc. Ele só precisa enviar \emph{contrata()} para qualquer tipo de empregado e o objeto fará a coisa certa. Como resultado, você pode acrescentar novos tipos de empregados (como o \emph{Administrativo}) e não precisa mudar o objeto tela. Em outras palavras, a classe \emph{TelaContratacao} é fracamente acoplada à hierárquia de classes, o que permite a extensão do sistema facilmente.
+Por ser capaz de enviar a mensagem \emph{comecaEmprego()} para qualquer tipo de empregado, não há a necessidade de usar complicadas instruções condicionais no método \emph{contrataEmpregadoNovo()} do objeto tela. Este método não precisa mandar uma mensagem \emph{comecaProfessor()} para objetos professores, \emph{comecaFaxineiro()} para objetos faxineiros, etc. Ele só precisa enviar \emph{comecaEmprego()} para qualquer tipo de empregado e o objeto fará a coisa certa. Como resultado, você pode acrescentar novos tipos de empregados (como o \emph{Administrativo}) e não precisa mudar o objeto tela. Em outras palavras, a classe \emph{TelaContratacao} é fracamente acoplada à hierárquia de classes, o que permite a extensão do sistema facilmente.
 
 É importante mencionar que o projeto da figura \ref{fig:uniRH} não é um muito bom. Uma maneira melhor de fazer é refatorar a hierárchia usando o padrão de projeto \emph{Papeis interpretados} ilustrado na figura \ref{fig:uniRH2}. Este padrão separa o conceito de alguém ser uma pessoa e o papel que ela interpreta no trabalho. Esta separação permite que uma pessoa interprete mais de um papel no trabalho.
 
@@ -917,36 +917,58 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 
 \chapter{Padrões de Projeto}
 
-Neste capítulo veremos um resumo das idéias apresentadas em \citeonline{DP:explained}. Os autores deste livro acreditam que os alunos podem aprender o desenvolvimento OO simultaneamente com os padrões de projeto. Não veremos os padrões com a minúcia de \citeonline{DP:explained}, mas apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler o texto original.
+Neste capítulo veremos um resumo das idéias apresentadas em \citeonline{DP:explained} e \citeonline{design:patterns}. Os autores do primeiro livro acreditam que os alunos podem aprender orientação objeto simultaneamente com os padrões de projeto. E é o que faremos neste texto. Não veremos os padrões com a minúcia desses livros, mas apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler os textos originais.
 
-\subsection{O Padrão Fachada}
-\subsection{O Padrão Adaptador}
-\subsection{O Padrão Estratégia}
-\subsection{O Padrão Ponte}
-\subsection{O Padrão Fabrica Abstrata}
-\subsection{O Padrão Decorador}
-\subsection{O Padrão Observador}
-\subsection{O Padrão Método Gabarito}
-\subsection{O Padrão Construtor}
-\subsection{O Padrão Método Fabrica}
-\subsection{O Padrão Protótipo}
-\subsection{O Padrão Singleton}
-\subsection{O Padrão Trava Duplamente Verificada}
-\subsection{O Padrão Piscina de Objetos}
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
-\subsection{O Padrão }
+Um padrão tem quatro elementos essenciais:
+\begin{enumerate}
+\item O \emph{nome do padrão} permite distinguir rapidamente o padrão de outros e ter uma noção da aplicação e o que é o padrão. Encontrar bons nomes pode ser difícil, mas provavelmemte podemos aplicar também a regra da coesão aqui: Se não há uma boa maneira de nomeá-lo, há uma boa chance do padrão não está correto. Óbvio existem exceções para esta regra e, às vezes, precisamos criar um nome novo (uma palavra nova) para representar o conceito.
+
+\item O \emph{problema} descreve quando aplicar o padrão. Ele explica o problema e seu contexto (as forças relevantes).
+
+\item A \emph{solução} descreve os elementos que compõe o projeto, seus relacionamentos, responsabilidades e colaborações. A solução não descreve um projeto concreto específico, ou uma implementação.
+
+\item As \emph{consequências} descrevem os resultados e as limitações de  aplicar o padrão. As consequências para software em geral se preocupam com as limitações de tempo de execução e espaço de memória. Elas também podem tratar de problemas com a linguagem de programação e a implementação. As consequências de um padrão incluem aspectos do impacto sobre a flexibilidade do sistema, extensibilidade e portabilidade da solução.
+
+\end{enumerate}
+
+\citeonline{design:patterns} classifica os padrões de projetos do ponto de vista do propósito em três categorias:
+\begin{enumerate}
+\item \textbf{Criação: } Padrões de criação lidam com a criação de objetos.
+
+\item \textbf{Estrutura: } Padrões de estrutura lidam com a composição de classes e objetos.
+
+\item \textbf{Comportamento: } Padrões de comportamento caracterizam as maneiras como as classes e objetos interagem e distribuem responsabilidade.
+
+\end{enumerate}
+
+Os padrões também podem ser classificados de acordo com o escopo de aplicação do padrão: Se o padrão se aplica sobre as classes ou sobre os objetos. Padrões de classes lidam com os relacionamentos entre as classes e suas subclasses. Estes relacionamentos são estabelecidos através de herança, portanto são estáticos, fixados durante a compilação. Os padrões de objetos lidam com o relacionamento entre os objetos, que podem mudar durante a execução, portanto são mais dinâmicos.
+
+\section{Catálogo de Padrões}
+\subsection{O Padrão Fabrica Abstrata (\textit{Abstract Factory})}
+\subsection{O Padrão Método Fabrica (\textit{Factory Method})}
+\subsection{O Padrão Adaptador (\textit{Adapter})}
+\subsection{O Padrão Observador (\textit{Observer})}
+\subsection{O Padrão Composição (\textit{Composite})}
+\subsection{O Padrão Iterador (\textit{Iterator})}
+\subsection{O Padrão Visitante (\textit{Visitor})}
+\subsection{O Padrão Estratégia (\textit{Strategy})}
+\subsection{O Padrão Decorador (\textit{Decorator})}
+\subsection{O Padrão Método Gabarito (\textit{Template Method})}
+\subsection{O Padrão \textit{Singleton}}
+\subsection{O Padrão Trava Duplamente Verificada (\textit{Lock Double Checked})}
+\subsection{O Padrão Fachada (\textit{Facade})}
+\subsection{O Padrão Ponte (\textit{Bridge})}
+\subsection{O Padrão Construtor (\textit{Builder})}
+\subsection{O Padrão Protótipo (\textit{Prototype})}
+\subsection{O Padrão Piscina de Objetos (\textit{Object Pool})}
+\subsection{O Padrão Cadeia de Responsabilidade (\textit{Chain of Responsability})}
+\subsection{O Padrão Comando (\textit{Command})}
+\subsection{O Padrão Peso Pena (\textit{Flyweight})}
+\subsection{O Padrão Interpretador (\textit{Interpreter})}
+\subsection{O Padrão Mediador (\textit{Mediator})}
+\subsection{O Padrão \textit{Memento}}
+\subsection{O Padrão \textit{Proxy}}
+\subsection{O Padrão Estado (\textit{State})}
 
 \chapter{Rápida Introdução ao Scrum}
 
@@ -995,7 +1017,7 @@ O papel de Membro da Equipe resumido:
 \end{itemize}
 
 \section{Artefatos do Scrum}
-\subsection{A Lista de Pendências do Produto}
+\subsection{A Lista de Pendências do Produto (\emph{Product Backlog})}
 A lista de pendências do produto é uma lista acumulativa de itens entregáveis desejados para o produto. Isto inclui características, consertos de erros (\emph{bug fixes}), alterações na documentação e qualquer outra coisa que seja significativa e valiosa para produzir. Embora pendência seja um termo correto para um item da lista, as equipes de scrum preferem usar o termo estória de usuário para reforçar a noção de que construimos produtos para satisfazer as necessidades dos usuários.
 
 Cada item da lista deve incluir as seguintes informações:
@@ -1080,11 +1102,11 @@ public class ClockView extends javax.swing.JFrame {
     }
     
     public void refreshTimeDisplay() {
-        TimeStamp t = new TimeStamp();
-        t.fillTimes();
-        String display = getDigitAsString(t.getHrs()) + ":"
-                     + getDigitAsString(t.getMins()) + ":"
-                     + getDigitAsString(t.getSecs());
+        TimeStamp ts = new TimeStamp();
+        ts.fillTimes();
+        String display = getDigitAsString(ts.getHrs()) + ":"
+                     + getDigitAsString(ts.getMins()) + ":"
+                     + getDigitAsString(ts.getSecs());
         tLabel.setText("  " + display);
         tLabel.repaint();
     }
