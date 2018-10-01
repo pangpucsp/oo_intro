@@ -125,9 +125,9 @@ Neste capítulo veremos:
 \end{itemize}
 
 \subsection{Uma rápida introdução aos conceitos de OO}
-Veremos nesta seção os conceitos fundamentais das técnicas de desenvolvimento OO. Programadores experientes com tecnologias estruturadas já conhecem alguns destes conceitos, outros são novos. Por exemplo, conceitos que estão no núcleo de OO como encapsulamento, acoplamento e coesão vêm da engenharia de software. Estes conceitos são importantes porque eles revelam boas práticas de projeto independentemente da tecnologia que está sendo usada. Não se engane, entretanto, não é porque você já viu alguns dos conceitos e os pratica que você já está fazendo OO, entretanto, você já está realizando bons projetos. Enquanto fazer bons projetos é uma grande parte da orientação a objetos, ainda há muito mais.
+Veremos nesta seção alguns conceitos fundamentais das técnicas de desenvolvimento OO. Programadores experientes com tecnologias estruturadas já conhecem muitos destes conceitos, outros, porém, são novos. Por exemplo, os conceitos que estão no núcleo de OO como encapsulamento, acoplamento e coesão vêm da engenharia de software. Estes conceitos são importantes porque eles revelam boas práticas de projeto independentemente da tecnologia que está sendo usada. Não se engane, entretanto, não é porque você já viu alguns dos conceitos e os pratica que você já está fazendo OO, mas você já está realizando bons projetos. Enquanto fazer bons projetos é uma grande parte da orientação a objetos, ainda há muito mais.
 
-Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas todos nós, programadores experientes, sabemos que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar bom no desenvolvimento estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Para lhe dar um gostinho do conteúdo deste texto, os conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
+Conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas os programadores experientes sabem que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar um bom desenvolvedor estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Para lhe dar um gostinho do conteúdo deste texto, os conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
 
 \begin{longtable}[l]{p{4.6cm}p{11.1cm}}
 \caption[Conceitos OO]{Conceitos e termos da Orientação a Objetos}
@@ -235,16 +235,16 @@ Superclase & Uma classe da qual uma outra herda.\\
 
 \section{Conceitos de OO do ponto de vista estrutural}
 
-Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, suponho que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , vamos descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
+Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, supomos que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , vamos descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
 
 \begin{description}
-\item[Classe] Uma classe é uma abstração de software de um objeto, efetivamente, um padrão a partir do qual os objetos são criados. Se você tiver experiência com bancos de dados, você pode pensar numa classe como uma tabela, embora tenha mais em classes do que isto conforme você verá mais tarde. A definição de uma classe descreve o layout, incluindo tanto os dados, quanto as funcionalidades, dos objetos a serem criados a partir deles. Observe que eu disse, tanto os dados, quanto as funcionalidades. Diferente de uma tabela, que define apenas dados, uma classe define ambos, dados (atributos) e código (operações/métodos). Por enquanto, uma boa maneira de pensar a respeito de uma classe é que ela é a combinação de uma definição de tabela e a definição do código fonte que acessa os dados. Infelizmente, esta é uma visão muito orientada a dados de objetos que ignora a principal força dos objetos que é a capacidade de responder a pedidos de ações. Entretanto, este é uma introdução suficientemente boa, por ora.
+\item[Classe] Uma classe é uma abstração de software de um objeto, efetivamente, um padrão a partir do qual os objetos são criados. Se você tiver experiência com bancos de dados, você pode pensar numa classe como uma tabela, embora tenha mais em classes do que isto conforme você verá mais tarde. A definição de uma classe descreve o layout, incluindo tanto os dados, quanto as funcionalidades, dos objetos a serem criados a partir deles. Observe que eu disse, tanto os dados, quanto as funcionalidades. Diferente de uma tabela, que define apenas dados, uma classe define ambos, dados (atributos) e código (operações/métodos). Por enquanto, uma boa maneira de pensar a respeito de uma classe é que ela é a combinação de uma definição de tabela e a definição do código fonte que acessa os dados. Infelizmente, esta é uma visão muito orientada a dados de objetos que ignora a principal força dos objetos que é a capacidade de responder a pedidos de ações.
 
-\item[Objeto] Um objeto é uma construção de software que espelha um conceito do mundo real, por exemplo, uma pessoa, lugar, coisa, evento, conceito, tela ou relatório. Objetos são tipicamente (mas nem sempre) nomes (substantivos). Se uma classe pode ser pensada como uma tabela, um objeto pode ser pensada como a ocorrência de um registro. De novo, esta é uma visão muito orientada a dados. Por exemplo, um objeto estudante pode fazer muitas das coisas que um estudante \emph{real} pode, por exemplo, fornecer seu nome, calcular quantos anos tem e requerer a inscrição num seminário. Numa aplicação estruturada, cada estudante seria representado como um registro na tabela de dados Estudante. Numa apllicação orientada a objetos, cada estudante seria representado por um objeto na memória. A principal diferença é que onde registros de estudantes só têm dados, os objetos estudantes têm ambos, dados (atributos) e funcionalidades (métodos).
+\item[Objeto] Um objeto é uma construção de software que espelha um conceito do mundo real, por exemplo, uma pessoa, lugar, coisa, evento, conceito, tela ou relatório. Objetos são tipicamente (mas nem sempre) nomes próprios, substantivos. Se uma classe pode ser pensada como uma tabela, um objeto pode ser pensada como a ocorrência de um registro. De novo, esta é uma visão muito orientada a dados. Por exemplo, um objeto estudante pode fazer muitas das coisas que um estudante \emph{real} pode, por exemplo, fornecer seu nome, calcular quantos anos tem e requerer a inscrição numa disciplina. Numa aplicação estruturada, cada estudante seria representado como um registro na tabela de dados Estudante. Numa aplicação orientada a objetos, cada estudante seria representado por um objeto na memória. A principal diferença é que onde registros de estudantes só têm dados, os objetos estudantes têm ambos, dados (atributos) e funcionalidades (métodos). Do ponto de vista de projeto, é conveniente entender os objetos como entidades com responsabilidades, estas responsabilidades incluem as informações que o objeto detem e as ações que ele pode realizar.
 
-\item[Atributo] Um atributo é equivalente a um elemento de dados num registro. Do ponto de vista de programação, também faz sentido pensar num atributo como uma variável local aplicável a apenas um objeto.
+\item[Atributo] Um atributo é equivalente a um elemento de dados num registro. Do ponto de vista de programação, também faz sentido pensar num atributo como uma variável local aplicável a apenas um objeto. Os objetos são responsáveis pelas suas próprias informações que devem ser guardadas nos atributos dos objetos. Existem informações que não são de responsabilidade dos objetos individualmente, mas de todos os objetos de um mesmo tipo/classe, nesse caso, temos atributos de classe.
 
-\item[Método] Um método pode ser pensado tanto como uma função ou um procedimento. Métodos acessam e modificam os atributos de um objeto. Melhor ainda, métodos podem fazer toda uma série de coisas que nada têm a ver com os atributos. Alguns métodos retornam um valor (como as funções), enquanto outros provocam outros efeitos colaterais, como impressão ou armazenamento em memória permanente. Um método útil deve ou retornar um valor, ou ter um efeito colateral significativo.
+\item[Método] Um método pode ser pensado tanto como uma função ou um procedimento. Métodos acessam e modificam os atributos de um objeto. Melhor ainda, métodos podem fazer toda uma série de coisas que nada têm a ver com os atributos. Alguns métodos retornam um valor (como as funções), enquanto outros provocam outros efeitos colaterais, como impressão ou armazenamento em memória permanente. Um método útil deve ou retornar um valor, ou ter um efeito colateral significativo. Em terminologia OO, dizemos que os objetos trocam mensagens entre eles. Uma mensagem de um objeto para um outro requer uma ação de responsabilidade deste último. A maneira de ``enviar'' a mensagem é o primeiro objeto chamar o método do segundo objeto. Este é o modelo da maioria das linguagens de programação para aplicações locais. Em sistemas distribuidos, é possivel que a chamada de um método efetivamente provoque o envio de uma mensagem de um objeto local para um objeto remoto.
 
 \end{description}
 
@@ -258,11 +258,11 @@ Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:con
 \item[Perspectiva da Implementação] Estamos na visão do próprio código. ``Esta é provavelmente a perspectiva mais usada, mas de muitas maneiras, a perspectiva da especificação é melhor.'' Ela responde à pergunta: ``Como cumpro minhas responsabilidades?''
 \end{description}
 
-\citeonline{DP:explained} afirma que a melhor maneira de projetar as classes é pela determinação das suas responsabilidades.
+\citeonline{DP:explained} afirma que a melhor maneira de projetar as classes é pela determinação das suas responsabilidades. O projeto de software antigamente usava basicamente a perspectiva de implementação que é mais próxima aos programadores, mas os projetos resultantes são pouco flexíveis e difíceis de serem mantidos. Em software, os requisitos dos projetos mudam com frequência, esta maneira de projetar não se adapta bem às mudanças nos requisitos. É melhor projetar pela perspectiva da especificação, pelas interfaces. Esta perspecitiva resulta em projetos mais adaptáveis às mudanças de requisitos.
 
 \section{Os diagramas de UML 2}
 
-A \textit{Unified Modeling Language}, UML, é uma linguagem visual (isto é, uma notação gráfica de diagramas com semântica) usada para criar modelos de programas. Neste contexto, o termo \textit{modelos de programas} significa representações em diagramas dos programas que mostram os relacionamentos entre os objetos no código. A tabela \ref{tab:useUML} ilustra o uso dos diagramas UML em diferentes momentos do desenvolvimento OO.
+A \textit{Unified Modeling Language}, UML, é uma linguagem visual (isto é, ela é uma notação gráfica de diagramas com semântica) usada para criar modelos de programas. Neste contexto, o termo \textit{modelos de programas} significa representações em diagramas dos programas que mostram os relacionamentos entre os objetos no código. A tabela \ref{tab:useUML} ilustra o uso dos diagramas UML em diferentes momentos do desenvolvimento OO.
 
 \begin{longtable}[l]{p{4.7cm}p{11cm}}
 \caption{Os Diagramas de UML 2 e seus propósitos} \label{tab:useUML}\\
@@ -366,9 +366,9 @@ Diagrama de Temporização & Representa a mudança de estado ou condição de um
 
 \section{Objetos e Classes}
 
-O paradigma OO é baseado em construir sistemas a partir de itens chamados de \emph{objetos}. Um objeto é uma pessoa, lugar, coisa, conceito, tela ou relatório. Uma classe generaliza/representa uma coleção de objetos similares e é efetivamente um padrão a partir do qual cria-se objetos. Num sistema universitário, Sara é um objeto estudante, ela está inscrita em diversos objetos disciplinas e ela trabalha para obter um objeto diploma. Num sistema bancário, Sara é um objeto cliente. Ela tem um objeto conta para o qual ela pode preencher objetos cheques. Num sistema de controle de inventário, cada item do inventário é um objeto, cada entrega é um objeto e cada cliente é um objeto.
+O paradigma OO é baseado em construir sistemas a partir de itens chamados de \emph{objetos}. Um objeto é uma pessoa, lugar, coisa, conceito, tela ou relatório. Uma classe generaliza/representa uma coleção de objetos similares e é efetivamente um padrão a partir do qual cria-se objetos. Num sistema universitário, Clara é um objeto estudante, ela está matriculada em diversos objetos disciplinas e ela trabalha para obter um objeto diploma de um objeto curso. Num sistema bancário, Clara é um objeto cliente. Ela tem um objeto conta para o qual ela pode preencher objetos cheques. Num sistema de controle de inventário, cada item do inventário é um objeto, cada entrega é um objeto e cada cliente é um objeto.
 
-No mundo real, você tem objetos, logo, você precisa deles como um conceito para refletir precisamente o espaço do seu problema. Entretanto, no mundo real, objetos são frequentemente similares a outros objetos. Estudantes compartilham qualidades similares (eles fazem as mesmas coisas, eles são descritos da mesma forma), disciplinas compartilham qualidades semelhantes, itens de  inventórios, contas bancárias, ... compartilham qualidades semelhantes entre eles. Enquanto você pode modelar (e programar) todos os objetos, isto exigem um trabalho enorme. Prefiro definir o que é ser um estudante uma vez, definir disciplina uma vez, definir item de inventório uma vez, ... É por isso que você precisa do conceito de classe.
+No mundo real, você tem objetos, logo, você precisa deles como um conceito para refletir precisamente o espaço do seu problema. Entretanto, no mundo real, objetos são frequentemente similares a outros objetos. Estudantes compartilham qualidades similares (eles fazem as mesmas coisas, eles são descritos da mesma forma), disciplinas compartilham qualidades semelhantes, itens de  inventórios, contas bancárias, ... compartilham qualidades semelhantes entre eles. Enquanto você pode modelar (e programar) todos os objetos individualmente, isto exige um trabalho enorme. É preferível definir o que é ser um estudante uma vez, definir disciplina uma vez, definir item de inventório uma vez, ... É por isso que você precisa do conceito de classe. Os objetos são exemplos/instâncias da classe.
 
 \begin{figure}[h]
 \begin{center}
@@ -379,15 +379,15 @@ No mundo real, você tem objetos, logo, você precisa deles como um conceito par
 
 A figura \ref{fig:objStdt} ilustra como temos objetos estudantes e como podemos modelar a classe \emph{Estudante}. Ela também mostra a notação padrão para modelar uma classe usando UML. Classes são tipicamente modeladas por uma das duas maneiras: um retângulo com uma lista dos atributos e métodos da classe ou apenas um retângulo. Existem razões para modelar classes de uma maneira ou da outra. Por um lado, listar os atributos e métodos pode ser bastante útil, permite aos leitores do modelo entender o projeto numa única visualização. Por outro lado, listar os atributos e métodos pode poluir seus diagramas e dificultar a leitura. Neste texto, serão usadas ambas as técnicas, os métodos e atributos só serão listados onde forem apropriados.
 
-Nomes de classes são tipicamente substântivos no singular. O nome de uma classe deve ter uma ou duas palavras e deve descrever precisamente a classe usando terminologia comum ao domínio do negócio onde o problema está inserido. Se você tem dificuldades para dar nome a uma classe, ou você precisa entendê-la melhor, ou podem ser várias classes que você combinou erroneamente. Você deve modelar classes com nomes tais como \emph{Estudante}, \emph{Professor} e \emph{Disciplina} e não como \textit{Estudantes}, \textit{Pessoas que ensinam disciplinas} ou \textit{CLS32A}. Pense da seguinte forma, no mundo real, você diria ``Sou um estudante'' e não ``Sou um estudantes''.
+Nome de classe é tipicamente um substantivo no singular. O nome de uma classe pode ter uma ou duas palavras e deve descrever precisamente a classe usando terminologia comum ao domínio do negócio onde o problema está inserido. Se você tem dificuldades para dar nome a uma classe, ou você precisa entendê-la melhor, ou podem ser várias classes que você combinou erroneamente. Você deve modelar classes com nomes tais como \emph{Estudante}, \emph{Professor} e \emph{Disciplina} e não como \textit{Estudantes}, \textit{Pessoas que ensinam disciplinas} ou \textit{CLS32A}. Pense da seguinte forma, no mundo real, você diria ``Sou um estudante'' e não ``Sou um estudantes''.
 
 Classes também podem representar conceitos para os quais não existe um substantivo, como o processo de retirada de um livro de uma biblioteca.
 
-Quando software OO está rodando, objetos são instanciados (criados/definidos) a partir de classes. Dizemos que um objeto é uma instância de uma classe e instaciamos estes objetos das classes.
+Quando software OO está rodando, objetos são instanciados (criados/definidos) a partir de classes. Dizemos que um objeto é uma instância de uma classe e instanciamos estes objetos das classes.
 
 \section{Atributos e Operações/Métodos}
 
-Classes têm responsabilidades, as coisas que elas sabem e fazem. Atributos são as coisas que as classes sabem, métodos são as coisas que elas fazem. O paradigma da orientação a objetos é baseado nos conceitos de que sistemas devem ser construidos a partir de objetos e estes objetos têm tanto dados, quanto funcionalidade. Atributos definem os dados, enquanto os métodos definem a funcionalidade.
+Classes têm responsabilidades, as coisas que elas sabem e fazem. Atributos são as coisas que as classes sabem, métodos são as coisas que elas fazem. O paradigma da orientação a objetos é baseado nos conceitos de que sistemas devem ser construídos a partir de objetos e estes objetos têm tanto dados, quanto funcionalidade. Atributos definem os dados, enquanto os métodos definem a funcionalidade.
 
 Quando você define uma classe, você deve definir os atributos que ela tem, assim como, os seus métodos. Em UML 2, um atributo é um tipo de propriedade, como são relacionamentos tais como associação e composição. A definição de um atributo é direta. Você define seu nome, talvez seu tipo (se ele é um número, um string, uma data cronológica, etc.).  Linguagens fracamente tipadas como Smalltalk (ou Python) permitem que você use atributos da maneira que você quiser e, portanto, não exigem que você defina o tipo deles. Linguagens fortemente tipadas como Java e C++, entretanto, insistem que você defina o tipo de um atributo antes de você poder usá-lo. Você pode ainda escolher se você quer indicar alguma regra de negócio ou restrição aplicável ao atributo, tais como valores válidos que o atributo pode ter, vide figura \ref{fig:umlClsLmt}.
 
@@ -436,11 +436,19 @@ Abstração é um problema da análise que lida com o que a classe sabe e faz. S
 
 Embora o ato de abstrair nos diga que precisamos armazenar o nome e endereço de um estudante, assim como ser capaz de matricular estudantes nas disciplinas, ele não nos diz como vamos fazer isto. Encapsulamento lida com o problema de como você pretende modularizar as caraterísticas de um sistema. No mundo orientado a objetos, você modulariza sistemas em classes, que, por sua vez, modularizam em métodos e atributos. Dizemos que encapsulamos comportamento numa classe ou encapsulamos funcionalidade num método. Encapsulamento é uma questão de projeto que lida com a funcionalidade está compartimentalizada dentro de um sistema. Você não deve precisar saber como algo está implementado para poder usá-lo. A consequência do encapsulamento é que você pode construir qualquer coisa da maneira que você quiser e mais tarde você pode mudar a implementação e não afetar outros componentes dentro do sistema (desde que a interface para aquele componente não mude).
 
-As pessoas dizem que o encapsulamento é como pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, pense num banco. Como ele registra as informações de uma conta? Num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos.
+As pessoas dizem que o encapsulamento é como pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, pense num banco. Como ele registra as informações de uma conta? Num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos. De acordo com \citeonline{DP:explained}, o encapsulamento deve ser pensado como qualquer tipo de ocultação, que veremos a seguir.
 
 \subsection{Ocultação de Informação}
 
 Para simplificar a manutenção de suas aplicações, você quer restringir o acesso aos seus atributos de dados e alguns métodos. A ideia básica é esta: se uma classe deseja informações de uma outra, ela deve pedí-la e não simplesmente pegá-la. Quando você reflete a respeito, isto é exatamente o que acontece no mundo real. Se você quer saber o nome de alguém, o que você faria? Você perguntaria para a pessoa ou roubaria sua carteira e olharia no RG dela? Ao restringir o acesso aos atributos, você previne que outros programadores escrevam código fortemente acoplado. Quando o código é fortemente acoplado, uma mudança numa parte do código força a modificação de outra, e outra, e assim por diante.
+
+\citeonline{DP:explained} diz que, em geral, se oculta dados, mas que podemos ocultar também:
+\begin{itemize}
+\item Implementações;
+\item Classes Derivadas
+\item Detalhes de projeto; e
+\item Regras de Instanciação.
+\end{itemize}
 
 %\subsection{Um exemplo}
 
@@ -448,7 +456,7 @@ Para simplificar a manutenção de suas aplicações, você quer restringir o ac
 
 Similaridades sempre existem entre classes diferentes. Duas ou mais classes frequentemente compartilham os mesmos atributos e/ou mesmos métodos. Porque você não quer ter de reescrever o mesmo código repetidas vezes, você deseja um mecanismo que tire vantagem destas semelhanças. Herança é este mecanismo. Herança modela os relacionamentos ``é um'' e ``é como'', o que permite que você reuse dados e códigos existentes facilmente.
 
-Por exemplo, estudantes têm nomes, endereços e números de telefone e eles dirigem veículos. Ao mesmo tempo, professores também têm nomes, endereços e números de telefones e dirigem veículos. Sem dúvida, você pode desenvolver as classes para estudantes e professores e fazê-las executarem. De fato, você poderia até desenvolver a classe \emph{Estudante} primeiro e, quando ela estiver rodando, fazer uma cópia dela, chamá-la de \emph{Professor} e fazer as modificações necessárias. Enquanto, esta é uma maneira muito direta de resolver o problema, ela não é perfeita. E se houver um erro no código original do estudante? Agora, você tem de corrigir o erro em dois lugares, o dobro do trabalho. O que acontece se você precisar mudar a maneira de lidar com o nome, digamos que no lugar de ter no máximo 30 caracteres, precisa de 40 caracteres? Agora, você tem de fazer a mesma modificação em dois lugares, o que é chato, besta e custoso (emtermos de tempo). Não seria bom se só tivesse uma cópia do código para desenvolver e fazer manutenção?
+Por exemplo, estudantes têm nomes, endereços e números de telefone e eles dirigem veículos. Ao mesmo tempo, professores também têm nomes, endereços e números de telefones e dirigem veículos. Sem dúvida, você pode desenvolver as classes para estudantes e professores e fazê-las executarem. De fato, você poderia até desenvolver a classe \emph{Estudante} primeiro e, quando ela estiver rodando, fazer uma cópia dela, chamá-la de \emph{Professor} e fazer as modificações necessárias. Enquanto, esta é uma maneira muito direta de resolver o problema, ela não é perfeita. E se houver um erro no código original do estudante? Agora, você tem de corrigir o erro em dois lugares, o dobro do trabalho. O que acontece se você precisar mudar a maneira de lidar com o nome, digamos que no lugar de ter no máximo 30 caracteres, precisa de 40 caracteres? Agora, você tem de fazer a mesma modificação em dois lugares, o que é chato, besta e custoso (em termos de tempo). Não seria bom se só tivesse uma cópia do código para desenvolver e fazer manutenção?
 
 Isto é exatamente o que a herança se propõe a fazer. Com herança, você define uma nova classe que encapsula as similaridades entre os alunos e professores. Esta nova classe teria os atributos \emph{nome}, \emph{endereço} e \emph{numeroTelefone} e o método \emph{dirigeVeiculo}. Como você precisa dar nome a todas as suas classes, você precisa se perguntar o que esta coleção de dados e funcionalidade descrevem. Neste caso, acredito que o nome \emph{Pessoa} cabe bem.
 
@@ -463,9 +471,9 @@ Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Es
 \end{center}
 \end{figure}
 
-A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma seta com a ponta ôca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
+A figura \ref{fig:uml1} ilustra a notação de modelagem UML para a herança, uma linha com uma seta com a ponta oca saindo da subclasse e apontando para a superclasse. A maneira de ler o diagrama é "B herda de A". Em outras palavras, B é uma subclasse direta de A e A é a superclasse direta de B.
 
-A figura \ref{fig:uml2} mostra como você modelaria a hierárquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierárquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
+A figura \ref{fig:uml2} mostra como você modelaria a hierarquia de herança da classe \emph{Pessoa}. Em geral, chamamos de hierarquia de classes de \emph{Pessoa}, simplesmente. Observe que o nome da classe \emph{Pessoa} está em itálico, isto indica que ela é \textit{abstrata}, enquanto as classes \emph{Professor} e \emph{Estudante} são \textit{concretas}.
 
 \begin{figure}[h]
 \begin{center}
@@ -481,11 +489,11 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 \begin{description}
 \item[Procure semelhanças:] Sempre que houver semelhança em duas ou mais classes, seja semelhança nos atributos, seja nos métodos, então, você provavelmente tem uma oportunidade para aplicar a herança.
 
-\item[Procure por classes existentes:] Quando você identifica uma nova classe pode ser que você já tenhauma classe semelhante a ela. Algumas vezes, você pode herdar diretamente de uma classe existente e apenas acrescentar código para as diferenças entre as duas. Por exemplo, suponha que seu sistema de informação universitária também precisa suportar administradores da universidade. A classe \emph{Pessoa} já tem muitas características de uma classe \emph{Administrador} precisa, logo você deve considerar se \emph{Administrador} deve herdar de \emph{Pessoa}.
+\item[Procure por classes existentes:] Quando você identifica uma nova classe pode ser que você já tenha uma classe semelhante a ela. Algumas vezes, você pode herdar diretamente de uma classe existente e apenas acrescentar código para as diferenças entre as duas. Por exemplo, suponha que seu sistema de informação universitária também precisa suportar administradores da universidade. A classe \emph{Pessoa} já tem muitas características de uma classe \emph{Administrador} precisa, logo você deve considerar se \emph{Administrador} deve herdar de \emph{Pessoa}.
 
 \item[Siga a regra da sentença:] Uma das frases a seguir deve ter sentido: ``Uma subclasse é um tipo da superclasse'' ou ``Uma subclasse é como uma superclasse''. Por exemplo, faz sentido dizer que um estudante é um tipo de pessoa e um dragão é como um pássaro. Não faz sentido dizer que um estudante é um tipo de veículo, ou é como um veículo, então, a classe \emph{Estudante} provavelmente não deve herdar de \emph{Veiculo}. Se nenhuma das sentenças faz sentido, então você deve ter encontrado um relacionamento de composição ou de associação.
 
-\item[Evite herança de implementação:] Desenvolvedores novatos na orientação a objetos têm uma tendência a errar na aplicação da herança, em geral, num esforço para reusar tanto quanto possível (uma boa motivação). Herança é o conceito mais excitante do repertório de objetos deles, então eles o usam tanto quanto podem. O problema é com o que se chama de herança de implementação ou de conveniência: A aplicação da herança quando a regra da sentença não se aplica e a única justificativa é a de que a subclasse precisa de uma ou mais características da superclasse, a aplicação da herança é mais conveniente do que \textit{refatorar} suas classes. Uma boa regra é reconsiderar a aplicação de herança com ``é como'', porque esta é uma justificativa mais fraca.
+\item[Evite herança de implementação:] Desenvolvedores novatos na orientação a objetos têm uma tendência a errar na aplicação da herança, em geral, num esforço para reusar tanto quanto possível (uma boa motivação). Herança é o conceito mais excitante do repertório de objetos deles, então eles o usam tanto quanto podem. O problema é com o que se chama de herança de implementação ou de conveniência: A aplicação da herança quando a regra da sentença não se aplica e a única justificativa é a de que a subclasse precisa de uma ou mais características da superclasse, a aplicação da herança é mais conveniente do que \textit{refatorar} suas classes. Uma boa regra é reconsiderar a aplicação da regra de herança ``é como'', porque esta é uma justificativa mais fraca.
 
 \item[Herda tudo:] A subclasse deve herdar tudo da superclasse, este conceito é chamado de \emph{herança pura}. Se não, o código torna-se mais difícil de entender e de fazer a manutenção. Por exemplo, digamos que a classe \emph{B} herda de \emph{A}. Para entender \emph{B}, você precisa entender o que é \emph{A} e as características que são acrescentadas em \emph{B}. Se você começar a remover funcionalidade, você precisa entender também o que \emph{B} \textbf{não é}. Isto é muito trabalho e logo se torna um pesadelo para fazer a manutenção.
 
@@ -495,7 +503,7 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 
 Quando uma classe herda de apenas uma outra classe, dizemos que temos uma \emph{herança simples}. Quando uma classe herda de duas ou mais classes, temos \emph{herança múltipla}. Lembre-se: A subclasse herda todos os atributos e métodos de suas superclasses.
 
-Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem. Herança simples resulta em hierárquia de herança que é sempre uma árvore. Herança múltipla resulta em grafos e algumas situações com nomes iguais vindo de superclasses diferentes são muitos complexas. O livro (\citeonline{cpp:ref}) comenta sobre algumas das dificuldades enfrentadas para a implementação da herança múltipla no C++.
+Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem. Herança simples resulta em hierarquia de herança que é sempre uma árvore. Herança múltipla resulta em grafos e algumas situações com nomes iguais vindo de superclasses diferentes são muitos complexas. O livro (\citeonline{cpp:ref}) comenta sobre algumas das dificuldades enfrentadas para a implementação da herança múltipla no C++.
 
 \begin{figure}[h]
 \begin{center}
@@ -504,9 +512,9 @@ Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das pouca
 \end{center}
 \end{figure}
 
-Na figura \ref{fig:uml3}, vemos várias semelhanças entre aviões e carros. Ambos têm um número de passageiros, um nível máximo de combustível e ambos podem aumentar ou diminuir a velocidade. Para se aproveitar dessas semelhanças, você pode criar uma nova classe chamada de \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdar dela. Dizemos que as classes \emph{Veiculo}, \emph{Aviao} e \emph{Carro} formam uma hirárquia de heranças, também chamada de hierárquia de classes. A classe no topo de uma hierárquia de classes (neste caso \emph{Veiculo}) é chamada de raíz ou \emph{classe raíz}. Em Smalltalk e Java, a classe \emph{Object} é a classe raíz de todas as outras classes, direta ou indiretamente.
+Na figura \ref{fig:uml3}, vemos várias semelhanças entre aviões e carros. Ambos têm um número de passageiros, um nível máximo de combustível e ambos podem aumentar ou diminuir a velocidade. Para se aproveitar dessas semelhanças, você pode criar uma nova classe chamada de \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdar dela. Dizemos que as classes \emph{Veiculo}, \emph{Aviao} e \emph{Carro} formam uma hierarquia de heranças, também chamada de hierarquia de classes. A classe no topo de uma hierarquia de classes (neste caso \emph{Veiculo}) é chamada de raiz ou \emph{classe raiz}. Em Smalltalk e Java, a classe \emph{Object} é a classe raiz de todas as outras classes, direta ou indiretamente.
 
-Observe que existe o método \emph{vira()} em \emph{Carro} e o método \emph{inclina()} em \emph{Aviao}. Virar e inclinar fazem a mesma coisa. Você poderia definir um método \emph{vira()} em \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdá-lo. Isto implicaria que você teria de requerer que usuários de aviões, isto é, os pilotos, teriam de mudar a terminoogia que eles costumam usar. Realisticamente, isto não funcionaria. A melhor solução é manter \emph{vira()} em \emph{Carro} e \emph{inclina()} em \emph{Aviao}.
+Observe que existe o método \emph{vira()} em \emph{Carro} e o método \emph{inclina()} em \emph{Aviao}. Virar e inclinar fazem a mesma coisa. Você poderia definir um método \emph{vira()} em \emph{Veiculo} e fazer \emph{Aviao} e \emph{Carro} herdá-lo. Isto implicaria que você teria de requerer que usuários de aviões, isto é, os pilotos, teriam de mudar a terminologia que eles costumam usar. Realisticamente, isto não funcionaria. A melhor solução é manter \emph{vira()} em \emph{Carro} e \emph{inclina()} em \emph{Aviao}.
 
 \begin{figure}
 \begin{center}
@@ -517,9 +525,9 @@ Observe que existe o método \emph{vira()} em \emph{Carro} e o método \emph{inc
 
 No Antes: da figura \ref{fig:uml4}, você quer criar uma nova classe \emph{Dragao}. Você já tem as classes \emph{Passaro} e \emph{Lagarto}. Um dragão \textit{é como} um pássaro, pois ambos voam. Um dragão também \textit{é como} um lagarto, ambos têm garras e escamas. Porque dragões têm características de pássaros e lagartos, no Depois: da figura \ref{fig:uml4} tenho a classe \emph{Dragao} herdando tanto de \emph{Passaro}, quanto de \emph{Lagarto}. Este é um exemplo de um relacionamento "é como" (ou "parece com"): um dragão é como um pássaro e, também, é como um lagarto.
 
-É importante perceber que a regra da sentença não é perfeita. Por exemplo, faz sentido dizer que uma sequóia é como um arranha-céu já que ambos são altos, têm raízes no chão e balançam ao vento. Entretanto, eles não devem compartilhar uma relação de herança. Também faz sentido dizer que um faixa preta é um artista de artes marciais, mas não faz sentido fazer uma classe \emph{Roupa} herda da classe \emph{Pessoa}.
+É importante perceber que a regra da sentença não é perfeita. Por exemplo, faz sentido dizer que uma sequoia é como um arranha-céu já que ambos são altos, têm raízes no chão e balançam ao vento. Entretanto, eles não devem compartilhar uma relação de herança. Também faz sentido dizer que um faixa preta é um artista de artes marciais, mas não faz sentido fazer uma classe \emph{Roupa} herda da classe \emph{Pessoa}.
 
-Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira diferente. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras relunzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobreescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobreescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é realmente necessária -- programação de jogos é um dos poucos domínios em que herança múltipla pode ser necessária.}.
+Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira diferente. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras reluzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobrescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobrescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é realmente necessária -- programação de jogos é um dos poucos domínios em que herança múltipla pode ser necessária.}.
 
 \subsection{Classes Abstratas e Concretas}
 
@@ -530,7 +538,7 @@ Não estamos tão preocupado se uma classe é abstrata quando estamos modelando,
 
 \section{Persistência}
 
-Persistência foca na questão de como fazer com que os objetos estejam disponíveis para uso futuro pelo software. Em outras palavras, como salvar objetos na memória permanente. Para fazer um objeto ser permanente, você deve salvar os valores de seus atributos na memória permanente (tais como num banco de dados ou num arquivo) e também qualquer informação necessária para manter seus relacionamentos (agregação, herança e associação) nos quais está envolvido. Em outroas palavras, você precisa salvar as propriedades apropriadas na memória permanente. Além de salvar objetos, persistência também se preocupa em recuperá-los e apagá-los.
+Persistência foca na questão de como fazer com que os objetos estejam disponíveis para uso futuro pelo software. Em outras palavras, como salvar objetos na memória permanente. Para fazer um objeto ser permanente, você deve salvar os valores de seus atributos na memória permanente (tais como num banco de dados ou num arquivo) e também qualquer informação necessária para manter seus relacionamentos (agregação, herança e associação) nos quais está envolvido. Em outras palavras, você precisa salvar as propriedades apropriadas na memória permanente. Além de salvar objetos, persistência também se preocupa em recuperá-los e apagá-los.
 
 Do ponto de vista de desenvolvimento, existem dois tipos de objetos: objetos persistentes que continuam por aí e objetos transitórios que se vão. Por exemplo, um \emph{Cliente} é uma classe persistente. Você quer salvar objetos clientes em algum tipo de memória permanente de modo que você possa trabalhar com eles de novo no futuro. Uma tela de edição de um cliente, entretanto, é um objeto transitório. Sua aplicação cria uma tela de edição de cliente, mostra-a e se livra dela depois que o usuário terminou de editar os dados do cliente.
 
@@ -539,7 +547,7 @@ As seguintes dicas e técnicas devem ajudar a entender e aplicar o conceito de p
 \begin{enumerate}
 \item \textbf{Classes do negócio/ do domínio são geralmente persistentes.} Você  naturalmente precisa manter um registro permanente (ou persistente) de instâncias de classes do mundo real como \emph{Estudante}, \emph{Professor} e \emph{Disciplina}.
 
-\item \textbf{Classes da interface usuário são geralmente transitórias.} Classes da interface usuário (telas e relatórios) são em geral transitórios. Telas são criadas e exibidas quando necessário e, então, quando não estão mais em uso, elas são destruidas (removidas da memória). Objetos relatórios são criados, eles adquirem os dados de que precisam, manipulam os dados e imprimem os dados. Depois disto, o objeto relatório é destruido. Note que às vezes você pode precisar manter um registro (log) da impressão do relatório e de quem mandou fazer a impressão, o registro (log) neste caso deve ser permanente.
+\item \textbf{Classes da interface usuário são geralmente transitórias.} Classes da interface usuário (telas e relatórios) são em geral transitórios. Telas são criadas e exibidas quando necessário e, então, quando não estão mais em uso, elas são destruídas (removidas da memória). Objetos relatórios são criados, eles adquirem os dados de que precisam, manipulam os dados e imprimem os dados. Depois disto, o objeto relatório é destruído. Note que às vezes você pode precisar manter um registro (log) da impressão do relatório e de quem mandou fazer a impressão, o registro (log) neste caso deve ser permanente.
 
 \item \textbf{Você precisa armazenar tanto os atributos quanto as associações.}
 Quando um objeto é escrito no disco, você obviamente precisa armazenar os valores dos seus atributos. Entretanto, você também deve armazenar informações sobre seus relacionamentos/associações com os quais o objeto está envolvido. Por exemplo, Bia está cursando Bio-medicina e Enfermagem, então você precisa se assegurar que quando você for armazenar o objeto Bia no disco, o software vai registrar que ela está matriculada nestas duas disciplinas.
@@ -589,7 +597,7 @@ Uma associação é um relacionamento persistente entre duas ou mais classes ou 
 
 \item[Papel:] O papel (\textit{role}) -- o contexto que cada objeto assume na associação -- pode ser indicado na ponta da associação.
 
-\item[Qualificador:] Um qualificador é um valor que seleciona um objeto do conjunto de objetos relacionados através de uma associação. Por exemplo, na figura \ref{fig:uml6}, a associação \emph{compoe} de \emph{Disciplina} para \emph{Curso} é qualificada pela combinação dos atributos \emph{grade} e \emph{semestre} (potencialmente implementada pela \emph{Disciplina}). Qualificadores são opcionais e na prática raramente modelados\footnote{Tanto que a ferramenta Dia usada para criar os nossos diagramas não possui a opção de incluí-los, a notação usada no diagrama foi a de uma \textit{restrição}.}.
+\item[Qualificador:] Um qualificador é um valor que seleciona um objeto do conjunto de objetos relacionados através de uma associação. Por exemplo, na figura \ref{fig:uml6}, a associação \emph{compõe} de \emph{Disciplina} para \emph{Curso} é qualificada pela combinação dos atributos \emph{grade} e \emph{semestre} (potencialmente implementada pela \emph{Disciplina}). Qualificadores são opcionais e na prática raramente modelados\footnote{Tanto que a ferramenta Dia usada para criar os nossos diagramas não possui a opção de incluí-los, a notação usada no diagrama foi a de uma \textit{restrição}.}.
 
 \end{description}
 
@@ -637,7 +645,7 @@ Terceiro, algumas vezes, o sentido de uma associação é único, como pode ser 
 
 \subsection{Modelagem do Desconhecido}
 
-Não importa o quanto é bom o trabalho que você realiza, pode-se com quase certeza absoluta garantir que você perdeu algum detalhe dos relacionamentos dos seus objetos. Então, o que pode ser feito é: \textit{Faça e torça que dê certo?} Óbvio que não. Você vai voltar aos seus usuários e perguntar para eles como estão as coisas, não? O problema é lembrar de voltar aos seus usuários. A solução: Marcar como ``desconhecido agora'' colocando um ponto de interrogação na parte do relacionamento em que você tem uma dúvida. Por exemplo, na figura \ref{fig:uml7}, você acredita que zero ou mais empregados podem preencher um cargo. Você sabe que um cargo pode não está preenchido, mas não tem certeza se um cargo pode ser preenchido por uma ou mais pessoas. Existe compartilhamento de emprego na organização? Existem cargos genéricos como Faxineiro, que é preenchido por várias pessoas? Ou é realmente, uma pessoa por cargo, como estamos mostrando atualmente? Porque você não sabe com certeza ainda, você marca o relacionamento com um ponto de interrogação, indicando que você deve retorna para ele mais tarde e checar seu ``chute educado''. Observe que UML não inclui pontos de interrogação como parte da notação, é apenas uma técnica que Ambler descobriu ser muito útil na prática -- idealmente, você não deve advinhar ou supor coisas sem falar antes com quem está adquirindo o sistema (o \textit{stockholder}), mas se você precisar, então marque sua suposição no seu trabalho e procure resolver a dúvida o quanto antes.
+Não importa o quanto é bom o trabalho que você realiza, pode-se com quase certeza absoluta garantir que você perdeu algum detalhe dos relacionamentos dos seus objetos. Então, o que pode ser feito é: \textit{Faça e torça que dê certo?} Óbvio que não. Você vai voltar aos seus usuários e perguntar para eles como estão as coisas, não? O problema é lembrar de voltar aos seus usuários. A solução: Marcar como ``desconhecido agora'' colocando um ponto de interrogação na parte do relacionamento em que você tem uma dúvida. Por exemplo, na figura \ref{fig:uml7}, você acredita que zero ou mais empregados podem preencher um cargo. Você sabe que um cargo pode não está preenchido, mas não tem certeza se um cargo pode ser preenchido por uma ou mais pessoas. Existe compartilhamento de emprego na organização? Existem cargos genéricos como Faxineiro, que é preenchido por várias pessoas? Ou é realmente, uma pessoa por cargo, como estamos mostrando atualmente? Porque você não sabe com certeza ainda, você marca o relacionamento com um ponto de interrogação, indicando que você deve retorna para ele mais tarde e checar seu ``chute educado''. Observe que UML não inclui pontos de interrogação como parte da notação, é apenas uma técnica que Ambler descobriu ser muito útil na prática -- idealmente, você não deve adivinhar ou supor coisas sem falar antes com quem está adquirindo o sistema (o \textit{stockholder}), mas se você precisar, então marque sua suposição no seu trabalho e procure resolver a dúvida o quanto antes.
 
 \begin{figure}[h]
 \begin{center}
@@ -658,7 +666,7 @@ Na figura \ref{fig:uml6}, a associação unidirecional \emph{preenche} entre \em
 
 \subsection{Propriedades}
 
-Em UML 2, uma propriedade é um valor nomeado que denota uma característica de um elemento (tal como uma classe ou um componente). Atributos e associações, inclusive composição, são propriedades. Por exemplo, o nome de um estudante é uma propriedade umportante da classe \emph{Estudante}. O fato de estudantes se matricularem em disciplinas também é uma propriedade importante da classe \emph{Estudante}. Logo, faz sentido atributos e relacionamentos serem propriedades de classes. Lembre-se, também, que a implementação de associações se faz, em parte, através de atributos.
+Em UML 2, uma propriedade é um valor nomeado que denota uma característica de um elemento (tal como uma classe ou um componente). Atributos e associações, inclusive composição, são propriedades. Por exemplo, o nome de um estudante é uma propriedade importante da classe \emph{Estudante}. O fato de estudantes se matricularem em disciplinas também é uma propriedade importante da classe \emph{Estudante}. Logo, faz sentido atributos e relacionamentos serem propriedades de classes. Lembre-se, também, que a implementação de associações se faz, em parte, através de atributos.
 
 \subsection{Agregação e Composição}
 
@@ -672,7 +680,7 @@ Composição é um tipo forte de agregação no qual o ``todo'' é completamente
 \caption{Exemplos de agregação} \label{fig:uml8}
 \end{center}\end{figure}
 
-Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você aida tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
+Em UML 1.x, você podia modelar agregação e composição, mas no UML 2.x, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997 quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- agregação era exibida com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação; Logo, você a ida tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade do ``todo'' de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
 
 Assim como associações são vias de duplo sentido, também as agregações são. Além disso, as associações de agregação/composição mostradas na figura \ref{fig:uml8} são lidas de maneira similar:
 \begin{itemize}
@@ -681,9 +689,9 @@ Assim como associações são vias de duplo sentido, também as agregações sã
 \item Um motor é parte de um e apenas um avião;
 \item Um avião tem um ou mais motores;
 \item Um empregado pode ser parte de uma ou mais equipes;
-\item Uma equipe é constituida de um ou mais empregados;
+\item Uma equipe é constituída de um ou mais empregados;
 \item Qualquer equipe pode fazer parte de uma equipe maior; e
-\item Uma equipe pode ser constituida de subequipes menores.
+\item Uma equipe pode ser constituída de subequipes menores.
 \end{itemize}
 
 É importante conhecer a antiga notação para agregação. Mesmo que não a usemos mais.
@@ -707,7 +715,7 @@ Existem dois tipos de relacionamentos: persistente e transitório. A diferença 
 
 Relacionamentos persistentes são permanentes, ou, pelo menos, semi-permanentes, por natureza. Um relacionamento de objetos é persistente se a informação para mantê-lo é salva em memória permanente. Por exemplo, o relacionamento \emph{se\_matricula} entre estudantes e disciplinas é persistente. Isto é uma informação de negócio importante que deve ser armazenada no disco. O relacionamento \emph{ensina} entre professores e disciplinas é persistente pelo mesmo motivo. Todos os relacionamentos que vimos até agora são persistentes.
 
-Associações transitórias são temporárias por natureza. Elas não são salvas no armazenamento permanente. Relacionmentos transitórios envolvem, geralmente, mas não sempre, pelo menos um objeto transitório, tal como uma tela, ou um relatório. A razão para isto é simples: Se você não precisa persistir um objeto, então, você não precisa persistir seus relacionamentos.
+Associações transitórias são temporárias por natureza. Elas não são salvas no armazenamento permanente. Relacionamentos transitórios envolvem, geralmente, mas não sempre, pelo menos um objeto transitório, tal como uma tela, ou um relatório. A razão para isto é simples: Se você não precisa persistir um objeto, então, você não precisa persistir seus relacionamentos.
 
 Relacionamentos transitórios existem entre objetos por uma razão apenas: Os objetos precisam colaborar entre eles. Para um objeto colaborar com outro objeto, ele precisa conhecê-lo. Isto significa que deve existir, ou um relacionamento entre os objetos, ou um relacionamento do tipo ``parte-de'' entre os dois objetos. Quando não há uma associação persistente  entre dois objetos, mas eles colaboram um com o outro, você modela uma relação de dependência entre as duas classes.
 
@@ -718,7 +726,7 @@ Relacionamentos transitórios existem entre objetos por uma razão apenas: Os ob
 \caption{Dependência entre duas classes.} \label{fig:clsDep}
 \end{figure}
 
-A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada pela linha tracejada com uma seta aberta -- entre as classes \emph{Estudante} e \emph{TelaEdicaoEstudante}, representando o relacionamento transitório entre um objeto tela de edição de estudante usado para atualizar o objeto estudante. A tela de edição obtem a informação atual do objeto estudante, mostra no modo de edição e atualiza a informação nova quando termina a edição. O relacionamento transitório entre o objeto tela de edição e o objeto estudante existe enquanto a informação do estudante é exibida na tela. Quando a tela é fechada, o relacionamento deixa de existir (a tela também não existe mais) e os objetos transitórios provavelmente já foram destruidos.
+A figura \ref{fig:clsDep} mostra um relacionamento de dependência -- modelada pela linha tracejada com uma seta aberta -- entre as classes \emph{Estudante} e \emph{TelaEdicaoEstudante}, representando o relacionamento transitório entre um objeto tela de edição de estudante usado para atualizar o objeto estudante. A tela de edição obtém a informação atual do objeto estudante, mostra no modo de edição e atualiza a informação nova quando termina a edição. O relacionamento transitório entre o objeto tela de edição e o objeto estudante existe enquanto a informação do estudante é exibida na tela. Quando a tela é fechada, o relacionamento deixa de existir (a tela também não existe mais) e os objetos transitórios provavelmente já foram destruídos.
 
 Associações transitórias podem também ocorrer entre objetos persistentes. Por exemplo, na figura \ref{fig:seq}, uma associação transitória implícita\footnote{Esta associação não foi ilustrada na figura \ref{fig:uml6} porque o conceito não foi introduzido naquele momento. Pela consistência, as associações transitórias também  precisam ser modeladas.} existe entre o objeto estudante e o objeto curso (o estudante é passado como um parâmetro para o curso, para saber se ele atende as condições de pré-requisitos).
 
@@ -762,7 +770,7 @@ As dicas e técnicas a seguir devem ajudar a modelar de maneira efetiva as colab
 
 \item \textbf{Deve ter um método correspondente no objeto algo.} Colaborações são implementadas através de chamadas de métodos, isto implica que o método deve existir no objeto alvo para ele ser chamado. Para um objeto poder receber um pedido de informação, ele deve ter um método que retorna esta informação. Por exemplo, na figura \ref{fig:seq}, a mensagem \emph{ehEstudanteElegivel()} é enviada para o objeto curso, logo na classe \emph{Curso} deve haver uma implementação do método \emph{ehEstudanteElegivel()}. Se desejamos que um objeto faça algo, ele deve ter um método que o faça. De modo similar, na figura \ref{fig:seq}, observe que a mensagem \emph{matriculaEstudante()} é enviada a objetos disciplinas, logo a classe \emph{Disciplina} deve ter um método \emph{matriculaEstudante()}.
 
-\item \textbf{Pode haver um valor de retorno.} Se a colaboração é um pedido de informação, então deve haver o retorno de um valor (a informação pedida). Este fato deve ser incluida na documentação do método e, opcionalmente, será indicada no diagrama de sequência como uma linha tracejada. Valores de retorno não são modelados em diagramas de colaboração porque eles tendem a poluir os diagramas.
+\item \textbf{Pode haver um valor de retorno.} Se a colaboração é um pedido de informação, então deve haver o retorno de um valor (a informação pedida). Este fato deve ser incluída na documentação do método e, opcionalmente, será indicada no diagrama de sequência como uma linha tracejada. Valores de retorno não são modelados em diagramas de colaboração porque eles tendem a poluir os diagramas.
 
 \item \textbf{Pode ter ou não parâmetros.} Algumas mensagens têm parâmetros, outras não. Lembre-se de que mensagens são efetivamente uma chamada de método (função). Assim como funções têm parâmetros, métodos também têm. Por exemplo, na figura \ref{fig:seq}, um objeto estudante passa a si mesmo como um parâmetro quando chama a mensagem \emph{matriculaEstudante()} do objeto \emph{Disciplina}. Na figura \ref{fig:seq2}, o objeto entrega não precisa passar qualquer parâmetro quando pede ao objeto item o seu preço.
 
@@ -789,7 +797,7 @@ Acoplamento é uma medida do quanto dois itens, tais como classes ou métodos, e
 
 Na discussão de como \emph{Estudante} pode implementar o método \emph{se\_matricula()}: Ele pode acessar diretamente o atributo \emph{listaDeEstudantes} de \emph{Disciplina}, ou pode enviar uma mensagem para objetos \emph{Disciplina} pedindo para matricular o estudante na disciplina. Acessando diretamente e mudando o atributo \emph{listaDeEstudantes} pode economizar alguns ciclos de CPU e rodar mais rápido, mas assim que a implementação daquele atributo mudar (passando de um \textit{array} para uma \textit{lista encadeada}, por exemplo), seu código da classe \emph{Estudante} também vai ter de mudar. Isto não é muito bom. O problema básico é que quando duas classes são fortemente acopladas, uma mudança numa, requer uma mudança na outra. Isto, por sua vez, pode requerer uma mudança em outra classe, e em outra, ... Acoplamento forte é uma das causas para a manutenção de código ser complexa. O que deveria ser uma troca simples de manutenção pode levar meses para estabilizar, se é que vai ficar estável. É incrível a quantidade de código que existe que ninguém quer tocar com medo de quebrá-lo. Por exemplo, lembre-se do ano 2000 (bug do milênio, que não era no milênio).
 
-Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e decidem escrever código fortemente acoplado. Isto só se justifica quando você está desesperado em reduzir todos códigos redundantes do seu programa. Por exemplo, \textit{drivers} de bancos de dados são fortemente acoplados aos sistemas de arquivos do sistema operacional onde o banco de dados está instalado. Se você puder salvar uns microsegundos no acesso aos dados, isto pode ser significativo ao acessar centenas de milhares de objetos.
+Frequentemente, os desenvolvedores são seduzidos pelo lado negro da força e decidem escrever código fortemente acoplado. Isto só se justifica quando você está desesperado em reduzir todos códigos redundantes do seu programa. Por exemplo, \textit{drivers} de bancos de dados são fortemente acoplados aos sistemas de arquivos do sistema operacional onde o banco de dados está instalado. Se você puder salvar uns microssegundos no acesso aos dados, isto pode ser significativo ao acessar centenas de milhares de objetos.
 
 \section{Coesão}
 
@@ -800,7 +808,7 @@ Um método é bastante coeso se ele faz uma coisa e apenas esta coisa. Por exemp
 \subsection{Dica: Nomes de métodos indicam o grau de coesão}
 O nome de um método, em geral, indica o quanto ele é coeso. Sempre que você encontrar uma combinação forte verbo/complemento para ser usada como nome de método, há grandes chances do método ser fortemente coeso. Por exemplo, leve em consideração métodos como \emph{getNome()}, \emph{printNome()}, \emph{matriculaDisciplina()} e \emph{desisteDisciplina()}. Verbos tais como get, print, matricular e desistir são todos muito fortes. Leve em consideração \emph{mudaStatusDisciplina()}, agora. Mudar é tão forte ou tão explícito quanto as palavras matricular e desistir? Provavelmente, não, mudar é mais geral.
 
-Uma classe altamente coesa representa um type de objeto e só um tipo de objeto. Por exemplo, para o sistema de informação da universidade, modelamos professores e não empregados. Apesar de um professor ser na realidade um empregado, eles são diferentes de outros tipos de empregados. Por exemplo, professores fazem coisas diferentes de faxineiros, que fazem coisas diferentes de secretárias, que fazem coisas diferentes do pessoal administrativos, etc. Podemos escrever facilmente uma classe \emph{Empregado} genérica, capaz de lidar com todas as funcionalidades realizadas por todos os empregados da universidade. Entretanto, esta classe pode se tornar rapidamente pesada e difícil de manter. Uma solução melhor seria definir uma hierárquia de classes com \emph{Professor}, \emph{Faxineiro}, \emph{Secretaria}, \emph{Administrativo}, etc. Por causa das similaridades existentes entre estas classes, você criaria uma nova classe abstrata chamada \emph{Empregado}, que herdaria de \emph{Pessoa}. As outras classes, inclusive \emph{Professor}, herdam de \emph{Empregado}. A vantagem disto é que cada classe representa um tipo de objeto. Se aparecerem mudanças para serem feitas sobre os faxineiros, você faz diretamente na classe \emph{Faxineiro}. Você não precisa se preocupar com o efeito destas mudanças no código dos professores. 
+Uma classe altamente coesa representa um type de objeto e só um tipo de objeto. Por exemplo, para o sistema de informação da universidade, modelamos professores e não empregados. Apesar de um professor ser na realidade um empregado, eles são diferentes de outros tipos de empregados. Por exemplo, professores fazem coisas diferentes de faxineiros, que fazem coisas diferentes de secretárias, que fazem coisas diferentes do pessoal administrativos, etc. Podemos escrever facilmente uma classe \emph{Empregado} genérica, capaz de lidar com todas as funcionalidades realizadas por todos os empregados da universidade. Entretanto, esta classe pode se tornar rapidamente pesada e difícil de manter. Uma solução melhor seria definir uma hierarquia de classes com \emph{Professor}, \emph{Faxineiro}, \emph{Secretaria}, \emph{Administrativo}, etc. Por causa das similaridades existentes entre estas classes, você criaria uma nova classe abstrata chamada \emph{Empregado}, que herdaria de \emph{Pessoa}. As outras classes, inclusive \emph{Professor}, herdam de \emph{Empregado}. A vantagem disto é que cada classe representa um tipo de objeto. Se aparecerem mudanças para serem feitas sobre os faxineiros, você faz diretamente na classe \emph{Faxineiro}. Você não precisa se preocupar com o efeito destas mudanças no código dos professores. 
 
 \section{Polimorfismo}
 
@@ -817,13 +825,13 @@ Um objeto pode ser de um ou vários tipos. Por exemplo, um objeto José da Silva
 \caption{Implementação parcial do sistema de recursos humanos da universidade.} \label{fig:uniRH}
 \end{figure}
 
-Consideremos um exemplo um pouco mais realístico de polimorfismo explorando o projeto de como a universidade lida com a contratação de pessoal modelada na figura \ref{fig:uniRH}. Há uma maneira padrão para a universidade contratar pessoal: uma vez contratada uma pessoa, ela é incluida no plano de saúde da universidade e ganha um crachá. Quando um professor é contratado, o mesmo processo é seguido, mas, além disso, uma vaga de estacionamento é atribuida para o novo professor se houver vaga disponível, senão ele entra na fila de espera por vagas.
+Consideremos um exemplo um pouco mais realístico de polimorfismo explorando o projeto de como a universidade lida com a contratação de pessoal modelada na figura \ref{fig:uniRH}. Há uma maneira padrão para a universidade contratar pessoal: uma vez contratada uma pessoa, ela é incluída no plano de saúde da universidade e ganha um crachá. Quando um professor é contratado, o mesmo processo é seguido, mas, além disso, uma vaga de estacionamento é atribuída para o novo professor se houver vaga disponível, senão ele entra na fila de espera por vagas.
 
-Se o método \emph{comecaEmprego()} for implementado na classe \emph{Empregado}, ele implementa o comportamento necessário para adicionar uma pessoa ao plano de saúde da universiade e a geração do crachá. O método \emph{comecaEmprego()} na classe \emph{Professor} terá de ser sobreescrito. Ele chama o método da classe \emph{Empregado}, pois professores também são inclusos no plano de saúde da universidade e recebem crachás, mas, além disso,  reserva uma vaga de estacionamento.
+Se o método \emph{comecaEmprego()} for implementado na classe \emph{Empregado}, ele implementa o comportamento necessário para adicionar uma pessoa ao plano de saúde da universidade e a geração do crachá. O método \emph{comecaEmprego()} na classe \emph{Professor} terá de ser sobrescrito. Ele chama o método da classe \emph{Empregado}, pois professores também são inclusos no plano de saúde da universidade e recebem crachás, mas, além disso,  reserva uma vaga de estacionamento.
 
-Por ser capaz de enviar a mensagem \emph{comecaEmprego()} para qualquer tipo de empregado, não há a necessidade de usar complicadas instruções condicionais no método \emph{contrataEmpregadoNovo()} do objeto tela. Este método não precisa mandar uma mensagem \emph{comecaProfessor()} para objetos professores, \emph{comecaFaxineiro()} para objetos faxineiros, etc. Ele só precisa enviar \emph{comecaEmprego()} para qualquer tipo de empregado e o objeto fará a coisa certa. Como resultado, você pode acrescentar novos tipos de empregados (como o \emph{Administrativo}) e não precisa mudar o objeto tela. Em outras palavras, a classe \emph{TelaContratacao} é fracamente acoplada à hierárquia de classes, o que permite a extensão do sistema facilmente.
+Por ser capaz de enviar a mensagem \emph{comecaEmprego()} para qualquer tipo de empregado, não há a necessidade de usar complicadas instruções condicionais no método \emph{contrataEmpregadoNovo()} do objeto tela. Este método não precisa mandar uma mensagem \emph{comecaProfessor()} para objetos professores, \emph{comecaFaxineiro()} para objetos faxineiros, etc. Ele só precisa enviar \emph{comecaEmprego()} para qualquer tipo de empregado e o objeto fará a coisa certa. Como resultado, você pode acrescentar novos tipos de empregados (como o \emph{Administrativo}) e não precisa mudar o objeto tela. Em outras palavras, a classe \emph{TelaContratacao} é fracamente acoplada à hierarquia de classes, o que permite a extensão do sistema facilmente.
 
-É importante mencionar que o projeto da figura \ref{fig:uniRH} não é um muito bom. Uma maneira melhor de fazer é refatorar a hierárchia usando o padrão de projeto \emph{Papeis interpretados} ilustrado na figura \ref{fig:uniRH2}. Este padrão separa o conceito de alguém ser uma pessoa e o papel que ela interpreta no trabalho. Esta separação permite que uma pessoa interprete mais de um papel no trabalho.
+É importante mencionar que o projeto da figura \ref{fig:uniRH} não é um muito bom. Uma maneira melhor de fazer é refatorar a hierárquica usando o padrão de projeto \emph{Papeis interpretados} ilustrado na figura \ref{fig:uniRH2}. Este padrão separa o conceito de alguém ser uma pessoa e o papel que ela interpreta no trabalho. Esta separação permite que uma pessoa interprete mais de um papel no trabalho.
 
 \begin{figure}
 \begin{center}
@@ -834,7 +842,7 @@ Por ser capaz de enviar a mensagem \emph{comecaEmprego()} para qualquer tipo de 
 
 \section{Interfaces}
 
-Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A idéia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{criterio}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
+Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A ideia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{critério}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
 
 \begin{figure}
 \begin{center}
@@ -843,11 +851,11 @@ Uma interface é a definição de uma coleção de um ou mais métodos e zero ou
 \caption{As duas notações para interfaces em UML.} \label{fig:ifcUml}
 \end{figure}
 
-Interfaces servem para garantir acoplamentos fracos. Eles permitem a uma classe participar de um conjunto comum de funcionalidades sem que nenhuma outra classe tenha que saber algo mais além dela implementar a interface. Um objeto GUI, por exemplo, pode exibir uma lista de estudantes que atendem um critério de busca sem conhecer nada da classe \emph{Estudante}, exceto que ela implementa a interface \emph{Buscavel} e a interface \emph{Descricao} que tem um método que apresenta o estudante. A mesma GUI pode ser usada para realizar a mesma ação com os professores, se a classe \emph{Professor} também implementar estas duas interfaces. De modo análogo, se a classe \emph{Disciplina} também implementar estas interfaces, a GUI também pode ser usada para exibir uma lista de disciplinas que atendam ao critério de busca. A GUI não precisa saber nada sobre a classe, só que ela implementa as interfaces. Isto mostra um fraco acoplamento entre a GUI e os objetos das classes que ela exibe.
+Interfaces servem para garantir acoplamentos fracos. Eles permitem a uma classe participar de um conjunto comum de funcionalidades sem que nenhuma outra classe tenha que saber algo mais além dela implementar a interface. Um objeto GUI, por exemplo, pode exibir uma lista de estudantes que atendem um critério de busca sem conhecer nada da classe \emph{Estudante}, exceto que ela implementa a interface \emph{Buscavel} e a interface \emph{Descrição} que tem um método que apresenta o estudante. A mesma GUI pode ser usada para realizar a mesma ação com os professores, se a classe \emph{Professor} também implementar estas duas interfaces. De modo análogo, se a classe \emph{Disciplina} também implementar estas interfaces, a GUI também pode ser usada para exibir uma lista de disciplinas que atendam ao critério de busca. A GUI não precisa saber nada sobre a classe, só que ela implementa as interfaces. Isto mostra um fraco acoplamento entre a GUI e os objetos das classes que ela exibe.
 
-Em linguagens como Java e C\#, interfaces fazem parte do mecanismo de tipage. Isto é, a classe \emph{Estudante} da figura \ref{fig:ifcUml} tem pelo menos três tipos: \emph{Estudante}, \emph{Serializavel} e \emph{Buscavel}. Ela também tem o tipo de todas as suas superclasses. Por exemplo, se \emph{Estudante} herda de \emph{Pessoa} e ela implementa a interface \emph{Printable}, então os objetos estudantes também são do tipo \emph{Pessoa} e \emph{Printable}. O mecanismo de tipo da sua linguagem de implementação afetará a extensão do polimorfismo suportado.
+Em linguagens como Java e C\#, interfaces fazem parte do mecanismo de tipagem. Isto é, a classe \emph{Estudante} da figura \ref{fig:ifcUml} tem pelo menos três tipos: \emph{Estudante}, \emph{Serializavel} e \emph{Buscavel}. Ela também tem o tipo de todas as suas superclasses. Por exemplo, se \emph{Estudante} herda de \emph{Pessoa} e ela implementa a interface \emph{Printable}, então os objetos estudantes também são do tipo \emph{Pessoa} e \emph{Printable}. O mecanismo de tipo da sua linguagem de implementação afetará a extensão do polimorfismo suportado.
 
-A figura \ref{fig:ifcUml} mostra ainda que existem duas notações em UML para indicar que algo implementa uma interface: A notação da circunferência com linha da interface \emph{Serializavel} e a notação em caixa usada para a interface \emph{Buscavel}. A primeira tem a vantagem de ser mais compacta, enquanto a segunda fornece mais detalhes. A caixa da interface \emph{Buscavel} é a mesma da classe com o estereótipo \emph{interface}. Estereótipo é um mecanismo para definir extensões comuns e consistentes na notação UML. A seta tracejada de \emph{Estudante} para \emph{Buscavel} é uma relação \emph{realiza} em UML. Isto significa que \emph{Estudante} implementa (realiza) a interface \emph{Buscavel}.
+A figura \ref{fig:ifcUml} mostra ainda que existem duas notações em UML para indicar que algo implementa uma interface: A notação da circunferência com linha contínua (vulgarmente chamada de pirulito) da interface \emph{Serializavel} e a notação em caixa usada para a interface \emph{Buscavel}. A primeira tem a vantagem de ser mais compacta, enquanto a segunda fornece mais detalhes. A caixa da interface \emph{Buscavel} é a mesma da classe com o estereótipo \emph{interface}. Estereótipo é um mecanismo para definir extensões comuns e consistentes na notação UML. A seta tracejada de \emph{Estudante} para \emph{Buscavel} é uma relação \emph{realiza} em UML. Isto significa que \emph{Estudante} implementa (realiza) a interface \emph{Buscavel}.
 
 \section{Componentes}
 
@@ -855,7 +863,7 @@ Um componente é uma unidade modular, extensível de distribuição independente
 
 Componentes, como classes, implementam interfaces. As interfaces de um componente definem os seus pontos de acesso. Componentes são tipicamente implementadas como coleções de classes, idealmente, classes que formam um subconjunto coeso dos seus sistemas completos. Componentes são tipicamente pesados e podem até ser pensados como classes grandes ou mesmo subsistemas. Por exemplo, um banco de dados pode ser um componente, ou uma coleção de classes de negócio/domínio que implementam os comportamentos requeridos pelas pessoas dentro da sua aplicação pode ser um componente.
 
-Diagramas de Componentes mostram os componentes de software que compõem um pedaço maior de software, suas interfaces e suas interrelações. Vamos considerar um componente como sendo um item grande usado nas operações diárias do seu negócio -- por exemplo, um subsistema comum, um sistema comercial padrão (COTS - commercial off-the-self system), uma aplicação OO ou uma aplicação antiga empacotada. De muitas maneiras, um diagrama de componentes é simplemente um diagrama de classes numa escala maior, apenas menos detalhada.
+Diagramas de Componentes mostram os componentes de software que compõem um pedaço maior de software, suas interfaces e suas inter-relações. Vamos considerar um componente como sendo um item grande usado nas operações diárias do seu negócio -- por exemplo, um subsistema comum, um sistema comercial padrão (COTS - commercial off-the-self system), uma aplicação OO ou uma aplicação antiga empacotada. De muitas maneiras, um diagrama de componentes é simplesmente um diagrama de classes numa escala maior, apenas menos detalhada.
 
 A figura \ref{fig:compo} mostra um exemplo de um diagrama de componente usado para modelar uma arquitetura de negócio para a universidade. As caixas representam componentes -- neste caso, as interfaces de usuário que o pessoal usa para interagir com os sistemas da universidade, os componentes de negócio tais como \emph{Instalacoes} ou componentes técnicos como o componente de \emph{Seguranca} ou banco de dados.
 
@@ -887,7 +895,7 @@ Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas 
 \caption{Padrão de projeto \emph{Singleton}} \label{fig:singleton}
 \end{figure}
 
-Existem padrões muito complexos; A maioria dos padrões são baseados em três ou mais classes. O principal desafio com os padrões é que quando você aprende sobre eles, tudo parece ser um padrão e, às vezes, isto é verdade. O perigo é que você pode exagerar na contrução do seu software, aumentando a dificuldade de manutenção, apesar de reduzir o tempo para implementar os requisitos. Para evitar, atenuar, este problema, o modelamento ágil (AM) inclui a prática de \emph{aplicar gentilmente os padrões}, onde você introduz os padrões pela \emph{refatoração} do seu projeto lentamente no lugar de aplicá-los quando você acha que precisa deles.
+Existem padrões muito complexos; A maioria dos padrões são baseados em três ou mais classes. O principal desafio com os padrões é que quando você aprende sobre eles, tudo parece ser um padrão e, às vezes, isto é verdade. O perigo é que você pode exagerar na construção do seu software, aumentando a dificuldade de manutenção, apesar de reduzir o tempo para implementar os requisitos. Para evitar, atenuar, este problema, o modelamento ágil (AM) inclui a prática de \emph{aplicar gentilmente os padrões}, onde você introduz os padrões pela \emph{refatoração} do seu projeto lentamente no lugar de aplicá-los quando você acha que precisa deles.
 
 No próximo capítulo, veremos os padrões com um pouco mais de profundidade. \citeonline{DP:explained} considera que um bom momento para aprender padrões de projeto é quando se está aprendendo projetos com orientação a objetos.
 
@@ -917,11 +925,11 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 
 \chapter{Padrões de Projeto}
 
-Neste capítulo veremos um resumo das idéias apresentadas em \citeonline{DP:explained} e \citeonline{design:patterns}. Os autores do primeiro livro acreditam que os alunos podem aprender orientação objeto simultaneamente com os padrões de projeto. E é o que faremos neste texto. Não veremos os padrões com a minúcia desses livros, mas apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler os textos originais.
+Neste capítulo veremos um resumo das ideias apresentadas em \citeonline{DP:explained} e \citeonline{design:patterns}. Shalloway e Trott acreditam que os alunos podem aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer com este texto. Não veremos os padrões com a minúcia desses livros, apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
 
 Um padrão tem quatro elementos essenciais:
 \begin{enumerate}
-\item O \emph{nome do padrão} permite distinguir rapidamente o padrão de outros e ter uma noção da aplicação e o que é o padrão. Encontrar bons nomes pode ser difícil, mas provavelmemte podemos aplicar também a regra da coesão aqui: Se não há uma boa maneira de nomeá-lo, há uma boa chance do padrão não está correto. Óbvio existem exceções para esta regra e, às vezes, precisamos criar um nome novo (uma palavra nova) para representar o conceito.
+\item O \emph{nome do padrão} permite distinguir rapidamente o padrão de outros e ter uma noção da aplicação e o que é o padrão. Encontrar bons nomes pode ser difícil, mas provavelmente podemos aplicar também a regra da coesão aqui: Se não há uma boa maneira de nomeá-lo, há uma boa chance do padrão não está correto. Óbvio existem exceções para esta regra e, às vezes, precisamos criar um nome novo (uma palavra nova) para representar o conceito.
 
 \item O \emph{problema} descreve quando aplicar o padrão. Ele explica o problema e seu contexto (as forças relevantes).
 
@@ -943,32 +951,353 @@ Um padrão tem quatro elementos essenciais:
 
 Os padrões também podem ser classificados de acordo com o escopo de aplicação do padrão: Se o padrão se aplica sobre as classes ou sobre os objetos. Padrões de classes lidam com os relacionamentos entre as classes e suas subclasses. Estes relacionamentos são estabelecidos através de herança, portanto são estáticos, fixados durante a compilação. Os padrões de objetos lidam com o relacionamento entre os objetos, que podem mudar durante a execução, portanto são mais dinâmicos.
 
+As oito características básicas na descrição dos padrões de acordo com \citeonline{design:patterns} são:
+\begin{description}
+\item[Nome:] Todos os padrões devem ter um único nome que os identifica.
+
+\item[Propósito:] O propósito do padrão.
+
+\item[Problema:] O problema que o padrão tenta resolver.
+
+\item[Solução:] Como o padrão fornece uma solução ao problema no contexto em que ele se encaixa.
+
+\item[Participantes e Colaboradores:] As entidades envolvidas no padrão.
+
+\item[Consequências:] As consequências de usar o padrão. Investiga as forças relevantes no emprego do padrão.
+
+\item[Implementação:] Como o padrão pode ser implementado. Observação: Implementações são manifestações concretas de padrões, não devem ser entendidas como o padrão em si.
+
+\item[Estrutura Genérica:] Um diagrama UML que mostra a estrutura típica do padrão.
+
+\end{description}
+
 \section{Catálogo de Padrões}
-\subsection{O Padrão Fabrica Abstrata (\textit{Abstract Factory})}
-\subsection{O Padrão Método Fabrica (\textit{Factory Method})}
-\subsection{O Padrão Adaptador (\textit{Adapter})}
-\subsection{O Padrão Observador (\textit{Observer})}
-\subsection{O Padrão Composição (\textit{Composite})}
-\subsection{O Padrão Iterador (\textit{Iterator})}
-\subsection{O Padrão Visitante (\textit{Visitor})}
-\subsection{O Padrão Estratégia (\textit{Strategy})}
-\subsection{O Padrão Decorador (\textit{Decorator})}
-\subsection{O Padrão Método Gabarito (\textit{Template Method})}
-\subsection{O Padrão \textit{Singleton}}
-\subsection{O Padrão Trava Duplamente Verificada (\textit{Lock Double Checked})}
+
+Começaremos apresentando antes um catálogo de padrões que exemplificam os padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Depois veremos algumas aplicações destes padrões. Em geral, não aplicamos os padrões de maneira isolada, mas para resolver alguns problemas aplicamos diversos padrões. Apesar da gang de 4 apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
+
 \subsection{O Padrão Fachada (\textit{Facade})}
+\subsubsection{Propósito}
+Fornece uma interface unificada para um conjunto de interfaces num subsistema. Fachada define uma interface de alto nível que torna o subsistema mais fácil de usar.
+
+\subsubsection{Problema}
+Você precisa usar apenas um subconjunto de um sistema complexo, ou você só precisa interagir com o sistema de uma maneira específica.
+
+\subsubsection{Solução}
+A Fachada apresenta uma nova interface para o cliente de um sistema existente usar.
+
+\subsubsection{Participantes e colaboradores}
+Ela apresenta uma interface simplificada para o cliente que torna o uso do subsistema mais fácil.
+
+\subsubsection{Consequências}
+A Fachada simplifica o uso do subsistema requerido. Entretanto, como a Fachada não é completa, algumas funcionalidades podem não está disponíveis para o cliente.
+
+\subsubsection{Implementação}
+Defina uma nova classe (ou classes) que tem a interface requerida. Faça esta classe usar o sistema existente.
+
+\subsubsection{Estrutura Genérica}
+A figura \ref{fig:fachada} mostra a estrutura do sistema antes e depois de aplicar o padrão da Fachada.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.45]{fachada.png}
+\caption{Estrutura Genérica do Padrão Fachada}\label{fig:fachada}
+\end{center}
+\end{figure}
+
+O padrão da Fachada pode ser usado para reduzir o número de objetos com os quais um objeto cliente tem de lidar, além da simplificação da interface.
+
+\subsection{O Padrão Adaptador (\textit{Adapter})}
+\subsubsection{Propósito}
+Converte a interface de uma classe em uma outra interface esperada pelos clientes. Adaptador permite que classes trabalhem juntas, o que não seria possível por incompatibilidade de interfaces.
+ 
+\subsubsection{Problema}
+Um sistema tem os dados e o comportamento corretos, mas a interface errada. Tipicamente usado quando você tem de fazer algo derivado de uma classe abstrata.
+
+\subsubsection{Solução}
+O \emph{Adaptador} fornece um embrulho (uma roupagem) com a interface desejada.
+
+\subsubsection{Participantes e colaboradores}
+O \emph{Adaptador} adapta a interface de um \emph{Adaptado} para casar com aquela do \emph{Objetivo} do Adaptador (a classe de quem ela deriva). Isto permite ao \emph{Cliente} usar o \emph{Adaptado} como se ele fosse do tipo do \emph{Objetivo}.
+
+\subsubsection{Consequências}
+O padrão Adaptador permite o uso de objetos pré-existentes em novas estruturas de classes sem ficar limitado às suas interfaces antigas.
+
+\subsubsection{Implementação}
+Contém a classe existente numa outra classe. A nova classe tem a interface requerida e chama os métodos pela classe contida.
+
+\subsubsection{Estrutura Genérica}
+A estrutura genérica do Padrão Adaptador é:
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+Existem dois tipos de padrões de Adaptadores:
+\begin{description}
+\item[Padrão Adaptador de Objeto:] O padrão de Adaptador, geralmente, exemplificado é o Adaptador de Objeto que consiste em um objeto adaptador contendo um objeto adaptado.
+
+\item[Padrão Adaptador de Classe:] Um outro modo de implementar o padrão Adaptador é com herança múltipla. Neste caso, temos um padrão Adaptador de Classe.
+\end{description}
+
+É comum, projetistas inexperientes não saberem diferenciar os dois padrões: Fachada e Adapatador. \citeonline{DP:explained} fornece a seguinte tabela para compará-los:
+
+\begin{table}[h]
+\caption{Comparação entre os padrões Fachada e Adaptador}\label{tab:fachadaxadaptador}
+\begin{center}
+\begin{tabular}{lll}
+ & \textbf{Fachada} & \textbf{Adaptador} \\
+\hline
+Há classes pré-existentes? & Sim & Sim \\
+Há uma interface para a qual devemos projetar? & Não & Sim \\
+Um objeto precisa ter comportamento polimórfico? & Não & Provavelmente \\
+Uma interface mais simples é necessária? & Sim & Não\\
+\hline %\hline
+\end{tabular}
+\legend{Fonte: \citeonline{DP:explained}}
+\end{center}\end{table}
+
+\subsubsection{Exemplo de Adaptador}
+A figura \ref{fig:adaptCirc} mostra como uma classe \emph{CirculoEspc} é adaptada para uma classe \emph{Circulo}. Se o código da \emph{CirculoEspc} fosse acessível, ela poderia herdar de \emph{Circulo}, mas, se a classe faz parte de uma biblioteca externa proprietária, não será possível alterar a hierárquia de classes. Outra razão para a classe \emph{CirculoEspc} não ser derivada de \emph{Circulo} é que este tipo de projeto tem alto grau de acoplamento, herança tem alto grau de acoplamento, agregação mantem um grau de acoplamento menor, tornando o projeto mais flexível para mudanças. 
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{adaptCirc.png}
+\caption{Adaptação de CirculoEspc com Circulo}\label{fig:adaptCirc}
+\end{center}
+\end{figure}
+
+
+\subsection{O Padrão Fabrica Abstrata (\textit{Abstract Factory})}
+
+O padrão da Fabrica Abstrata é um dos padrões de projeto que abstraem o processo de instanciação. Eles ajudam a tornar um sistema independente de como seus objetos são criados, compostos e representados. Eles escondem como instâncias das classes são criadas e são postas juntas.
+
+\subsubsection{Propósito}
+Fornece uma interface para a criação de famílias de objetos relacionados ou dependentes sem especificar as suas classes concretas.
+
+\subsubsection{Problema}
+Famílias de objetos relacionados precisam ser instanciadas.
+
+\subsubsection{Solução}
+Coordena a criação de famílias de objetos. Fornece uma maneira para retirar as regras de como realizar a instanciação do objeto cliente que está usando estes objetos criados.
+
+\subsubsection{Participantes e Colaboradores}
+A FabricaAbstrata define a interface de como criar cada membro da família de objetos requeridos. Tipicamente, cada família é criada usando sua própria FabricaConcreta.
+
+\subsubsection{Consequências}
+O padrão isola as regras de quais objetos usar da lógica de como usar estes objetos.
+
+\subsubsection{Implementação}
+Defina uma classe abstrata que especifica quais objetos devem ser feitos. Implemente, então, uma classe concreta para cada família.
+
+\subsubsection{Estrutura Genérica}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.5]{absFact.png}
+\caption{Estrutura Genérica do Padrão Fabrica Abstrata}\label{fig:absFab}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Método Fabrica (\textit{Factory Method})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Observador (\textit{Observer})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Composição (\textit{Composite})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Iterador (\textit{Iterator})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Visitante (\textit{Visitor})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Estratégia (\textit{Strategy})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Decorador (\textit{Decorator})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Método Gabarito (\textit{Template Method})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão \textit{Singleton}}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
+\subsection{O Padrão Trava Duplamente Verificada (\textit{Lock Double Checked})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Ponte (\textit{Bridge})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Construtor (\textit{Builder})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Protótipo (\textit{Prototype})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Piscina de Objetos (\textit{Object Pool})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Cadeia de Responsabilidade (\textit{Chain of Responsability})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Comando (\textit{Command})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Peso Pena (\textit{Flyweight})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Interpretador (\textit{Interpreter})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Mediador (\textit{Mediator})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão \textit{Memento}}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão \textit{Proxy}}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 \subsection{O Padrão Estado (\textit{State})}
+\subsubsection{Propósito}
+\subsubsection{Problema}
+\subsubsection{Solução}
+\subsubsection{Participantes e colaboradores}
+\subsubsection{Consequências}
+\subsubsection{Implementação}
+\subsubsection{Estrutura Genérica}
+
 
 \chapter{Rápida Introdução ao Scrum}
 
@@ -977,10 +1306,10 @@ Scrum é um framework projetado para ajudar pequenas equipes unidas a desenvolve
 
 Uma equipe scrum consiste, tipicamente, de sete, mais ou menos duas, pessoas que trabalham juntas em curtos intervalos de intensa atividade chamadas de arrancadas (\emph{sprints}), com bastante tempo embutido para revisão e reflexão. Um dos mantras de scrum é ``inspecionar e adaptar'' e equipes scrum são caracterizadas por um foco intenso  na melhoria contínua do processo deles e do produto. Neste capítulo, veremos uma introdução muito rápida da terminologia do scrum: os vários papéis, artefatos e eventos que ocorrem num ciclo de arrancada (\emph{sprint cycle}).
 
-\section{Pápeis}
+\section{Papéis}
 O Scrum conhece três papéis distintos para os membros da equipe:
 \begin{description}
-\item[Proprietário do Produto] O proprietário do produto (\emph{product owner}) é responsável pela maximização do retorno que o negócio traz ao investimento (ROI - Return-Of-Investment). Ele é o único que controla a ordem, a prioridade, da lista de pendências (\textit{backlog items}) da equipe. Ele garante que a equipe entende totalmente os requisitos. Ele registra os requisitos na forma de estórias de usuário (\emph{user stories}), por exemplo: ``Como um <papel - tipo de usuário>, quero <uma característica>, de modo que possa <fazer algo>'' e coloca-as na lista de pendências. Cada uma destas estórias de usuário, quando completada, aumentará o valor do produto.
+\item[Proprietário do Produto] O proprietário do produto (\emph{product owner}) é responsável pela maximização do retorno que o negócio traz ao investimento (ROI - Return-Of-Investment). Ele é o único que controla a ordem, a prioridade, da lista de pendências (\textit{backlog itens}) da equipe. Ele garante que a equipe entende totalmente os requisitos. Ele registra os requisitos na forma de estórias de usuário (\emph{user stories}), por exemplo: ``Como um <papel - tipo de usuário>, quero <uma característica>, de modo que possa <fazer algo>'' e coloca-as na lista de pendências. Cada uma destas estórias de usuário, quando completada, aumentará o valor do produto.
 
 \item[Mestre Scrum] O Mestre Scrum age como um \textit{coach} (treinador), guiando a equipe para níveis mais altos de coesão, auto-organização e desempenho. Enquanto a equipe entrega o produto, o Mestre Scrum entrega uma equipe de alto desempenho e auto-organizada. O Mestre Scrum ajuda a equipe a aprender e aplicar scrum e outras práticas ágeis relacionadas. O mestre scrum está sempre disponível para ajudar a equipe na remoção de obstáculos que estejam bloqueando a execução do trabalho. O mestre scrum não é o chefe, ele é um membro da equipe que se destaca pelo seu conhecimento e suas responsabilidades.
 
@@ -1018,12 +1347,12 @@ O papel de Membro da Equipe resumido:
 
 \section{Artefatos do Scrum}
 \subsection{A Lista de Pendências do Produto (\emph{Product Backlog})}
-A lista de pendências do produto é uma lista acumulativa de itens entregáveis desejados para o produto. Isto inclui características, consertos de erros (\emph{bug fixes}), alterações na documentação e qualquer outra coisa que seja significativa e valiosa para produzir. Embora pendência seja um termo correto para um item da lista, as equipes de scrum preferem usar o termo estória de usuário para reforçar a noção de que construimos produtos para satisfazer as necessidades dos usuários.
+A lista de pendências do produto é uma lista acumulativa de itens entregáveis desejados para o produto. Isto inclui características, consertos de erros (\emph{bug fixes}), alterações na documentação e qualquer outra coisa que seja significativa e valiosa para produzir. Embora pendência seja um termo correto para um item da lista, as equipes de scrum preferem usar o termo estória de usuário para reforçar a noção de que construímos produtos para satisfazer as necessidades dos usuários.
 
 Cada item da lista deve incluir as seguintes informações:
 \begin{itemize}
 \item Quais usuários vão se beneficiar da estória;
-\item Uma rápida descrição da funcionalidade desejada (o que precisa ser contruido);
+\item Uma rápida descrição da funcionalidade desejada (o que precisa ser construído);
 \item A razão para a estória ser preciosa (por que precisamos realizá-la);
 \item Uma estimativa de quanto trabalho será necessário para realizar a estória; e
 \item Critérios de aceitação que ajudarão a saber se a implementação é correta.
@@ -1036,7 +1365,17 @@ A lista de pendências da arrancada é a lista de coisas a fazer da arrancada. D
 Um gráfico de queimada (\emph{burn chart}) nos mostra a relação entre o tempo e o escopo. O tempo está no eixo horizontal X e o escopo está no eixo vertical Y. Um gráfico de queimada nos mostra quanto de escopo uma equipe conseguiu realizar num período de tempo. Cada vez que algo é completado, a linha no gráfico se move para cima. Um gráfico de queimada nos mostra o que falta fazer. Em geral, esperamos que o trabalho restante diminua com o tempo à medida que a equipe termina tarefas. Às vezes, o trabalho restante muda de repente, quando escopo é adicionado ou retirado. Estes eventos aparecem como linhas verticais no gráfico de queimada.
 
 \subsection{Quadro de Tarefas}
+Para todos os integrantes da equipe Scrum acompanharem o andamento do trabalho, um quadro de tarefas é colocado numa sala usada por todos os integrantes. Isto evita que alguma parte importante do trabalho seja esquecida.
 
+O quadro de tarefas mais simples tem três colunas: A fazer, Fazendo e Feito. As tarefas são deslocadas através das colunas do quadro, fornecendo visibilidade para quais tarefas foram feitas, quais estão sendo feitas e quais ainda não começaram. Esta visibilidade ajuda a equipe a ver a situação atual e se adaptar conforme a necessidade. O quadro também ajuda os clientes a verem o progresso que a equipe está fazendo. Com a idéia de usar os artefatos mais simples, o quadro é uma superfície onde podemos colar \textit{post-it}s com as tarefas escritas neles. Estes post-its são colocados nas 3 colunas conforme a evolução das atividades.
+
+\subsubsection{Definição de Feito}
+Feito é uma palavra fantástica, quando a equipe consegue que uma estória de usuário seja feita, é hora de festejar. Mas, às vezes, há uma certa confusão sobre o que exatamente \emph{feito} significa. Um programador pode dizer que alguma coisa está feita quando o código está escrito. Um testador pode pensar que feito significa que todos os testes passaram. O pessoal de operações pode pensar que feito significa que os programas foram carregados nos servidores de produção. Uma pessoa do comercial pode pensar que feito significa que agora podemos vender aos clientes e que está pronto para uso. Esta confusão sobre o que \emph{feito} significa pode causar problemas, quando, por exemplo, o vendedor pergunta por que a equipe ainda está trabalhando numa estória que o programador disse ter feito (terminado) há duas semanas.
+
+\section{Outras metodologias ágeis}
+\subsection{Full Test Design Driven - FTDD}
+\subsection{EXtreme Programmig - XP}
+\subsection{Agile Modeling Design Driven - AMDD}
 
 \chapter{Codificação em Java}
 
@@ -1052,7 +1391,7 @@ Veremos neste capítulo alguns exemplos de código Java para os conceitos vistos
 \legend{Fonte: \citeonline{uml:j2ee}}
 \end{figure}
 
-O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os príncipios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
+O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os princípios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
 
 O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação. Compare com o diagrama de dependência da figura \ref{fig:clsDep}.
 
@@ -1082,7 +1421,7 @@ public class TimeStamp {
 }
 \end{verbatim}
 
-A classe \emph{TimeStamp} tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe \emph{java.util.Calendar} do sistema. A \emph{TimeStamp} modela a ``lógica de negócio'' de um relógio. A classe \emph{Calendar} do pacote \emph{java.util} é uma classe que vem na biblioteca padrão distribuida com o JDK, kit de desenvolvimento do Java. Observe que os atributos estão ocultos dos usuários da classe \emph{TimeStamp}, os valores deles podem ser obtidos através dos métodos \textit{getters} dos atributos. Se mais tarde, for decidido que se deseja mais alterar estes atributos, pode se reprogramar os métodos \textit{getters} de acordo com as mudanças e os usuários da classe não precisam saber que os atributos foram modificados. Dizemos que isolamos os usuários da classe \emph{TimeStamp} das modificações nos atributos ocultos. Precisamos, entretanto, manter o contrato de que os métodos \emph{getHrs()}, \emph{getMins()} e \emph{getSecs()} continuam a fornecer as horas, os minutos e os segundos.
+A classe \emph{TimeStamp} tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe \emph{java.util.Calendar} do sistema. A \emph{TimeStamp} modela a ``lógica de negócio'' de um relógio. A classe \emph{Calendar} do pacote \emph{java.util} é uma classe que vem na biblioteca padrão distribuída com o JDK, kit de desenvolvimento do Java. Observe que os atributos estão ocultos dos usuários da classe \emph{TimeStamp}, os valores deles podem ser obtidos através dos métodos \textit{getters} dos atributos. Se mais tarde, for decidido que se deseja mais alterar estes atributos, pode se reprogramar os métodos \textit{getters} de acordo com as mudanças e os usuários da classe não precisam saber que os atributos foram modificados. Dizemos que isolamos os usuários da classe \emph{TimeStamp} das modificações nos atributos ocultos. Precisamos, entretanto, manter o contrato de que os métodos \emph{getHrs()}, \emph{getMins()} e \emph{getSecs()} continuam a fornecer as horas, os minutos e os segundos.
 
 \begin{verbatim}
 public class ClockView extends javax.swing.JFrame {
