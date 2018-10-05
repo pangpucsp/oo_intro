@@ -3,7 +3,7 @@
 %	article,			% indica que é um artigo acadêmico
 	11pt,				% tamanho da fonte
 	openright,
-	twoside,			% para impressão apenas no recto. Oposto a twoside
+	twoside,			% Oposto a oneside
 	a4paper,			% tamanho do papel. 
 	english,			% idioma adicional para hifenização
 	french,
@@ -1147,10 +1147,20 @@ Defina uma classe abstrata que especifica quais objetos devem ser feitos. Implem
 
 \subsection{O Padrão Estratégia (\textit{Strategy})}
 \subsubsection{Propósito}
+Permite que você use regras de negócios ou algoritmos diferentes dependendo do contexto nos quais eles ocorrem.
+
 \subsubsection{Problema}
+A seleção de um algoritmo que precisa ser aplicado depende do cliente que faz a chamada ou dos dados sobre os quais ele age. Se você só tiver uma regra que não muda, você não precisa do padrão Estratégia.
+
 \subsubsection{Solução}
+Separa a seleção do algoritmo da implementação do algoritmo. Permite que a seleção seja feita baseada no contexto.
+
 \subsubsection{Participantes e colaboradores}
+\emph{Estratégia} especifica como os diferentes algoritmos são usados. \emph{EstratégiasConcretas} implementa estes diferentes algoritmos. \emph{Contexto} usa uma \emph{EstratégiaConcreta} especifica com uma referência do tipo \emph{Estratégia}. Estratégia e Contexto interagem para implementar o algoritmo escolhido. (As vezes, \emph{Estratégia} deve pedir \emph{Contexto}.) O \emph{Contexto} direciona pedidos dos eus clientes para \emph{Estratégia}.
+
 \subsubsection{Consequências}
+O padrão Estratégia define uma família de algoritmos. O uso de condicionais e switches (casos) podem ser eliminados. Você pode invocar todos os algoritmos do mesmo jeito. (Eles devem todos ter a mesma interface.) A interação entre \emph{EstratégiasConcretas} e \emph{Contexto} pode requerer a adição de métodos que obtêm o estado do \emph{Contexto}.
+
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
@@ -1298,15 +1308,75 @@ Defina uma classe abstrata que especifica quais objetos devem ser feitos. Implem
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\chapter{Metodologias de desenvolvimento}
 
-\chapter{Rápida Introdução ao Scrum}
+Existem diversas metodologias para o projeto de software OO, veremos neste capítulo uma rápida introdução a algumas destas metodologias. As chamadas metodologias de desenvolvimento visam determinar a arquitetura do software e encontrar as classes/objetos que resolvem um determinado problema. Estas metodologias são, geralmente, selecionadas pelas empresas de desenvolvimento e os programadores/projetistas devem se adaptar à metodologia da empresa. Os gerentes de desenvolvimento que selecionam as metodologias têm diversos critérios para realizar a escolha: experiência da equipe, disponibilidade de ferramentas dentro da empresa, requerimentos dos clientes finais, ... Algumas vezes, a escolha se faz por motivos não totalmente objetivos. Não vamos aqui discutir os méritos e deméritos das metodologias para não entrar em batalhas, muitas vezes infindáveis e infrutíferas.
 
-\section{O Que É Scrum?}
+\citeonline{DP:explained} diz que frequentemente os projetistas novatos em OO são aconsenhados a olhar para o domínio do problema e ``identificar os substântivos presentes e criar objetos representando-os e encontrar os verbos relacionando estes substantivos (isto é, as ações deles) e implementá-los através de métodos dos objetos''. Este processo focado em substântivos (nomes das coisas) e verbos leva, tipicamente à hierárquias de classes maiores do que as desejáveis. Eles recomendam a análise de coisas em comum, comunalidade, e coisas que variam, variabilidade, como a principal ferramenta para a criação de objetos. Os conceitos de comunalidade e variabilidade foram apresentados por Couplien\footnote{Couplien, J., \textit{Multi-Paradigm Design for C++}, Boston: Addison-Wesley, 1998, pp. 60, 64.}.
+
+A figura \ref{fig:cvaPersp} mostra as relações entre a análise de comunalidades e variabilidades, perspectivas e classes abstratas. Ao olhar o que os objetos devem fazer (perspectiva conceitual), determinamos como chamá-los (perspectiva de especificação) e obtemos as classes abstratas e seus métodos. Ao implementar estas classes, garante-se que a API fornece informação suficiente para uma implementação adequada e um bom desacoplamento.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.4]{cva_persp.png}
+\caption{Relação entre Análise de Comunalidade e de Variabilidade, Perspectivas e Classes abstratas} \label{fig:cvaPersp}
+\legend{Fonte: \citeonline{DP:explained}}
+\end{center}
+\end{figure}
+
+A exposição das metodologias começa com o processo unificado que de certa maneira representou o fim da guerra das metodologias, não que ela seja a metodologia vencedora. Apenas, o processo unificado ofuscou as outras e não temos mais uma disputa tão pronunciada de metodologias deste que ela foi publicada, ela é o resultado da unificação de metologias pelos 4 amigos: Philippe Kruchten,  Ivar Jacobson, Jim Rumbaugh e Grady Booch. Conforme veremos, o principal representante da metodologia é chamada de RUP, Rational Unified Process, e varições dela são usadas por muitas empresas. Posteriormente, alguns desenvolvedores criaram metodologias chamadas de ágeis. 15 destes desenvolvedores lançaram o Manifesto pelo Desenvolvimento de Software Ágil, (\citeonline{agile:manifesto}). Cujos 12 princípios básicos são:
+
+\begin{enumerate}
+\item 
+Nossa maior prioridade é satisfazer o cliente através da entrega antecipada e contínua de software valioso.
+
+\item
+Mudanças requisitos são bem-vindas, mesmo no final desenvolvimento. Processos ágeis aproveitam mudanças para oferecer vantagem competitiva ao cliente.
+
+\item
+Entregar software de trabalho com freqüência, de um algumas semanas a alguns meses, com uma preferência para a escala de tempo mais curta.
+
+\item
+Empresários e desenvolvedores devem trabalhar juntos diariamente durante todo o projeto.
+
+\item
+Construa projetos em torno de indivíduos motivados. Dê a eles o ambiente e o suporte de que precisam e confie neles para fazer o trabalho.
+
+\item
+O método mais eficiente e eficaz de transmitir informações para e dentro de uma equipe de desenvolvimento é conversa cara a cara.
+
+\item
+O software de trabalho é a principal medida de progresso.
+
+\item
+Processos ágeis promovem o desenvolvimento sustentável. Os patrocinadores, desenvolvedores e usuários devem poder manter um ritmo constante indefinidamente.
+
+\item
+Atenção contínua à excelência técnica e um bom design aumentam a agilidade.
+
+\item
+Simplicidade é essencial.
+
+\item
+As melhores arquiteturas, requisitos e designs emergem de equipes auto-organizadas.
+
+\item
+Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz, em seguida, se sintoniza e ajusta seu comportamento de acordo.
+\end{enumerate}
+
+Veremos uma rápida introdução à metodologia Scrum para exemplificar as metodologias ágeis. E concluiremos o capítulo citando outras metologias ágeis.
+
+\section{Processo Unificado}
+...texto sobre o processo unficado, RUP, e variações...
+
+\section{Rápida Introdução ao Scrum}
+
+\subsection{O Que É Scrum?}
 Scrum é um framework projetado para ajudar pequenas equipes unidas a desenvolver produtos complexos. Resultado do trabalho de um punhado de engenheiros de software trabalhando juntos no final do século XX, scrum ganhou força no setor tecnológico, mas não é necessariamente técnico e pode ser facilmente adaptado para outras indústrias. Os autores \citeonline{scrum:brief} dizem que você pode adaptá-lo para construir uma ratoeira melhor, ou para administrar a divisão de \textit{marketing} de uma companhia de cachorrinhos de estimação, ou até para escrever um livro, como eles fizeram.
 
 Uma equipe scrum consiste, tipicamente, de sete, mais ou menos duas, pessoas que trabalham juntas em curtos intervalos de intensa atividade chamadas de arrancadas (\emph{sprints}), com bastante tempo embutido para revisão e reflexão. Um dos mantras de scrum é ``inspecionar e adaptar'' e equipes scrum são caracterizadas por um foco intenso  na melhoria contínua do processo deles e do produto. Neste capítulo, veremos uma introdução muito rápida da terminologia do scrum: os vários papéis, artefatos e eventos que ocorrem num ciclo de arrancada (\emph{sprint cycle}).
 
-\section{Papéis}
+\subsection{Papéis}
 O Scrum conhece três papéis distintos para os membros da equipe:
 \begin{description}
 \item[Proprietário do Produto] O proprietário do produto (\emph{product owner}) é responsável pela maximização do retorno que o negócio traz ao investimento (ROI - Return-Of-Investment). Ele é o único que controla a ordem, a prioridade, da lista de pendências (\textit{backlog itens}) da equipe. Ele garante que a equipe entende totalmente os requisitos. Ele registra os requisitos na forma de estórias de usuário (\emph{user stories}), por exemplo: ``Como um <papel - tipo de usuário>, quero <uma característica>, de modo que possa <fazer algo>'' e coloca-as na lista de pendências. Cada uma destas estórias de usuário, quando completada, aumentará o valor do produto.
@@ -1345,8 +1415,8 @@ O papel de Membro da Equipe resumido:
 \item evitar o pensamento ``não é meu serviço''.
 \end{itemize}
 
-\section{Artefatos do Scrum}
-\subsection{A Lista de Pendências do Produto (\emph{Product Backlog})}
+\subsection{Artefatos do Scrum}
+\subsubsection{A Lista de Pendências do Produto (\emph{Product Backlog})}
 A lista de pendências do produto é uma lista acumulativa de itens entregáveis desejados para o produto. Isto inclui características, consertos de erros (\emph{bug fixes}), alterações na documentação e qualquer outra coisa que seja significativa e valiosa para produzir. Embora pendência seja um termo correto para um item da lista, as equipes de scrum preferem usar o termo estória de usuário para reforçar a noção de que construímos produtos para satisfazer as necessidades dos usuários.
 
 Cada item da lista deve incluir as seguintes informações:
@@ -1358,24 +1428,26 @@ Cada item da lista deve incluir as seguintes informações:
 \item Critérios de aceitação que ajudarão a saber se a implementação é correta.
 \end{itemize}
 
-\subsection{A Lista de Pendências da Arrancada (\emph{Sprint Backlog})}
+\subsubsection{A Lista de Pendências da Arrancada (\emph{Sprint Backlog})}
 A lista de pendências da arrancada é a lista de coisas a fazer da arrancada. Diferente da lista de pendências do produto, ela tem tempo de vida finito: a duração da arrancada. Ela inclui todas as estórias e tarefas associadas com que a equipe se compromete nesta arrancada. Estórias são entregas e podem ser pensadas como unidades de valor. Tarefas são coisas que precisam ser feitas, para entregar as estórias, logo, tarefas podem ser vistas como unidades de trabalho. Uma estória é algo que uma equipe entrega; Uma tarefa é um pedaço de trabalho que alguém faz. Cada estória normalmente requer muitas tarefas.
 
-\subsection{Gráficos de Queimada}
+\subsubsection{Gráficos de Queimada}
 Um gráfico de queimada (\emph{burn chart}) nos mostra a relação entre o tempo e o escopo. O tempo está no eixo horizontal X e o escopo está no eixo vertical Y. Um gráfico de queimada nos mostra quanto de escopo uma equipe conseguiu realizar num período de tempo. Cada vez que algo é completado, a linha no gráfico se move para cima. Um gráfico de queimada nos mostra o que falta fazer. Em geral, esperamos que o trabalho restante diminua com o tempo à medida que a equipe termina tarefas. Às vezes, o trabalho restante muda de repente, quando escopo é adicionado ou retirado. Estes eventos aparecem como linhas verticais no gráfico de queimada.
 
-\subsection{Quadro de Tarefas}
+\subsubsection{Quadro de Tarefas}
 Para todos os integrantes da equipe Scrum acompanharem o andamento do trabalho, um quadro de tarefas é colocado numa sala usada por todos os integrantes. Isto evita que alguma parte importante do trabalho seja esquecida.
 
 O quadro de tarefas mais simples tem três colunas: A fazer, Fazendo e Feito. As tarefas são deslocadas através das colunas do quadro, fornecendo visibilidade para quais tarefas foram feitas, quais estão sendo feitas e quais ainda não começaram. Esta visibilidade ajuda a equipe a ver a situação atual e se adaptar conforme a necessidade. O quadro também ajuda os clientes a verem o progresso que a equipe está fazendo. Com a idéia de usar os artefatos mais simples, o quadro é uma superfície onde podemos colar \textit{post-it}s com as tarefas escritas neles. Estes post-its são colocados nas 3 colunas conforme a evolução das atividades.
 
-\subsubsection{Definição de Feito}
+\parbox{15cm}{
+\textbf{Definição de Feito}\\
 Feito é uma palavra fantástica, quando a equipe consegue que uma estória de usuário seja feita, é hora de festejar. Mas, às vezes, há uma certa confusão sobre o que exatamente \emph{feito} significa. Um programador pode dizer que alguma coisa está feita quando o código está escrito. Um testador pode pensar que feito significa que todos os testes passaram. O pessoal de operações pode pensar que feito significa que os programas foram carregados nos servidores de produção. Uma pessoa do comercial pode pensar que feito significa que agora podemos vender aos clientes e que está pronto para uso. Esta confusão sobre o que \emph{feito} significa pode causar problemas, quando, por exemplo, o vendedor pergunta por que a equipe ainda está trabalhando numa estória que o programador disse ter feito (terminado) há duas semanas.
+}
 
 \section{Outras metodologias ágeis}
-\subsection{Full Test Design Driven - FTDD}
+\subsection{Full Test Driven Development - FTDD}
 \subsection{EXtreme Programmig - XP}
-\subsection{Agile Modeling Design Driven - AMDD}
+\subsection{Agile Modeling Driven Development - AMDD}
 
 \chapter{Codificação em Java}
 
