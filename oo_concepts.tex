@@ -1386,6 +1386,14 @@ Veremos uma rápida introdução à metodologia Scrum para exemplificar as metod
 
 \section{Processo Unificado}
 ...texto sobre o processo unificado, RUP, e variações...
+\begin{figure}
+\begin{center}
+\includegraphics[scale=0.6]{File_Development-iterative-RUP-wiki.png}
+\caption{Diagrama das etapas do RUP} \label{fig:rup}
+\legend{Fonte: \citeonline{wiki:RUP}}
+\end{center}
+\end{figure}
+A figura \ref{fig:rup} mostra um diagrama com as etapas e fases do processo de desenvolvimento RUP.
 
 \section{Rápida Introdução ao Scrum}
 
@@ -1455,12 +1463,57 @@ Um gráfico de queimada (\emph{burn chart}) nos mostra a relação entre o tempo
 \subsubsection{Quadro de Tarefas}
 Para todos os integrantes da equipe Scrum acompanharem o andamento do trabalho, um quadro de tarefas é colocado numa sala usada por todos os integrantes. Isto evita que alguma parte importante do trabalho seja esquecida.
 
-O quadro de tarefas mais simples tem três colunas: A fazer, Fazendo e Feito. As tarefas são deslocadas através das colunas do quadro, fornecendo visibilidade para quais tarefas foram feitas, quais estão sendo feitas e quais ainda não começaram. Esta visibilidade ajuda a equipe a ver a situação atual e se adaptar conforme a necessidade. O quadro também ajuda os clientes a verem o progresso que a equipe está fazendo. Com a ideia de usar os artefatos mais simples, o quadro é uma superfície onde podemos colar \textit{post-it}s com as tarefas escritas neles. Estes post-its são colocados nas 3 colunas conforme a evolução das atividades.
+O quadro de tarefas mais simples tem três colunas: A fazer, Fazendo e Terminado. As tarefas são deslocadas através das colunas do quadro, fornecendo visibilidade para quais tarefas foram terminadas, quais estão sendo feitas e quais ainda não começaram. Esta visibilidade ajuda a equipe a ver a situação atual e se adaptar conforme a necessidade. O quadro também ajuda os clientes a verem o progresso que a equipe está fazendo. Com a ideia de usar os artefatos mais simples, o quadro é uma superfície onde podemos colar \textit{post-it}s com as tarefas escritas neles. Estes post-its são colocados nas 3 colunas conforme a evolução das atividades.
 
 \parbox{15cm}{
-\textbf{Definição de Feito}\\
-Feito é uma palavra fantástica, quando a equipe consegue que uma estória de usuário seja feita, é hora de festejar. Mas, às vezes, há uma certa confusão sobre o que exatamente \emph{feito} significa. Um programador pode dizer que alguma coisa está feita quando o código está escrito. Um testador pode pensar que feito significa que todos os testes passaram. O pessoal de operações pode pensar que feito significa que os programas foram carregados nos servidores de produção. Uma pessoa do comercial pode pensar que feito significa que agora podemos vender aos clientes e que está pronto para uso. Esta confusão sobre o que \emph{feito} significa pode causar problemas, quando, por exemplo, o vendedor pergunta por que a equipe ainda está trabalhando numa estória que o programador disse ter feito (terminado) há duas semanas.
+\textbf{Definição de Terminado}\\
+\textit{Terminado} é uma palavra fantástica, quando a equipe consegue que uma estória de usuário seja terminada, é hora de festejar. Mas, às vezes, há uma certa confusão sobre o que exatamente \emph{terminado} significa. Um programador pode dizer que alguma coisa está terminada quando o código está escrito. Um testador pode pensar que terminado significa que todos os testes passaram. O pessoal de operações pode pensar que terminado significa que os programas foram carregados nos servidores de produção. Uma pessoa do comercial pode pensar que terminado significa que agora podemos vender aos clientes e que está pronto para uso. Esta confusão sobre o que \emph{terminado} significa pode causar problemas, quando, por exemplo, o vendedor pergunta por que a equipe ainda está trabalhando numa estória que o programador disse ter terminado há duas semanas.
+
+Para evitar confusão, as boas equipes de scrum devem ter sua definição de como a palavra \emph{terminado} se aplica a uma estória de usuário. Elas decidem juntas que coisas precisam ser concluídas antes da equipe declararque uma estória foi terminada. A definição da equipe pode incluir coisas como: código escrito, código revisto, aprovação nos testes unitários, documentação escrita, assinatura do proprietário do produto, ... Esta lista de coisas que a equipe concorda em fazer sempre antes de declarar uma estória terminada é a definição da equipe para \emph{terminado}. A equipe deve imprimir a definição de terminado como uma lista a ser checada próxima do quadro de tarefas. Quando a equipe acha que uma \emph{estória} está \emph{terminada}, verifica-se se todos os itens da lista foram concluídos.
 }
+
+\subsection{O Ciclo da Arrancada (\textit{Sprint Cycle})}
+
+O ciclo da arrancada consiste de várias reuniões, chamadas de cerimônias, para satisfazer as pessoas que não gostam da palavra reunião:
+\begin{itemize}
+\item planejamento da arrancada;
+\item scrum diário;
+\item hora da estória;
+\item revisão da arrancada e
+\item retrospectiva.
+\end{itemize}
+
+\textbf{É uma questão de ritmo}
+
+O ciclo da arrancada é o ritmo fundamental do processo scrum. Como quer você chame seu período de desenvolvimento: uma arrancada (\emph{sprint}), um ciclo, ou uma iteração. Você está sempre falando da mesma coisa: Um período fixo de tempo no qual você mastiga pedaços do seu projeto e termina-os antes de morder mais. No final da arrancada, você mostrará algum software funcionando.
+
+Quanto mais frequente forem as entregas da equipe de incrementos do produto, maior a liberdade do negócio para decidir quando e o que entregar. Observe que existem duas decisões separadas a serem tomadas aqui:
+
+\begin{description}
+\item[O produto tem potencial para ser comercializado?] Isto é, a qualidade é boa o suficiente para que seja comercializado? Todas as estórias atuais terminaram? Esta é uma decisão da equipe.
+\item[Tem sentido comercializar o que temos no momento?] Existe valor agregado suficiente para levar o produto atual para o mercado? Esta é uma decisão de negócios.
+\end{description}
+
+Adicionalmente, quanto maior a frequência com que a equipe entrega incrementos entregáveis do produto, maior a frequência de retornos para a equipe, o que alimenta o importante ciclo de inspecionar-e-adaptar. Quanto mais curto o ciclo de arrancada, com maior frequência a equipe produz valor para o negócio.
+
+Por volta do inicío dos anos 2010, as equipes de scrum trabalhavam com arrancadas de duas semanas e muitas equipes começavam a trabalhar com arrancadas de uma semana. Muitos dos escritos originais de scrum assumiam arrancadas de um mes de duração e naquela época, isto parecia curto.
+
+A tabela abaixo mapeia as cerimônias que você deve agendar para uma arrancada de uma semana. A duração das cerimônias são uma sugestão para iniciar, as equipes devem adaptar para suas próprias características.
+% inserir tabela, talvez do google docs
+
+\subsubsection{Cerimônia de Planejamento da Arrancada}
+
+\subsubsection{Scrum Diário}
+
+\subsubsection{Hora de Estória}
+
+\subsubsection{Revisão da Arrancada}
+
+\subsubsection{Retrospectiva}
+
+\subsubsection{Término Anormal da Arrancada}
+
+\subsubsection{Inspecione e Adapte}
 
 \section{Outras metodologias ágeis}
 \subsection{Full Test Driven Development - FTDD}
@@ -1481,7 +1534,7 @@ Veremos neste capítulo alguns exemplos de código Java para os conceitos vistos
 \legend{Fonte: \citeonline{uml:j2ee}}
 \end{figure}
 
-O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:MCV} mostra os princípios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
+O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os princípios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
 
 O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação. Compare com o diagrama de dependência da figura \ref{fig:clsDep}.
 
