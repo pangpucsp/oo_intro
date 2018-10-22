@@ -1386,7 +1386,7 @@ Veremos uma rápida introdução à metodologia Scrum para exemplificar as metod
 
 \section{Processo Unificado}
 ...texto sobre o processo unificado, RUP, e variações...
-\begin{figure}
+\begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.6]{File_Development-iterative-RUP-wiki.png}
 \caption{Diagrama das etapas do RUP} \label{fig:rup}
@@ -1483,9 +1483,9 @@ O ciclo da arrancada consiste de várias reuniões, chamadas de cerimônias, par
 \item retrospectiva.
 \end{itemize}
 
-\textbf{É uma questão de ritmo}
+\noindent \textbf{É uma questão de ritmo}
 
-O ciclo da arrancada é o ritmo fundamental do processo scrum. Como quer você chame seu período de desenvolvimento: uma arrancada (\emph{sprint}), um ciclo, ou uma iteração. Você está sempre falando da mesma coisa: Um período fixo de tempo no qual você mastiga pedaços do seu projeto e termina-os antes de morder mais. No final da arrancada, você mostrará algum software funcionando.
+O ciclo da arrancada é o ritmo fundamental do processo scrum. Como quer que você chame seu período de desenvolvimento: uma arrancada (\emph{sprint}), um ciclo, ou uma iteração. Você está sempre falando da mesma coisa: Um período fixo de tempo no qual você mastiga pedaços do seu projeto e termina-os antes de morder mais. No final da arrancada, você mostrará algum software funcionando.
 
 Quanto mais frequente forem as entregas da equipe de incrementos do produto, maior a liberdade do negócio para decidir quando e o que entregar. Observe que existem duas decisões separadas a serem tomadas aqui:
 
@@ -1498,10 +1498,25 @@ Adicionalmente, quanto maior a frequência com que a equipe entrega incrementos 
 
 Por volta do inicío dos anos 2010, as equipes de scrum trabalhavam com arrancadas de duas semanas e muitas equipes começavam a trabalhar com arrancadas de uma semana. Muitos dos escritos originais de scrum assumiam arrancadas de um mes de duração e naquela época, isto parecia curto.
 
-A tabela abaixo mapeia as cerimônias que você deve agendar para uma arrancada de uma semana. A duração das cerimônias são uma sugestão para iniciar, as equipes devem adaptar para suas próprias características.
-% inserir tabela, talvez do google docs
+A tabela abaixo da figura \ref{fig:sprint} mapeia as cerimônias que você deve agendar para uma arrancada de uma semana. A duração das cerimônias são uma sugestão para iniciar, as equipes devem adaptar para suas próprias características.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{sprint_planning.png}
+\caption{Agenda diária para uma Arrancada de uma semana} \label{fig:sprint}
+%\legend{Fonte: \citeonline{wiki:RUP}}
+\end{center}
+\end{figure}
 
 \subsubsection{Cerimônia de Planejamento da Arrancada}
+
+O planejamento da arrancada (sprint planning) marca o início da arrancada. O objetivo da primeira parte é o comprometimento da equipe para a entrega dos produtos da arrancada. Na segunda parte da cerimômia, a equipe identifica as tarefas que devem ser completadas para as entregas baseadas nas estórias de usuários. Recomenda-se uma cerimônia de planejamento de uma a duas horaas de duração por semana de desenvolvimento.
+
+\noindent \textbf{Parte Um: O que faremos?}
+
+A meta da primeira parte da cerimônia de planejamento da arrancada é ter um conjunto de estórias que a totalidade da equipe se compromete a entregar no fim da arrancada. O \emph{proprietário do produto} lidera esta parte da cerimônia.
+
+Uma a uma, na ordem decrescente de prioridade, o proprietário do produto apresenta as estórias que ele gostaria que a equipe completasse durante a arrancada. A medida que cada estória for apresentada, os membros da equipe a discutem com o proprietário do produto e reveem critérios de aceitação para ter certeza que eles têm um entendimento único do que se espera. Então, os membros da equipe decidem se eles podem se comprometer na entrega da estória no final da arrancada. Este processo se repete para cada estória até que a equipe sinta que não pode mais se comprometer com mais trabalho. Observe a separação de autoridade, o proprietário do produto decide quais são as estórias a serem consideradas, mas são os membros da equipe que realizam o trabalho que decidem quanto trabalho eles podem fazer.
 
 \subsubsection{Scrum Diário}
 
