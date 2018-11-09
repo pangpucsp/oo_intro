@@ -41,7 +41,7 @@
 \autor{Paulino Ng\thanks{paulino.ng@gmail.com}
 }
 \local{Brasil}
-\data{2018, v-0.1.1}
+\data{2018, v-0.3.1}
 
 % informações do PDF
 \makeatletter
@@ -85,19 +85,28 @@
 % Retira espaço extra obsoleto entre as frases.
 \frenchspacing 
 
-\maketitle
+%\maketitle
+
+\imprimircapa
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage
 
 % resumo em português
-\begin{resumoumacoluna}
-Este texto objetiva introduzir alguns dos principais conceitos da tecnologia Orientada a Objetos, OO.
-O texto é fortemente baseado no capítulo 2 do livro \cite{Ambler:TOP:3ed}, com acréscimos baseados em \cite{uml:j2ee} e outros textos.
-
-\vspace{\onelineskip}
-\noindent
- \textbf{Palavras-chave}: OO. UML. JEE.
-\end{resumoumacoluna}
+%\begin{resumoumacoluna}
+%Este texto objetiva introduzir alguns dos principais conceitos da tecnologia Orientada a Objetos, OO.
+%O texto é fortemente baseado no capítulo 2 do livro \cite{Ambler:TOP:3ed}, com acréscimos baseados em \cite{uml:j2ee} e outros textos.
+%
+%\vspace{\onelineskip}
+%\noindent
+% \textbf{Palavras-chave}: OO. UML. JEE.
+%\end{resumoumacoluna}
 
 \textual
+
+% try to generate a table of contents after summary
+%\tableofcontents
 
 %\section{Introdução}
 %\addcontentsline{toc}{section}{Introdução}
@@ -131,7 +140,7 @@ Veremos nesta seção alguns conceitos fundamentais das técnicas de desenvolvim
 Os conceitos de OO parecem muito simples. Não se engane. Os conceito em que se baseiam as técnicas estruturadas também pareciam simples, mas os programadores experientes sabem que o desenvolvimento estruturado é na verdade difícil. Assim como havia mais do que uns poucos conceitos simples no paradigma estruturado, há mais coisas no paradigma OO. Assim como leva tempo para se tornar um bom desenvolvedor estruturado, também leva tempo para se tornar um bom desenvolvedor OO. Dentre os diversos paradigmas de programação, o que pode parecer mais simples é o da programação funcional, pois nele usamos basicamente funções recursivas para obter iterações e composição de funções para obter funções mais complexas. É, entretanto, longe de ser simples a resolução de problemas complexos com a programação funcional. Para lhe dar um gostinho do conteúdo deste texto, alguns dos principais conceitos e termos que serão apresentados são resumidos na tabela \ref{tab:concOO}.
 
 \begin{longtable}[l]{p{4.6cm}p{11.1cm}}
-\caption[Conceitos OO]{Conceitos e termos da Orientação a Objetos}
+\caption[Conceitos OO]{\bfseries Conceitos e termos da Orientação a Objetos}
 \label{tab:concOO}\\
 
 \multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
@@ -147,7 +156,7 @@ Os conceitos de OO parecem muito simples. Não se engane. Os conceito em que se 
 \endfoot
 
 \hline %\hline
-\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+ & \legend{Fonte: Fortemente baseada em \cite{Ambler:TOP:3ed}}
 \endlastfoot
 
 Abstração & As características essenciais de um item (pode ser uma classe ou uma operação) \\
@@ -281,7 +290,7 @@ A \textit{Unified Modeling Language}, UML, é uma linguagem visual (isto é, ela
 \endfoot
 
 \hline %\hline
-%\legend{Fonte: \citeonline{DP:explained}}
+ & \legend{Fonte: \cite{DP:explained}}
 \endlastfoot
 
 Na fase de análise & Diagramas de Caso de Uso, que envolvem entidades interagindo com o sistema (usuários e outros sistemas) e os pontos de função que você precisa implementar.\\
@@ -332,7 +341,7 @@ Entender os 14 diagramas de UML 2.x ilustrados na figura \ref{fig:uml14dia} e re
 \endfoot
 
 \hline %\hline
-\legend{Fonte: \citeonline{Ambler:TOP:3ed}}
+& \legend{Fonte: \cite{Ambler:TOP:3ed}}
 \endlastfoot
 
 Diagrama de Atividade & Representação de alto nível de processos de negócios, incluindo fluxos de dados ou modelagem da lógica complexa dentro de um sistema \\
@@ -439,13 +448,13 @@ Abstração é um problema da análise que lida com o que a classe sabe e faz. S
 
 Embora o ato de abstrair nos diga que precisamos armazenar o nome e endereço de um estudante, assim como ser capaz de matricular estudantes nas disciplinas, ele não nos diz como vamos fazer isto. Encapsulamento lida com o problema de como você pretende modularizar as caraterísticas de um sistema. No mundo orientado a objetos, você modulariza sistemas em classes, que, por sua vez, modularizam em métodos e atributos. Dizemos que encapsulamos comportamento numa classe ou encapsulamos funcionalidade num método. Encapsulamento é uma questão de projeto que lida com a funcionalidade está compartimentalizada dentro de um sistema. Você não deve precisar saber como algo está implementado para poder usá-lo. A consequência do encapsulamento é que você pode construir qualquer coisa da maneira que você quiser e mais tarde você pode mudar a implementação e não afetar outros componentes dentro do sistema (desde que a interface para aquele componente não mude).
 
-As pessoas dizem que o encapsulamento é como pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, pense num banco. Como ele registra as informações de uma conta? Num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos. De acordo com \citeonline{DP:explained}, o encapsulamento deve ser pensado como qualquer tipo de ocultação, que veremos a seguir.
+As pessoas dizem que o encapsulamento é como pintar a caixa de preto: você está definindo como algo pode ser usado, mas você não está dizendo ao resto do mundo como você vai fazê-lo. Em outras palavras, você está escondendo os detalhes da implementação de um item dos usuários deste item. Por exemplo, pense num banco. Como ele registra as informações de uma conta? Num \textit{mainframe}, num \textit{minicomputador} ou num \textit{PC}? Qual banco de dados ele usa? Qual sistema operacional? Não importa, porque ele encapsulou a maneira como realiza as operações na conta. Você apenas vai a um caixa e inicia a transação que você deseja. Pela ocultação dos detalhes de como são implementadas as contas, seu banco pode mudar a implementação a qualquer momento sem afetar a maneira como os serviços lhe são oferecidos. De acordo com \cite{DP:explained}, o encapsulamento deve ser pensado como qualquer tipo de ocultação, que veremos a seguir.
 
 \subsection{Ocultação de Informação}
 
 Para simplificar a manutenção de suas aplicações, você quer restringir o acesso aos seus atributos de dados e alguns métodos. A ideia básica é esta: se uma classe deseja informações de uma outra, ela deve pedí-la e não simplesmente pegá-la. Quando você reflete a respeito, isto é exatamente o que acontece no mundo real. Se você quer saber o nome de alguém, o que você faria? Você perguntaria para a pessoa ou roubaria sua carteira e olharia no RG dela? Ao restringir o acesso aos atributos, você previne que outros programadores escrevam código fortemente acoplado. Quando o código é fortemente acoplado, uma mudança numa parte do código força a modificação de outra, e outra, e assim por diante.
 
-\citeonline{DP:explained} diz que, em geral, se oculta dados, mas que podemos ocultar também:
+\cite{DP:explained} diz que, em geral, se oculta dados, mas que podemos ocultar também:
 \begin{itemize}
 \item Implementações;
 \item Classes Derivadas
@@ -530,16 +539,16 @@ No Antes: da figura \ref{fig:uml4}, você quer criar uma nova classe \emph{Draga
 
 É importante perceber que a regra de sentença ``é como'' não é perfeita. Por exemplo, faz sentido dizer que uma sequóia é como um arranha-céu já que ambos são altos, têm raízes no chão e balançam ao vento. Entretanto, eles não devem compartilhar uma relação de herança. Também faz sentido dizer que um faixa preta é um artista de artes marciais, mas não faz sentido fazer uma classe \emph{Roupa} herda da classe \emph{Pessoa}.
 
-Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira e coisas diferentes. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras reluzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobrescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobrescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é realmente necessária -- programação de jogos é um dos poucos domínios em que herança múltipla pode ser necessária.}.
+Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira e coisas diferentes. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras reluzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobrescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobrescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é necessária -- programação de jogos é um dos poucos domínios em que herança múltipla pode fazer sentido.}.
 
 \subsection{Classes Abstratas e Concretas}
 
 Na figura \ref{fig:uml3}, a classe \emph{Veiculo} está marcada como abstrata (o nome está em itálico, em versões mais antigas de UML, você poderia usar a restrição {abstract}), enquanto \emph{Aviao} e \emph{Carro} não são. Dizemos que 
-\emph{Veiculo} é uma classe abstrata, enquanto \emph{Aviao} e \emph{Carro} são classes concretas. A diferença principal entre classes abstratas e concretas é que objetos podem ser instanciados (criados) de classes concretas, mas não de classes abstratas. Por exemplo, no domínio do seu problema, você tem aviões e carros, mas não tem nada que é apenas um veículo (se algo não é um avião ou um carro, você não se interessa por ele). Isto significa que seu software instanciará objetos aviões e carros, mas não objetos veículos. Classes abstratas são modeladas quando você precisa criar uma classe que implementa características comuns a duas ou mais classes.
+\emph{Veiculo} é uma classe abstrata, enquanto \emph{Aviao} e \emph{Carro} são classes concretas. A diferença principal entre classes abstratas e concretas é que objetos podem ser instanciados (criados) de classes concretas, mas não de classes abstratas. Por exemplo, no domínio do seu problema, você tem aviões e carros, mas não tem nada que é apenas um veículo (se algo não é um avião ou um carro, você não se interessa por ele). Isto significa que seu software instanciará objetos aviões e carros, mas não objetos veículos. Classes abstratas são modeladas quando você precisa criar uma classe que implementa características comuns a duas ou mais classes. Observe que ao usar padrões de projeto, muitos deles definem interfaces que são classes abstratas.
 
-Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \citeonline{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que a prática de modelagem ágil diz: \textit{use a ferramenta mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
+Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \cite{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que a prática de modelagem ágil diz: \textit{use a ferramenta mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
 
-Enquanto \citeonline{Ambler:TOP:3ed} não se preocupa com o fato da classe ser abstrata na modelagem, \citeonline{DP:explained} dá uma forte enfase no uso de classes abstratas para representa a ideia de comunalidade e a definição da interface de programação (API - Application Programming Interface) entre os componentes de software. Na prática, devemos observar as classes e na medida que o desenvolvimento vai avançando, com o surgimento da necessidade de mais classes, devemos considerar se classes diferentes apresentam responsabilidades semelhantes e se não faz sentido unificá-las em uma mesma classe abstrata. Devemos, entretanto, evitar os excessos que levam à herança de implementação. O uso de padrões de projeto pode auxiliar a determinar quais são as classes abstratas interessantes na solução de um problema. As alterações necessárias para usar a comunalidade de diversas classes e forma uma interface unificada por uma classe abstrata é uma forma de refatoramento que permite reduzir, em geral, acoplamentos.
+Enquanto \cite{Ambler:TOP:3ed} não se preocupa com o fato da classe ser abstrata na modelagem, \cite{DP:explained} dá uma forte enfase no uso de classes abstratas para representa a ideia de comunalidade e a definição da interface de programação (API - Application Programming Interface) entre os componentes de software. Na prática, devemos observar as classes e na medida que o desenvolvimento for avançando, com o surgimento da necessidade de mais classes, devemos considerar se classes diferentes apresentam responsabilidades semelhantes e se não faz sentido unificá-las em uma mesma classe abstrata. Devemos, entretanto, evitar os excessos que levam à herança de implementação. O uso de padrões de projeto pode auxiliar a determinar quais são as classes abstratas interessantes na solução de um problema. As alterações necessárias para usar a comunalidade de diversas classes e forma uma interface unificada por uma classe abstrata é uma forma de refatoramento que permite reduzir, em geral, acoplamentos.
 
 \section{Persistência}
 
@@ -567,6 +576,7 @@ No mundo real, os objetos têm relacionamentos uns com os outros. Os relacioname
 \includegraphics[scale=0.65]{clsRelac.png}
 \end{center}
 \caption{Resumo dos diagramas de relacionamento.} \label{fig:relac}
+\legend{Fonte: \cite{uml:j2ee}}
 \end{figure}
 
 Você não precisa apenas identificar os relacionamentos entre as classes, você deve também descrever o relacionamento. Por exemplo, não é suficiente saber que os estudantes se matriculam em disciplinas. Quantas disciplinas os estudantes podem cursar? Nenhuma, uma ou várias? Além disso, relacionamentos são vias com circulação nos dois sentidos: Não apenas os estudantes se matriculam em disciplinas, mas também disciplinas têm estudantes matriculados. Isto leva a questões como quantos estudantes podem ser matriculados numa dada disciplina e é possível ter uma disciplina sem nenhum estudante? Isto implica em que você deve também identificar a cardinalidade e a opcionalidade de um relacionamento. Cardinalidade representa o conceito ``quantos'', opcionalidade representa o conceito ``se você deve ter algo''. É importante observar que a UML escolheu combinar os conceitos de opcionalidade e cardinalidade num único conceito de \emph{multiplicidade}.
@@ -860,7 +870,7 @@ Por ser capaz de enviar a mensagem \emph{comecaEmprego()} para qualquer tipo de 
 
 \section{Interfaces}
 
-Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos cosubsectionesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A ideia é que um objeto serializável é um objeto que pode ser convertido para um formato que permita a sua transmissão através da rede para um processo remoto ou para outro processo local ou salvo em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{critério}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
+Uma interface é a definição de uma coleção de um ou mais métodos e zero ou mais atributos. Interfaces idealmente definem um conjunto de comportamentos coesos. Interfaces são implementadas por classes e componentes. Para implementar uma interface, uma classe ou componente deve incluir os métodos definidos pela interface. Por exemplo, a figura \ref{fig:ifcUml} ilustra que a classe \emph{Estudante} implementa as interfaces \emph{Serializavel}\footnote{Observe que estamos traduzindo \emph{Serializable} por Serializavel, embora não achemos que este termo reflita adequadamente a noção do que esta interface permite que seja feito com os objetos que a implementam. A ideia é que um objeto serializável é um objeto que pode ser convertido para um formato textual que permita a  transmissão do objeto serializado através da rede para um processo remoto ou local. O objeto serializado também pode ser armazenado em uma memória permanente e recuperado depois.} e \emph{Buscavel}. Para implementar a interface \emph{Buscavel}, \emph{Estudante} deve definir o método \emph{busca()} com o parâmetro \emph{critério}. Qualquer classe ou componente pode implementar zero ou mais interfaces e uma ou mais classes podem implementar qualquer interface. Interfaces são usadas para promover a consistência dentro de seus modelos e código fonte.
 
 \begin{figure}[h]
 \begin{center}
@@ -892,7 +902,7 @@ A figura \ref{fig:compo} mostra um exemplo de um diagrama de componente usado pa
 \caption{Diagrama de componentes da UML 2.} \label{fig:compo}
 \end{figure}
 
-Na figura, você vê que os componentes UI têm dependências nas interfaces dos componentes de negócio. Ao fazer os componentes UI dependentes das interfaces e não dos próprios componentes, você torna possível substituir os componentes com diferentes implementações desde que eles implementem as interfaces dadas. Isto reduz acoplamento. De modo similar, é possível que os componentes de negócio dependam uns dos outros. Por exemplo, o componente \emph{Disciplina} é acoplado ao componente \emph{Horario}. 
+Na figura \ref{fig:compo}, você pode observar que os componentes UI (interface usuário) têm dependências nas interfaces dos componentes de negócio. Ao fazer os componentes UI dependentes das interfaces e não dos próprios componentes, você torna possível substituir os componentes com diferentes implementações desde que eles implementem as interfaces dadas. Isto reduz acoplamento. De modo similar, é possível que os componentes de negócio dependam uns dos outros. Por exemplo, o componente \emph{Disciplina} é acoplado ao componente \emph{Horario}. 
 
 Uma notação interessante da notação UML 2 é o uso de soquetes. Um soquete é o semicírculo em torno do símbolo pirulito, como pode ser visto com as interfaces \emph{ControleAcesso} e \emph{Persistencia} com as componentes de \emph{Seguranca} e \emph{Persistencia}, respectivamente. Este símbolo é usado para indicar que alguma coisa requer a existência de uma interface. Por exemplo, as quatro componentes de negócios (\emph{Instalacoes}, \emph{Estudante}, \emph{Disciplina} e \emph{Horario}) todas requerem a existência de alguma coisa que implemente a interface \emph{ControleAcesso}.
 
@@ -943,7 +953,7 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 
 \chapter{Padrões de Projeto}
 
-Neste capítulo veremos um resumo das ideias apresentadas em \citeonline{DP:explained} e \citeonline{design:patterns}. Shalloway e Trott acreditam que os alunos podem aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer com este texto. Não veremos os padrões com a minúcia desses livros, apenas alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
+Neste capítulo veremos um resumo das ideias apresentadas em \cite{DP:explained} e \cite{design:patterns} sobre padrões de projetos. Shalloway e Trott acreditam que é possível aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer com este texto. Não veremos os padrões com a minúcia desses livros, apenas vamos apresentar alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
 
 Um padrão tem quatro elementos essenciais:
 \begin{enumerate}
@@ -957,7 +967,7 @@ Um padrão tem quatro elementos essenciais:
 
 \end{enumerate}
 
-\citeonline{design:patterns} classifica os padrões de projetos do ponto de vista do propósito em três categorias:
+\cite{design:patterns} classifica os padrões de projetos do ponto de vista do propósito em três categorias:
 \begin{enumerate}
 \item \textbf{Criação: } Padrões de criação lidam com a criação de objetos.
 
@@ -991,7 +1001,7 @@ As oito características básicas na descrição dos padrões de acordo com \cit
 
 \section{Catálogo de Padrões}
 
-Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Depois veremos algumas aplicações destes padrões. Em geral, não aplicamos os padrões de maneira isolada, mas para resolver alguns problemas aplicamos diversos padrões. Apesar da gang de 4 apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
+Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Depois veremos algumas aplicações destes padrões. Em geral, não aplicamos os padrões de maneira isolada, mas para resolver alguns problemas aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\citeonline{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
 
 \subsection{O Padrão Fachada (\textit{Facade})}
 \subsubsection{Propósito}
@@ -1017,7 +1027,7 @@ A figura \ref{fig:fachada} mostra a estrutura do sistema antes e depois de aplic
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.45]{fachada.png}
+\includegraphics[scale=0.42]{fachada.png}
 \caption{Estrutura Genérica do Padrão Fachada}\label{fig:fachada}
 \end{center}
 \end{figure}
@@ -1044,7 +1054,7 @@ O padrão Adaptador permite o uso de objetos pré-existentes em novas estruturas
 Contém a classe existente numa outra classe. A nova classe tem a interface requerida e chama os métodos pela classe contida.
 
 \subsubsection{Estrutura Genérica}
-A estrutura genérica do Padrão Adaptador é:
+A estrutura genérica do Padrão Adaptador é ilustrado na figura \ref{fig:adaptador}.
 
 \begin{figure}[h]
 \begin{center}
@@ -1060,7 +1070,7 @@ Existem dois tipos de padrões de Adaptadores:
 \item[Padrão Adaptador de Classe:] Um outro modo de implementar o padrão Adaptador é com herança múltipla. Neste caso, temos um padrão Adaptador de Classe.
 \end{description}
 
-É comum, projetistas inexperientes não saberem diferenciar os dois padrões: Fachada e Adaptador. \citeonline{DP:explained} fornece a seguinte tabela para compará-los:
+É comum, projetistas inexperientes não saberem diferenciar os dois padrões: Fachada e Adaptador. \citeonline{DP:explained} fornecem a seguinte tabela para compará-los:
 
 \begin{table}[h]
 \caption{Comparação entre os padrões Fachada e Adaptador}\label{tab:fachadaxadaptador}
@@ -1090,7 +1100,7 @@ A figura \ref{fig:adaptCirc} mostra como uma classe \emph{CirculoEspc} é adapta
 
 \subsection{O Padrão Fabrica Abstrata (\textit{Abstract Factory})}
 
-O padrão da Fabrica Abstrata é um dos padrões de projeto que procuram abstrair o processo de instanciação. Eles ajudam a tornar um sistema independente de como seus objetos são criados, compostos e representados. Eles escondem como instâncias das classes são criadas e são postas juntas.
+O padrão da Fabrica Abstrata é um dos padrões de projeto que procuram abstrair o processo de instanciação. Este tipo de padrão ajuda a tornar um sistema independente de como seus objetos são criados, compostos e representados. Ele esconde como instâncias das classes são criadas e são postas juntas.
 
 \subsubsection{Propósito}
 Fornece uma interface para a criação de famílias de objetos relacionados ou dependentes sem especificar as suas classes concretas.
@@ -1120,12 +1130,33 @@ Defina uma classe abstrata que especifica quais objetos devem ser feitos. Implem
 
 \subsection{O Padrão Método Fabrica (\textit{Factory Method})}
 \subsubsection{Propósito}
+Define uma interface para a criação de um objeto, mas deixa que uma subclasse decida qual classe instanciar. Adia a instanciação para as subclasses.
+
 \subsubsection{Problema}
+Uma classe precisa instanciar uma derivação de uma outra classe, mas não sabe qual. O \emph{Factory Method} permite que uma classe derivada tome a decisão.
+
 \subsubsection{Solução}
+Uma classe derivada toma a decisão de qual classe instanciar e como.
+
 \subsubsection{Participantes e colaboradores}
+\emph{Produto} é a interface do tipo de ojeto que a \emph{Factory Method} cria. \emph{Creator} é a interface que define a \emph{Factory Method}.
+
 \subsubsection{Consequências}
+Clientes precisarão derivar a classe Creator para ter um \emph{ProdutoConcreto}.
+
 \subsubsection{Implementação}
+Use um método na classe abstrata que é abstrato. O código da classe abstrata refere-se a este método quando precisa instanciar um objeto contido , mas ainda não sabe qual objeto particular é necessário.
+
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{factoryMethod.png}
+\caption{Estrutura Genérica do padrão Método Fabrica.}\label{fig:factMeth}
+\end{center}
+\end{figure}
+
+O padrão Método Fabrica é normalmente usado na definição de \textit{frameworks}. Isto porque frameworks existem num nível abstrato. Geralmente, eles não sabem e não deveriam se preocupar  com a instanciação de objetos específicos. Eles precisam adiar as decisões sobre objetos específicos para usuários de \textit{frameworks}.
 
 \subsection{O Padrão Observador (\textit{Observer})}
 \subsubsection{Propósito}
@@ -1326,11 +1357,32 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\section{O Processo de Pensar em Padrões}
+
+De acordo com \citeonline{design:patterns}, o processo de pensar em padrões segue os passos:
+\begin{enumerate}
+\item \textbf{Identifique os padrões:} Encontre os padrões no domínio do problema;
+\item \textbf{Analise e aplique os padrões:} Para o conjunto de padrões a ser analisado, realize os passos a) até d):
+\begin{enumerate}
+\item \textbf{Ordene os padrões pelo contexto de criação:} Ordene os padrões de acordo com como eles criam contexto para cada um dos outros padrões. A ideia é a de que um padrão vai criar contexto para um outro, não que dois padrões vão criar contexto um para o outro.
+\item \textbf{Selecione cada padrão e expanda o projeto:} Usando sua ordenação, selecione o próximo padrão da lista e use-o para um projeto conceitual de alto nível.
+\item \textbf{Identifique padrões adicionais:} Identifique qualquer padrão adicional que surja durante a sua análise. Adicione-o ao conjunto de padrões a serem analisados.
+\item \textbf{Repita:} Repita para o conjunto de padrões que ainda não foram integrados ao projeto conceitual.
+\end{enumerate}
+\item \textbf{Adicione detalhes:} Adicione os detalhes a medida que se tornarem necessários ao projeto. Expanda as definições das classes e dos métodos.
+\end{enumerate}
+
+\citeonline{DP:explained} dizem que para aplicar os padrões aos seus projetos é necessário que conheça bem o domínio do problema. Além disso, pensar em padrões nem sempre é aplicável, mas análise de comunalidade e variabilidade é geralmente mais usável. Os autores mostram como usar aplicar os passos no projeto de um CAD/CAM.
+
 \chapter{Metodologias de desenvolvimento}
 
 Existem diversas metodologias para o projeto de software OO, veremos neste capítulo uma rápida introdução a algumas destas metodologias. As chamadas metodologias de desenvolvimento visam determinar a arquitetura do software e encontrar as classes/objetos que resolvem um determinado problema. Estas metodologias são, geralmente, selecionadas pelas empresas de desenvolvimento e os programadores/projetistas devem se adaptar à metodologia da empresa. Os gerentes de desenvolvimento que selecionam as metodologias têm diversos critérios para realizar a escolha: experiência da equipe, disponibilidade de ferramentas dentro da empresa, requerimentos dos clientes finais, ... Algumas vezes, a escolha se faz por motivos não totalmente objetivos. Não vamos aqui discutir os méritos e deméritos das metodologias para não entrar em batalhas, muitas vezes infindáveis e infrutíferas.
 
-\citeonline{DP:explained} diz que frequentemente os projetistas novatos em OO são aconselhados a olhar para o domínio do problema e ``identificar os substantivos presentes e criar objetos representando-os e encontrar os verbos relacionando estes substantivos (isto é, as ações deles) e implementá-los através de métodos dos objetos''. Este processo focado em substantivos (nomes das coisas) e verbos leva, tipicamente à hierarquias de classes maiores do que as desejáveis. Eles recomendam a análise de coisas em comum, comunalidade, e coisas que variam, variabilidade, como a principal ferramenta para a criação de objetos. Os conceitos de comunalidade e variabilidade foram apresentados por Couplien\footnote{Couplien, J., \textit{Multi-Paradigm Design for C++}, Boston: Addison-Wesley, 1998, pp. 60, 64.}.
+\cite{uml:j2ee} diz que um processo de desenvolvimento de software fornece orientação sobre como desenvolver software com sucesso. Essa orientação pode abranger todo o espectro de atividades associadas ao desenvolvimento do software. O processo pode se manifestar sob a forma de abordagens comprovadas, melhores práticas, diretrizes, técnicas, sequenciamento de atividades, etc.
+
+Seja formal ou informal, o processo de desenvolvimento de software utilizado tem impacto profundo no sucesso de um projeto de software. Uma abordagem de tentativa e erro pode funcionar bem para um pequeno projeto, mas pode levar ao caos em um grande projeto e impactar o cronograma geral. Da mesma forma, um processo de desenvolvimento de software burocrático pode levar à frustração e ao atolamento até mesmo a melhor das equipes.
+
+\cite{DP:explained} diz que frequentemente os projetistas novatos em OO são aconselhados a olhar para o domínio do problema e ``identificar os substantivos presentes'' e criar objetos representando-os e encontrar os verbos relacionando estes substantivos (isto é, as ações deles) e implementá-los através de métodos dos objetos. Este processo focado em substantivos (nomes das coisas) e verbos leva, tipicamente a hierarquias de classes maiores do que as desejáveis. Eles recomendam a análise de coisas em comum, comunalidade, e coisas que variam, variabilidade, como a principal ferramenta para a criação de objetos. Os conceitos de comunalidade e variabilidade foram apresentados por Couplien\footnote{Couplien, J., \textit{Multi-Paradigm Design for C++}, Boston: Addison-Wesley, 1998, pp. 60, 64.}.
 
 A figura \ref{fig:cvaPersp} mostra as relações entre a análise de comunalidades e variabilidades, perspectivas e classes abstratas. Ao olhar o que os objetos devem fazer (perspectiva conceitual), determinamos como chamá-los (perspectiva de especificação) e obtemos as classes abstratas e seus métodos. Ao implementar estas classes, garante-se que a API fornece informação suficiente para uma implementação adequada e um bom desacoplamento.
 
@@ -1338,11 +1390,56 @@ A figura \ref{fig:cvaPersp} mostra as relações entre a análise de comunalidad
 \begin{center}
 \includegraphics[scale=0.4]{cva_persp.png}
 \caption{Relação entre Análise de Comunalidade e de Variabilidade, Perspectivas e Classes abstratas} \label{fig:cvaPersp}
-\legend{Fonte: \citeonline{DP:explained}}
+\legend{Fonte: \cite{DP:explained}}
 \end{center}
 \end{figure}
 
-A exposição das metodologias começa com o processo unificado que de certa maneira representou o fim da guerra das metodologias, não que ela seja a metodologia vencedora. Apenas, o processo unificado ofuscou as outras e não temos mais uma disputa tão pronunciada de metodologias deste que ela foi publicada, ela é o resultado da unificação de metologias pelos 4 amigos: Philippe Kruchten,  Ivar Jacobson, Jim Rumbaugh e Grady Booch. Conforme veremos, o principal representante da metodologia é chamada de RUP, Rational Unified Process, e varições dela são usadas por muitas empresas. Posteriormente, alguns desenvolvedores criaram metodologias chamadas de ágeis. 15 destes desenvolvedores lançaram o Manifesto pelo Desenvolvimento de Software Ágil, (\citeonline{agile:manifesto}). Cujos 12 princípios básicos são:
+A tabela \ref{tab:concDS} apresenta alguns conceitos e termos usados em desenvolvimento de Software.
+
+\begin{longtable}[l]{p{4.6cm}p{11.1cm}}
+\caption[Conceitos DS]{Conceitos e Termos Desenvolvimento de Software}
+\label{tab:concDS}\\
+
+\multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endfirsthead
+
+\multicolumn{2}{c}{{\bfseries \tablename\ \thetable{} -- continuação da página anterior}} \\
+\multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
+\midrule
+\endhead
+
+\multicolumn{2}{r}{{Continua na próxima página}} \\% \hline
+\endfoot
+
+\hline %\hline
+ & \legend{Fonte: \cite{uml:j2ee}} \\% \hline
+
+\endlastfoot
+
+Caso de Uso & ...\\
+
+Desenvolvimento em Cascata & Processo de desenvolvimento que segue estritamente as etapas: Levantamento de requisitos, Análise e Projeto do SW, Codificação, Teste e Manutenção.\\
+
+Estória de Usuário & ...\\
+
+Framework & Quadro de trabalho, em tradução ao pé da letra. Um framework é uma coleção de programas que facilitam o desenvolvimento de uma aplicação. De acordo com \cite{uml:j2ee}, existem dois tipos de framewoks: um baseado em biblioteca e outro que fornece uma base a ser extendida pelo programador.\\
+
+Metodologia de Desenvolvimento de Software & Processo de desenvolvimento de software baseado em práticas bem definidas.\\
+
+Metodologia Ágil & Processo de desenvolvimento de Software que procura reduzir o ciclo de entrega de incremental do software, privilegiando a interação com o cliente e a programação.\\
+
+Processo de Desenvolvimento & ...\\
+
+RUP & Rational Unified Process.\\
+
+Scrum & Uma metodologia ágil.\\
+
+XP & eXtreme Programming, uma metodologia ágil.\\
+
+\end{longtable}
+
+A exposição das metodologias começa com o processo unificado que de certa maneira representou o fim da guerra das metodologias, não que ela seja a metodologia vencedora. Apenas, o processo unificado ofuscou as outras e não temos mais uma disputa tão pronunciada de metodologias deste que ela foi publicada, ela é o resultado da unificação de metologias pelos 4 amigos: Philippe Kruchten,  Ivar Jacobson, Jim Rumbaugh e Grady Booch. Conforme veremos, o principal representante da metodologia é chamada de RUP, Rational Unified Process, e varições dela são usadas por muitas empresas. Inicialmente, a metodologia era muito centrada na criação de documentos e o desenvolvimento do software só ocorria depois da escrita deles. Alguns desenvolvedores criaram metodologias chamadas de ágeis que pretendem reduzir a burocracia antes da programação. 15 destes desenvolvedores lançaram o Manifesto pelo Desenvolvimento de Software Ágil, (\citeonline{agile:manifesto}). Cujos 12 princípios básicos são:
 
 \begin{enumerate}
 \item 
@@ -1385,8 +1482,9 @@ Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz, em s
 Veremos uma rápida introdução à metodologia Scrum para exemplificar as metodologias ágeis. E concluiremos o capítulo citando outras metologias ágeis.
 
 \section{Processo Unificado}
+
 ...texto sobre o processo unificado, RUP, e variações...
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.6]{File_Development-iterative-RUP-wiki.png}
 \caption{Diagrama das etapas do RUP} \label{fig:rup}
@@ -1400,7 +1498,7 @@ A figura \ref{fig:rup} mostra um diagrama com as etapas e fases do processo de d
 \subsection{O Que É Scrum?}
 Scrum é um framework projetado para ajudar pequenas equipes unidas a desenvolver produtos complexos. Resultado do trabalho de um punhado de engenheiros de software trabalhando juntos no final do século XX, scrum ganhou força no setor tecnológico, mas não é necessariamente técnico e pode ser facilmente adaptado para outras indústrias. Os autores \citeonline{scrum:brief} dizem que você pode adaptá-lo para construir uma ratoeira melhor, ou para administrar a divisão de \textit{marketing} de uma companhia de cachorrinhos de estimação, ou até para escrever um livro, como eles fizeram.
 
-Uma equipe scrum consiste, tipicamente, de sete, mais ou menos duas, pessoas que trabalham juntas em curtos intervalos de intensa atividade chamadas de arrancadas (\emph{sprints}), com bastante tempo embutido para revisão e reflexão. Um dos mantras de scrum é ``inspecionar e adaptar'' e equipes scrum são caracterizadas por um foco intenso  na melhoria contínua do processo deles e do produto. Nesta seção veremos uma introdução muito rápida da terminologia do scrum: os vários papéis, artefatos e eventos que ocorrem num ciclo de arrancada (\emph{sprint cycle}).
+Uma equipe scrum consiste, tipicamente, de cinco a nove pessoas que trabalham juntas em curtos intervalos de intensa atividade chamadas de arrancadas (\emph{sprints}), com bastante tempo embutido para revisão e reflexão. Um dos mantras de scrum é ``inspecionar e adaptar'' e equipes scrum são caracterizadas por um foco intenso  na melhoria contínua do processo delas e do produto. Nesta seção veremos uma introdução muito rápida da terminologia do scrum: os vários papéis, artefatos e eventos que ocorrem num ciclo de arrancada (\emph{sprint cycle}).
 
 \subsection{Papéis}
 O Scrum conhece três papéis distintos para os membros da equipe:
@@ -1413,32 +1511,32 @@ O Scrum conhece três papéis distintos para os membros da equipe:
 
 \end{description}
 
-O papel do Product Owner resumido:
+O proprietário do produto:
 \begin{itemize}
 \item detém a visão do produto;
 \item representa os interesses do negócio;
-\item representa os clientes;
-\item é dono da lista de pendências;
-\item ordena, prioriza, os itens da lista de pendências;
-\item cria critérios de aceitação para os itens da lista de pendências; e
-\item está disponível para responder às dúvidas dos membros da equipe.
+\item representa os clientes (\textit{stockholders});
+\item é dono da lista de pendências do produto (\textit{product backlog});
+\item ordena, prioriza, os itens da lista de pendências do produto;
+\item cria critérios de aceitação para os itens da lista de pendências do produto; e
+\item está disponível para responder às dúvidas dos outros membros da equipe.
 \end{itemize}
 
-O papel do Mestre Scrum resumido:
+O papel do Mestre Scrum é ser:
 \begin{itemize}
-\item especialista e orientador scrum;
+\item especialista e orientador de scrum;
 \item treinador;
 \item quebrador de barreiras; e
 \item facilitador.
 \end{itemize}
 
-O papel de Membro da Equipe resumido:
+O papel de Membro da Equipe:
 \begin{itemize}
-\item responsável por completar as estórias do usuário para incrementar o valor do produto;
+\item é ser responsável por completar as estórias do usuário para incrementar o valor do produto;
 \item se auto-organizar para conseguir que todo o trabalho necessário seja feito;
 \item criar suas próprias estimativas de cronogramas;
 \item decidir ``como fazer o trabalho''; e
-\item evitar o pensamento ``não é meu serviço''.
+\item fugir do pensamento ``não é meu serviço''.
 \end{itemize}
 
 \subsection{Artefatos do Scrum}
@@ -1451,11 +1549,11 @@ Cada item da lista deve incluir as seguintes informações:
 \item Uma rápida descrição da funcionalidade desejada (o que precisa ser construído);
 \item A razão para a estória ser preciosa (por que precisamos realizá-la);
 \item Uma estimativa de quanto trabalho será necessário para realizar a estória; e
-\item Critérios de aceitação que ajudarão a saber se a implementação é correta.
+\item Critérios de aceitação que ajudarão a saber se a implementação está correta.
 \end{itemize}
 
 \subsubsection{A Lista de Pendências da Arrancada (\emph{Sprint Backlog})}
-A lista de pendências da arrancada é a lista de coisas a fazer da arrancada. Diferente da lista de pendências do produto, ela tem tempo de vida finito: a duração da arrancada. Ela inclui todas as estórias e tarefas associadas com que a equipe se compromete nesta arrancada. Estórias são entregas e podem ser pensadas como unidades de valor. Tarefas são coisas que precisam ser feitas, para entregar as estórias, logo, tarefas podem ser vistas como unidades de trabalho. Uma estória é algo que uma equipe entrega; Uma tarefa é um pedaço de trabalho que alguém faz. Cada estória normalmente requer muitas tarefas.
+A lista de pendências da arrancada é a lista de coisas a fazer na arrancada, período fixo de tempo de trabalho. Diferente da lista de pendências do produto, ela tem tempo de vida finito: a duração da arrancada. Ela inclui todas as estórias e tarefas associadas que a equipe se compromete a realizar nesta arrancada. Estórias são entregas e podem ser pensadas como unidades de valor. Tarefas são coisas que precisam ser feitas, para entregar as estórias, logo, tarefas podem ser vistas como unidades de trabalho. Uma estória é algo que uma equipe entrega; Uma tarefa é um pedaço de trabalho que alguém faz. Cada estória normalmente requer muitas tarefas.
 
 \subsubsection{Gráficos de Queimada}
 Um gráfico de queimada (\emph{burn chart}) nos mostra a relação entre o tempo e o escopo. O tempo está no eixo horizontal X e o escopo está no eixo vertical Y. Um gráfico de queimada nos mostra quanto de escopo uma equipe conseguiu realizar num período de tempo. Cada vez que algo é completado, a linha no gráfico se move para cima. Um gráfico de queimada nos mostra o que falta fazer. Em geral, esperamos que o trabalho restante diminua com o tempo à medida que a equipe termina tarefas. Às vezes, o trabalho restante muda de repente, quando escopo é adicionado ou retirado. Estes eventos aparecem como linhas verticais no gráfico de queimada.
@@ -1693,6 +1791,9 @@ public class Clock {
 \end{verbatim}
 
 A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital é muito simples, tudo que ela tem é o método \emph{main()} que repete para sempre (\emph{loop} infinito) a atualização da tela do relógio e espera por meio segundo (dormindo). A espera é importante para liberar o processador do computador para outras aplicações. A razão de esperar por meio segundo e não por um segundo é que o erro de exibição no caso da espera de um segundo pode ser de até um segundo. No pior caso o programa leu as horas com o objeto TimeStamp justo quando ia mudar o segundo e mostra o valor anterior, só após o tempo de espera de 1s é que a tela vai ser atualizada. Com meio segundo de espera, o erro máximo é de 0,5s.
+
+\section{Programação J2EE}
+
 
 % ---
 % Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
