@@ -91,6 +91,8 @@
 
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
+\listoffigures
+\listoftables
 \cleardoublepage
 
 % resumo em português
@@ -426,7 +428,7 @@ A figura \ref{fig:class1} expõe 2 tipos diferentes de atributos: atributos de i
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.85]{class1.png} 
-\caption{Classes Estudante e Disciplina} \label{fig:class1}
+\caption{Classes \emph{Estudante} e \emph{Disciplina}} \label{fig:class1}
 \end{center}
 \end{figure}
 
@@ -457,7 +459,7 @@ Para simplificar a manutenção de suas aplicações, você quer restringir o ac
 \cite{DP:explained} diz que, em geral, se oculta dados, mas que podemos ocultar também:
 \begin{itemize}
 \item Implementações;
-\item Classes Derivadas
+\item Classes Derivadas;
 \item Detalhes de projeto; e
 \item Regras de Instanciação.
 \end{itemize}
@@ -466,13 +468,13 @@ Para simplificar a manutenção de suas aplicações, você quer restringir o ac
 
 \section{Herança}
 
-Similaridades sempre existem entre classes diferentes. Duas ou mais classes frequentemente compartilham os mesmos atributos e/ou mesmos métodos. Porque você não quer ter de reescrever o mesmo código repetidas vezes, você deseja um mecanismo que tire vantagem destas semelhanças. Herança é este mecanismo. Herança modela os relacionamentos ``é um'' e ``é como'', o que permite que você reuse dados e códigos existentes facilmente.
+Similaridades sempre existem entre classes diferentes. Duas ou mais classes frequentemente compartilham os mesmos atributos e/ou mesmos métodos. Como você não quer ter de reescrever o mesmo código repetidas vezes, você deseja um mecanismo que tire vantagem destas semelhanças. Herança é este mecanismo. Herança modela os relacionamentos ``é um'' e ``é como'', o que permite que você reuse dados e códigos existentes facilmente.
 
 Por exemplo, estudantes têm nomes, endereços e números de telefone e eles dirigem veículos. Ao mesmo tempo, professores também têm nomes, endereços e números de telefones e dirigem veículos. Sem dúvida, você pode desenvolver as classes para estudantes e professores e fazê-las executarem. De fato, você poderia até desenvolver a classe \emph{Estudante} primeiro e, quando ela estiver rodando, fazer uma cópia dela, chamá-la de \emph{Professor} e fazer as modificações necessárias. Enquanto, esta é uma maneira muito direta de resolver o problema, ela não é perfeita. E se houver um erro no código original do estudante? Agora, você tem de corrigir o erro em dois lugares, o dobro do trabalho. O que acontece se você precisar mudar a maneira de lidar com o nome, digamos que no lugar de ter no máximo 30 caracteres, precisa de 40 caracteres? Agora, você tem de fazer a mesma modificação em dois lugares, o que é chato, besta e custoso (em termos de tempo). Não seria bom se só tivesse uma cópia do código para desenvolver e fazer manutenção?
 
-Isto é exatamente o que a herança se propõe a fazer. Com herança, você define uma nova classe que encapsula as similaridades entre os alunos e professores. Esta nova classe teria os atributos \emph{nome}, \emph{endereço} e \emph{numeroTelefone} e o método \emph{dirigeVeiculo}. Como você precisa dar nome a todas as suas classes, você precisa se perguntar o que esta coleção de dados e funcionalidade descrevem. Neste caso, acredito que o nome \emph{Pessoa} cabe bem.
+Isto é exatamente o que a herança se propõe a fazer. Com herança, você define uma nova classe que encapsula as similaridades entre os alunos e professores. Esta nova classe teria os atributos \emph{nome}, \emph{endereço} e \emph{numeroTelefone} e o método \emph{dirigeVeiculo}. Como você precisa dar nome a todas as suas classes, você precisa se perguntar o que esta coleção de dados e funcionalidade descrevem. Neste caso, provavelmente o nome \emph{Pessoa} cabe bem. Este tipo de modificação, partindo da classe \emph{Estudante}, encontrando as similaridades, ou comunalidades, com a classe \emph{Professor}, para criar a classe \emph{Pessoa}, é um tipo de \emph{refatoração} bastante comum no desenvolvimento de software.
 
-Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Estudante} e \emph{Professor} herdem dela. Você pode dizer que \emph{Pessoa} é a superclasse de \emph{Estudante} e \emph{Professor} e que \emph{Estudante} e \emph{Professor} são subclasses de \emph{Pessoa}. Tudo que uma superclasse sabe ou faz, a subclasse sabe ou faz sem que seja necessário escrever mais código. Na verdade, para este exemplo, você teria de escrever duas linhas de código, uma dizendo que \emph{Estudante} é subclasse de \emph{Pessoa} e outra dizendo que \emph{Professor} é uma subclasse de \emph{Pessoa}. Porque \emph{Pessoa} tem um nome, endereço e número de telefone, ambos, \emph{Estudante} e \emph{Professor}, também, têm estes atributos. Porque \emph{Pessoa} tem a capacidade de dirigir um veículo, as classes \emph{Estudante} e \emph{Professor} também têm.
+Quando você tiver a classe \emph{Pessoa} definida, você fará com que \emph{Estudante} e \emph{Professor} herdem dela. Você pode dizer que \emph{Pessoa} é a superclasse de \emph{Estudante} e \emph{Professor} e que \emph{Estudante} e \emph{Professor} são subclasses de \emph{Pessoa}. Tudo que uma superclasse sabe ou faz, a subclasse sabe ou faz sem que seja necessário escrever mais código. Na verdade, para este exemplo, você teria de escrever duas linhas de código, uma dizendo que \emph{Estudante} é subclasse de \emph{Pessoa} e outra dizendo que \emph{Professor} é uma subclasse de \emph{Pessoa}. Porque \emph{Pessoa} tem um nome, endereço e número de telefone, ambos, \emph{Estudante} e \emph{Professor}, também, têm estes atributos. Porque \emph{Pessoa} tem a capacidade de dirigir um veículo, as classes \emph{Estudante} e \emph{Professor} também têm. As subclasses também são ditas derivadas da superclasse. Também dizemos que a subclasse é uma especialização da superclasse. Uma subclasse tem todos os atributos da superclasse. Ela também herda o comportamento, isto é, os métodos da superclasse. A subclasse, porém, pode modificar o comportamento, ela pode sobreescrever os métodos herdados, para que eles tenham um comportamento mais adequado com as características que são próprias à subclasse.
 
 \subsection{Modelagem de Herança}
 
@@ -507,7 +509,7 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 
 \item[Evite herança de implementação:] Desenvolvedores novatos na orientação a objetos têm uma tendência a errar na aplicação da herança, em geral, num esforço para reusar tanto quanto possível (uma boa motivação). Herança é o conceito mais excitante do repertório de objetos deles, então eles o usam tanto quanto podem. O problema é com o que se chama de herança de implementação ou de conveniência: A aplicação da herança quando a regra da sentença não se aplica e a única justificativa é a de que a subclasse precisa de uma ou mais características da superclasse, a aplicação da herança é mais conveniente do que \textit{refatorar} suas classes. Uma boa regra é reconsiderar a aplicação da regra de herança ``é como'', porque esta é uma justificativa mais fraca.
 
-\item[Herda tudo:] A subclasse deve herdar tudo da superclasse, este conceito é chamado de \emph{herança pura}. Se não, o código torna-se mais difícil de entender e de fazer a manutenção. Por exemplo, digamos que a classe \emph{B} herda de \emph{A}. Para entender \emph{B}, você precisa entender o que é \emph{A} e as características que são acrescentadas em \emph{B}. Se você começar a remover funcionalidade, você precisa entender também o que \emph{B} \textbf{não é}. Isto é muito trabalho e logo se torna um pesadelo para fazer a manutenção.
+\item[Herda tudo:] A subclasse deve herdar tudo da superclasse, este conceito é chamado de \emph{herança pura}. Se não, o código torna-se mais difícil de entender e de fazer a manutenção. Por exemplo, digamos que a classe \emph{B} herda de \emph{A}. Para entender \emph{B}, você precisa entender o que é \emph{A} e as características que são acrescentadas em \emph{B}. Se você começar a remover funcionalidade, você precisa entender também o que \emph{B} \textbf{não é}. Isto é muito trabalho e logo a manutenção desse sistema se torna um pesadelo.
 
 \end{description}
 
@@ -515,7 +517,7 @@ As dicas e técnicas a seguir devem lhe ajudar a aplicar hereditariedade de mane
 
 Quando uma classe herda de apenas uma outra classe, dizemos que temos uma \emph{herança simples}. Quando uma classe herda de duas ou mais classes, temos \emph{herança múltipla}. Lembre-se: A subclasse herda todos os atributos e métodos de suas superclasses.
 
-Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem. Herança simples resulta em hierarquia de herança que é sempre uma árvore. Herança múltipla resulta em grafos e algumas situações com nomes iguais vindo de superclasses diferentes são muitos complexas. O livro (\citeonline{cpp:ref}) comenta sobre algumas das dificuldades enfrentadas para a implementação da herança múltipla no C++.
+Nem todas as linguagens dão suporte à herança múltipla. C++ é uma das poucas que dá, linguagens como Java, Smalltalk, C\# e Ruby não dão. O ponto é que se sua linguagem de programação não oferece herança múltipla, não use herança múltipla na modelagem. Herança simples resulta em hierarquia de herança que é sempre uma árvore. Herança múltipla resulta em grafos e algumas situações com nomes iguais vindo de superclasses diferentes são muitos complexas. O livro \cite{cpp:ref} comenta sobre algumas das dificuldades enfrentadas para a implementação da herança múltipla no C++.
 
 \begin{figure}[h]
 \begin{center}
@@ -539,14 +541,14 @@ No Antes: da figura \ref{fig:uml4}, você quer criar uma nova classe \emph{Draga
 
 É importante perceber que a regra de sentença ``é como'' não é perfeita. Por exemplo, faz sentido dizer que uma sequóia é como um arranha-céu já que ambos são altos, têm raízes no chão e balançam ao vento. Entretanto, eles não devem compartilhar uma relação de herança. Também faz sentido dizer que um faixa preta é um artista de artes marciais, mas não faz sentido fazer uma classe \emph{Roupa} herda da classe \emph{Pessoa}.
 
-Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira e coisas diferentes. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras reluzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobrescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobrescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{Das principais linguagens que suportam orientação a objetos, apenas o C++ possui herança múltipla, ela raramente é necessária -- programação de jogos é um dos poucos domínios em que herança múltipla pode fazer sentido.}.
+Observe que o método \emph{come()} foi listado na classe \emph{Dragao}. Embora todos os três tipos de criaturas comam, eles comem cada um de maneira e coisas diferentes. Pássaros comem sementes, lagartos comem insetos e dragões comem cavaleiros em armaduras reluzentes. Porque a maneira de comer dos dragões é diferente da do pássaro e do lagarto, é necessário \textit{redefinir} (sobrescrever) a definição do método \emph{come()}. A ideia geral é que uma subclasse precisa sobrescrever um atributo ou um método sempre que ela usa aquele dado ou executa aquele método de uma maneira diferente da sua superclasse\footnote{A programação de jogos é um dos poucos domínios em que herança múltipla faz sentido.}.
 
 \subsection{Classes Abstratas e Concretas}
 
 Na figura \ref{fig:uml3}, a classe \emph{Veiculo} está marcada como abstrata (o nome está em itálico, em versões mais antigas de UML, você poderia usar a restrição {abstract}), enquanto \emph{Aviao} e \emph{Carro} não são. Dizemos que 
 \emph{Veiculo} é uma classe abstrata, enquanto \emph{Aviao} e \emph{Carro} são classes concretas. A diferença principal entre classes abstratas e concretas é que objetos podem ser instanciados (criados) de classes concretas, mas não de classes abstratas. Por exemplo, no domínio do seu problema, você tem aviões e carros, mas não tem nada que é apenas um veículo (se algo não é um avião ou um carro, você não se interessa por ele). Isto significa que seu software instanciará objetos aviões e carros, mas não objetos veículos. Classes abstratas são modeladas quando você precisa criar uma classe que implementa características comuns a duas ou mais classes. Observe que ao usar padrões de projeto, muitos deles definem interfaces que são classes abstratas.
 
-Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \cite{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que a prática de modelagem ágil diz: \textit{use a ferramenta mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e nunca poderá ser instanciada.
+Não estamos tão preocupado se uma classe é abstrata quando estamos modelando, assumimos que faremos a coisa certa quando vier a hora de implementar a classe, o que numa equipe de projeto ágil pode ser minutos depois de modelá-la. Usar itálico para indicar que uma classe é abstrata é uma escolha infeliz do pessoal da OMG. Como \cite{uml:destilado} disse, quando você está modelando num quadro negro ou num papel (lembre-se que a prática de modelagem ágil diz: \textit{use a ferramenta mais simples}), você precisa usar a notação antiga, \{abstract\}, ou <<abstract>>. Se você realmente pretende que uma classe seja abstrata, a maioria das linguagens OO permitem que você declare que uma classe é abstrata e ela nunca poderá ser instanciada.
 
 Enquanto \cite{Ambler:TOP:3ed} não se preocupa com o fato da classe ser abstrata na modelagem, \cite{DP:explained} dá uma forte enfase no uso de classes abstratas para representa a ideia de comunalidade e a definição da interface de programação (API - Application Programming Interface) entre os componentes de software. Na prática, devemos observar as classes e na medida que o desenvolvimento for avançando, com o surgimento da necessidade de mais classes, devemos considerar se classes diferentes apresentam responsabilidades semelhantes e se não faz sentido unificá-las em uma mesma classe abstrata. Devemos, entretanto, evitar os excessos que levam à herança de implementação. O uso de padrões de projeto pode auxiliar a determinar quais são as classes abstratas interessantes na solução de um problema. As alterações necessárias para usar a comunalidade de diversas classes e forma uma interface unificada por uma classe abstrata é uma forma de refatoramento que permite reduzir, em geral, acoplamentos.
 
@@ -569,15 +571,15 @@ Quando um objeto é escrito no disco, você obviamente precisa armazenar os valo
 
 \section{Relacionamentos}
 
-No mundo real, os objetos têm relacionamentos uns com os outros. Os relacionamentos entre os objetos são importantes porque nos ajudam a definir como os objetos interagem uns com os outros. Por exemplo, estudantes \textit{se matriculam} em disciplinas, professores \textit{ensinam} disciplinas, criminosos \textit{roubam} bancos, políticos \textit{beijam} bebes e capitães \textit{comandam} espaçonaves. \textit{Se matriculam}, \textit{ensinam}, \textit{roubam}, \textit{beijam} e \textit{comandam} são todos verbos que definem associações entre objetos. Você quer identificar e potencialmente documentar estes relacionamentos; assim, você pode ganhar um melhor entendimento de como os objetos interagem uns com os outros. A figura \ref{fig:relac} resume as notações para relacionamentos entre duas classes.
-
-\begin{figure}[h]
+\begin{figure}[ht]
 \begin{center}
 \includegraphics[scale=0.65]{clsRelac.png}
 \end{center}
 \caption{Resumo dos diagramas de relacionamento.} \label{fig:relac}
 \legend{Fonte: \cite{uml:j2ee}}
 \end{figure}
+
+No mundo real, os objetos têm relacionamentos uns com os outros. Os relacionamentos entre os objetos são importantes porque nos ajudam a definir como os objetos interagem uns com os outros. Por exemplo, estudantes \textit{se matriculam} em disciplinas, professores \textit{ensinam} disciplinas, criminosos \textit{roubam} bancos, políticos \textit{beijam} bebes e capitães \textit{comandam} espaçonaves. \textit{Se matriculam}, \textit{ensinam}, \textit{roubam}, \textit{beijam} e \textit{comandam} são todos verbos que definem associações entre objetos. Você quer identificar e potencialmente documentar estes relacionamentos; assim, você pode ganhar um melhor entendimento de como os objetos interagem uns com os outros. A figura \ref{fig:relac} resume as notações para relacionamentos entre duas classes.
 
 Você não precisa apenas identificar os relacionamentos entre as classes, você deve também descrever o relacionamento. Por exemplo, não é suficiente saber que os estudantes se matriculam em disciplinas. Quantas disciplinas os estudantes podem cursar? Nenhuma, uma ou várias? Além disso, relacionamentos são vias com circulação nos dois sentidos: Não apenas os estudantes se matriculam em disciplinas, mas também disciplinas têm estudantes matriculados. Isto leva a questões como quantos estudantes podem ser matriculados numa dada disciplina e é possível ter uma disciplina sem nenhum estudante? Isto implica em que você deve também identificar a cardinalidade e a opcionalidade de um relacionamento. Cardinalidade representa o conceito ``quantos'', opcionalidade representa o conceito ``se você deve ter algo''. É importante observar que a UML escolheu combinar os conceitos de opcionalidade e cardinalidade num único conceito de \emph{multiplicidade}.
 
@@ -914,7 +916,7 @@ Com a experiência, você vai sentir que você repetidamente está resolvendo os
 
 Um padrão é uma solução para um problema comum levando em conta as forças relevantes, apoiando efetivamente o reuso de técnicas e procedimentos comprovados de outros desenvolvedores. Existem diferentes tipos de \emph{padrões}, incluindo \emph{padrões de análise}, \emph{padrões de projeto} e \emph{padrões de processos}. Padrões de análise descrevem uma solução para problemas comuns encontrados na análise da lógica de negócios/domínio de uma aplicação, padrões de projeto descrevem uma solução para problemas comuns encontrados no projeto de sistemas e padrões de processos se aplicam a questões de processos de software. O livro (\citeonline{design:patterns}) é a referência de base clássica que popularizou o uso de padrões em software.
 
-Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas uma instância. Por exemplo, deve haver apenas uma janela de edição para um dado tipo de alteração, ou alguma informação de configuração só pode ser armazenada num único local, ou você precisa manter valores constantes num único lugar. Nestes casos todos, você precisa de uma única instância da classe em questão -- uma única instância de uma caixa de diálogo, uma única instância da informação de configuração e uma única instância das constantes. Este problema é resolvido pelo padrão \emph{Singleton} (\citeonline{design:patterns}), um padrão de projeto que mostra como apenas uma instância de uma classe pode existir. A figura \ref{fig:singleton} mostra o diagrama de classe de um \emph{Singleton}. Um atributo estático existe para acessar a instância única, se ela existe. O método \emph{create()}, talvez melhor chamado de \emph{getSingleton()}, permite acessá-lo e criá-lo se necessário. Embora \emph{Singleton} seja um padrão simples, ele é muito usado.
+Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas uma instância. Por exemplo, deve haver apenas uma janela de edição para um dado tipo de alteração, ou alguma informação de configuração só pode ser armazenada num único local, ou você precisa manter valores constantes num único lugar. Nestes casos todos, você precisa de uma única instância da classe em questão -- uma única instância de uma caixa de diálogo, uma única instância da informação de configuração e uma única instância das constantes. Este problema é resolvido pelo padrão \emph{Singleton}\label{p:singleton}, um padrão de projeto que mostra como apenas uma instância de uma classe pode existir. A figura \ref{fig:singleton} mostra o diagrama de classe de um \emph{Singleton}. Um atributo estático existe para acessar a instância única, se ela existe. O método \emph{create()}, talvez melhor chamado de \emph{getSingleton()}, permite acessá-lo e criá-lo se necessário. Embora \emph{Singleton} seja um padrão simples, ele é muito usado.
 
 \begin{figure}
 \begin{center}
@@ -953,7 +955,7 @@ Neste capítulo, você foi apresentado aos principais conceitos do paradigma da 
 
 \chapter{Padrões de Projeto}
 
-Neste capítulo veremos um resumo das ideias apresentadas em \cite{DP:explained} e \cite{design:patterns} sobre padrões de projetos. Shalloway e Trott acreditam que é possível aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer com este texto. Não veremos os padrões com a minúcia desses livros, apenas vamos apresentar alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
+Neste capítulo veremos um resumo das ideias apresentadas em \cite{DP:explained} e \cite{design:patterns} sobre padrões de projetos. Shalloway e Trott acreditam que é possível aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer neste texto. Não veremos os padrões com a minúcia desses livros, apenas vamos apresentar alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
 
 Um padrão tem quatro elementos essenciais:
 \begin{enumerate}
@@ -1001,7 +1003,7 @@ As oito características básicas na descrição dos padrões de acordo com \cit
 
 \section{Catálogo de Padrões}
 
-Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Depois veremos algumas aplicações destes padrões. Em geral, não aplicamos os padrões de maneira isolada, mas para resolver alguns problemas aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\citeonline{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
+Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Durante a exposição dos padrões, veremos algumas aplicações deles. Em geral, não aplicamos os padrões de maneira isolada, mas, para resolver problemas práticos, aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\cite{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Já apresentamos o padrão Singleton no capítulo anterior, página \pageref{p:singleton}. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
 
 \subsection{O Padrão Fachada (\textit{Facade})}
 \subsubsection{Propósito}
@@ -1070,7 +1072,7 @@ Existem dois tipos de padrões de Adaptadores:
 \item[Padrão Adaptador de Classe:] Um outro modo de implementar o padrão Adaptador é com herança múltipla. Neste caso, temos um padrão Adaptador de Classe.
 \end{description}
 
-É comum, projetistas inexperientes não saberem diferenciar os dois padrões: Fachada e Adaptador. \citeonline{DP:explained} fornecem a seguinte tabela para compará-los:
+É comum, projetistas inexperientes não saberem diferenciar os dois padrões: Fachada e Adaptador. \cite{DP:explained} fornecem a seguinte tabela para compará-los:
 
 \begin{table}[h]
 \caption{Comparação entre os padrões Fachada e Adaptador}\label{tab:fachadaxadaptador}
@@ -1084,7 +1086,7 @@ Um objeto precisa ter comportamento polimórfico? & Não & Provavelmente \\
 Uma interface mais simples é necessária? & Sim & Não\\
 \hline %\hline
 \end{tabular}
-\legend{Fonte: \citeonline{DP:explained}}
+\legend{Fonte: \cite{DP:explained}}
 \end{center}\end{table}
 
 \subsubsection{Exemplo de Adaptador}
@@ -1372,7 +1374,7 @@ De acordo com \citeonline{design:patterns}, o processo de pensar em padrões seg
 \item \textbf{Adicione detalhes:} Adicione os detalhes a medida que se tornarem necessários ao projeto. Expanda as definições das classes e dos métodos.
 \end{enumerate}
 
-\citeonline{DP:explained} dizem que para aplicar os padrões aos seus projetos é necessário que conheça bem o domínio do problema. Além disso, pensar em padrões nem sempre é aplicável, mas análise de comunalidade e variabilidade é geralmente mais usável. Os autores mostram como usar aplicar os passos no projeto de um CAD/CAM.
+\cite{DP:explained} dizem que para aplicar os padrões aos seus projetos é necessário que conheça bem o domínio do problema. Além disso, pensar em padrões nem sempre é aplicável, mas análise de comunalidade e variabilidade é geralmente mais usável. Os autores mostram como aplicar os passos no projeto de um CAD/CAM.
 
 \chapter{Metodologias de desenvolvimento}
 
@@ -1439,7 +1441,7 @@ XP & eXtreme Programming, uma metodologia ágil.\\
 
 \end{longtable}
 
-A exposição das metodologias começa com o processo unificado que de certa maneira representou o fim da guerra das metodologias, não que ela seja a metodologia vencedora. Apenas, o processo unificado ofuscou as outras e não temos mais uma disputa tão pronunciada de metodologias deste que ela foi publicada, ela é o resultado da unificação de metologias pelos 4 amigos: Philippe Kruchten,  Ivar Jacobson, Jim Rumbaugh e Grady Booch. Conforme veremos, o principal representante da metodologia é chamada de RUP, Rational Unified Process, e varições dela são usadas por muitas empresas. Inicialmente, a metodologia era muito centrada na criação de documentos e o desenvolvimento do software só ocorria depois da escrita deles. Alguns desenvolvedores criaram metodologias chamadas de ágeis que pretendem reduzir a burocracia antes da programação. 15 destes desenvolvedores lançaram o Manifesto pelo Desenvolvimento de Software Ágil, (\citeonline{agile:manifesto}). Cujos 12 princípios básicos são:
+A exposição das metodologias começa com o processo unificado que de certa maneira representou o fim da guerra das metodologias, não que ela seja a metodologia vencedora. Apenas, o processo unificado ofuscou as outras e não temos mais uma disputa tão pronunciada de metodologias deste que ela foi publicada, ela é o resultado da unificação de metologias pelos 4 amigos: Philippe Kruchten,  Ivar Jacobson, Jim Rumbaugh e Grady Booch. Conforme veremos, o principal representante da metodologia é chamada de RUP, Rational Unified Process, e varições dela são usadas por muitas empresas. Inicialmente, a metodologia era muito centrada na criação de documentos e o desenvolvimento do software só ocorria depois da escrita deles. Alguns desenvolvedores criaram metodologias chamadas de ágeis que pretendem reduzir a burocracia antes da programação. 15 destes desenvolvedores lançaram o Manifesto pelo Desenvolvimento de Software Ágil, (\citeonline{agile:manifesto}), eles enunciaram 12 princípios básicos:
 
 \begin{enumerate}
 \item 
@@ -1449,10 +1451,10 @@ Nossa maior prioridade é satisfazer o cliente através da entrega antecipada e 
 Mudanças de requisitos são bem-vindas, mesmo nas etapas finais do desenvolvimento. Processos ágeis aproveitam mudanças para oferecer vantagem competitiva ao cliente.
 
 \item
-Entregar software de trabalho com frequência, de um algumas semanas a alguns meses, com uma preferência para a escala de tempo mais curta.
+Entregar software de trabalho com frequência, de algumas semanas a alguns meses, com uma preferência para a escala de tempo mais curta.
 
 \item
-Empresários e desenvolvedores devem trabalhar juntos diariamente durante todo o projeto.
+Clientes e desenvolvedores devem trabalhar juntos diariamente durante todo o projeto.
 
 \item
 Construa projetos em torno de indivíduos motivados. Dê a eles o ambiente e o suporte de que precisam e confie neles para fazer o trabalho.
@@ -1467,13 +1469,13 @@ O software de trabalho é a principal medida de progresso.
 Processos ágeis promovem o desenvolvimento sustentável. Os patrocinadores, desenvolvedores e usuários devem poder manter um ritmo constante indefinidamente.
 
 \item
-Atenção contínua à excelência técnica e um bom design aumentam a agilidade.
+Atenção contínua à excelência técnica e um bom projeto aumentam a agilidade.
 
 \item
 Simplicidade é essencial.
 
 \item
-As melhores arquiteturas, requisitos e designs emergem de equipes auto-organizadas.
+As melhores arquiteturas, requisitos e projetos emergem de equipes auto-organizadas.
 
 \item
 Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz, em seguida, se sintoniza e ajusta seu comportamento de acordo.
@@ -1688,20 +1690,20 @@ Então, por que desenvolvemos o trabalho em ciclos curtos? Para aprender. Experi
 O que você aprende ao trabalhar num ciclo, prepara você para o planejamento do próximo ciclo. Em scrum, chamamos isto de \emph{inpecionar-e-adaptar}. Você pode chamá-lo de \emph{melhoria contínua}. De qualquer modo, é uma coisa boa.
 
 \section{Outras metodologias ágeis}
-\subsection{Full Test Driven Development - FTDD}
-\subsection{EXtreme Programmig - XP}
-\subsection{Agile Modeling Driven Development - AMDD}
+\subsection{\emph{Full Test Driven Development} - FTDD}
+\subsection{\emph{EXtreme Programmig} - XP}
+\subsection{\emph{Agile Modeling Driven Development} - AMDD}
 
 \chapter{Codificação em Java}
 
 Veremos neste capítulo alguns exemplos de código Java para os conceitos vistos até o presente e mais alguns novos bastante usados.
 
-\section{Exemplo de MVC - Model-View-Controller}
+\section{Exemplo de MVC - \emph{Model-View-Controller}}
 
 \begin{figure}[h]
 \begin{center}
 \includegraphics[scale=0.7]{MVC.png} 
-\caption{Arquitetura Model-View-Controller} \label{fig:mvc}
+\caption{Arquitetura \emph{Model-View-Controller}} \label{fig:mvc}
 \end{center}
 \legend{Fonte: \citeonline{uml:j2ee}}
 \end{figure}
