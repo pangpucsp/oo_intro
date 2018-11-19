@@ -116,6 +116,16 @@
 
 Você precisa entender os conceitos de orientação a objetos, OO, antes de aplicá-los com sucesso no desenvolvimento de sistemas. Como as técnicas OO emergiram, em parte, de áreas da engenharia de software, inteligência artificial e modelagem da informação, muitas dessas técnicas podem parecer já familiares. Não permita que isto o torne complacente -- você ainda terá de compreender vários conceitos novos.
 
+% texto sobre os paradigmas de programação
+Antes de começarmos com a orientação a objetos, relembremos os pricipais paradigmas de programação disponíveis para o desenvolvimento de software.
+\begin{itemize}
+\item Paradigma imperativo
+\item Paradigma estruturado
+\item Paradigma funcional
+\item Paradigma orientado a objetos
+\item ...
+\end{itemize}
+
 Neste capítulo veremos:
 
 \begin{itemize}
@@ -158,7 +168,7 @@ Os conceitos de OO parecem muito simples. Não se engane. Os conceito em que se 
 \endfoot
 
 \hline %\hline
- & \legend{Fonte: Fortemente baseada em \cite{Ambler:TOP:3ed}}
+
 \endlastfoot
 
 Abstração & As características essenciais de um item (pode ser uma classe ou uma operação) \\
@@ -244,7 +254,8 @@ Subclassse & Uma classe que herda de uma outra\\
 Superclase & Uma classe da qual uma outra herda.\\
 
 \end{longtable}
-
+\noindent {Fonte: Fortemente baseada em \cite{Ambler:TOP:3ed}}
+ 
 \section{Conceitos de OO do ponto de vista estrutural}
 
 Provavelmente, você se assustou com a lista de conceitos da Tabela \ref{tab:concOO}. Se você está estudando para um teste, supomos que a lista seja útil para você. A maioria de nós procura por uma maneira de aprender os conceitos OO facilmente. Antes de ver as explicações detalhadas , vamos descrever quatro conceitos básicos de OO rapidamente, numa linguagem que pode ser familiar para você, a terminologia estruturada.
@@ -292,7 +303,6 @@ A \textit{Unified Modeling Language}, UML, é uma linguagem visual (isto é, ela
 \endfoot
 
 \hline %\hline
- & \legend{Fonte: \cite{DP:explained}}
 \endlastfoot
 
 Na fase de análise & Diagramas de Caso de Uso, que envolvem entidades interagindo com o sistema (usuários e outros sistemas) e os pontos de função que você precisa implementar.\\
@@ -308,6 +318,7 @@ Na observação das mudanças de \textit{comportamento} em função do estado at
 Na fase de distribuição & Diagramas de Distribuição, que mostram como módulos diferentes serão distribuidos.
 
 \end{longtable}
+\noindent {Fonte: \cite{DP:explained}}\\
 
 Entender os 14 diagramas de UML 2.x ilustrados na figura \ref{fig:uml14dia} e resumidos na tabela \ref{tab:diaUML} é importante para a compreensão da análise e do desenvolvimento OO. Existem 3 classificações para os diagramas UML\footnote{Os diagramas UML 2 deste trabalho foram feitos usando a ferramenta Dia, \citeonline{dia:tool}.}:
 
@@ -343,7 +354,6 @@ Entender os 14 diagramas de UML 2.x ilustrados na figura \ref{fig:uml14dia} e re
 \endfoot
 
 \hline %\hline
-& \legend{Fonte: \cite{Ambler:TOP:3ed}}
 \endlastfoot
 
 Diagrama de Atividade & Representação de alto nível de processos de negócios, incluindo fluxos de dados ou modelagem da lógica complexa dentro de um sistema \\
@@ -375,6 +385,7 @@ Diagrama Simplificado de Interação & Uma variação do diagrama de atividade, 
 Diagrama de Temporização & Representa a mudança de estado ou condição de uma instância, de um classificador ou de um papel (\textit{role}) ao longo do tempo. Tipicamente, usado para mostrar a mudança de estado de um objeto no tempo ao responder a um evento externo. \\
 
 \end{longtable}
+\noindent {Fonte: \cite{Ambler:TOP:3ed}}
 
 \section{Objetos e Classes}
 
@@ -916,7 +927,7 @@ Com a experiência, você vai sentir que você repetidamente está resolvendo os
 
 Um padrão é uma solução para um problema comum levando em conta as forças relevantes, apoiando efetivamente o reuso de técnicas e procedimentos comprovados de outros desenvolvedores. Existem diferentes tipos de \emph{padrões}, incluindo \emph{padrões de análise}, \emph{padrões de projeto} e \emph{padrões de processos}. Padrões de análise descrevem uma solução para problemas comuns encontrados na análise da lógica de negócios/domínio de uma aplicação, padrões de projeto descrevem uma solução para problemas comuns encontrados no projeto de sistemas e padrões de processos se aplicam a questões de processos de software. O livro (\citeonline{design:patterns}) é a referência de base clássica que popularizou o uso de padrões em software.
 
-Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas uma instância. Por exemplo, deve haver apenas uma janela de edição para um dado tipo de alteração, ou alguma informação de configuração só pode ser armazenada num único local, ou você precisa manter valores constantes num único lugar. Nestes casos todos, você precisa de uma única instância da classe em questão -- uma única instância de uma caixa de diálogo, uma única instância da informação de configuração e uma única instância das constantes. Este problema é resolvido pelo padrão \emph{Singleton}\label{p:singleton}, um padrão de projeto que mostra como apenas uma instância de uma classe pode existir. A figura \ref{fig:singleton} mostra o diagrama de classe de um \emph{Singleton}. Um atributo estático existe para acessar a instância única, se ela existe. O método \emph{create()}, talvez melhor chamado de \emph{getSingleton()}, permite acessá-lo e criá-lo se necessário. Embora \emph{Singleton} seja um padrão simples, ele é muito usado.
+Por exemplo, é comum descobrir classes em sua aplicação que devem ter apenas uma instância. Por exemplo, deve haver apenas uma janela de edição para um dado tipo de alteração, ou alguma informação de configuração só pode ser armazenada num único local, ou você precisa manter valores constantes num único lugar. Nestes casos todos, você precisa de uma única instância da classe em questão -- uma única instância de uma caixa de diálogo, uma única instância da informação de configuração e uma única instância das constantes. Este problema é resolvido pelo padrão \emph{Singleton}\label{p:singleton}, um padrão de projeto que mostra como apenas uma instância de uma classe pode existir. A figura \ref{fig:singleton} mostra o diagrama de classe de um \emph{Singleton}. Um atributo estático existe para acessar a instância única, se ela existe. O método \emph{create()}, talvez melhor chamado de \emph{getSingleton()}, permite acessá-lo e criá-lo se necessário. \emph{Singleton} é um padrão simples e muito usado.
 
 \begin{figure}
 \begin{center}
@@ -1003,7 +1014,7 @@ As oito características básicas na descrição dos padrões de acordo com \cit
 
 \section{Catálogo de Padrões}
 
-Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \citeonline{design:patterns} e \citeonline{DP:explained}. Durante a exposição dos padrões, veremos algumas aplicações deles. Em geral, não aplicamos os padrões de maneira isolada, mas, para resolver problemas práticos, aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\cite{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Já apresentamos o padrão Singleton no capítulo anterior, página \pageref{p:singleton}. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
+Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \cite{design:patterns} e \cite{DP:explained}. Durante a exposição dos padrões, veremos algumas aplicações deles. Em geral, não aplicamos os padrões de maneira isolada, mas, para resolver problemas práticos, aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\cite{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Já apresentamos o padrão Singleton no capítulo anterior, página \pageref{p:singleton}. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
 
 \subsection{O Padrão Fachada (\textit{Facade})}
 \subsubsection{Propósito}
@@ -1431,9 +1442,9 @@ Metodologia de Desenvolvimento de Software & Processo de desenvolvimento de soft
 
 Metodologia Ágil & Processo de desenvolvimento de Software que procura reduzir o ciclo de entrega de incremental do software, privilegiando a interação com o cliente e a programação.\\
 
-Processo de Desenvolvimento & ...\\
+Processo de Desenvolvimento & Técnicas e procedimentos práticos para o desenvolvimento de Software.\\
 
-RUP & Rational Unified Process.\\
+RUP & Processo Unificado da Rational - \textit{Rational Unified Process}.\\
 
 Scrum & Uma metodologia ágil.\\
 
@@ -1466,7 +1477,7 @@ O método mais eficiente e eficaz de transmitir informações para e dentro de u
 O software de trabalho é a principal medida de progresso.
 
 \item
-Processos ágeis promovem o desenvolvimento sustentável. Os patrocinadores, desenvolvedores e usuários devem poder manter um ritmo constante indefinidamente.
+Processos ágeis promovem o desenvolvimento em ritmo sustentável. Os patrocinadores, desenvolvedores e usuários devem ser capazes de manter um ritmo constante indefinidamente.
 
 \item
 Atenção contínua à excelência técnica e um bom projeto aumentam a agilidade.
@@ -1481,7 +1492,7 @@ As melhores arquiteturas, requisitos e projetos emergem de equipes auto-organiza
 Em intervalos regulares, a equipe reflete sobre como se tornar mais eficaz, em seguida, se sintoniza e ajusta seu comportamento de acordo.
 \end{enumerate}
 
-Veremos uma rápida introdução à metodologia Scrum para exemplificar as metodologias ágeis. E concluiremos o capítulo citando outras metologias ágeis.
+Veremos uma rápida introdução à metodologia Scrum na seção \ref{s:scrum} para exemplificar as metodologias ágeis. E concluiremos o capítulo citando outras metologias ágeis.
 
 \section{Processo Unificado}
 
@@ -1495,7 +1506,7 @@ Veremos uma rápida introdução à metodologia Scrum para exemplificar as metod
 \end{figure}
 A figura \ref{fig:rup} mostra um diagrama com as etapas e fases do processo de desenvolvimento RUP.
 
-\section{Rápida Introdução ao Scrum}
+\section{Breve Introdução ao Scrum} \label{s:scrum}
 
 \subsection{O Que É Scrum?}
 Scrum é um framework projetado para ajudar pequenas equipes unidas a desenvolver produtos complexos. Resultado do trabalho de um punhado de engenheiros de software trabalhando juntos no final do século XX, scrum ganhou força no setor tecnológico, mas não é necessariamente técnico e pode ser facilmente adaptado para outras indústrias. Os autores \citeonline{scrum:brief} dizem que você pode adaptá-lo para construir uma ratoeira melhor, ou para administrar a divisão de \textit{marketing} de uma companhia de cachorrinhos de estimação, ou até para escrever um livro, como eles fizeram.
