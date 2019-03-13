@@ -1,0 +1,290 @@
+\documentclass[
+	% -- opções da classe memoir --
+%	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	openright,
+	twoside,			% Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	english,			% idioma adicional para hifenização
+	french,
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% Tabelas longas -> + de uma página
+\usepackage{longtable}
+
+\usepackage[brazilian,hyperpageref]{backref}	% Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}					% Citações padrão ABNT
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+\titulo{Apostila de conceitos básicos de Orientação Objeto}
+\autor{Paulino Ng\thanks{PANG CO.\\paulino.ng@gmail.com}
+}
+\local{Brasil}
+\data{2019, v-0.5.1}
+
+% informações do PDF
+\makeatletter
+%\hypersetup{
+%     	%pagebackref=true,
+%		pdftitle={\@title}, 
+%		pdfauthor={\@author},
+%    	pdfsubject={Apostila de conceitos básicos de OO},
+%	    pdfcreator={PDFLaTeX with abnTeX2 on texmaker},
+%		pdfkeywords={OO}{Scott Ambler}{UML}{Java EE}, 
+%		colorlinks=true,       		% false: boxed links; true: colored links
+%    	linkcolor=blue,         	% color of internal links
+%    	citecolor=blue,        		% color of links to bibliography
+%    	filecolor=magenta,      	% color of file links
+%		urlcolor=blue,
+%		bookmarksdepth=4
+%}
+\makeatother
+% --- 
+
+\makeindex
+
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{2cm}{2cm}{*}
+\setulmarginsandblock{2cm}{2cm}{*}
+\checkandfixthelayout
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.0cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+\begin{document}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+%\maketitle
+
+\imprimircapa
+
+\pdfbookmark[0]{\contentsname}{lof}
+\listoffigures*
+%\cleardoublepage*
+\newpage 
+
+\pdfbookmark[0]{\contentsname}{lot}
+\listoftables*
+%\cleardoublepage*
+\newpage
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+%\cleardoublepage*
+\newpage 
+
+% resumo em português
+\begin{resumoumacoluna}
+Este texto objetiva introduzir alguns dos principais conceitos da tecnologia Orientada a Objetos, OO.
+O texto é fortemente baseado no capítulo 2 do livro \cite{Ambler:TOP:3ed}, com acréscimos baseados em \cite{uml:j2ee} e outros textos.
+%
+\vspace{\onelineskip}
+\noindent
+\textbf{Palavras-chave}: OO. UML. JEE.
+\end{resumoumacoluna}
+
+\textual
+
+% try to generate a table of contents after summary
+%\tableofcontents
+
+\chapter{Conceitos Básicos de Orientação a Objetos}
+\section{Introdução}
+\addcontentsline{toc}{section}{Introdução}
+
+\input{cboo.tex}
+
+\chapter{Codificação em Java}
+
+Veremos neste capítulo alguns exemplos de código Java para os conceitos vistos até o presente e mais alguns novos bastante usados.
+
+\section{Exemplo de MVC - \emph{Model-View-Controller}}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.7]{MVC.png} 
+\caption{Arquitetura \emph{Model-View-Controller}} \label{fig:mvc}
+\end{center}
+\legend{Fonte: \citeonline{uml:j2ee}}
+\end{figure}
+
+O exemplo a seguir vem de \citeonline{just:java2}. Nele mostramos um exemplo simples da arquitetura MVC usada para aplicações com GUI, interface usuário gráfica. A figura \ref{fig:mvc} mostra os princípios desta arquitetura. O \emph{modelo} na arquitetura encapsula a lógica de negócio da solução do problema resolvido pela aplicação. A \emph{visão} contém o código que exibe o estado do modelo para o usuário e a interface para o usuário interagir com a aplicação. O \emph{controlador} recebe os eventos de entrada do usuário que vêm pela interface com o usuário, a \emph{visão}. Estes eventos podem modificar o que está sendo exibido ou como está sendo exibido pela \emph{visão}. Estes eventos do usuário também podem provocar mudanças no estado do \emph{modelo}. Mudanças no estado do \emph{modelo} podem gerar notificações de alterações para a \emph{visão}.
+
+O programa é simplesmente um relógio em Java. A figura \ref{fig:clock} mostra o diagrama de classes da aplicação. Compare com o diagrama de dependência da figura \ref{fig:clsDep}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{clock.png} 
+\caption{Diagrama de classes do relógio digital.} \label{fig:clock}
+\end{center}
+\end{figure}
+
+\begin{verbatim}
+public class TimeStamp {
+    private int hrs;
+    private int mins;
+    private int secs;
+    
+    public void fillTimes() {
+        java.util.Calendar now;
+        now = java.util.Calendar.getInstance();
+        hrs = now.get(java.util.Calendar.HOUR_OF_DAY);
+        mins = now.get(java.util.Calendar.MINUTE);
+        secs = now.get(java.util.Calendar.SECOND);
+    }
+    public getHrs() { return hrs; }
+    public getMins() { return mins; }
+    public getSecs() { return secs; }
+}
+\end{verbatim}
+
+A classe \emph{TimeStamp} tem como atributos a hora, os minutos e os segundos e um método que atualiza os valores dos atributos com a ajuda da classe \emph{java.util.Calendar} do sistema. A \emph{TimeStamp} modela a ``lógica de negócio'' de um relógio. A classe \emph{Calendar} do pacote \emph{java.util} é uma classe que vem na biblioteca padrão distribuída com o JDK, kit de desenvolvimento do Java. Observe que os atributos estão ocultos dos usuários da classe \emph{TimeStamp}, os valores deles podem ser obtidos através dos métodos \textit{getters} dos atributos. Se mais tarde, for decidido que se deseja mais alterar estes atributos, pode se reprogramar os métodos \textit{getters} de acordo com as mudanças e os usuários da classe não precisam saber que os atributos foram modificados. Dizemos que isolamos os usuários da classe \emph{TimeStamp} das modificações nos atributos ocultos. Precisamos, entretanto, manter o contrato de que os métodos \emph{getHrs()}, \emph{getMins()} e \emph{getSecs()} continuam a fornecer as horas, os minutos e os segundos.
+
+\begin{verbatim}
+public class ClockView extends javax.swing.JFrame {
+    private javax.swing.JLabel tLabel = new javax.swing.JLabel();
+    
+    public ClockView() {
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setSize(95,45);
+        getContentPane().add(tLabel);
+        refreshTimeDisplay();
+    }
+    
+    protected String getDigitAsString(int i) {
+        String str = Integer.toString(i);
+        if (i<10) str = "0" + str;
+        return str;
+    }
+    
+    public void refreshTimeDisplay() {
+        TimeStamp ts = new TimeStamp();
+        ts.fillTimes();
+        String display = getDigitAsString(ts.getHrs()) + ":"
+                     + getDigitAsString(ts.getMins()) + ":"
+                     + getDigitAsString(ts.getSecs());
+        tLabel.setText("  " + display);
+        tLabel.repaint();
+    }
+}
+\end{verbatim}
+
+% os códigos podem ir para minipáginas flutuantes/ou presas
+A classe \emph{ClockView} é a nossa classe de visualização. Ela herda da classe \emph{javax.swing.JFrame}. O pacote \emph{javax.swing} é parte da nova biblioteca do Java para a criação de interfaces gráficas para usuários para aplicações de \textit{desktop}. Ao herdar de \emph{JFrame}, um objeto \emph{ClockView} serve de base para a janela onde estará o relógio. O único elemento gráfico que é adicionado ao painel da janela é um \emph{JLabel}. Um objeto \emph{JLabel} permite a exibição de um texto. Para transformar a informação do objeto TimeStamp em texto a ser exibido (variável \emph{display}), a classe ClockView tem o método auxiliar \emph{getDigitAsString(int)} que converte um inteiro em texto. Observe que não foram tomados cuidados para garantir que o inteiro só tem 2 dígitos. Como sabemos que os dados vem da TimeStamp corretamente, não é necessário fazer este tipo de checagem.
+
+\begin{verbatim}
+public class Clock {
+    public static void main(String[] argv) {
+        new Clock().go();
+    }
+    public void go() {
+        ClockView cv = new ClockView();
+        cv.setVisible(true);
+        try {
+            for (;;) {
+                cv.refreshTimeDisplay();
+                Thread.sleep(500);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e);
+        }
+    }
+}
+\end{verbatim}
+
+A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital é muito simples, tudo que ela tem é o método \emph{main()} que repete para sempre (\emph{loop} infinito) a atualização da tela do relógio e espera por meio segundo (dormindo). A espera é importante para liberar o processador do computador para outras aplicações. A razão de esperar por meio segundo e não por um segundo é que o erro de exibição no caso da espera de um segundo pode ser de até um segundo. No pior caso o programa leu as horas com o objeto TimeStamp justo quando ia mudar o segundo e mostra o valor anterior, só após o tempo de espera de 1s é que a tela vai ser atualizada. Com meio segundo de espera, o erro máximo é de 0,5s.
+
+%\section{Programação J2EE}
+
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+%\section*{Considerações finais}
+%\addcontentsline{toc}{section}{Considerações finais}
+%
+%Texto qualquer.
+%
+%\begin{citacao}
+%Mais texto genérico.
+%\end{citacao}
+%
+%Texto.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+
+% titulo em inglês
+%\titulo{Canonical academic article model with \abnTeX}
+%\emptythanks
+%\maketitle
+%
+%% resumo em português
+%\renewcommand{\resumoname}{Abstract}
+%\begin{resumoumacoluna}
+% \begin{otherlanguage*}{english}
+%   According to ABNT NBR 6022:2003, an abstract in foreign language is a back
+%   matter mandatory element.
+%
+%   \vspace{\onelineskip}
+% 
+%   \noindent
+%   \textbf{Keywords}: latex. abntex.
+% \end{otherlanguage*}  
+%\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{oo_refs}
+\
+
+\end{document}
