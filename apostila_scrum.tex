@@ -1,0 +1,189 @@
+\documentclass[
+	% -- opções da classe memoir --
+%	article,			% indica que é um artigo acadêmico
+	11pt,				% tamanho da fonte
+	openright,
+	twoside,			% Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	english,			% idioma adicional para hifenização
+	french,
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional
+	]{abntex2}
+
+\usepackage{lmodern}			% Usa a fonte Latin Modern
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{nomencl} 			% Lista de simbolos
+\usepackage{color}				% Controle das cores
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% Tabelas longas -> + de uma página
+\usepackage{longtable}
+
+\usepackage[brazilian,hyperpageref]{backref}	% Paginas com as citações na bibl
+\usepackage[alf]{abntex2cite}					% Citações padrão ABNT
+
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+\renewcommand{\backref}{}
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+		Nenhuma citação no texto.%
+	\or
+		Citado na página #2.%
+	\else
+		Citado #1 vezes nas páginas #2.%
+	\fi}%
+% ---
+
+\titulo{Apostila com uma rápida introdução ao SCRUM}
+\autor{Paulino Ng\thanks{PANG CO.\\paulino.ng@gmail.com}
+}
+\local{Brasil}
+\data{2019, v-0.5.1}
+
+% informações do PDF
+\makeatletter
+%\hypersetup{
+%     	%pagebackref=true,
+%		pdftitle={\@title}, 
+%		pdfauthor={\@author},
+%    	pdfsubject={Apostila de conceitos básicos de OO},
+%	    pdfcreator={PDFLaTeX with abnTeX2 on texmaker},
+%		pdfkeywords={OO}{Scott Ambler}{UML}{Java EE}, 
+%		colorlinks=true,       		% false: boxed links; true: colored links
+%    	linkcolor=blue,         	% color of internal links
+%    	citecolor=blue,        		% color of links to bibliography
+%    	filecolor=magenta,      	% color of file links
+%		urlcolor=blue,
+%		bookmarksdepth=4
+%}
+\makeatother
+% --- 
+
+\makeindex
+
+% Altera as margens padrões
+% ---
+\setlrmarginsandblock{2cm}{2cm}{*}
+\setulmarginsandblock{2cm}{2cm}{*}
+\checkandfixthelayout
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.0cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+% Espaçamento simples
+\SingleSpacing
+
+\begin{document}
+\selectlanguage{brazil}
+
+% Retira espaço extra obsoleto entre as frases.
+\frenchspacing 
+
+%\maketitle
+
+\imprimircapa
+
+\pdfbookmark[0]{\contentsname}{lof}
+\listoffigures*
+%\cleardoublepage*
+\newpage 
+
+%\pdfbookmark[0]{\contentsname}{lot}
+%\listoftables*
+%%\cleardoublepage*
+%\newpage
+
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+%\cleardoublepage*
+\newpage 
+
+% resumo em português
+\begin{resumoumacoluna}
+Este texto objetiva introduzir a metodologia de desenvolvimento SCRUM.
+
+\vspace{\onelineskip}
+\noindent
+\textbf{Palavras-chave}: SCRUM. Metodologia de Desenvolvimento. Metodologia Ágil.
+\end{resumoumacoluna}
+
+\textual
+
+% try to generate a table of contents after summary
+%\tableofcontents
+
+\chapter{Rápida introdução ao SCRUM}
+%\section{Introdução}
+%\addcontentsline{toc}{section}{Introdução}
+
+\input{scrum.tex}
+
+%\section{Programação J2EE}
+
+
+% ---
+% Finaliza a parte no bookmark do PDF, para que se inicie o bookmark na raiz
+% ---
+\bookmarksetup{startatroot}% 
+% ---
+
+% ---
+% Conclusão
+% ---
+%\section*{Considerações finais}
+%\addcontentsline{toc}{section}{Considerações finais}
+%
+%Texto qualquer.
+%
+%\begin{citacao}
+%Mais texto genérico.
+%\end{citacao}
+%
+%Texto.
+
+% ----------------------------------------------------------
+% ELEMENTOS PÓS-TEXTUAIS
+% ----------------------------------------------------------
+\postextual
+
+% ---
+% Título e resumo em língua estrangeira
+% ---
+
+% \twocolumn[    		% INICIO DE ARTIGO EM DUAS COLUNAS
+
+% titulo em inglês
+%\titulo{Canonical academic article model with \abnTeX}
+%\emptythanks
+%\maketitle
+%
+%% resumo em português
+%\renewcommand{\resumoname}{Abstract}
+%\begin{resumoumacoluna}
+% \begin{otherlanguage*}{english}
+%   According to ABNT NBR 6022:2003, an abstract in foreign language is a back
+%   matter mandatory element.
+%
+%   \vspace{\onelineskip}
+% 
+%   \noindent
+%   \textbf{Keywords}: latex. abntex.
+% \end{otherlanguage*}  
+%\end{resumoumacoluna}
+
+% ]  				% FIM DE ARTIGO EM DUAS COLUNAS
+% ---
+
+% ----------------------------------------------------------
+% Referências bibliográficas
+% ----------------------------------------------------------
+\bibliography{oo_refs}
+\
+
+\end{document}
