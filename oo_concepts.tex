@@ -41,7 +41,7 @@
 \autor{Paulino Ng\thanks{paulino.ng@gmail.com}
 }
 \local{Brasil}
-\data{2018, v-0.3.1}
+\data{2019, v-0.3.5}
 
 % informações do PDF
 \makeatletter
@@ -92,15 +92,15 @@
 
 \pdfbookmark[0]{\contentsname}{lof}
 \listoffigures*
-\cleardoublepage*
+\cleardoublepage
 
 \pdfbookmark[0]{\contentsname}{lot}
 \listoftables*
-\cleardoublepage*
+\cleardoublepage
 
 \pdfbookmark[0]{\contentsname}{toc}
 \tableofcontents*
-\cleardoublepage*
+\cleardoublepage
 
 % resumo em português
 %\begin{resumoumacoluna}
@@ -119,11 +119,11 @@
 
 %\section{Introdução}
 %\addcontentsline{toc}{section}{Introdução}
-\chapter{Conceitos Básicos de Orientação a Objetos}
+\chapter{Conceitos Básicos de Orientação a Objetos}\label{cap:intro}
 
 \input{cboo.tex}
 
-\chapter{Padrões de Projeto}
+\chapter{Padrões de Projeto}\label{cap:designpatterns}
 
 Neste capítulo veremos um resumo das ideias apresentadas em \cite{DP:explained} e \cite{design:patterns} sobre padrões de projetos. Shalloway e Trott acreditam que é possível aprender orientação objeto simultaneamente com os padrões de projeto. E é o que tentamos fazer neste texto. Não veremos os padrões com a minúcia desses livros, apenas vamos apresentar alguns dos aspectos mais essenciais. Os leitores mais interessados em padrões de projeto devem ler pelo menos estes dois textos.
 
@@ -151,8 +151,8 @@ A figura \ref{fig:cvaPersp} mostra as relações entre a análise de comunalidad
 
 A tabela \ref{tab:concDS} apresenta alguns conceitos e termos usados em desenvolvimento de Software.
 
-\begin{longtable}[l]{p{4.6cm}p{11.1cm}}
-\caption[Conceitos DS]{Conceitos e Termos Desenvolvimento de Software}
+\begin{longtable}[l]{p{4.0cm}p{11.7cm}}
+\caption[Conceitos DS]{Conceitos e Termos de Desenvolvimento de Software}
 \label{tab:concDS}\\
 
 \multicolumn{1}{c}{\textbf{Termo}} & \multicolumn{1}{c}{\textbf{Descrição}} \\
@@ -168,15 +168,18 @@ A tabela \ref{tab:concDS} apresenta alguns conceitos e termos usados em desenvol
 \endfoot
 
 \hline %\hline
- & \legend{Fonte: \cite{uml:j2ee}} \\% \hline
+ & \legend{Fonte: \cite{uml:j2ee} com alguns acréscimos.} \\% \hline
 
 \endlastfoot
 
-Caso de Uso & ...\\
+Caso de Uso & Um caso de uso é uma metodologia usada na análise do sistema para identificar, esclarecer e organizar os requisitos do sistema.
+Um caso de uso é composto por um conjunto de possíveis sequências de interações entre sistemas e usuários em um ambiente específico e relacionadas a um objetivo específico. 
+% Consiste em um grupo de elementos (por exemplo, classes e interfaces) que podem ser usados ​​juntos de tal maneira que terá um efeito maior que a soma dos elementos separados combinados. 
+O caso de uso deve conter todas as atividades do sistema que tenham importância para os usuários \footnote{https://searchsoftwarequality.techtarget.com/definition/use-case}.\\
 
 Desenvolvimento em Cascata & Processo de desenvolvimento que segue estritamente as etapas: Levantamento de requisitos, Análise e Projeto do SW, Codificação, Teste e Manutenção.\\
 
-Estória de Usuário & ...\\
+Estória de Usuário & Uma história de usuário é uma ferramenta usada no desenvolvimento de software Ágil para capturar uma descrição de um recurso de software de uma perspectiva do usuário final. A história do usuário descreve o tipo de usuário, o que eles querem e por quê. Uma história do usuário ajuda a criar uma descrição simplificada de um requisito\footnote{https://searchsoftwarequality.techtarget.com/definition/user-story, acessado em 12/07/2019}.\\
 
 Framework & Quadro de trabalho, em tradução ao pé da letra. Um framework é uma coleção de programas que facilitam o desenvolvimento de uma aplicação. De acordo com \cite{uml:j2ee}, existem dois tipos de framewoks: um baseado em biblioteca e outro que fornece uma base a ser extendida pelo programador.\\
 

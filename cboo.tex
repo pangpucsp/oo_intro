@@ -11,6 +11,18 @@ Antes de começar com a orientação a objetos, relembre os principais paradigma
 \item Programação por aspectos
 \end{itemize}
 
+A \textbf{programação imperativa} é o modelo de programação que melhor segue a maneira de um processador executar as instruções. Dizemos que ela é imperativa pois os programas parecem dar ordens (comandos, instruções) para o processador executar e ele executa as instruções uma após a outra. Nesse modelo, o programador projeta seus programas como sequêcias de instruções a serem executadas no processador e o programador deve conhecer como funciona um processador, a arquitetura do computador, o sistema operacional e o modelo acesso à memória para melhor escrever seus programas.
+
+A \textbf{programação estruturada} é um modelo de programação um pouco mais avançado do que o puramente imperativo. Nele, sequências de instruções são agrupadas em blocos, alguns blocos formam subprogramas chamados de funções ou procedimentos. Estruturas de controle de fluxo de instruções permitem a execução dos blocos de instruções. A instrução \emph{GOTO}, ou \emph{jump}, não é permitida em linguagens estruturadas, desde a publicação de um artigo do Dijkstra mostrando como o uso de desvios torna os programas mais suscetíveis a erros de programação. A programação estruturada faz forte uso de subprogramas e a principal maneira de reutilizar software é através de bibliotecas de funções e procedimentos. Wirth popularizou a decomposição funcional, ou projeto \emph{top-down}, usado neste modelo de programação. Esta forma de projeto mostra-se adequada para pequenos projetos de software, mas é inadequada para projetos de maior porte e projetos com requisitos que mudam com frequência.
+
+A \textbf{programação funcional} é um modelo de programação bastate antigo, basta lembrar que a linguagem LISP foi criada mais ou menos na mesma época que o Fortran e o Cobol. Neste modelo, os programas são funções. Semelhante às funções matemáticas, a valor dos argumentos das funções determinam o resultado do cálculo das funções. Neste modelo de computação, não existe o conceito de memória e estado de processamento. É um modelo muito útil para o processamento paralelo, já que não há interferência com variáveis de memória compartilhadas, o que elimina as dificuldades provenientes da programação concorrente nos outros modelos de programação.
+
+A \textbf{programação orientada a objetos} ...
+
+A \textbf{programação por prototipagem} ...
+
+A \textbf{programação por aspectos} ...
+
 Estes paradigmas, estilos de programação, são todos equivalentes no sentido em que todos devem permitir a resolução dos mesmos problemas com um computador, uma máquina de Turing. A diferença está na facilidade de exprimir conceitos computacionais abstratos usados para a resolução dos problemas.
 
 Estes diferentes paradigmas são apropriados para resolver diferentes tipos de problemas e desenvolvimentos. A programação imperativa, tão criticada por muitos desenvolvedores, pode ser útil no desenvolvimento de pequenas aplicações e bibliotecas que precisem de alto desempenho. Atualmente, a programação funcional voltou a receber uma grande atenção. A programação com JavaScript chama a atenção para a programação por prototipagem. Algumas linguagens de programação dão suporte a um ou vários paradigmas. A orientação a objetos é um dos principais paradigmas para a reutilização de código.
@@ -599,7 +611,7 @@ Na figura \ref{fig:uml6}, a associação unidirecional \emph{preenche} entre \em
 \begin{minipage}{16cm}
 \textbf{Não mostre atributos e métodos para implementar associações}
 
-É um estilo comum supor que existem atributos e métodos para implementar associações, você não precisa mostrá-los nos seus diagramas. Considere estabelecer convenções para os nomes destes atributos e métodos. Tipicamente, o nome do papel, ou o nome da classe, para o nome do atributo e nomes de métodos como \emph{adicionaNomeAtributo()} e \emph{removeNomeAtributo()} para associações múltiplas e \emph{setNomeAtributo()} e \emph{getNomeAtributo()} para associações simples.
+É normal supor que existem atributos e métodos para implementar associações, você não precisa mostrá-los nos seus diagramas de classes. Considere estabelecer convenções para os nomes destes atributos e métodos. Tipicamente, o nome atributo deve representar o papel do objeto e o nome dos métodos deve representar a ação sobre os atributos como \emph{adicionaNomeAtributo()} e \emph{removeNomeAtributo()} para associações múltiplas e \emph{setNomeAtributo()} e \emph{getNomeAtributo()} para associações simples.
 \end{minipage}
 }
 
@@ -619,7 +631,7 @@ Composição é um tipo forte de agregação no qual o ``todo'' é completamente
 \caption{Exemplos de agregação} \label{fig:uml8}
 \end{center}\end{figure}
 
-Em UML 1, você podia modelar agregação e composição, mas no UML 2, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais um tempo, a agregação é popularmente modelada desde 1997, quando a UML se popularizou. A figura \ref{fig:uml8} mostra exemplos de ambos -- a agregação era exibida como uma seta com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação. Você ainda tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
+Em UML 1, você podia modelar agregação e composição, mas no UML 2, a notação da agregação caiu. Embora isto pareça uma boa ideia, porque muita gente confundia os dois conceitos, suspeita-se que agregação continue a ser usada em diagramas de classe de UML por mais algum tempo, a agregação é modelada desde 1997, quando a UML se tornou popular. A figura \ref{fig:uml8} mostra exemplos de ambos -- a agregação era exibida como uma seta com uma ponta em losângulo vazio e composição com um losângulo cheio. O losângulo está conectado à classe toda. Agregação é simplesmente um tipo de associação. Você ainda tem de modelar as multiplicidades e os papéis. Deixar de indicar a multiplicidade de uma associação é permitido, mas não é recomendável. Por exemplo, na figura \ref{fig:uml8}, a multiplicidade não é indicada, nem para entregas, nem para aviões, nestes casos, a multiplicidade implícita é 1.
 
 Assim como associações são vias de duplo sentido, também as agregações são. Além disso, as associações de agregação/composição mostradas na figura \ref{fig:uml8} são lidas de maneira similar:
 \begin{itemize}

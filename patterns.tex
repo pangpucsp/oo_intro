@@ -44,7 +44,37 @@ As oito características básicas na descrição dos padrões de acordo com \cit
 
 \section{Catálogo de Padrões}
 
-Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \cite{design:patterns} e \cite{DP:explained}. Durante a exposição dos padrões, veremos algumas aplicações deles. Em geral, não aplicamos os padrões de maneira isolada, mas, para resolver problemas práticos, aplicamos diversos padrões. Apesar da \textit{gang de 4}\footnote{\cite{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Já apresentamos o padrão Singleton no capítulo anterior, página \pageref{p:singleton}. Além disso, procuramos deixar próximos os padrões que estão correlacionados.
+Começaremos apresentando um catálogo de padrões de projetos dos dois livros, \cite{design:patterns} e \cite{DP:explained}. Na exposição de alguns padrões, veremos algumas aplicações deles. Em geral, não aplicamos os padrões de maneira isolada, mas, para resolver problemas práticos, aplicamos diversos padrões. Não detalharemos todos os padrões e não recomendamos decorar todos os padrões para tentar a todo custo utilizá-los. O bom senso deve sempre prevalecer e aplicar o padrão apenas se ele se mostrar interessante. Neste aspecto, é importante que a maioria das ferramentas de desenvolvimento de software auxiliem na refatoração dos programas. Um desenvolvimento pode ser feito sem utilizar um padrão de projeto e mais tarde pode-se perceber que é interessante a aplicação de um padrão para aumentar o desacoplamento, ou para tornar o projeto mais coeso, ou alguma outra característica interessante que o padrão de projeto nos forneça, nesse caso aplica-se uma refatoração.
+
+Apesar da \textit{gang de 4}\footnote{\cite{design:patterns}} apresentar os padrões em ordem alfabética, procuraremos estudar os padrões pelos mais simples e familiares. Já apresentamos o padrão Singleton no capítulo anterior, página \pageref{p:singleton}. Além disso, procuramos deixar próximos os padrões que estão correlacionados. Os padrões que serão apresentados rapidamente são:
+
+\begin{itemize}
+\item O Padrão Fachada
+\item O Padrão Adaptador
+\item O Padrão Fabrica Abstrata
+\item O Padrão Método Fabrica
+\item O Padrão Observador
+\item O Padrão Composição
+\item O Padrão Iterador
+\item O Padrão Visitante
+\item O Padrão Estratégia
+\item O Padrão Decorador
+\item O Padrão Método Padrão
+\item O Padrão \textit{Singleton}
+\item O Padrão Trava Dupla
+\item O Padrão Ponte
+\item O Padrão Construtor
+\item O Padrão Protótipo
+\item O Padrão Repositório de Objetos
+\item O Padrão Cadeia de Responsabilidade
+\item O Padrão Comando
+\item O Padrão Peso Pena
+\item O Padrão Interpretador
+\item O Padrão Mediador
+\item O Padrão Recordação
+\item O Padrão Procurador
+\item O Padrão Estado
+\end{itemize}
 
 \subsection{O Padrão Fachada (\textit{Facade})}
 \subsubsection{Propósito}
@@ -140,7 +170,6 @@ A figura \ref{fig:adaptCirc} mostra como uma classe \emph{CirculoEspc} é adapta
 \end{center}
 \end{figure}
 
-
 \subsection{O Padrão Fabrica Abstrata (\textit{Abstract Factory})}
 
 O padrão da Fabrica Abstrata é um dos padrões de projeto que procuram abstrair o processo de instanciação. Este tipo de padrão ajuda a tornar um sistema independente de como seus objetos são criados, compostos e representados. Ele esconde como instâncias das classes são criadas e são postas juntas.
@@ -210,6 +239,14 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+
 \subsection{O Padrão Composição (\textit{Composite})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -218,6 +255,13 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Iterador (\textit{Iterator})}
 \subsubsection{Propósito}
@@ -228,6 +272,13 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
 \subsection{O Padrão Visitante (\textit{Visitor})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -236,6 +287,13 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Estratégia (\textit{Strategy})}
 \subsubsection{Propósito}
@@ -256,6 +314,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
 \subsection{O Padrão Decorador (\textit{Decorator})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -265,7 +330,14 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
-\subsection{O Padrão Método Gabarito (\textit{Template Method})}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Método Padrão (\textit{Template Method})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
 \subsubsection{Solução}
@@ -273,6 +345,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão \textit{Singleton}}
 \subsubsection{Propósito}
@@ -283,7 +362,14 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
-\subsection{O Padrão Trava Duplamente Verificada (\textit{Lock Double Checked})}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Trava Dupla (\textit{Lock Double Checked})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
 \subsubsection{Solução}
@@ -291,6 +377,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Ponte (\textit{Bridge})}
 \subsubsection{Propósito}
@@ -301,6 +394,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
 \subsection{O Padrão Construtor (\textit{Builder})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -309,6 +409,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Protótipo (\textit{Prototype})}
 \subsubsection{Propósito}
@@ -319,7 +426,14 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
-\subsection{O Padrão Piscina de Objetos (\textit{Object Pool})}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Repositório de Objetos (\textit{Object Pool})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
 \subsubsection{Solução}
@@ -327,6 +441,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Cadeia de Responsabilidade (\textit{Chain of Responsability})}
 \subsubsection{Propósito}
@@ -337,6 +458,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
 \subsection{O Padrão Comando (\textit{Command})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -345,6 +473,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Peso Pena (\textit{Flyweight})}
 \subsubsection{Propósito}
@@ -355,6 +490,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
 \subsection{O Padrão Interpretador (\textit{Interpreter})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
@@ -363,6 +505,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Mediador (\textit{Mediator})}
 \subsubsection{Propósito}
@@ -373,7 +522,14 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
-\subsection{O Padrão \textit{Memento}}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Recordação (\textit{Memento})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
 \subsubsection{Solução}
@@ -382,7 +538,14 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
 
-\subsection{O Padrão \textit{Proxy}}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
+
+\subsection{O Padrão Procurador (\textit{Proxy})}
 \subsubsection{Propósito}
 \subsubsection{Problema}
 \subsubsection{Solução}
@@ -390,6 +553,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \subsection{O Padrão Estado (\textit{State})}
 \subsubsection{Propósito}
@@ -399,6 +569,13 @@ O padrão Estratégia define uma família de algoritmos. O uso de condicionais e
 \subsubsection{Consequências}
 \subsubsection{Implementação}
 \subsubsection{Estrutura Genérica}
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale=0.6]{adaptador.png}
+\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\end{center}
+\end{figure}
 
 \section{O Processo de Pensar em Padrões}
 
