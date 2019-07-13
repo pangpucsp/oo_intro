@@ -100,7 +100,7 @@ A figura \ref{fig:fachada} mostra a estrutura do sistema antes e depois de aplic
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.42]{fachada.png}
+\includegraphics[scale=0.42]{dp_fachada.png}
 \caption{Estrutura Genérica do Padrão Fachada}\label{fig:fachada}
 \end{center}
 \end{figure}
@@ -131,7 +131,7 @@ A estrutura genérica do Padrão Adaptador é ilustrado na figura \ref{fig:adapt
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{adaptador.png}
+\includegraphics[scale=0.6]{dp_adaptador.png}
 \caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
 \end{center}
 \end{figure}
@@ -195,7 +195,7 @@ Defina uma classe abstrata que especifica quais objetos devem ser feitos. Implem
 \subsubsection{Estrutura Genérica}
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.5]{absFact.png}
+\includegraphics[scale=0.5]{dp_absFact.png}
 \caption{Estrutura Genérica do Padrão Fabrica Abstrata}\label{fig:absFab}
 \end{center}
 \end{figure}
@@ -223,7 +223,7 @@ Use um método na classe abstrata que é abstrato. O código da classe abstrata 
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{factoryMethod.png}
+\includegraphics[scale=0.6]{dp_factoryMethod.png}
 \caption{Estrutura Genérica do padrão Método Fabrica.}\label{fig:factMeth}
 \end{center}
 \end{figure}
@@ -231,9 +231,24 @@ Use um método na classe abstrata que é abstrato. O código da classe abstrata 
 O padrão Método Fabrica é normalmente usado na definição de \textit{frameworks}. Isto porque frameworks existem num nível abstrato. Geralmente, eles não sabem e não deveriam se preocupar  com a instanciação de objetos específicos. Eles precisam adiar as decisões sobre objetos específicos para usuários de \textit{frameworks}.
 
 \subsection{O Padrão Observador (\textit{Observer})}
+
 \subsubsection{Propósito}
+
+Define uma dependência um-para-muitos entre objetos tal que quando um objeto muda de estado, todos os seus dependentes são notificados e atualizados automaticamente.
+
 \subsubsection{Problema}
+
+Um efeito colateral de particionar um sistema numa coleção de classes cooperativas é a necessidade de manter a consistência entre objetos correlacionados. Você não deseja obter consistência aumentando o acoplamento entre as classes, porque isto reduz a reusabilidade delas.
+
 \subsubsection{Solução}
+
+Use o padrão \textbf{Observador} nas seguintes situações:
+\begin{itemize}
+\item Quando uma abstração tem dois aspectos, cada um dependente do outro. Encapsular estes aspectos em objetos diferentes permite que você modifique e reuse cada um deles de modo independente.
+\item Quando uma mudança num objeto requer a mudança em outros objetos e você não sabe quais objetos necessitam serem modificados.
+\item Quando um objeto deve ser capaz de notificar outros objetos sem ter de fazer suposições sobre os outros objetos.
+\end{itemize}
+
 \subsubsection{Participantes e colaboradores}
 \subsubsection{Consequências}
 \subsubsection{Implementação}
@@ -241,8 +256,8 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{adaptador.png}
-\caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
+\includegraphics[scale=0.5]{dp_observer.png}
+\caption{Estrutura Genérica do padrão Observador}\label{fig:adaptador}
 \end{center}
 \end{figure}
 
@@ -258,7 +273,7 @@ O padrão Método Fabrica é normalmente usado na definição de \textit{framewo
 
 \begin{figure}[h]
 \begin{center}
-\includegraphics[scale=0.6]{adaptador.png}
+\includegraphics[scale=0.6]{dp_adaptador.png}
 \caption{Estrutura Genérica do Padrão Adaptador}\label{fig:adaptador}
 \end{center}
 \end{figure}

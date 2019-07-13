@@ -80,7 +80,11 @@
 % Espaçamento simples
 \SingleSpacing
 
+% set page numbering in roman
+
 \begin{document}
+%\frontmatter
+\pagenumbering{roman}
 \selectlanguage{brazil}
 
 % Retira espaço extra obsoleto entre as frases.
@@ -120,6 +124,8 @@
 %\section{Introdução}
 %\addcontentsline{toc}{section}{Introdução}
 \chapter{Conceitos Básicos de Orientação a Objetos}\label{cap:intro}
+%\mainmatter
+\pagenumbering{arabic}
 
 \input{cboo.tex}
 
@@ -606,6 +612,7 @@ A classe \emph{Clock} é a controladora da aplicação. Como o relógio digital 
 % ELEMENTOS PÓS-TEXTUAIS
 % ----------------------------------------------------------
 \postextual
+%\backmatter
 
 % ---
 % Título e resumo em língua estrangeira
